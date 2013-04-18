@@ -17,23 +17,21 @@ Written on 2012-10-01 00:00:00 </div>
 
 <p>The code listing for <code>forall</code> is as follows:</p>
 
-<pre><code>def forall(s: Set, p: Int =&gt; Boolean): Boolean = {
+<pre><code>def forall(s: Set, p: Int => Boolean): Boolean = {
   def iter(a: Int): Boolean = {
-    if (a &gt; bound) true
-    else if (contains(s, a) &amp;&amp; !p(a)) false
+    if (a > bound) true
+    else if (contains(s, a) && !p(a)) false
     else iter(a + 1)
   }
   iter(-bound)
-}
-</code></pre>
+}</code></pre>
 
 <p>where <code>bound</code> is <code>1000</code>.</p>
 
 <p>A set is a defined as follows, along with the predicate to test for containment.</p>
 
-<pre><code>type Set = Int =&gt; Boolean
-def contains(s: Set, x: Int) = s(x)
-</code></pre>
+<pre><code>type Set = Int => Boolean
+def contains(s: Set, x: Int) = s(x)</code></pre>
 
 <p>Here is how I arrive at the answer for the question:</p>
 
@@ -49,17 +47,15 @@ def contains(s: Set, x: Int) = s(x)
 
 <p>From that reasoning, it is easy to code up the first attempt at a solution.</p>
 
-<pre><code>def exists(s: Set, p: Int =&gt; Boolean): Boolean = !forall(s, x =&gt; !p(x))
-</code></pre>
+<pre><code>def exists(s: Set, p: Int => Boolean): Boolean = !forall(s, x => !p(x))</code></pre>
 
 <p>Now, let's see how this solution fares.</p>
 
-<pre><code>scala&gt; def natural = (x: Int) =&gt; x &gt; 0
-scala&gt; forall(natural, x % 2 == 0) // should return false, as not all naturals are even
+<pre><code>scala> def natural = (x: Int) => x > 0
+scala> forall(natural, x % 2 == 0) // should return false, as not all naturals are even
 Res01 = false
-scala&gt; exists(natural, x % 2 == 0) // should return true
-Res02 = true
-</code></pre>
+scala> exists(natural, x % 2 == 0) // should return true
+Res02 = true</code></pre>
 
 <p>The solution passes the tests. Let's look at how to explain the code simply. The code says</p>
 
@@ -73,8 +69,7 @@ Res02 = true
 
 <p>compared with</p>
 
-<pre><code>def exists(s: Set, p: Int =&gt; Boolean): Boolean = !forall(s, x =&gt; !p(x))
-</code></pre>
+<pre><code>def exists(s: Set, p: Int => Boolean): Boolean = !forall(s, x => !p(x))</code></pre>
 
 <p>The correspondence is remarkable!</p>
 
@@ -84,12 +79,11 @@ Res02 = true
 <p>Finally, write a function <code>map</code> which transforms a given set into another one by applying to each of its element the given function. <code>map</code> has the following signature:</p>
 </blockquote>
 
-<pre><code>def map(s: Set, f: Int =&gt; Int): Set
-</code></pre>
+<pre><code>def map(s: Set, f: Int => Int): Set</code></pre>
  </div>
 <div class="relative-nav">
 <a href="http://minhdo.org/posts/Zen-in-Gdel-Escher-and-Bach-An-Eternal-Golden-Braid.html">Previous</a><br>
-
+<a href="http://minhdo.org/posts/Hello-JIT-World-from-D.html">Next</a><br>
 </div>
  </div> <div id="disqus_thread"></div>
      <script type="text/javascript">
