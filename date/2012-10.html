@@ -1,0 +1,81 @@
+<!doctype html>
+<html> <head> <title>MrOrdinaire</title> <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://minhdo.org/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://minhdo.org/rss.xml" type="application/rss+xml" />  </head> <body> <div class="navigation"> <a href="http://minhdo.org">MrOrdinaire</a> | <a href="http://minhdo.org/">Home</a>  | <a href="http://twitter.com/mrordinaire">Twitter</a>  | <a href="http://github.com/mrordinaire">Code</a>  </div> <div id="content"> <h1 class="title">Posts from 2012-10</h1> <div class="article-meta"> <a class="article-title" href="http://minhdo.org/posts/Maths-and-Programs.html">Maths and Programs</a> <div class="date"> posted on 2012-10-01 00:00:00</div> <div class="article">
+
+<p>Let's solve this question (taken from the second assignment of <a href="https://www.coursera.org/course/progfun" >Functional Programming in Scala</a>):</p>
+
+<blockquote>
+<p>Using <code>forall</code>, implement a function <code>exists</code> which tests whether a set contains at least one element for which the given predicate is true. Note that the functions <code>forall</code> and <code>exists</code> behave like the universal and existential quantifiers of first-order logic.</p>
+</blockquote>
+
+<p>The code listing for <code>forall</code> is as follows:</p>
+
+<pre><code>def forall(s: Set, p: Int =&gt; Boolean): Boolean = {
+  def iter(a: Int): Boolean = {
+    if (a &gt; bound) true
+    else if (contains(s, a) &amp;&amp; !p(a)) false
+    else iter(a + 1)
+  }
+  iter(-bound)
+}
+</code></pre>
+
+<p>where <code>bound</code> is <code>1000</code>.</p>
+
+<p>A set is a defined as follows, along with the predicate to test for containment.</p>
+
+<pre><code>type Set = Int =&gt; Boolean
+def contains(s: Set, x: Int) = s(x)
+</code></pre>
+
+<p>Here is how I arrive at the answer for the question:</p>
+
+<blockquote>
+<ol>
+<li>From the question, it is intuitive to try to stop the iteration when there is an element that satisfies the predicate <code>p</code>, which is exactly what <code>exists</code> should do.</li>
+<li>The iteration is stopped only when the current element <code>a</code> does not satisfy <code>p</code>.</li>
+<li>However, we need to satisfy <code>p</code> in order for <code>exists</code> to correctly do its job.</li>
+</ol>
+
+<p>In conclusion, we need a double negation here. In other words, we need to negate <code>p</code> and then negate the answer returned by <code>forall</code> when called with the negation of <code>p</code>.</p>
+</blockquote>
+
+<p>From that reasoning, it is easy to code up the first attempt at a solution.</p>
+
+<pre><code>def exists(s: Set, p: Int =&gt; Boolean): Boolean = !forall(s, x =&gt; !p(x))
+</code></pre>
+
+<p>Now, let's see how this solution fares.</p>
+
+<pre><code>scala&gt; def natural = (x: Int) =&gt; x &gt; 0
+scala&gt; forall(natural, x % 2 == 0) // should return false, as not all naturals are even
+Res01 = false
+scala&gt; exists(natural, x % 2 == 0) // should return true
+Res02 = true
+</code></pre>
+
+<p>The solution passes the tests. Let's look at how to explain the code simply. The code says</p>
+
+<blockquote>
+<p>There exists in set <code>s</code> an element that satisfies the predicate <code>p</code> when not all of the elements in <code>s</code> satisfies the negation of <code>p</code>.</p>
+</blockquote>
+
+<p>That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatical symbols!</p>
+
+<p>&exist;x:P(x) &equiv; &not;&forall;x:&not;P(x)</p>
+
+<p>compared with</p>
+
+<pre><code>def exists(s: Set, p: Int =&gt; Boolean): Boolean = !forall(s, x =&gt; !p(x))
+</code></pre>
+
+<p>The correspondence is remarkable!</p>
+
+<p>After reading this post, you should try this question. The answer will pleasantly surprise you.</p>
+
+<blockquote>
+<p>Finally, write a function <code>map</code> which transforms a given set into another one by applying to each of its element the given function. <code>map</code> has the following signature:</p>
+</blockquote>
+
+<pre><code>def map(s: Set, f: Int =&gt; Int): Set
+</code></pre>
+</div> </div> <div id="relative-nav">   </div> <div id="tagsoup"> <p>This blog covers <a href="http://minhdo.org/tag/configuration.html">configuration</a>, <a href="http://minhdo.org/tag/excerpt.html">excerpt</a>, <a href="http://minhdo.org/tag/existential quantifiers.html">existential quantifiers</a>, <a href="http://minhdo.org/tag/functional programming.html">functional programming</a>, <a href="http://minhdo.org/tag/literature.html">literature</a>, <a href="http://minhdo.org/tag/mailbox.html">mailbox</a>, <a href="http://minhdo.org/tag/ntu.html">ntu</a>, <a href="http://minhdo.org/tag/philosophy.html">philosophy</a>, <a href="http://minhdo.org/tag/setting.html">setting</a>, <a href="http://minhdo.org/tag/spirituality.html">spirituality</a>, <a href="http://minhdo.org/tag/universal quantifiers.html">universal quantifiers</a>, <a href="http://minhdo.org/tag/zen.html">zen</a> </div> <div id="monthsoup"> <p>View posts from <a href="http://minhdo.org/date/2012-10.html">2012-10</a>, <a href="http://minhdo.org/date/2012-09.html">2012-09</a> </div> </div>  <div class="fineprint"> <hr> Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://minhdo.org/css/cc-by-sa.png" /> </a> by Do Nhat Minh <img align="right" src="http://minhdo.org/css/logo_small.jpg" /> </div> </body> </html>
