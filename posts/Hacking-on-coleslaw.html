@@ -1,0 +1,166 @@
+<!doctype html>
+<html> <head> <title>MrOrdinaire</title> <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://minhdo.org/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://minhdo.org/rss.xml" type="application/rss+xml" />  </head> <body> <div class="navigation"> <a href="http://minhdo.org">MrOrdinaire</a> | <a href="http://minhdo.org/">Home</a>  | <a href="http://twitter.com/mrordinaire">Twitter</a>  | <a href="http://github.com/mrordinaire">Code</a>  </div> <div id="content"> <div class="article-meta">
+<h1 class="title">Hacking on coleslaw</h1>
+<div class="tags">
+Tagged as <a href="../tag/hack.html">hack</a>, <a href="../tag/common lisp.html">common lisp</a>, <a href="../tag/coleslaw.html">coleslaw</a> </div>
+<div class="date">
+Written on 2013-04-19 00:15:32 </div>
+</div>
+<div class="article-content">
+
+
+<p><em>In this post, I document how I hacked <a href="https://github.com/redline6561/coleslaw" >coleslaw</a> to add <a href="http://pages.github.com/" >Github's pages</a> integration.</em></p>
+
+<h2>What is coleslaw?</h2>
+
+<p>coleslaw is a static blog generator written in Common Lisp, much like <a href="http://jekyllrb.com/" >Jekyll</a>, albeit with less features.</p>
+
+<p>I've been using <a href="http://octopress.org/" >Octopress</a> to generate this site. Since I don't know <a href="http://ruby-lang.org/" >Ruby</a>, and have to intention to learn it, I can't hack on Octopress's code nor on Jekyll's, which is a shame. As I am learning <a href="http://http://en.wikipedia.org/wiki/Common_Lisp/" >Common Lisp</a>, and wanting to work on something in it, switching to coleslaw seems perfect for me.</p>
+
+<h2>Trying coleslaw out</h2>
+
+<p>Here's how I set up and use coleslaw.</p>
+
+<ul>
+<li>Install <a href="http://git-scm.com/" >git</a></li>
+<li>Set up a bare git repo</li>
+</ul>
+
+<pre><code>cd /path/to/repo # this is where the post-receive script is put
+git --bare init</code></pre>
+
+<ul>
+<li>Install Lisp (I choose <a href="http://sbcl.org/" >sbcl</a>)</li>
+<li>Install <a href="http://quicklisp.org/" >Quicklisp</a></li>
+<li>Get coleslaw's settings file</li>
+</ul>
+
+<pre><code>wget -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc -O ~/.coleslawrc</code></pre>
+
+<ul>
+<li>The settings must be edited accordingly. I find the naming a bit confusing, so I have put some comment below for clarification.</li>
+</ul>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><span class="keyword">:author</span> <span class="string">"Example Setter"</span>
+ <span class="keyword">:deploy</span> <span class="string">"/path/to/deploy"</span> <span class="comment">; this is where coleslaw writes its output
+</span> <span class="keyword">:domain</span> <span class="string">"http://blog.example.com"</span>
+ <span class="keyword">:feeds</span> <span class="paren2">(<span class="code"><span class="string">"lisp"</span></span>)</span>
+ <span class="keyword">:plugins</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code">mathjax</span>)</span>
+           <span class="paren3">(<span class="code">disqus <span class="keyword">:shortname</span> <span class="string">"my-site-name"</span></span>)</span>
+           <span class="paren3">(<span class="code">analytics <span class="keyword">:tracking-code</span> <span class="string">"foo"</span></span>)</span></span>)</span>
+ <span class="comment">;; this is where coleslaw writes its temporary output, which gets moved
+</span> <span class="comment">;; into :DEPLOY
+</span> <span class="keyword">:repo</span> <span class="string">"/path/to/some/temporary/folder/"</span>
+ <span class="keyword">:sitenav</span> <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="keyword">:url</span> <span class="string">"http://example.com/"</span> <span class="keyword">:name</span> <span class="string">"Home"</span></span>)</span>
+           <span class="paren3">(<span class="code"><span class="keyword">:url</span> <span class="string">"http://twitter.com/example"</span> <span class="keyword">:name</span> <span class="string">"Twitter"</span></span>)</span>
+           <span class="paren3">(<span class="code"><span class="keyword">:url</span> <span class="string">"http://github.com/example"</span> <span class="keyword">:name</span> <span class="string">"Code"</span></span>)</span></span>)</span>
+ <span class="keyword">:title</span> <span class="string">"Blog title"</span>
+ <span class="keyword">:theme</span> <span class="string">"hyde"</span></span>)</span></span></code></pre>
+
+<ul>
+<li>Get <code>post-receive</code> hook script and edit the file according to the instructions inside</li>
+</ul>
+
+<pre><code>wget -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive -O /path/to/repo/hooks/post-receive
+# edit the file</code></pre>
+
+<ul>
+<li>Make the script executable</li>
+</ul>
+
+<pre><code>chmod +x /path/to/repo/hooks/post-receive</code></pre>
+
+<ul>
+<li>Create another repository to hold posts</li>
+</ul>
+
+<pre><code>cd /path/to/posts
+git init</code></pre>
+
+<ul>
+<li>Add the bare repo as a remote of the posts repo</li>
+</ul>
+
+<pre><code>git remote add prod file:///path/to/repo/</code></pre>
+
+<ul>
+<li>Use a server of choice to serve the site. Here I choose <a href="http://php.net/" >PHP</a>'s built in server.</li>
+</ul>
+
+<pre><code>cd /path/to/deploy/.curr/
+php -S localhost:8080</code></pre>
+
+<h2>Motivation</h2>
+
+<p>As I want to put my blog on Github's pages with my custom domain, I need the generator to put a file named <code>CNAME</code>, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with <code>post</code> extension, along with files in the <code>static</code> folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that <code>CNAME</code> file under the root of the site.</p>
+
+<h2>Forking the code</h2>
+
+<p>The usual workflow on Github is to fork the code, hack on it, commit and then send a pull request to the original author.</p>
+
+<p>After forking the code and cloning it to my machine, I need to setup Quicklisp's quickproject according to <a href="http://xach.livejournal.com/278047.html" >this</a> so that it sees my code.</p>
+
+<p>Since I have generated the posts using coleslaw, Quicklisp must have pulled the code from its repository. For safety, I uninstall Quicklisp's coleslaw.</p>
+
+<pre><code><span class="code"><span class="comment">;; start sbcl and load Quicklisp's setup.lisp
+</span><span class="paren1">(<span class="code">use-package <span class="keyword">:ql-dist</span></span>)</span>
+<span class="paren1">(<span class="code">uninstall <span class="paren2">(<span class="code">release <span class="string">"coleslaw"</span></span>)</span></span>)</span>
+<span class="comment">; instructions gotten from https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></span></code></pre>
+
+<h2>Hack on it</h2>
+
+<p>I add a property to class <code>blog</code> in order to capture user's intent to integrate with Github's pages.</p>
+
+<pre><code><span class="code"><span class="comment">; in src/config.lisp
+</span><span class="paren1">(<span class="code"><i><span class="symbol">defclass</span></i> blog <span class="paren2">(<span class="code"></span>)</span>
+  <span class="paren2">(<span class="code">
+   <span class="comment">; [...]
+</span>   <span class="paren3">(<span class="code">github <span class="keyword">:initarg</span> <span class="keyword">:github</span> <span class="keyword">:initform</span> nil <span class="keyword">:accessor</span> github</span>)</span>
+   <span class="comment">; [...]
+</span>   </span>)</span></span>)</span></span></code></pre>
+
+<p>And then the code to actually generate the <code>CNAME</code> file</p>
+
+<pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defgeneric</span></i> deploy <span class="paren2">(<span class="code">staging</span>)</span>
+  <span class="paren2">(<span class="code">
+  <span class="paren3">(<span class="code">
+    <span class="paren4">(<span class="code">
+        <span class="comment">; [...]
+</span>        <span class="paren5">(<span class="code">run-program <span class="string">"mv ~a ~a"</span> staging new-build</span>)</span>
+        <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">github <span class="special">*config*</span></span>)</span>
+          <span class="paren6">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">cname-filename <span class="paren3">(<span class="code">rel-path <span class="string">""</span> <span class="string">"~a/CNAME"</span> new-build</span>)</span></span>)</span>
+                <span class="paren2">(<span class="code">stripped-url <span class="paren3">(<span class="code">subseq <span class="paren4">(<span class="code">domain <span class="special">*config*</span></span>)</span>
+                                      <span class="paren4">(<span class="code">+ 2 <span class="paren5">(<span class="code">position <span class="character">#\/</span> <span class="paren6">(<span class="code">domain <span class="special">*config*</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
+            <span class="paren1">(<span class="code">format t <span class="string">"~a"</span> cname-filename</span>)</span>
+            <span class="paren1">(<span class="code"><i><span class="symbol">with-open-file</span></i> <span class="paren2">(<span class="code">cname cname-filename
+                                   <span class="keyword">:direction</span> <span class="keyword">:output</span>
+                                   <span class="keyword">:if-exists</span> <span class="keyword">:supersede</span></span>)</span>
+              <span class="paren2">(<span class="code">format cname <span class="string">"~a~%"</span> stripped-url</span>)</span></span>)</span></span>)</span></span>)</span>
+        <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">probe-file prev</span>)</span>
+        <span class="comment">; [...]
+</span>        </span>)</span>
+        </span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+
+<h2>(Not) Send a pull request to the original author</h2>
+
+<p>Since the way I pulled out the domain name from the <code>blog</code> object is very ad-hoc, I don't think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won't send a pull request to the original author.</p>
+ </div>
+<div class="relative-nav">
+<a href="http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html">Previous</a><br>
+
+</div>
+ </div> <div id="disqus_thread"></div>
+     <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       var disqus_shortname = 'minhdo';
+       /* * * DON'T EDIT BELOW THIS LINE * * */
+       (function() {
+         var dsq = document.createElement('script');
+         dsq.type = 'text/javascript';
+         dsq.async = true;
+         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+           })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> <div class="fineprint"> <hr> Unless otherwise credited all material <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US"> <img alt="Creative Commons License" style="border-width:0" src="http://minhdo.org/css/cc-by-sa.png" /> </a> by Do Nhat Minh <img align="right" src="http://minhdo.org/css/logo_small.jpg" /> </div> </body> </html>
