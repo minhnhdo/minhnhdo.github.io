@@ -1,8 +1,8 @@
 <!doctype html>
-<html> <head> <title>MrOrdinaire</title> <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://minhdo.org/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://minhdo.org/rss.xml" type="application/rss+xml" />  </head> <body> <div class="navigation"> <a href="http://minhdo.org">MrOrdinaire</a> | <a href="http://minhdo.org/">Home</a>  | <a href="http://twitter.com/mrordinaire">Twitter</a>  | <a href="http://github.com/mrordinaire">Code</a>  </div> <div id="content"> <div class="article-meta">
+<html> <head> <title>MrOrdinaire</title> <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" /> <link href="http://fonts.googleapis.com/css?family=Vollkorn:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" /> <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" /> <link href= "http://minhdo.org/css/style.css" rel="stylesheet" type="text/css" /> <link rel="alternate" href="http://minhdo.org/rss.xml" type="application/rss+xml" />  </head> <body> <div class="navigation"> <a href="http://minhdo.org">MrOrdinaire</a> | <a href="http://twitter.com/mrordinaire">Twitter</a>  | <a href="http://github.com/mrordinaire">Github</a>  </div> <div id="content"> <div class="article-meta">
 <h1 class="title">Hacking on coleslaw</h1>
 <div class="tags">
-Tagged as <a href="../tag/hack.html">hack</a>, <a href="../tag/common lisp.html">common lisp</a>, <a href="../tag/coleslaw.html">coleslaw</a> </div>
+Tagged as <a href="../tag/hack.html">hack</a>, <a href="../tag/common lisp.html">common lisp</a>, <a href="../tag/coleslaw.html">coleslaw</a>, <a href="../tag/github.html">github</a>, <a href="../tag/pages.html">pages</a> </div>
 <div class="date">
 Written on 2013-04-19 00:15:32 </div>
 </div>
@@ -122,24 +122,20 @@ php -S localhost:8080</code></pre>
 <p>And then the code to actually generate the <code>CNAME</code> file</p>
 
 <pre><code><span class="code"><span class="paren1">(<span class="code"><i><span class="symbol">defgeneric</span></i> deploy <span class="paren2">(<span class="code">staging</span>)</span>
-  <span class="paren2">(<span class="code">
-  <span class="paren3">(<span class="code">
-    <span class="paren4">(<span class="code">
+  <span class="paren2">(<span class="code"><span class="paren3">(<span class="code"><span class="paren4">(<span class="code">
         <span class="comment">; [...]
 </span>        <span class="paren5">(<span class="code">run-program <span class="string">"mv ~a ~a"</span> staging new-build</span>)</span>
         <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">github <span class="special">*config*</span></span>)</span>
           <span class="paren6">(<span class="code"><i><span class="symbol">let</span></i> <span class="paren1">(<span class="code"><span class="paren2">(<span class="code">cname-filename <span class="paren3">(<span class="code">rel-path <span class="string">""</span> <span class="string">"~a/CNAME"</span> new-build</span>)</span></span>)</span>
                 <span class="paren2">(<span class="code">stripped-url <span class="paren3">(<span class="code">subseq <span class="paren4">(<span class="code">domain <span class="special">*config*</span></span>)</span>
                                       <span class="paren4">(<span class="code">+ 2 <span class="paren5">(<span class="code">position <span class="character">#\/</span> <span class="paren6">(<span class="code">domain <span class="special">*config*</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span>)</span>
-            <span class="paren1">(<span class="code">format t <span class="string">"~a"</span> cname-filename</span>)</span>
             <span class="paren1">(<span class="code"><i><span class="symbol">with-open-file</span></i> <span class="paren2">(<span class="code">cname cname-filename
                                    <span class="keyword">:direction</span> <span class="keyword">:output</span>
                                    <span class="keyword">:if-exists</span> <span class="keyword">:supersede</span></span>)</span>
               <span class="paren2">(<span class="code">format cname <span class="string">"~a~%"</span> stripped-url</span>)</span></span>)</span></span>)</span></span>)</span>
         <span class="paren5">(<span class="code">when <span class="paren6">(<span class="code">probe-file prev</span>)</span>
         <span class="comment">; [...]
-</span>        </span>)</span>
-        </span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
+</span>        </span>)</span></span>)</span></span>)</span></span>)</span></span>)</span></span></code></pre>
 
 <h2>(Not) Send a pull request to the original author</h2>
 
@@ -147,7 +143,7 @@ php -S localhost:8080</code></pre>
  </div>
 <div class="relative-nav">
 <a href="http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html">Previous</a><br>
-
+<a href="http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html">Next</a><br>
 </div>
  </div> <div id="disqus_thread"></div>
      <script type="text/javascript">
