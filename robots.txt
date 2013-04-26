@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://minhdo.org/sitemap.xml
