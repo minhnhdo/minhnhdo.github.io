@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> <channel> <title>MrOrdinaire</title> <link>http://minhdo.org</link> <atom:link href="http://minhdo.org/rss.xml" rel="self" type="application/rss+xml" /> <language>en-us</language> <pubDate>Thu, 25 Apr 2013 17:30:48 GMT</pubDate> <item> <title>Adding Github Pages Support to Coleslaw</title> <link>http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html</link> <pubDate>2013-04-21 21:40:32</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html</guid> <category><![CDATA[ #<TAG {1007987B33}> ]]></category><category><![CDATA[ #<TAG {1007987CC3}> ]]></category><category><![CDATA[ #<TAG {1007987E33}> ]]></category><category><![CDATA[ #<TAG {1007987F73}> ]]></category><category><![CDATA[ #<TAG {1007988093}> ]]></category> <description><![CDATA[ 
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> <channel> <title>MrOrdinaire</title> <link>http://minhdo.org</link> <atom:link href="http://minhdo.org/rss.xml" rel="self" type="application/rss+xml" /> <language>en-us</language> <pubDate>Fri, 26 Apr 2013 02:02:32 GMT</pubDate> <item> <title>Adding Github Pages Support to Coleslaw</title> <link>http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html</link> <pubDate>2013-04-21 21:40:32</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html</guid> <category><![CDATA[ #<TAG {1007AFFB33}> ]]></category><category><![CDATA[ #<TAG {1007AFFCC3}> ]]></category><category><![CDATA[ #<TAG {1007AFFE33}> ]]></category><category><![CDATA[ #<TAG {1007AFFF73}> ]]></category><category><![CDATA[ #<TAG {1007B00093}> ]]></category> <description><![CDATA[ 
 
 <p><em>This post wraps up how I hacked <a href="https://github.com/redline6561/coleslaw" >coleslaw</a> to add <a href="http://pages.github.com/" >Github pages</a> integration.</em></p>
 
@@ -97,7 +97,7 @@
 <h2>Really Wrap Up</h2>
 
 <p>All that's left now is to send a pull request to the original author, which I have already done.</p>
- ]]></description> </item><item> <title>Hacking on coleslaw</title> <link>http://minhdo.org/posts/Hacking-on-coleslaw.html</link> <pubDate>2013-04-19 00:15:32</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Hacking-on-coleslaw.html</guid> <category><![CDATA[ #<TAG {10086C9BE3}> ]]></category><category><![CDATA[ #<TAG {10086C9C03}> ]]></category><category><![CDATA[ #<TAG {10086C9C23}> ]]></category><category><![CDATA[ #<TAG {10086C9C43}> ]]></category><category><![CDATA[ #<TAG {10086C9C63}> ]]></category> <description><![CDATA[ 
+ ]]></description> </item><item> <title>Hacking on coleslaw</title> <link>http://minhdo.org/posts/Hacking-on-coleslaw.html</link> <pubDate>2013-04-19 00:15:32</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Hacking-on-coleslaw.html</guid> <category><![CDATA[ #<TAG {10086C1D93}> ]]></category><category><![CDATA[ #<TAG {10086C1DB3}> ]]></category><category><![CDATA[ #<TAG {10086C1DD3}> ]]></category><category><![CDATA[ #<TAG {10086C1DF3}> ]]></category><category><![CDATA[ #<TAG {10086C1E13}> ]]></category> <description><![CDATA[ 
 
 <p><em>In this post, I document how I hacked <a href="https://github.com/redline6561/coleslaw" >coleslaw</a> to add <a href="http://pages.github.com/" >Github's pages</a> integration.</em></p>
 
@@ -230,7 +230,7 @@ php -S localhost:8080</code></pre>
 <h2>(Not) Send a pull request to the original author</h2>
 
 <p>Since the way I pulled out the domain name from the <code>blog</code> object is very ad-hoc, I don't think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won't send a pull request to the original author.</p>
- ]]></description> </item><item> <title>How to set up NTUVPN on Ubuntu</title> <link>http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html</link> <pubDate>2013-03-06 09:17:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html</guid> <category><![CDATA[ #<TAG {10086C9B63}> ]]></category><category><![CDATA[ #<TAG {10086C9B83}> ]]></category><category><![CDATA[ #<TAG {10086C9BA3}> ]]></category><category><![CDATA[ #<TAG {10086C9BC3}> ]]></category> <description><![CDATA[ 
+ ]]></description> </item><item> <title>How to set up NTUVPN on Ubuntu</title> <link>http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html</link> <pubDate>2013-03-06 09:17:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/How-to-set-up-NTUVPN-on-Ubuntu.html</guid> <category><![CDATA[ #<TAG {10086C1D13}> ]]></category><category><![CDATA[ #<TAG {10086C1D33}> ]]></category><category><![CDATA[ #<TAG {10086C1D53}> ]]></category><category><![CDATA[ #<TAG {10086C1D73}> ]]></category> <description><![CDATA[ 
 
 <p><em>For Ubuntu users, the NTU's <a href="http://www.ntu.edu.sg/cits/itnetworking/remoteaccess/Pages/quickstartguide.aspx#sslvpn" >official instruction</a> to setup a <a href="http://en.wikipedia.org/wiki/Vpn" title="Virtual private network">VPN</a> client requires them to install a java plugin in order to connect to its server. However, the client can only run on a 32-bit JVM, and even if it is running on one, the client seems to hang. Therefore, to save you from all these hassles, this post will help you set up a VPN client that runs natively on Ubuntu.</em></p>
 
@@ -270,7 +270,7 @@ php -S localhost:8080</code></pre>
 <h2>Disconnect from NTUVPN</h2>
 
 <p>To disconnect from NTUVPN, click on the Network Manager icon, select <code>VPN Connections</code> and choose <code>Disconnect VPN</code></p>
- ]]></description> </item><item> <title>Hello, JIT World from D</title> <link>http://minhdo.org/posts/Hello-JIT-World-from-D.html</link> <pubDate>2013-01-15 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Hello-JIT-World-from-D.html</guid> <category><![CDATA[ #<TAG {10086C9B03}> ]]></category><category><![CDATA[ #<TAG {10086C9B23}> ]]></category><category><![CDATA[ #<TAG {10086C9B43}> ]]></category> <description><![CDATA[ 
+ ]]></description> </item><item> <title>Hello, JIT World from D</title> <link>http://minhdo.org/posts/Hello-JIT-World-from-D.html</link> <pubDate>2013-01-15 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Hello-JIT-World-from-D.html</guid> <category><![CDATA[ #<TAG {10086C1CB3}> ]]></category><category><![CDATA[ #<TAG {10086C1CD3}> ]]></category><category><![CDATA[ #<TAG {10086C1CF3}> ]]></category> <description><![CDATA[ 
 
 <p><em>This post is inspired by <a href="http://blog.reverberate.org/2012/12/hello-jit-world-joy-of-simple-jits.html" >Hello, JIT World: The Joy of Simple JITs</a>, especially the first short program that he used to demonstrate that JIT programming can be simple. In this post, I will convert the program he wrote in C to <a href="http://en.wikipedia.org/wiki/D_(programming_language)" >D</a> to show some capabilities and convenience of D.</em></p>
 
@@ -422,7 +422,7 @@ void function(int) signal(int sig, void function(int) func));
 // try reading that five times fast :)</code></pre>
 
 <p>Those are the differences that are present in this code snippet, you can check out more about D at the <a href="http://dlang.org" >D home page</a> or a summary at the <a href="http://en.wikipedia.org/wiki/D_(programming_language)" >wikipedia page</a>.</p>
- ]]></description> </item><item> <title>Maths and Programs</title> <link>http://minhdo.org/posts/Maths-and-Programs.html</link> <pubDate>2012-10-01 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Maths-and-Programs.html</guid> <category><![CDATA[ #<TAG {1006F5D9F3}> ]]></category><category><![CDATA[ #<TAG {1006F5DC73}> ]]></category><category><![CDATA[ #<TAG {1006F5DED3}> ]]></category> <description><![CDATA[ 
+ ]]></description> </item><item> <title>Maths and Programs</title> <link>http://minhdo.org/posts/Maths-and-Programs.html</link> <pubDate>2012-10-01 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Maths-and-Programs.html</guid> <category><![CDATA[ #<TAG {10070B59F3}> ]]></category><category><![CDATA[ #<TAG {10070B5C73}> ]]></category><category><![CDATA[ #<TAG {10070B5ED3}> ]]></category> <description><![CDATA[ 
 
 <p>Let's solve this question (taken from the second assignment of <a href="https://www.coursera.org/course/progfun" >Functional Programming in Scala</a>):</p>
 
@@ -495,7 +495,7 @@ Res02 = true</code></pre>
 </blockquote>
 
 <pre><code>def map(s: Set, f: Int => Int): Set</code></pre>
- ]]></description> </item><item> <title>Zen in Gödel, Escher and Bach: An Eternal Golden Braid</title> <link>http://minhdo.org/posts/Zen-in-Gdel-Escher-and-Bach-An-Eternal-Golden-Braid.html</link> <pubDate>2012-09-26 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Zen-in-Gdel-Escher-and-Bach-An-Eternal-Golden-Braid.html</guid> <category><![CDATA[ #<TAG {10083BD6D3}> ]]></category><category><![CDATA[ #<TAG {10083BD6F3}> ]]></category><category><![CDATA[ #<TAG {10083BD713}> ]]></category><category><![CDATA[ #<TAG {10083BD733}> ]]></category><category><![CDATA[ #<TAG {10083BD753}> ]]></category> <description><![CDATA[ 
+ ]]></description> </item><item> <title>Zen in Gödel, Escher and Bach: An Eternal Golden Braid</title> <link>http://minhdo.org/posts/Zen-in-Gdel-Escher-and-Bach-An-Eternal-Golden-Braid.html</link> <pubDate>2012-09-26 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Zen-in-Gdel-Escher-and-Bach-An-Eternal-Golden-Braid.html</guid> <category><![CDATA[ #<TAG {100836A7E3}> ]]></category><category><![CDATA[ #<TAG {100836A803}> ]]></category><category><![CDATA[ #<TAG {100836A823}> ]]></category><category><![CDATA[ #<TAG {100836A843}> ]]></category><category><![CDATA[ #<TAG {100836A863}> ]]></category> <description><![CDATA[ 
 
 <blockquote>
 <p>[...] in general, the Zen attitude is that words and truth are incompatible, or at least that no words can capture truth.</p>
@@ -528,7 +528,7 @@ Res02 = true</code></pre>
 <p align="right">page 255</p>
 
 <p>Taken from <a href="http://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach" >Gödel, Escher and Bach: An Eternal Golden Braid</a> by <a href="http://en.wikipedia.org/wiki/Douglas_Hofstadter" >Douglas R. Hofstadter</a>.</p>
- ]]></description> </item><item> <title>Setting for NTU MailBox</title> <link>http://minhdo.org/posts/Setting-for-NTU-MailBox.html</link> <pubDate>2012-09-11 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Setting-for-NTU-MailBox.html</guid> <category><![CDATA[ #<TAG {10081204E3}> ]]></category><category><![CDATA[ #<TAG {1008120503}> ]]></category><category><![CDATA[ #<TAG {1008120523}> ]]></category><category><![CDATA[ #<TAG {1008120543}> ]]></category> <description><![CDATA[ <p>External POP setting:</p>
+ ]]></description> </item><item> <title>Setting for NTU MailBox</title> <link>http://minhdo.org/posts/Setting-for-NTU-MailBox.html</link> <pubDate>2012-09-11 00:00:00</pubDate> <author>Do Nhat Minh</author> <guid isPermaLink="true">http://minhdo.org/posts/Setting-for-NTU-MailBox.html</guid> <category><![CDATA[ #<TAG {10080D51C3}> ]]></category><category><![CDATA[ #<TAG {10080D51E3}> ]]></category><category><![CDATA[ #<TAG {10080D5203}> ]]></category><category><![CDATA[ #<TAG {10080D5223}> ]]></category> <description><![CDATA[ <p>External POP setting:</p>
 
 <ul>
 <li>Server name: pod51003.outlook.com</li>
