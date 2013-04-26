@@ -1,5 +1,18 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom"> <title>MrOrdinaire</title> <link href="http://minhdo.org"/> <link type="application/atom+xml" rel="self" href="http://minhdo.org/atom.xml"/> <updated>Fri, 26 Apr 2013 02:27:39 GMT</updated> <author> <name>Do Nhat Minh</name> </author> <entry> <link type="text/html" rel="alternate" href="http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html"/> <title>Adding Github Pages Support to Coleslaw</title> <published>2013-04-21 21:40:32</published> <updated>2013-04-21 21:40:32</updated> <author> <name>Do Nhat Minh</name> <uri>http://minhdo.org</uri> </author> <content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"> <title>MrOrdinaire</title> <link href="http://minhdo.org"/> <link type="application/atom+xml" rel="self" href="http://minhdo.org/atom.xml"/> <updated>Fri, 26 Apr 2013 13:53:55 GMT</updated> <author> <name>Do Nhat Minh</name> </author> <entry> <link type="text/html" rel="alternate" href="http://minhdo.org/posts/Writing-Tips-for-Non-Writers-Who-Dont-Want-to-Work-at-Writing.html"/> <title>Writing Tips for Non-Writers Who Don’t Want to Work at Writing</title> <published>2013-04-26 21:46:56</published> <updated>2013-04-26 21:46:56</updated> <author> <name>Do Nhat Minh</name> <uri>http://minhdo.org</uri> </author> <content type="html">
+
+&lt;p&gt;&lt;em&gt;This is a reblog of a post named &lt;a href=&quot;http://whatever.scalzi.com/2006/02/12/writing-tips-for-non-writers-who-dont-want-to-work-at-writing/&quot; &gt;&amp;quot;Writing Tips for Non-Writers Who Don’t Want to Work at Writing&amp;quot;&lt;/a&gt; by &lt;a href=&quot;http://whatever.scalzi.com/author/scalzi/&quot; &gt;Jogn Scalzi&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A writing question:&lt;/p&gt;
+
+&lt;p&gt;What writing tips would you whisper to those who aren’t aspiring professionals, but would like to write better? If I asked you about losing weight and you said “Diet and Exercise” you’d be a) correct and b) ignored. So no ideas that take work. We want the quick fix! Tips like “Edit your work” aren’t useful. “Gerunds are your friend” are.&lt;/p&gt;
+
+&lt;p&gt;So, the task here: Tell y’all how to write better without you actually having to make an effort. Fine. Here’s how I would do it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://whatever.scalzi.com/2006/02/12/writing-tips-for-non-writers-who-dont-want-to-work-at-writing/&quot; &gt;Read more &amp;rarr;&lt;/a&gt;&lt;/p&gt;
+</content> </entry><entry> <link type="text/html" rel="alternate" href="http://minhdo.org/posts/Adding-Github-Pages-Support-to-Coleslaw.html"/> <title>Adding Github Pages Support to Coleslaw</title> <published>2013-04-21 21:40:32</published> <updated>2013-04-21 21:40:32</updated> <author> <name>Do Nhat Minh</name> <uri>http://minhdo.org</uri> </author> <content type="html">
 
 &lt;p&gt;&lt;em&gt;This post wraps up how I hacked &lt;a href=&quot;https://github.com/redline6561/coleslaw&quot; &gt;coleslaw&lt;/a&gt; to add &lt;a href=&quot;http://pages.github.com/&quot; &gt;Github pages&lt;/a&gt; integration.&lt;/em&gt;&lt;/p&gt;
 
