@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Adding Github Pages Support to Coleslaw - MrOrdinaire's Blog</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/syntax.css" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">MrOrdinaire's Blog</a>
+            </div>
+            <div id="navigation">
+                <a href="../archive.html">Archive</a>
+                <a href="https://twitter.com/mrordinaire">twitter</a>
+                <a href="https://github.com/mrordinaire">github</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Adding Github Pages Support to Coleslaw</h1>
+
+            <div class="info">Posted on April 21, 2013</div>
+
+<article>
+<p><em>This post wraps up how I hacked <a href="https://github.com/redline6561/coleslaw">coleslaw</a> to add <a href="http://pages.github.com/">Github pages</a> integration.</em></p>
+<h2 id="whats-missing">What’s missing</h2>
+<ol style="list-style-type: decimal">
+<li>Github pages does not support symlinks. Therefore, instead of symlinking <code>index.html</code> to <code>1.html</code>, I should just copy <code>1.html</code> as <code>index.html</code>.</li>
+<li>I need a way to robustly parse the domain given in <code>~/.coleslawrc</code>.</li>
+</ol>
+<h2 id="fixing-it">Fixing it</h2>
+<h3 id="symlinks">Symlinks</h3>
+<p>For the symlinking problem, I can just change the code from symlinking to copying it over. However, it is safer to change the behavior of the code only when the user explicitly asks for it.</p>
+<p>Grepping through the code, I can see that <code>render-indices</code> produces the indices, e.g. <code>1.html</code>, etc., and symlinking <code>1.html</code> to <code>index.html</code>. This is where I should make the modification. I added another argument to <code>render-indices</code> to tell the code to make the symlink or not.</p>
+<pre class="common-lisp"><code>;;;; in src/coleslaw.lisp
+; [...]
+      (when (probe-file dir)
+        (run-program &quot;cp -R ~a .&quot; dir)))
+    (do-ctypes (publish ctype))
+    (render-indices (not (github-pages *config*)))
+    (render-feeds (feeds *config*))))
+; [...]
+
+;;;; in src/indices.lisp
+; [...]
+                              :posts (subseq content start end)
+                              :title &quot;Recent Posts&quot;)))
+
+(defun render-indices (make-symlink-p)
+  &quot;Render the indices to view content in groups of size N, by month, and by tag
+  (let ((results (by-date (hash-table-values *content*))))
+    (dolist (tag (all-tags))
+; [...]
+                                  :prev (and (plusp i) i)
+                                  :next (and (&lt; (* (1+ i) 10) (length results))
+                                             (+ 2 i)))))))
+  (if make-symlink-p
+    (update-symlink &quot;index.html&quot; &quot;1.html&quot;)
+    (run-program &quot;cp 1.html index.html&quot;))</code></pre>
+<h3 id="domain">Domain</h3>
+<p>Previously, my ad-hoc solution was to find the first forward-slash in the domain string and substring the domain string from after the second forward-slash. Here’s the previous code.</p>
+<pre class="common-lisp"><code>(defgeneric deploy (staging)
+  (((
+        ; [...]
+        (run-program &quot;mv ~a ~a&quot; staging new-build)
+        (when (github *config*)
+          (let ((cname-filename (rel-path &quot;&quot; &quot;~a/CNAME&quot; new-build))
+                (stripped-url (subseq (domain *config*)
+                                      (+ 2 (position #\/ (domain *config*))))))
+            (with-open-file (cname cname-filename
+                                   :direction :output
+                                   :if-exists :supersede)
+              (format cname &quot;~a~%&quot; stripped-url))))
+        (when (probe-file prev)
+        ; [...]
+        )))))</code></pre>
+<p>Now, I can instead use the <a href="http://puri.b9.com/">puri</a> library to parse the URL and extract only the domain. Here’s the new code using <code>puri</code>.</p>
+<pre class="common-lisp"><code>(defgeneric deploy (staging)
+  (((
+        ; [...]
+        (run-program &quot;mv ~a ~a&quot; staging new-build)
+        (when (github *config*)
+          (let ((cname-filename (rel-path &quot;&quot; &quot;~a/CNAME&quot; new-build))
+                (stripped-url (puri:uri-host (puri:parse-uri
+                                               (domain *config*)))))
+            (with-open-file (cname cname-filename
+                                   :direction :output
+                                   :if-exists :supersede)
+              (format cname &quot;~a~%&quot; stripped-url))))
+        (when (probe-file prev)
+        ; [...]
+        )))))</code></pre>
+<p>Of course, I need to add puri as a dependency to coleslaw.</p>
+<pre class="common-lisp"><code>;;;; in coleslaw.asd
+               :inferior-shell
+               :cl-fad
+               :cl-ppcre
+               :closer-mop
+               :puri)
+  :serial t
+  :components ((:file &quot;packages&quot;)
+               (:file &quot;util&quot;</code></pre>
+<h2 id="really-wrap-up">Really Wrap Up</h2>
+<p>All that’s left now is to send a pull request to the original author, which I have already done.</p>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'minhdo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+        <div id="footer">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>

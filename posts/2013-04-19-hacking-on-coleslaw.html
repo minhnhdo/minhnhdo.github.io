@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Hacking on coleslaw - MrOrdinaire's Blog</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/syntax.css" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">MrOrdinaire's Blog</a>
+            </div>
+            <div id="navigation">
+                <a href="../archive.html">Archive</a>
+                <a href="https://twitter.com/mrordinaire">twitter</a>
+                <a href="https://github.com/mrordinaire">github</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Hacking on coleslaw</h1>
+
+            <div class="info">Posted on April 19, 2013</div>
+
+<article>
+<p><em>In this post, I document how I hacked <a href="https://github.com/redline6561/coleslaw">coleslaw</a> to add <a href="http://pages.github.com/">Github’s pages</a> integration.</em></p>
+<h2 id="what-is-coleslaw">What is coleslaw?</h2>
+<p>coleslaw is a static blog generator written in Common Lisp, much like <a href="http://jekyllrb.com/">Jekyll</a>, albeit with less features.</p>
+<p>I’ve been using <a href="http://octopress.org/">Octopress</a> to generate this site. Since I don’t know <a href="http://ruby-lang.org/">Ruby</a>, and have to intention to learn it, I can’t hack on Octopress’s code nor on Jekyll’s, which is a shame. As I am learning <a href="http://http://en.wikipedia.org/wiki/Common_Lisp/">Common Lisp</a>, and wanting to work on something in it, switching to coleslaw seems perfect for me.</p>
+<h2 id="trying-coleslaw-out">Trying coleslaw out</h2>
+<p>Here’s how I set up and use coleslaw.</p>
+<ul>
+<li>Install <a href="http://git-scm.com/">git</a></li>
+<li>Set up a bare git repo</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/repo <span class="co"># this is where the post-receive script is put</span>
+<span class="kw">git</span> --bare init</code></pre>
+<ul>
+<li>Install Lisp (I choose <a href="http://sbcl.org/">sbcl</a>)</li>
+<li>Install <a href="http://quicklisp.org/">Quicklisp</a></li>
+<li>Get coleslaw’s settings file</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc -O ~/.coleslawrc</code></pre>
+<ul>
+<li>The settings must be edited accordingly. I find the naming a bit confusing, so I have put some comment below for clarification.</li>
+</ul>
+<pre class="common-lisp"><code>(:author &quot;Example Setter&quot;
+ :deploy &quot;/path/to/deploy&quot; ; this is where coleslaw writes its output
+ :domain &quot;http://blog.example.com&quot;
+ :feeds (&quot;lisp&quot;)
+ :plugins ((mathjax)
+           (disqus :shortname &quot;my-site-name&quot;)
+           (analytics :tracking-code &quot;foo&quot;))
+ ;; this is where coleslaw writes its temporary output, which gets moved
+ ;; into :DEPLOY
+ :repo &quot;/path/to/some/temporary/folder/&quot;
+ :sitenav ((:url &quot;http://example.com/&quot; :name &quot;Home&quot;)
+           (:url &quot;http://twitter.com/example&quot; :name &quot;Twitter&quot;)
+           (:url &quot;http://github.com/example&quot; :name &quot;Code&quot;))
+ :title &quot;Blog title&quot;
+ :theme &quot;hyde&quot;)</code></pre>
+<ul>
+<li>Get <code>post-receive</code> hook script and edit the file according to the instructions inside</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive -O /path/to/repo/hooks/post-receive
+<span class="co"># edit the file</span></code></pre>
+<ul>
+<li>Make the script executable</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> +x /path/to/repo/hooks/post-receive</code></pre>
+<ul>
+<li>Create another repository to hold posts</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/posts
+<span class="kw">git</span> init</code></pre>
+<ul>
+<li>Add the bare repo as a remote of the posts repo</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> remote add prod file:///path/to/repo/</code></pre>
+<ul>
+<li>Use a server of choice to serve the site. Here I choose <a href="http://php.net/">PHP</a>’s built in server.</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/deploy/.curr/
+<span class="kw">php</span> -S localhost:8080</code></pre>
+<h2 id="motivation">Motivation</h2>
+<p>As I want to put my blog on Github’s pages with my custom domain, I need the generator to put a file named <code>CNAME</code>, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with <code>post</code> extension, along with files in the <code>static</code> folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that <code>CNAME</code> file under the root of the site.</p>
+<h2 id="forking-the-code">Forking the code</h2>
+<p>The usual workflow on Github is to fork the code, hack on it, commit and then send a pull request to the original author.</p>
+<p>After forking the code and cloning it to my machine, I need to setup Quicklisp’s quickproject according to <a href="http://xach.livejournal.com/278047.html">this</a> so that it sees my code.</p>
+<p>Since I have generated the posts using coleslaw, Quicklisp must have pulled the code from its repository. For safety, I uninstall Quicklisp’s coleslaw.</p>
+<pre class="common-lisp"><code>;; start sbcl and load Quicklisp's setup.lisp
+(use-package :ql-dist)
+(uninstall (release &quot;coleslaw&quot;))
+; instructions gotten from https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</code></pre>
+<h2 id="hack-on-it">Hack on it</h2>
+<p>I add a property to class <code>blog</code> in order to capture user’s intent to integrate with Github’s pages.</p>
+<pre class="common-lisp"><code>; in src/config.lisp
+(defclass blog ()
+  (
+   ; [...]
+   (github :initarg :github :initform nil :accessor github)
+   ; [...]
+   ))</code></pre>
+<p>And then the code to actually generate the <code>CNAME</code> file</p>
+<pre class="common-lisp"><code>(defgeneric deploy (staging)
+  (((
+        ; [...]
+        (run-program &quot;mv ~a ~a&quot; staging new-build)
+        (when (github *config*)
+          (let ((cname-filename (rel-path &quot;&quot; &quot;~a/CNAME&quot; new-build))
+                (stripped-url (subseq (domain *config*)
+                                      (+ 2 (position #\/ (domain *config*))))))
+            (with-open-file (cname cname-filename
+                                   :direction :output
+                                   :if-exists :supersede)
+              (format cname &quot;~a~%&quot; stripped-url))))
+        (when (probe-file prev)
+        ; [...]
+        )))))</code></pre>
+<h2 id="not-send-a-pull-request-to-the-original-author">(Not) Send a pull request to the original author</h2>
+<p>Since the way I pulled out the domain name from the <code>blog</code> object is very ad-hoc, I don’t think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won’t send a pull request to the original author.</p>
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'minhdo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+        <div id="footer">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
