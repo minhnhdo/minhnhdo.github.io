@@ -44,7 +44,8 @@
 <li>Install <a href="http://quicklisp.org/">Quicklisp</a></li>
 <li>Get coleslaw’s settings file</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc -O ~/.coleslawrc</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc \
+     <span class="kw">-O</span> ~/.coleslawrc</code></pre>
 <ul>
 <li>The settings must be edited accordingly. I find the naming a bit confusing, so I have put some comment below for clarification.</li>
 </ul>
@@ -66,7 +67,8 @@
 <ul>
 <li>Get <code>post-receive</code> hook script and edit the file according to the instructions inside</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive -O /path/to/repo/hooks/post-receive
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive \
+     <span class="kw">-O</span> /path/to/repo/hooks/post-receive
 <span class="co"># edit the file</span></code></pre>
 <ul>
 <li>Make the script executable</li>
@@ -95,7 +97,8 @@
 <pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">;; start sbcl and load Quicklisp's setup.lisp</span>
 (<span class="kw">use-package</span> :ql-dist)
 (uninstall (release <span class="st">&quot;coleslaw&quot;</span>))
-<span class="co">; instructions gotten from https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></code></pre>
+<span class="co">; instructions gotten from</span>
+<span class="co">;   https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></code></pre>
 <h2 id="hack-on-it">Hack on it</h2>
 <p>I add a property to class <code>blog</code> in order to capture user’s intent to integrate with Github’s pages.</p>
 <pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">; in src/config.lisp</span>
