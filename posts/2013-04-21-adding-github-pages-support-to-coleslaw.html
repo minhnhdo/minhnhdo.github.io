@@ -52,16 +52,16 @@
                               :title <span class="st">&quot;Recent Posts&quot;</span>)))
 
 (<span class="kw">defun</span><span class="fu"> render-indices </span>(make-symlink-p)
-  <span class="st">&quot;Render the indices to view content in groups of size N, by month, and by tag</span>
-<span class="st">  (let ((results (by-date (hash-table-values *content*))))</span>
-<span class="st">    (dolist (tag (all-tags))</span>
-<span class="st">; [...]</span>
-<span class="st">                                  :prev (and (plusp i) i)</span>
-<span class="st">                                  :next (and (&lt; (* (1+ i) 10) (length results))</span>
-<span class="st">                                             (+ 2 i)))))))</span>
-<span class="st">  (if make-symlink-p</span>
-<span class="st">    (update-symlink &quot;</span>index.html<span class="st">&quot; &quot;</span><span class="fl">1.</span>html<span class="st">&quot;)</span>
-<span class="st">    (run-program &quot;</span>cp <span class="fl">1.</span>html index.html<span class="st">&quot;))</span></code></pre>
+  <span class="st">&quot;Render the indices to view content in groups of size N, by month, and by tag&quot;</span>
+  (<span class="kw">let</span> ((results (by-date (hash-table-values *content*))))
+    (<span class="kw">dolist</span> (tag (all-tags))
+<span class="co">; [...]</span>
+                                  :prev (<span class="kw">and</span> (<span class="kw">plusp</span> i) i)
+                                  :next (<span class="kw">and</span> (<span class="kw">&lt;</span> (<span class="kw">*</span> (<span class="kw">1+</span> i) <span class="dv">10</span>) (<span class="kw">length</span> results))
+                                             (<span class="kw">+</span> <span class="dv">2</span> i)))))))
+  (<span class="kw">if</span> make-symlink-p
+    (update-symlink <span class="st">&quot;index.html&quot;</span> <span class="st">&quot;1.html&quot;</span>)
+    (run-program <span class="st">&quot;cp 1.html index.html&quot;</span>))</code></pre>
 <h3 id="domain">Domain</h3>
 <p>Previously, my ad-hoc solution was to find the first forward-slash in the domain string and substring the domain string from after the second forward-slash. Here’s the previous code.</p>
 <pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)
