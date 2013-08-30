@@ -30,7 +30,7 @@
 
 <article>
 <p>This post is about less-talked-about features of Rust, namely Algebraic Types and Pattern Matching, that I find very interesting and for which I have chosen Rust.</p>
-<p>Let’s say you have to build an arithmetic calculator for evaluating expessions like <code>2 + 2</code>. How would you do that? To simplify the problem a bit, let’s say the calculator only deals with integers and four operators, plus, minus, multiplication and division.</p>
+<p>Let’s say you have to build an arithmetic calculator for evaluating expessions like <code>2 + 2</code>. How would you do that? To simplify the problem a bit, let’s say the calculator only deals with integers and four operators, i.e. plus, minus, multiplication and division.</p>
 <p>In C, you might write something like this.</p>
 <pre class="sourceCode c"><code class="sourceCode c"><span class="kw">struct</span> Exp {
     <span class="kw">enum</span> {
@@ -59,7 +59,7 @@
         <span class="kw">case</span> Div: <span class="kw">return</span> eval(exp-&gt;val.pair.a) / eval(exp-&gt;val.pair.b);
     }
 }</code></pre>
-<p>The complicated looking <code>struct</code> declaration is what’s called a tagged union, where the enum <code>type</code> is used to figure out that the union <code>val</code> is holding. This is the C version of one type of Algebraic Types, the <a href="http://en.wikipedia.org/wiki/Sum_type">sum type</a>. One other type of Algebraic Types is to use <code>struct</code> to hold multiple types together, which allows the structure to hold even more than each type alone; this one is called the <a href="Ahttp://en.wikipedia.org/wiki/Product_type">product type</a>.</p>
+<p>The complicated looking <code>struct</code> declaration is what’s called a tagged union, where the enum <code>type</code> is used to figure out that the union <code>val</code> is holding. This is the C version of one type of Algebraic Types, the <a href="http://en.wikipedia.org/wiki/Sum_type">sum type</a>. Another type of Algebraic Types is to use <code>struct</code> to hold multiple types together, which allows the structure to hold even more than each type alone; this one is called the <a href="Ahttp://en.wikipedia.org/wiki/Product_type">product type</a>.</p>
 <p>An intuitive way to think of the two types is that for sum type, the variable of that type can only be of one constituent type at a time, so the total range of values that type can hold is the sum of the ranges of the types. On the other hand, for the product type, for each field in the structure, it can hold any value of that type at any time, so the possible range of values of the structure is the product of each of its field’s range of value.</p>
 <p>In Rust, this is what I will write.</p>
 <pre class="sourceCode rust"><code class="sourceCode rust"><span class="kw">enum</span> Exp {
@@ -71,7 +71,7 @@
 }
 
 <span class="kw">fn</span> eval(exp: &amp;Exp) -&gt; <span class="kw">int</span> {
-    <span class="kw">match</span> exp {
+    <span class="kw">match</span> *exp {
         Number(i) =&gt; i,
         Plus(a, b) =&gt; eval(a) + eval(b),
         Minus(a, b) =&gt; eval(a) - eval(b),
