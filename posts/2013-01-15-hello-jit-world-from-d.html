@@ -1,22 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Hello, JIT World from D - MrOrdinaire</title>
-        <link rel="stylesheet" type="text/css" href="/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
     </head>
     <body>
         <div id="header-strip">
             <div id="header">
                 <div id="logo">
-                    <a href="/">MrOrdinaire</a>
+                    <a href="../index.html">MrOrdinaire</a>
                     <span>Programming and other stuff</span>
                 </div>
                 <div id="navigation">
-                    <a href="/resume.pdf">Résumé</a>
-                    <a href="/archive.html">Archive</a>
+                    <a href="../resume.pdf">Résumé</a>
+                    <a href="../archive.html">Archive</a>
                     <a href="https://twitter.com/mrordinaire">Twitter</a>
                     <a href="https://github.com/mrordinaire">GitHub</a>
                 </div>
@@ -27,12 +26,14 @@
             <div id="content">
                 <h1>Hello, JIT World from D</h1>
 
-                <div class="info">Posted on January 15, 2013</div>
-<div class="tags">Tagged with
- #just-in-time
- #d programming language
- #beginner
+                <div class="info">
+  Posted on 2013-01-15
+  
 </div>
+
+
+<div class="tags">Tagged with <a href="../tags/just-in-time.html">just-in-time</a>, <a href="../tags/d%20programming%20language.html">d programming language</a>, <a href="../tags/beginner.html">beginner</a> </div>
+
 
 <article>
 <p><em>This post is inspired by <a href="http://blog.reverberate.org/2012/12/hello-jit-world-joy-of-simple-jits.html">Hello, JIT World: The Joy of Simple JITs</a>, especially the first short program that he used to demonstrate that JIT programming can be simple. In this post, I will convert the program he wrote in C to [D][wiki] to show some capabilities and convenience of D.</em></p>
@@ -56,8 +57,8 @@
     }
 
     <span class="co">// Overwrite immediate value &quot;0&quot; in the instruction</span>
-    <span class="co">// with the user&#39;s value.  This will make our code:</span>
-    <span class="co">//   mov eax, &lt;user&#39;s value&gt;</span>
+    <span class="co">// with the user's value.  This will make our code:</span>
+    <span class="co">//   mov eax, &lt;user's value&gt;</span>
     <span class="co">//   ret</span>
     <span class="dt">int</span> num = to!<span class="dt">int</span>(args[<span class="dv">1</span>]);
     memcpy(&amp;code[<span class="dv">1</span>], &amp;num, <span class="dv">4</span>);
@@ -69,11 +70,11 @@
             MAP_ANON | MAP_PRIVATE, -<span class="dv">1</span>, <span class="dv">0</span>);
     memcpy(mem, code, code.<span class="dt">sizeof</span>);
 
-    <span class="co">// The function will return the user&#39;s value.</span>
+    <span class="co">// The function will return the user's value.</span>
     <span class="dt">int</span> <span class="kw">function</span>() func = <span class="kw">cast</span>(<span class="dt">int</span> <span class="kw">function</span>())mem;
     <span class="kw">return</span> func();
 }</code></pre>
-<p>Let's go through some first impressions.</p>
+<p>Let’s go through some first impressions.</p>
 <p>D programming language is in the same family of languages that have the C flavor, so you might already find the code familiar and quite easy to read. Some familiarities are</p>
 <ul>
 <li>double forward slashes starts a line comment</li>
@@ -113,8 +114,8 @@ a[<span class="dv">1</span>] = <span class="dv">1</span>; <span class="co">// us
 <pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> a;
 <span class="dt">int</span>* b = &amp;a;</code></pre>
 <ul>
-<li>from the above example you can also see that there are pointer types in D and the syntax for declaring one is just like C's</li>
-<li>there's actually a <code>null</code> value for pointers, not just a cast from zero as in C</li>
+<li>from the above example you can also see that there are pointer types in D and the syntax for declaring one is just like C’s</li>
+<li>there’s actually a <code>null</code> value for pointers, not just a cast from zero as in C</li>
 <li>bitwise operators in D are the same as in C, e.g. <code>|</code>, <code>&amp;</code> and <code>~</code></li>
 <li>you can cast from one time to another, which is not recommended unless you know exactly what you are doing as the safe subset of D is powerful enough for most applications, by doing</li>
 </ul>
@@ -126,9 +127,9 @@ a[<span class="dv">1</span>] = <span class="dv">1</span>; <span class="co">// us
 <pre class="sourceCode d"><code class="sourceCode d"><span class="kw">return</span> expression; <span class="co">// where expression is any expression, e.g. 1 + 1</span></code></pre>
 <p>So D is quite similar to C/C++. But the differences that set D apart is even more interesting.</p>
 <ul>
-<li>there is a concept of modules that can <code>import</code> each other, so that a source file does not have to be processed so many times in compilation (well, there's more to this but the reduction in compilation time that comes with this is, to me, the most significant benefit)</li>
+<li>there is a concept of modules that can <code>import</code> each other, so that a source file does not have to be processed so many times in compilation (well, there’s more to this but the reduction in compilation time that comes with this is, to me, the most significant benefit)</li>
 <li>string is actually supported, not something that feels bolted on like in C (or C++)</li>
-<li>there's no <code>unsigned</code> keyword. Most types have their unsigned counterparts named with a <code>u</code> prepended.</li>
+<li>there’s no <code>unsigned</code> keyword. Most types have their unsigned counterparts named with a <code>u</code> prepended.</li>
 <li>arrays know their own lengths, which can be accessed by doing</li>
 </ul>
 <pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span>[<span class="dv">200</span>] a;
@@ -148,7 +149,7 @@ writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have
 <span class="co">// the equivalent for that in C is</span>
 <span class="co">// void* (*fp)(int (*)(char));</span>
 
-<span class="co">// let&#39;s look at something more interesting</span>
+<span class="co">// let's look at something more interesting</span>
 <span class="co">// signal is a function that takes an int and a pointer to a function</span>
 <span class="co">// taking an int returning nothing and returns a pointer to a function</span>
 <span class="co">// taking an int returning nothing</span>
@@ -157,7 +158,6 @@ writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have
 <span class="co">// void (*signal (int sig, void (*func)(int)) )(int);</span>
 <span class="co">// try reading that five times fast :)</span></code></pre>
 <p>Those are the differences that are present in this code snippet, you can check out more about D at the <a href="http://dlang.org">D home page</a> or a summary at the <a href="http://en.wikipedia.org/wiki/D_(programming_language)">wikipedia page</a>.</p>
-
 </article>
 
 <div id="disqus_thread"></div>
@@ -180,7 +180,9 @@ writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have
         <div id="footer-strip">
             <div id="footer">
                 Site proudly generated by
-                <a href="https://github.com/mrordinaire/status">status</a>
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
                 <br />
                 with
                 <a href="http://ethanschoonover.com/solarized">Solarized</a>
