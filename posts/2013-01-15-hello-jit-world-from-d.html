@@ -38,7 +38,7 @@
 <article>
 <p><em>This post is inspired by <a href="http://blog.reverberate.org/2012/12/hello-jit-world-joy-of-simple-jits.html">Hello, JIT World: The Joy of Simple JITs</a>, especially the first short program that he used to demonstrate that JIT programming can be simple. In this post, I will convert the program he wrote in C to [D][wiki] to show some capabilities and convenience of D.</em></p>
 <p>What follows is the whole source of the program in D. You can view the original source in C in the blog post linked above.</p>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.c.string;
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="kw">import</span> std.c.string;
 <span class="kw">import</span> std.c.linux.linux;
 <span class="kw">import</span> std.conv;
 <span class="kw">import</span> std.stdio;
@@ -73,58 +73,58 @@
     <span class="co">// The function will return the user's value.</span>
     <span class="dt">int</span> <span class="kw">function</span>() func = <span class="kw">cast</span>(<span class="dt">int</span> <span class="kw">function</span>())mem;
     <span class="kw">return</span> func();
-}</code></pre>
+}</code></pre></div>
 <p>Let’s go through some first impressions.</p>
 <p>D programming language is in the same family of languages that have the C flavor, so you might already find the code familiar and quite easy to read. Some familiarities are</p>
 <ul>
 <li>double forward slashes starts a line comment</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="co">// a line comment which extends only to the end of the line</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="co">// a line comment which extends only to the end of the line</span></code></pre></div>
 <ul>
 <li>curly braces around a block of code</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d">{
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d">{
     <span class="co">// block of code</span>
-}</code></pre>
+}</code></pre></div>
 <ul>
 <li>every statement ends in a semicolon</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d">statement; <span class="co">// assuming you have statement defined</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d">statement; <span class="co">// assuming you have statement defined</span></code></pre></div>
 <ul>
 <li>type goes before the identifier in a declaration</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> a;
-<span class="dt">long</span> b;</code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> a;
+<span class="dt">long</span> b;</code></pre></div>
 <ul>
 <li>all executions start from the <code>main</code> function which can have one of the following signatures</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> main();
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> main();
 <span class="dt">int</span> main(<span class="dt">string</span>[]);
 <span class="dt">void</span> main();
-<span class="dt">void</span> main(<span class="dt">string</span>[]);</code></pre>
+<span class="dt">void</span> main(<span class="dt">string</span>[]);</code></pre></div>
 <ul>
 <li>and unlike C (or C++ for that matter), the D standard actually have <code>void main(...)</code> functions return 0 (which means success) to the shell.</li>
 <li>indexing operator is <code>[]</code></li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span>[<span class="dv">2</span>] a;
-a[<span class="dv">1</span>] = <span class="dv">1</span>; <span class="co">// use this to index into the second element of a</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span>[<span class="dv">2</span>] a;
+a[<span class="dv">1</span>] = <span class="dv">1</span>; <span class="co">// use this to index into the second element of a</span></code></pre></div>
 <ul>
 <li>address-of operator is <code>&amp;</code></li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> a;
-<span class="dt">int</span>* b = &amp;a;</code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> a;
+<span class="dt">int</span>* b = &amp;a;</code></pre></div>
 <ul>
 <li>from the above example you can also see that there are pointer types in D and the syntax for declaring one is just like C’s</li>
 <li>there’s actually a <code>null</code> value for pointers, not just a cast from zero as in C</li>
 <li>bitwise operators in D are the same as in C, e.g. <code>|</code>, <code>&amp;</code> and <code>~</code></li>
 <li>you can cast from one time to another, which is not recommended unless you know exactly what you are doing as the safe subset of D is powerful enough for most applications, by doing</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span>* a;
-<span class="dt">char</span>* b = <span class="kw">cast</span>(<span class="dt">char</span>*)a;</code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">void</span>* a;
+<span class="dt">char</span>* b = <span class="kw">cast</span>(<span class="dt">char</span>*)a;</code></pre></div>
 <ul>
 <li>syntax for returning from a function is</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="kw">return</span> expression; <span class="co">// where expression is any expression, e.g. 1 + 1</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="kw">return</span> expression; <span class="co">// where expression is any expression, e.g. 1 + 1</span></code></pre></div>
 <p>So D is quite similar to C/C++. But the differences that set D apart is even more interesting.</p>
 <ul>
 <li>there is a concept of modules that can <code>import</code> each other, so that a source file does not have to be processed so many times in compilation (well, there’s more to this but the reduction in compilation time that comes with this is, to me, the most significant benefit)</li>
@@ -132,9 +132,9 @@ a[<span class="dv">1</span>] = <span class="dv">1</span>; <span class="co">// us
 <li>there’s no <code>unsigned</code> keyword. Most types have their unsigned counterparts named with a <code>u</code> prepended.</li>
 <li>arrays know their own lengths, which can be accessed by doing</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span>[<span class="dv">200</span>] a;
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span>[<span class="dv">200</span>] a;
 writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have `import std.stdio;` before this.</span>
-<span class="co">// Prints out 200.</span></code></pre>
+<span class="co">// Prints out 200.</span></code></pre></div>
 <ul>
 <li><code>to</code> in <code>to!int</code> is a generic function (and you specialize it using the bang-type syntax). The syntax, though unfamiliar, but greatly simplifies parsing, both for compilers and for humans.</li>
 <li>C code can be called directly from D after creating declarations for it. The function <code>memcpy</code> and <code>mmap</code> are C functions whose declarations are defined in packages <code>string</code> and <code>linux</code>.</li>
@@ -142,7 +142,7 @@ writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have
 <li>any pointer type is automatically convertible to <code>void*</code>, not so for the converse.</li>
 <li>there is a <code>function</code> keyword so that the type of a function pointer or complex types can be declared without hurting your brain</li>
 </ul>
-<pre class="sourceCode d"><code class="sourceCode d"><span class="co">// fp is a pointer to a function that takes a function taking a char</span>
+<div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="co">// fp is a pointer to a function that takes a function taking a char</span>
 <span class="co">// returning an int and returns a typeless pointer</span>
 <span class="co">// (try saying that five times fast)</span>
 <span class="dt">void</span>* <span class="kw">function</span>(<span class="dt">int</span> <span class="kw">function</span>(<span class="dt">char</span>)) fp;
@@ -156,7 +156,7 @@ writeln(a.<span class="dt">length</span>); <span class="co">// assuming you have
 <span class="dt">void</span> <span class="kw">function</span>(<span class="dt">int</span>) signal(<span class="dt">int</span> sig, <span class="dt">void</span> <span class="kw">function</span>(<span class="dt">int</span>) func));
 <span class="co">// the equivalent for that in C is</span>
 <span class="co">// void (*signal (int sig, void (*func)(int)) )(int);</span>
-<span class="co">// try reading that five times fast :)</span></code></pre>
+<span class="co">// try reading that five times fast :)</span></code></pre></div>
 <p>Those are the differences that are present in this code snippet, you can check out more about D at the <a href="http://dlang.org">D home page</a> or a summary at the <a href="http://en.wikipedia.org/wiki/D_(programming_language)">wikipedia page</a>.</p>
 </article>
 

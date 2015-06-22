@@ -46,19 +46,19 @@
 <li>Install <a href="http://git-scm.com/">git</a></li>
 <li>Set up a bare git repo</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/repo <span class="co"># this is where the post-receive script is put</span>
-<span class="kw">git</span> --bare init</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/repo <span class="co"># this is where the post-receive script is put</span>
+<span class="kw">git</span> --bare init</code></pre></div>
 <ul>
 <li>Install Lisp (I choose <a href="http://sbcl.org/">sbcl</a>)</li>
 <li>Install <a href="http://quicklisp.org/">Quicklisp</a></li>
 <li>Get coleslaw’s settings file</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc \
-     -O ~/.coleslawrc</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc \
+     -O ~/.coleslawrc</code></pre></div>
 <ul>
 <li>The settings must be edited accordingly. I find the naming a bit confusing, so I have put some comment below for clarification.</li>
 </ul>
-<pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(:author <span class="st">&quot;Example Setter&quot;</span>
+<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(:author <span class="st">&quot;Example Setter&quot;</span>
  :deploy <span class="st">&quot;/path/to/deploy&quot;</span> <span class="co">; this is where coleslaw writes its output</span>
  :domain <span class="st">&quot;http://blog.example.com&quot;</span>
  :feeds (<span class="st">&quot;lisp&quot;</span>)
@@ -72,53 +72,53 @@
            (:url <span class="st">&quot;http://twitter.com/example&quot;</span> <span class="kw">:name</span> <span class="st">&quot;Twitter&quot;</span>)
            (:url <span class="st">&quot;http://github.com/example&quot;</span> <span class="kw">:name</span> <span class="st">&quot;Code&quot;</span>))
  :title <span class="st">&quot;Blog title&quot;</span>
- :theme <span class="st">&quot;hyde&quot;</span>)</code></pre>
+ :theme <span class="st">&quot;hyde&quot;</span>)</code></pre></div>
 <ul>
 <li>Get <code>post-receive</code> hook script and edit the file according to the instructions inside</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive \
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive \
      -O /path/to/repo/hooks/post-receive
-<span class="co"># edit the file</span></code></pre>
+<span class="co"># edit the file</span></code></pre></div>
 <ul>
 <li>Make the script executable</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> +x /path/to/repo/hooks/post-receive</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> +x /path/to/repo/hooks/post-receive</code></pre></div>
 <ul>
 <li>Create another repository to hold posts</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/posts
-<span class="kw">git</span> init</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/posts
+<span class="kw">git</span> init</code></pre></div>
 <ul>
 <li>Add the bare repo as a remote of the posts repo</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> remote add prod file:///path/to/repo/</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> remote add prod file:///path/to/repo/</code></pre></div>
 <ul>
 <li>Use a server of choice to serve the site. Here I choose <a href="http://php.net/">PHP</a>’s built in server.</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/deploy/.curr/
-<span class="kw">php</span> -S localhost:8080</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/deploy/.curr/
+<span class="kw">php</span> -S localhost:8080</code></pre></div>
 <h2 id="motivation">Motivation</h2>
 <p>As I want to put my blog on Github’s pages with my custom domain, I need the generator to put a file named <code>CNAME</code>, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with <code>post</code> extension, along with files in the <code>static</code> folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that <code>CNAME</code> file under the root of the site.</p>
 <h2 id="forking-the-code">Forking the code</h2>
 <p>The usual workflow on Github is to fork the code, hack on it, commit and then send a pull request to the original author.</p>
 <p>After forking the code and cloning it to my machine, I need to setup Quicklisp’s quickproject according to <a href="http://xach.livejournal.com/278047.html">this</a> so that it sees my code.</p>
 <p>Since I have generated the posts using coleslaw, Quicklisp must have pulled the code from its repository. For safety, I uninstall Quicklisp’s coleslaw.</p>
-<pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">;; start sbcl and load Quicklisp's setup.lisp</span>
+<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">;; start sbcl and load Quicklisp's setup.lisp</span>
 (<span class="kw">use-package</span> :ql-dist)
 (uninstall (release <span class="st">&quot;coleslaw&quot;</span>))
 <span class="co">; instructions gotten from</span>
-<span class="co">;   https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></code></pre>
+<span class="co">;   https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></code></pre></div>
 <h2 id="hack-on-it">Hack on it</h2>
 <p>I add a property to class <code>blog</code> in order to capture user’s intent to integrate with Github’s pages.</p>
-<pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">; in src/config.lisp</span>
+<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">; in src/config.lisp</span>
 (<span class="kw">defclass</span><span class="fu"> blog </span>()
   (
    <span class="co">; [...]</span>
    (github :initarg :github :initform <span class="kw">nil</span> :accessor github)
    <span class="co">; [...]</span>
-   ))</code></pre>
+   ))</code></pre></div>
 <p>And then the code to actually generate the <code>CNAME</code> file</p>
-<pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)
+<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)
   (((
         <span class="co">; [...]</span>
         (run-program <span class="st">&quot;mv ~a ~a&quot;</span> staging new-build)
@@ -132,7 +132,7 @@
               (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
         (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
         <span class="co">; [...]</span>
-        )))))</code></pre>
+        )))))</code></pre></div>
 <h2 id="not-send-a-pull-request-to-the-original-author">(Not) Send a pull request to the original author</h2>
 <p>Since the way I pulled out the domain name from the <code>blog</code> object is very ad-hoc, I don’t think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won’t send a pull request to the original author.</p>
 </article>
