@@ -77,7 +77,7 @@ Res02 = <span class="kw">true</span></code></pre></div>
 <p>There exists in set <code>s</code> an element that satisfies the predicate <code>p</code> when not all of the elements in <code>s</code> satisfies the negation of <code>p</code>.</p>
 </blockquote>
 <p>That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatical symbols!</p>
-<p>&amp;exist;x:P(x) &amp;equiv; ¬&amp;forall;x:¬P(x)</p>
+<p>∃x:P(x) ≡ ¬∀x:¬P(x)</p>
 <p>compared with</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">def</span> <span class="fu">exists</span>(s: Set, p: Int =&gt; Boolean): Boolean = !<span class="fu">forall</span>(s, x =&gt; !<span class="fu">p</span>(x))</code></pre></div>
 <p>The correspondence is remarkable!</p>
