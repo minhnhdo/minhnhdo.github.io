@@ -54,12 +54,12 @@
 <li>ccache (optional)</li>
 </ol>
 <p>Here is the command to get all of the above.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> yum install -y python make git gcc-c++ curl valgrind pandoc texlive-latex ccache</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> yum install -y python make git gcc-c++ curl valgrind pandoc texlive-latex ccache</code></pre></div>
 <h2 id="download-and-build-rust">Download and Build Rust</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> clone git://github.com/mozilla/rust.git
-<span class="kw">cd</span> rust
-<span class="kw">./configure</span> --enable-ccache <span class="co"># this may take a while if this is your first time, as it downloads LLVM</span>
-<span class="kw">make</span> <span class="co"># this will download stage-0 Rust compiler in order to compile the Rust source</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone git://github.com/mozilla/rust.git
+<span class="bu">cd</span> rust
+<span class="ex">./configure</span> --enable-ccache <span class="co"># this may take a while if this is your first time, as it downloads LLVM</span>
+<span class="fu">make</span> <span class="co"># this will download stage-0 Rust compiler in order to compile the Rust source</span></code></pre></div>
 <p>If the process runs smoothly, you will have the Rust compiler and toolchain residing in <code>&lt;archtecture&gt;/stage2/bin</code> (on my machine, it’s <code>x86_64-unknown-linux-gnu/stage2/bin</code>).</p>
 </article>
 

@@ -46,14 +46,14 @@
 <li>Install <a href="http://git-scm.com/">git</a></li>
 <li>Set up a bare git repo</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/repo <span class="co"># this is where the post-receive script is put</span>
-<span class="kw">git</span> --bare init</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> /path/to/repo <span class="co"># this is where the post-receive script is put</span>
+<span class="fu">git</span> --bare init</code></pre></div>
 <ul>
 <li>Install Lisp (I choose <a href="http://sbcl.org/">sbcl</a>)</li>
 <li>Install <a href="http://quicklisp.org/">Quicklisp</a></li>
 <li>Get coleslaw’s settings file</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc \
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/single-site.coleslawrc \
      -O ~/.coleslawrc</code></pre></div>
 <ul>
 <li>The settings must be edited accordingly. I find the naming a bit confusing, so I have put some comment below for clarification.</li>
@@ -68,35 +68,35 @@
  <span class="co">;; this is where coleslaw writes its temporary output, which gets moved</span>
  <span class="co">;; into :DEPLOY</span>
  :repo <span class="st">&quot;/path/to/some/temporary/folder/&quot;</span>
- :sitenav ((:url <span class="st">&quot;http://example.com/&quot;</span> <span class="kw">:name</span> <span class="st">&quot;Home&quot;</span>)
-           (:url <span class="st">&quot;http://twitter.com/example&quot;</span> <span class="kw">:name</span> <span class="st">&quot;Twitter&quot;</span>)
-           (:url <span class="st">&quot;http://github.com/example&quot;</span> <span class="kw">:name</span> <span class="st">&quot;Code&quot;</span>))
+ :sitenav ((:url <span class="st">&quot;http://example.com/&quot;</span> <span class="bu">:name</span> <span class="st">&quot;Home&quot;</span>)
+           (:url <span class="st">&quot;http://twitter.com/example&quot;</span> <span class="bu">:name</span> <span class="st">&quot;Twitter&quot;</span>)
+           (:url <span class="st">&quot;http://github.com/example&quot;</span> <span class="bu">:name</span> <span class="st">&quot;Code&quot;</span>))
  :title <span class="st">&quot;Blog title&quot;</span>
  :theme <span class="st">&quot;hyde&quot;</span>)</code></pre></div>
 <ul>
 <li>Get <code>post-receive</code> hook script and edit the file according to the instructions inside</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive \
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">wget</span> -c https://raw.github.com/redline6561/coleslaw/master/examples/example.post-receive \
      -O /path/to/repo/hooks/post-receive
 <span class="co"># edit the file</span></code></pre></div>
 <ul>
 <li>Make the script executable</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chmod</span> +x /path/to/repo/hooks/post-receive</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">chmod</span> +x /path/to/repo/hooks/post-receive</code></pre></div>
 <ul>
 <li>Create another repository to hold posts</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/posts
-<span class="kw">git</span> init</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> /path/to/posts
+<span class="fu">git</span> init</code></pre></div>
 <ul>
 <li>Add the bare repo as a remote of the posts repo</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> remote add prod file:///path/to/repo/</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> remote add prod file:///path/to/repo/</code></pre></div>
 <ul>
 <li>Use a server of choice to serve the site. Here I choose <a href="http://php.net/">PHP</a>’s built in server.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /path/to/deploy/.curr/
-<span class="kw">php</span> -S localhost:8080</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> /path/to/deploy/.curr/
+<span class="ex">php</span> -S localhost:8080</code></pre></div>
 <h2 id="motivation">Motivation</h2>
 <p>As I want to put my blog on Github’s pages with my custom domain, I need the generator to put a file named <code>CNAME</code>, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with <code>post</code> extension, along with files in the <code>static</code> folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that <code>CNAME</code> file under the root of the site.</p>
 <h2 id="forking-the-code">Forking the code</h2>
@@ -125,10 +125,10 @@
         (<span class="kw">when</span> (github *config*)
           (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))
                 (stripped-url (<span class="kw">subseq</span> (domain *config*)
-                                      (<span class="kw">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))
+                                      (<span class="op">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))
             (<span class="kw">with-open-file</span> (cname cname-filename
-                                   <span class="kw">:direction</span> <span class="kw">:output</span>
-                                   :if-exists <span class="kw">:supersede</span>)
+                                   <span class="bu">:direction</span> <span class="bu">:output</span>
+                                   :if-exists <span class="bu">:supersede</span>)
               (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
         (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
         <span class="co">; [...]</span>

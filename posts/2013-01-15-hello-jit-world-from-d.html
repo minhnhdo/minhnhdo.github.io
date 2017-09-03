@@ -43,7 +43,7 @@
 <span class="kw">import</span> std.conv;
 <span class="kw">import</span> std.stdio;
 
-<span class="dt">int</span> main(<span class="dt">string</span>[] args)
+<span class="dt">int</span> main(<span class="bu">string</span>[] args)
 {
     <span class="co">// Machine code for:</span>
     <span class="co">//   mov eax, 0</span>
@@ -99,9 +99,9 @@
 <li>all executions start from the <code>main</code> function which can have one of the following signatures</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode d"><code class="sourceCode d"><span class="dt">int</span> main();
-<span class="dt">int</span> main(<span class="dt">string</span>[]);
+<span class="dt">int</span> main(<span class="bu">string</span>[]);
 <span class="dt">void</span> main();
-<span class="dt">void</span> main(<span class="dt">string</span>[]);</code></pre></div>
+<span class="dt">void</span> main(<span class="bu">string</span>[]);</code></pre></div>
 <ul>
 <li>and unlike C (or C++ for that matter), the D standard actually have <code>void main(...)</code> functions return 0 (which means success) to the shell.</li>
 <li>indexing operator is <code>[]</code></li>

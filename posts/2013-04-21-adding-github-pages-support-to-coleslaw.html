@@ -66,8 +66,8 @@
     (<span class="kw">dolist</span> (tag (all-tags))
 <span class="co">; [...]</span>
                                   :prev (<span class="kw">and</span> (<span class="kw">plusp</span> i) i)
-                                  :next (<span class="kw">and</span> (<span class="kw">&lt;</span> (<span class="kw">*</span> (<span class="kw">1+</span> i) <span class="dv">10</span>) (<span class="kw">length</span> results))
-                                             (<span class="kw">+</span> <span class="dv">2</span> i)))))))
+                                  :next (<span class="kw">and</span> (<span class="op">&lt;</span> (<span class="op">*</span> (<span class="op">1+</span> i) <span class="dv">10</span>) (<span class="kw">length</span> results))
+                                             (<span class="op">+</span> <span class="dv">2</span> i)))))))
   (<span class="kw">if</span> make-symlink-p
     (update-symlink <span class="st">&quot;index.html&quot;</span> <span class="st">&quot;1.html&quot;</span>)
     (run-program <span class="st">&quot;cp 1.html index.html&quot;</span>))</code></pre></div>
@@ -80,10 +80,10 @@
         (<span class="kw">when</span> (github *config*)
           (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))
                 (stripped-url (<span class="kw">subseq</span> (domain *config*)
-                                      (<span class="kw">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))
+                                      (<span class="op">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))
             (<span class="kw">with-open-file</span> (cname cname-filename
-                                   <span class="kw">:direction</span> <span class="kw">:output</span>
-                                   :if-exists <span class="kw">:supersede</span>)
+                                   <span class="bu">:direction</span> <span class="bu">:output</span>
+                                   :if-exists <span class="bu">:supersede</span>)
               (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
         (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
         <span class="co">; [...]</span>
@@ -98,8 +98,8 @@
                 (stripped-url (puri:uri-host (puri:parse-uri
                                                (domain *config*)))))
             (<span class="kw">with-open-file</span> (cname cname-filename
-                                   <span class="kw">:direction</span> <span class="kw">:output</span>
-                                   :if-exists <span class="kw">:supersede</span>)
+                                   <span class="bu">:direction</span> <span class="bu">:output</span>
+                                   :if-exists <span class="bu">:supersede</span>)
               (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
         (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
         <span class="co">; [...]</span>
