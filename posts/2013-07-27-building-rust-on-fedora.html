@@ -40,7 +40,7 @@
 <p><a href="http://rust-lang.org">Rust</a> is a new programming language headed by <a href="http://mozilla.org">Mozilla</a>, the same people bringing you the <a href="http://firefox.com">Firefox browser</a>.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>According to <a href="https://github.com/mozilla/rust/wiki/Note-getting-started-developing-Rust">Rust’s wiki</a>, you’ll need the following to build the compiler.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>A recent Linux, OS X 10.6 or later, Win32 or FreeBSD system</li>
 <li>1.6 GiB RAM available for the build process (see note below about memory usage)</li>
 <li>Python 2.x (version 2.7 is known to work)</li>
@@ -54,12 +54,12 @@
 <li>ccache (optional)</li>
 </ol>
 <p>Here is the command to get all of the above.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> yum install -y python make git gcc-c++ curl valgrind pandoc texlive-latex ccache</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> yum install -y python make git gcc-c++ curl valgrind pandoc texlive-latex ccache</a></code></pre></div>
 <h2 id="download-and-build-rust">Download and Build Rust</h2>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone git://github.com/mozilla/rust.git
-<span class="bu">cd</span> rust
-<span class="ex">./configure</span> --enable-ccache <span class="co"># this may take a while if this is your first time, as it downloads LLVM</span>
-<span class="fu">make</span> <span class="co"># this will download stage-0 Rust compiler in order to compile the Rust source</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">git</span> clone git://github.com/mozilla/rust.git</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="bu">cd</span> rust</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">./configure</span> --enable-ccache <span class="co"># this may take a while if this is your first time, as it downloads LLVM</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="fu">make</span> <span class="co"># this will download stage-0 Rust compiler in order to compile the Rust source</span></a></code></pre></div>
 <p>If the process runs smoothly, you will have the Rust compiler and toolchain residing in <code>&lt;archtecture&gt;/stage2/bin</code> (on my machine, it’s <code>x86_64-unknown-linux-gnu/stage2/bin</code>).</p>
 </article>
 

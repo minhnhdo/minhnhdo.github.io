@@ -38,7 +38,7 @@
 <article>
 <p><em>This post wraps up how I hacked <a href="https://github.com/redline6561/coleslaw">coleslaw</a> to add <a href="http://pages.github.com/">Github pages</a> integration.</em></p>
 <h2 id="whats-missing">What’s missing</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Github pages does not support symlinks. Therefore, instead of symlinking <code>index.html</code> to <code>1.html</code>, I should just copy <code>1.html</code> as <code>index.html</code>.</li>
 <li>I need a way to robustly parse the domain given in <code>~/.coleslawrc</code>.</li>
 </ol>
@@ -46,74 +46,74 @@
 <h3 id="symlinks">Symlinks</h3>
 <p>For the symlinking problem, I can just change the code from symlinking to copying it over. However, it is safer to change the behavior of the code only when the user explicitly asks for it.</p>
 <p>Grepping through the code, I can see that <code>render-indices</code> produces the indices, e.g. <code>1.html</code>, etc., and symlinking <code>1.html</code> to <code>index.html</code>. This is where I should make the modification. I added another argument to <code>render-indices</code> to tell the code to make the symlink or not.</p>
-<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">;;;; in src/coleslaw.lisp</span>
-<span class="co">; [...]</span>
-      (<span class="kw">when</span> (<span class="kw">probe-file</span> dir)
-        (run-program <span class="st">&quot;cp -R ~a .&quot;</span> dir)))
-    (do-ctypes (publish ctype))
-    (render-indices (<span class="kw">not</span> (github-pages *config*)))
-    (render-feeds (feeds *config*))))
-<span class="co">; [...]</span>
-
-<span class="co">;;;; in src/indices.lisp</span>
-<span class="co">; [...]</span>
-                              :posts (<span class="kw">subseq</span> content start end)
-                              :title <span class="st">&quot;Recent Posts&quot;</span>)))
-
-(<span class="kw">defun</span><span class="fu"> render-indices </span>(make-symlink-p)
-  <span class="st">&quot;Render the indices to view content in groups of size N, by month, and by tag&quot;</span>
-  (<span class="kw">let</span> ((results (by-date (hash-table-values *content*))))
-    (<span class="kw">dolist</span> (tag (all-tags))
-<span class="co">; [...]</span>
-                                  :prev (<span class="kw">and</span> (<span class="kw">plusp</span> i) i)
-                                  :next (<span class="kw">and</span> (<span class="op">&lt;</span> (<span class="op">*</span> (<span class="op">1+</span> i) <span class="dv">10</span>) (<span class="kw">length</span> results))
-                                             (<span class="op">+</span> <span class="dv">2</span> i)))))))
-  (<span class="kw">if</span> make-symlink-p
-    (update-symlink <span class="st">&quot;index.html&quot;</span> <span class="st">&quot;1.html&quot;</span>)
-    (run-program <span class="st">&quot;cp 1.html index.html&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb1-1" title="1"><span class="co">;;;; in src/coleslaw.lisp</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb1-3" title="3">      (<span class="kw">when</span> (<span class="kw">probe-file</span> dir)</a>
+<a class="sourceLine" id="cb1-4" title="4">        (run-program <span class="st">&quot;cp -R ~a .&quot;</span> dir)))</a>
+<a class="sourceLine" id="cb1-5" title="5">    (do-ctypes (publish ctype))</a>
+<a class="sourceLine" id="cb1-6" title="6">    (render-indices (<span class="kw">not</span> (github-pages *config*)))</a>
+<a class="sourceLine" id="cb1-7" title="7">    (render-feeds (feeds *config*))))</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">;;;; in src/indices.lisp</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb1-12" title="12">                              :posts (<span class="kw">subseq</span> content start end)</a>
+<a class="sourceLine" id="cb1-13" title="13">                              :title <span class="st">&quot;Recent Posts&quot;</span>)))</a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15">(<span class="kw">defun</span><span class="fu"> render-indices </span>(make-symlink-p)</a>
+<a class="sourceLine" id="cb1-16" title="16">  <span class="st">&quot;Render the indices to view content in groups of size N, by month, and by tag&quot;</span></a>
+<a class="sourceLine" id="cb1-17" title="17">  (<span class="kw">let</span> ((results (by-date (hash-table-values *content*))))</a>
+<a class="sourceLine" id="cb1-18" title="18">    (<span class="kw">dolist</span> (tag (all-tags))</a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb1-20" title="20">                                  :prev (<span class="kw">and</span> (<span class="kw">plusp</span> i) i)</a>
+<a class="sourceLine" id="cb1-21" title="21">                                  :next (<span class="kw">and</span> (<span class="op">&lt;</span> (<span class="op">*</span> (<span class="op">1+</span> i) <span class="dv">10</span>) (<span class="kw">length</span> results))</a>
+<a class="sourceLine" id="cb1-22" title="22">                                             (<span class="op">+</span> <span class="dv">2</span> i)))))))</a>
+<a class="sourceLine" id="cb1-23" title="23">  (<span class="kw">if</span> make-symlink-p</a>
+<a class="sourceLine" id="cb1-24" title="24">    (update-symlink <span class="st">&quot;index.html&quot;</span> <span class="st">&quot;1.html&quot;</span>)</a>
+<a class="sourceLine" id="cb1-25" title="25">    (run-program <span class="st">&quot;cp 1.html index.html&quot;</span>))</a></code></pre></div>
 <h3 id="domain">Domain</h3>
 <p>Previously, my ad-hoc solution was to find the first forward-slash in the domain string and substring the domain string from after the second forward-slash. Here’s the previous code.</p>
-<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)
-  (((
-        <span class="co">; [...]</span>
-        (run-program <span class="st">&quot;mv ~a ~a&quot;</span> staging new-build)
-        (<span class="kw">when</span> (github *config*)
-          (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))
-                (stripped-url (<span class="kw">subseq</span> (domain *config*)
-                                      (<span class="op">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))
-            (<span class="kw">with-open-file</span> (cname cname-filename
-                                   <span class="bu">:direction</span> <span class="bu">:output</span>
-                                   :if-exists <span class="bu">:supersede</span>)
-              (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
-        (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
-        <span class="co">; [...]</span>
-        )))))</code></pre></div>
-<p>Now, I can instead use the <a href="http://puri.b9.com/">puri</a> library to parse the URL and extract only the domain. Here’s the new code using <code>puri</code>.</p>
-<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)
-  (((
-        <span class="co">; [...]</span>
-        (run-program <span class="st">&quot;mv ~a ~a&quot;</span> staging new-build)
-        (<span class="kw">when</span> (github *config*)
-          (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))
-                (stripped-url (puri:uri-host (puri:parse-uri
-                                               (domain *config*)))))
-            (<span class="kw">with-open-file</span> (cname cname-filename
-                                   <span class="bu">:direction</span> <span class="bu">:output</span>
-                                   :if-exists <span class="bu">:supersede</span>)
-              (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))
-        (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)
-        <span class="co">; [...]</span>
-        )))))</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb2-1" title="1">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)</a>
+<a class="sourceLine" id="cb2-2" title="2">  (((</a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        (run-program <span class="st">&quot;mv ~a ~a&quot;</span> staging new-build)</a>
+<a class="sourceLine" id="cb2-5" title="5">        (<span class="kw">when</span> (github *config*)</a>
+<a class="sourceLine" id="cb2-6" title="6">          (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))</a>
+<a class="sourceLine" id="cb2-7" title="7">                (stripped-url (<span class="kw">subseq</span> (domain *config*)</a>
+<a class="sourceLine" id="cb2-8" title="8">                                      (<span class="op">+</span> <span class="dv">2</span> (<span class="kw">position</span> <span class="ch">#\/</span> (domain *config*))))))</a>
+<a class="sourceLine" id="cb2-9" title="9">            (<span class="kw">with-open-file</span> (cname cname-filename</a>
+<a class="sourceLine" id="cb2-10" title="10">                                   <span class="bu">:direction</span> <span class="bu">:output</span></a>
+<a class="sourceLine" id="cb2-11" title="11">                                   :if-exists <span class="bu">:supersede</span>)</a>
+<a class="sourceLine" id="cb2-12" title="12">              (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))</a>
+<a class="sourceLine" id="cb2-13" title="13">        (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)</a>
+<a class="sourceLine" id="cb2-14" title="14">        <span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb2-15" title="15">        )))))</a></code></pre></div>
+<p>Now, I can instead use the <code>puri</code> library to parse the URL and extract only the domain. Here’s the new code using <code>puri</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb3-1" title="1">(<span class="kw">defgeneric</span><span class="fu"> deploy </span>(staging)</a>
+<a class="sourceLine" id="cb3-2" title="2">  (((</a>
+<a class="sourceLine" id="cb3-3" title="3">        <span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb3-4" title="4">        (run-program <span class="st">&quot;mv ~a ~a&quot;</span> staging new-build)</a>
+<a class="sourceLine" id="cb3-5" title="5">        (<span class="kw">when</span> (github *config*)</a>
+<a class="sourceLine" id="cb3-6" title="6">          (<span class="kw">let</span> ((cname-filename (rel-path <span class="st">&quot;&quot;</span> <span class="st">&quot;~a/CNAME&quot;</span> new-build))</a>
+<a class="sourceLine" id="cb3-7" title="7">                (stripped-url (puri:uri-host (puri:parse-uri</a>
+<a class="sourceLine" id="cb3-8" title="8">                                               (domain *config*)))))</a>
+<a class="sourceLine" id="cb3-9" title="9">            (<span class="kw">with-open-file</span> (cname cname-filename</a>
+<a class="sourceLine" id="cb3-10" title="10">                                   <span class="bu">:direction</span> <span class="bu">:output</span></a>
+<a class="sourceLine" id="cb3-11" title="11">                                   :if-exists <span class="bu">:supersede</span>)</a>
+<a class="sourceLine" id="cb3-12" title="12">              (<span class="kw">format</span> cname <span class="st">&quot;~a~%&quot;</span> stripped-url))))</a>
+<a class="sourceLine" id="cb3-13" title="13">        (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)</a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="co">; [...]</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        )))))</a></code></pre></div>
 <p>Of course, I need to add puri as a dependency to coleslaw.</p>
-<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><span class="co">;;;; in coleslaw.asd</span>
-               :inferior-shell
-               :cl-fad
-               :cl-ppcre
-               :closer-mop
-               :puri)
-  :serial <span class="kw">t</span>
-  :components ((:file <span class="st">&quot;packages&quot;</span>)
-               (:file <span class="st">&quot;util&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb4-1" title="1"><span class="co">;;;; in coleslaw.asd</span></a>
+<a class="sourceLine" id="cb4-2" title="2">               :inferior-shell</a>
+<a class="sourceLine" id="cb4-3" title="3">               :cl-fad</a>
+<a class="sourceLine" id="cb4-4" title="4">               :cl-ppcre</a>
+<a class="sourceLine" id="cb4-5" title="5">               :closer-mop</a>
+<a class="sourceLine" id="cb4-6" title="6">               :puri)</a>
+<a class="sourceLine" id="cb4-7" title="7">  :serial <span class="kw">t</span></a>
+<a class="sourceLine" id="cb4-8" title="8">  :components ((:file <span class="st">&quot;packages&quot;</span>)</a>
+<a class="sourceLine" id="cb4-9" title="9">               (:file <span class="st">&quot;util&quot;</span></a></code></pre></div>
 <h2 id="really-wrap-up">Really Wrap Up</h2>
 <p>All that’s left now is to send a pull request to the original author, which I have already done.</p>
 </article>
