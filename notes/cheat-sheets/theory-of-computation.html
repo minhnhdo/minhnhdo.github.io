@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Theory of Computation - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../css/site.css" />
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../resume.pdf">Résumé</a>
+                    <a href="../../notes.html">Notes</a>
+                    <a href="../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <h1>Theory of Computation</h1>
+
+                
+<h1 id="prerequisite-definitions">Prerequisite Definitions</h1>
+<p><em>Alphabets</em> <span class="math inline"><em>Σ</em></span>, and <span class="math inline"><em>Γ</em></span> are finite nonempty sets of symbols.</p>
+<p>A <em>string</em> is a finite sequence of zero or more symbols from an alphabet.</p>
+<p><span class="math inline"><em>Σ</em><sup>⋆</sup></span> is the set of all strings over alphabet <span class="math inline"><em>Σ</em></span>.</p>
+<p><span class="math inline"><em>ϵ</em></span> is the empty string and cannot be in <span class="math inline"><em>Σ</em></span>.</p>
+<p>A <em>problem</em> is a mapping from strings to strings.</p>
+<p>A <em>decision problem</em> is a problem whose output is yes/no (or often accept/reject).</p>
+<p>A decision problem be thought of as the set of all strings for which the function outputs “accept”.</p>
+<p>A <em>language</em> is a set of strings, so any set <span class="math inline"><em>S</em> ⊆ <em>Σ</em><sup>⋆</sup></span> is a language, even <span class="math inline">∅</span>. Thus, decision problems are equivalent to languages.</p>
+<h1 id="regular-languages">Regular Languages</h1>
+<p><span class="math inline"><em>L</em>(<em>M</em>)</span> is the language accepted by machine <span class="math inline"><em>M</em></span>.</p>
+<p>A deterministic finite automaton is a 5-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<ul>
+<li><p><span class="math inline"><em>Q</em></span> is a finite set of states,</p></li>
+<li><p><span class="math inline"><em>Σ</em></span> is an alphabet,</p></li>
+<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × <em>Σ</em> → <em>Q</em></span> is a transition function describing its transitions and labels,</p></li>
+<li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is the starting state, and</p></li>
+<li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a set of accepting states.</p></li>
+</ul>
+<p>If <span class="math inline"><em>δ</em></span> is not fully specified, we assume an implicit transition to an <em>error state</em>.</p>
+<p>A deterministic finite automaton <span class="math inline"><em>M</em></span> accepts input string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em><sup>⋆</sup></span>) if there exists a sequence of states <span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<ul>
+<li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
+<li><p>for all <span class="math inline"><em>i</em> ∈ {1, …, <em>n</em>}</span>, <span class="math inline"><em>r</em><sub><em>i</em></sub> = <em>δ</em>(<em>r</em><sub><em>i</em> − 1</sub>, <em>w</em><sub><em>i</em></sub>)</span>, and</p></li>
+<li><p><span class="math inline"><em>r</em><sub><em>n</em></sub> ∈ <em>F</em></span>.</p></li>
+</ul>
+<p><span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> are the sequence of states visited during the machine’s computation.</p>
+<p>A non-deterministic finite automaton is a 5-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<ul>
+<li><p><span class="math inline"><em>Q</em>, <em>Σ</em>, <em>q</em><sub>0</sub>, <em>F</em></span> are the same as a deterministic finite automaton’s, and</p></li>
+<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em></sup></span>.</p></li>
+</ul>
+<p>A non-deterministic finite automaton accepts the string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em><sup>⋆</sup></span>) if there exist a string <span class="math inline"><em>y</em> = <em>y</em><sub>1</sub><em>y</em><sub>2</sub>…<em>y</em><sub><em>m</em></sub></span> (<span class="math inline"><em>y</em><sub><em>i</em></sub> ∈ (<em>Σ</em> ∪ {<em>ϵ</em>})<sup>⋆</sup></span>) and a sequence <span class="math inline"><em>r</em> = <em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<ul>
+<li><p><span class="math inline"><em>w</em> = <em>y</em><sub>1</sub> ∘ <em>y</em><sub>2</sub> ∘ ⋯ ∘ <em>y</em><sub><em>m</em></sub></span> (i.e. <span class="math inline"><em>y</em></span> is <span class="math inline"><em>w</em></span> with some <span class="math inline"><em>ϵ</em></span> inserted),</p></li>
+<li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
+<li><p>for all <span class="math inline"><em>i</em> = {1, …, <em>m</em>}</span>, <span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>δ</em>(<em>r</em><sub><em>i</em> − 1</sub>, <em>q</em><sub><em>i</em></sub>)</span>, and</p></li>
+<li><p><span class="math inline"><em>r</em><sub><em>m</em></sub> ∈ <em>F</em></span>.</p></li>
+</ul>
+<p>The <em><span class="math inline"><em>ϵ</em></span>-closure</em> for any set <span class="math inline"><em>S</em> ⊆ <em>Q</em></span> is denoted <span class="math inline"><em>E</em>(<em>S</em>)</span>, which is the set of all states in <span class="math inline"><em>Q</em></span> that can be reachable by following any number of <span class="math inline"><em>ϵ</em></span>-transition.</p>
+<p>A non-deterministic finite automaton can be converted to an equivalent deterministic finite automaton.</p>
+<p>A <em>regular language</em> is any language accepted by some finite automaton. The set of all regular languages is called the <em>class of regular languages</em>.</p>
+<p>Regular languages are closed under</p>
+<ul>
+<li><p>Concatenation <span class="math inline"><em>L</em><sub>1</sub> ∘ <em>L</em><sub>2</sub> = {<em>x</em> ∘ <em>y</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> and <em>y</em> ∈ <em>L</em><sub>2</sub>}</span>. Note: <span class="math inline"><em>L</em><sub>1</sub> ⊈ <em>L</em><sub>1</sub> ∘ <em>L</em><sub>2</sub></span>.</p></li>
+<li><p>Union <span class="math inline"><em>L</em><sub>1</sub> ∪ <em>L</em><sub>2</sub> = {<em>x</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> or <em>x</em> ∈ <em>L</em><sub>2</sub>}</span>.</p></li>
+<li><p>Intersection <span class="math inline"><em>L</em><sub>1</sub> ∩ <em>L</em><sub>2</sub> = {<em>x</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> and <em>x</em> ∈ <em>L</em><sub>2</sub>}</span>.</p></li>
+<li><p>Complement <span class="math inline">$\overline{L} = \Sigma^\star \setminus L = \{x : x \notin L\}$</span>.</p></li>
+<li><p>Star <span class="math inline"><em>L</em><sup>⋆</sup> = {<em>x</em><sub>1</sub> ∘ <em>x</em><sub>2</sub> ∘ ⋯ ∘ <em>x</em><sub><em>k</em></sub> : <em>x</em><sub><em>i</em></sub> ∈ <em>L</em> and <em>k</em> ≥ 0}</span>.</p></li>
+</ul>
+<p><span class="math inline"><em>R</em></span> is a regular expression if <span class="math inline"><em>R</em></span> is</p>
+<ul>
+<li><p><span class="math inline"><em>a</em> ∈ <em>Σ</em></span>,</p></li>
+<li><p><span class="math inline"><em>ϵ</em></span>,</p></li>
+<li><p><span class="math inline">∅</span>,</p></li>
+<li><p><span class="math inline"><em>R</em><sub>1</sub> ∪ <em>R</em><sub>2</sub></span>, or <span class="math inline"><em>R</em><sub>1</sub>|<em>R</em><sub>2</sub></span>,</p></li>
+<li><p><span class="math inline"><em>R</em><sub>1</sub> ∘ <em>R</em><sub>2</sub></span>, or <span class="math inline"><em>R</em><sub>1</sub><em>R</em><sub>2</sub></span>,</p></li>
+<li><p><span class="math inline"><em>R</em><sub>1</sub><sup>⋆</sup></span>,</p></li>
+<li><p>Shorthand: <span class="math inline"><em>Σ</em> = (<em>a</em><sub>1</sub>|<em>a</em><sub>2</sub>|…|<em>a</em><sub><em>k</em></sub>)</span>, <span class="math inline"><em>a</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>,</p></li>
+</ul>
+<p>where <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is a regular expression.</p>
+<p>Languages accepted by DFAs = languages accepted by NFAs = regular languages</p>
+<p>If <span class="math inline"><em>L</em></span> is a finite language, <span class="math inline"><em>L</em></span> is regular.</p>
+<p>If a computation path of any finite automaton is longer than the number of states it has, there must be a cycle in that computation path.</p>
+<p>Every regular language satisfies the pumping condition.</p>
+<p><em>Pumping condition</em>: There exists an integer <span class="math inline"><em>p</em></span> such that for every string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, there exist strings <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span> such that for all <span class="math inline"><em>i</em> ≥ 0</span>, <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∈ <em>L</em></span>.</p>
+<p><em>Negation of pumping condition</em>: For all integers <span class="math inline"><em>p</em></span>, there exists a string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, for all <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span>, there exists <span class="math inline"><em>i</em> ≥ 0, <em>i</em> ≠ 1</span> such that <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∉ <em>L</em></span>.</p>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
