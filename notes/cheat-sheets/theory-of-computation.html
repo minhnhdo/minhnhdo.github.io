@@ -95,6 +95,27 @@
 <p>Every regular language satisfies the pumping condition.</p>
 <p><em>Pumping condition</em>: There exists an integer <span class="math inline"><em>p</em></span> such that for every string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, there exist strings <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span> such that for all <span class="math inline"><em>i</em> ≥ 0</span>, <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∈ <em>L</em></span>.</p>
 <p><em>Negation of pumping condition</em>: For all integers <span class="math inline"><em>p</em></span>, there exists a string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, for all <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span>, there exists <span class="math inline"><em>i</em> ≥ 0, <em>i</em> ≠ 1</span> such that <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∉ <em>L</em></span>.</p>
+<p>Limitations of finite automata:</p>
+<ul>
+<li><p>Only read input once, left to right.</p></li>
+<li><p>Only finite memory.</p></li>
+</ul>
+<h1 id="context-free-languages">Context-Free Languages</h1>
+<p>A pushdown automaton is a 6-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>Γ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<ul>
+<li><p><span class="math inline"><em>Q</em></span> is a finite set of states,</p></li>
+<li><p><span class="math inline"><em>Σ</em></span> is its input alphabet,</p></li>
+<li><p><span class="math inline"><em>Γ</em></span> is its stack alphabet,</p></li>
+<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) × (<em>Γ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em> × (<em>Γ</em> ∪ <em>ϵ</em>)</sup></span> is its transition function,</p></li>
+<li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is its starting state, and</p></li>
+<li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a finite set of accepting states.</p></li>
+</ul>
+<p>Suppose <span class="math inline"><em>u</em>, <em>v</em>, <em>w</em></span> are strings of variables and terminals, and there is a rule <span class="math inline"><em>A</em> → <em>w</em></span>. From the string <span class="math inline"><em>u</em><em>A</em><em>v</em></span>, we can obtain <span class="math inline"><em>u</em><em>w</em><em>v</em></span>. We write <span class="math inline"><em>u</em><em>A</em><em>v</em> → <em>u</em><em>w</em><em>v</em></span>, and say <span class="math inline"><em>u</em><em>A</em><em>v</em></span> yields <span class="math inline"><em>u</em><em>w</em><em>v</em></span>.</p>
+<p>If <span class="math inline"><em>u</em><sub>1</sub> → <em>u</em><sub>2</sub> → … → <em>u</em><sub><em>k</em></sub></span>, then <span class="math inline"><em>u</em><sub>1</sub>→<sup>⋆</sup><em>u</em><sub><em>k</em></sub></span>, or <span class="math inline"><em>u</em><sub>1</sub></span> derives <span class="math inline"><em>u</em><sub><em>k</em></sub></span>. There must be a finite number of arrows between <span class="math inline"><em>u</em><sub>1</sub></span> and <span class="math inline"><em>u</em><sub><em>k</em></sub></span>.</p>
+<p>Given a grammar <span class="math inline"><em>G</em></span>, the language derived by the grammar is <span class="math inline"><em>L</em>(<em>G</em>) = {<em>w</em> ∈ <em>Σ</em><sup>⋆</sup> : <em>S</em>→<sup>⋆</sup><em>w</em> and <em>S</em> is the start variable}</span></p>
+<p><em>Context-free grammar:</em> the lhs of rules is a single variable, rhs is any string of variables and terminals. A <em>context-free language</em> is one that can be derived from a context-free grammar. An example context-free grammar is <span class="math inline"><em>G</em> = (<em>V</em>, <em>Σ</em>, <em>R</em>, ⟨<code>EXPR</code>⟩)</span>, where <span class="math inline"><em>V</em> = {⟨<code>EXPR</code>⟩, ⟨<code>TERM</code>⟩, ⟨<code>FACTOR</code>⟩}</span>, <span class="math inline"><em>Σ</em> = {<em>a</em>, +,×,(,)}</span>, and <span class="math inline"><em>R</em> = {⟨<code>EXPR</code>⟩ → ⟨<code>EXPR</code>⟩ + ⟨<code>TERM</code>⟩|⟨<code>TERM</code>⟩, ⟨<code>TERM</code>⟩ → ⟨<code>TERM</code>⟩ × ⟨<code>FACTOR</code>⟩|⟨<code>FACTOR</code>⟩, ⟨<code>FACTOR</code>⟩ → (⟨<code>EXPR</code>⟩)}</span>.</p>
+<p>A <em>left-most derivation</em> is a sequence <span class="math inline"><em>S</em> → <em>u</em><sub>1</sub> → <em>u</em><sub>2</sub> → … → <em>u</em><sub><em>k</em></sub> → <em>w</em></span> where each step applies a rule to the left-most variable. A grammar is <em>ambiguous</em> when it has multiple left-most derivations for the same string.</p>
+<p>A language <span class="math inline"><em>L</em></span> is recognized by a pushdown automaton iff <span class="math inline"><em>L</em></span> is described by a context-free grammar.</p>
 
             </div>
         </div>
