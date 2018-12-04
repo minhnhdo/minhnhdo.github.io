@@ -89,6 +89,16 @@
 <li><p>Shorthand: <span class="math inline"><em>Σ</em> = (<em>a</em><sub>1</sub>|<em>a</em><sub>2</sub>|…|<em>a</em><sub><em>k</em></sub>)</span>, <span class="math inline"><em>a</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>,</p></li>
 </ul>
 <p>where <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is a regular expression.</p>
+<p>Identities of Regular Languages</p>
+<ul>
+<li><p><span class="math inline">∅ ∪ <em>R</em> = <em>R</em> ∪ ∅ = <em>R</em></span></p></li>
+<li><p><span class="math inline">∅ ∘ <em>R</em> = <em>R</em> ∘ ∅ = ∅</span></p></li>
+<li><p><span class="math inline"><em>ϵ</em> ∘ <em>R</em> = <em>R</em> ∘ <em>ϵ</em>=</span></p></li>
+<li><p><span class="math inline"><em>ϵ</em><sup>⋆</sup> = <em>ϵ</em></span></p></li>
+<li><p><span class="math inline">∅<sup>⋆</sup> = ∅</span></p></li>
+<li><p><span class="math inline">∅ ∪ <em>R</em> ∘ <em>R</em><sup>⋆</sup> = <em>R</em> ∘ <em>R</em><sup>⋆</sup> ∪ <em>ϵ</em> = <em>R</em><sup>⋆</sup></span></p></li>
+<li><p><span class="math inline">(<em>a</em>|<em>b</em>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup>|<em>b</em><sup>⋆</sup>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup><em>b</em><sup>⋆</sup>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup>|<em>b</em>)<sup>⋆</sup> = (<em>a</em>|<em>b</em><sup>⋆</sup>)<sup>⋆</sup> = <em>a</em><sup>⋆</sup>(<em>b</em><em>a</em><sup>⋆</sup>)<sup>⋆</sup> = <em>b</em><sup>⋆</sup>(<em>a</em><em>b</em><sup>⋆</sup>)<sup>⋆</sup></span></p></li>
+</ul>
 <p>Languages accepted by DFAs = languages accepted by NFAs = regular languages</p>
 <p>If <span class="math inline"><em>L</em></span> is a finite language, <span class="math inline"><em>L</em></span> is regular.</p>
 <p>If a computation path of any finite automaton is longer than the number of states it has, there must be a cycle in that computation path.</p>
@@ -116,6 +126,7 @@
 <p><em>Context-free grammar:</em> the lhs of rules is a single variable, rhs is any string of variables and terminals. A <em>context-free language</em> is one that can be derived from a context-free grammar. An example context-free grammar is <span class="math inline"><em>G</em> = (<em>V</em>, <em>Σ</em>, <em>R</em>, ⟨<code>EXPR</code>⟩)</span>, where <span class="math inline"><em>V</em> = {⟨<code>EXPR</code>⟩, ⟨<code>TERM</code>⟩, ⟨<code>FACTOR</code>⟩}</span>, <span class="math inline"><em>Σ</em> = {<em>a</em>, +,×,(,)}</span>, and <span class="math inline"><em>R</em> = {⟨<code>EXPR</code>⟩ → ⟨<code>EXPR</code>⟩ + ⟨<code>TERM</code>⟩|⟨<code>TERM</code>⟩, ⟨<code>TERM</code>⟩ → ⟨<code>TERM</code>⟩ × ⟨<code>FACTOR</code>⟩|⟨<code>FACTOR</code>⟩, ⟨<code>FACTOR</code>⟩ → (⟨<code>EXPR</code>⟩)}</span>.</p>
 <p>A <em>left-most derivation</em> is a sequence <span class="math inline"><em>S</em> → <em>u</em><sub>1</sub> → <em>u</em><sub>2</sub> → … → <em>u</em><sub><em>k</em></sub> → <em>w</em></span> where each step applies a rule to the left-most variable. A grammar is <em>ambiguous</em> when it has multiple left-most derivations for the same string.</p>
 <p>A language <span class="math inline"><em>L</em></span> is recognized by a pushdown automaton iff <span class="math inline"><em>L</em></span> is described by a context-free grammar.</p>
+<p>Context-free languages are closed under union, concatenation, star.</p>
 
             </div>
         </div>
