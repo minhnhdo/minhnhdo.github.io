@@ -188,7 +188,118 @@
 <p>The set of all Turing machines is countable.</p>
 <p>The set <span class="math inline">ℬ</span> of all infinite bit-sequences is not countable.</p>
 <p><span class="math inline">2<sup><em>Σ</em><sup>⋆</sup></sup></span> is uncountable.</p>
-<p><span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub> = {⟨<em>M</em>, <em>w</em>⟩ : <em>M</em> accepts <em>w</em>}</span> is recognizable but not decidable.</p>
+<h1 id="reductions">Reductions</h1>
+<p><span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub> = {⟨<em>M</em>, <em>w</em>⟩ : <em>M</em> accepts <em>w</em>}</span> and <span class="math inline"><em>H</em><em>A</em><em>L</em><em>T</em><sub><em>T</em><em>M</em></sub> = {⟨<em>M</em>, <em>w</em>⟩ : <em>M</em> halts on input <em>w</em>}</span> are recognizable but not decidable.</p>
+<p>If <span class="math inline"><em>L</em></span> and <span class="math inline">$\overline{L}$</span> are recognizable, then <span class="math inline"><em>L</em></span> is decidable (and so is <span class="math inline">$\overline{L}$</span>).</p>
+<p><span class="math inline">$\overline{A_{TM}}$</span> is unrecognizable.</p>
+<p><em>Proof template for undecidability via Turing reduction:</em> Reduce a problem known to be undecidable to that language <span class="math inline"><em>L</em></span>, usually <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub></span>, i.e. <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub>≤<sub><em>T</em></sub><em>L</em></span>. Assume a Turing machine decider <span class="math inline"><em>R</em></span> for <span class="math inline"><em>L</em></span>. Construct <span class="math inline"><em>S</em></span> that decides <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub></span> using <span class="math inline"><em>R</em></span>.</p>
+<p><em>Runtime of a deterministic Turing machine</em> is a function <span class="math inline"><em>f</em> : ℕ → ℕ</span> given by <span class="math inline"><em>f</em>(<em>n</em>) = <em>m</em><em>a</em><em>x</em><sub><em>x</em> ∈ <em>Σ</em><sup>⋆</sup>, |<em>x</em>| = <em>n</em></sub>(no. of steps of <em>M</em> on input <em>x</em>)</span>.</p>
+<p><span class="math inline">$TIME(t(n)) = \{\text{language } L : \exists \text{deterministic Turing machine that} \\ \text{decides } L \text{ in time } O(t(n))\}$</span>.</p>
+<p><span class="math inline"><em>P</em> = ⋃<sub><em>c</em> ≥ 0</sub><em>T</em><em>I</em><em>M</em><em>E</em>(<em>n</em><sup><em>c</em></sup>)</span></p>
+<p><span class="math inline"><em>E</em><em>X</em><em>P</em> = ⋃<sub><em>k</em> ≥ 0</sub><em>T</em><em>I</em><em>M</em><em>E</em>(2<sup><em>n</em><sup><em>k</em></sup></sup>)</span></p>
+<p>If <span class="math inline"><em>f</em> : ℕ → ℕ</span> is reasonable and <span class="math inline"><em>f</em> = <em>Ω</em>(<em>n</em>log <em>n</em>)</span> then <span class="math inline"><em>T</em><em>I</em><em>M</em><em>E</em>(<em>f</em>(<em>n</em>)) ⊂ <em>T</em><em>I</em><em>M</em><em>E</em>(<em>f</em>(<em>n</em>)<sup>2</sup>)</span>.</p>
+<p><span class="math inline"><em>P</em> ⊂ <em>E</em><em>X</em><em>P</em></span></p>
+<p><em>Runtime of a non-deterministic Turing machine</em> is the height of the configuration tree.</p>
+<p><span class="math inline">$NTIME(t(n)) = \{\text{language } L : \exists \text{ non-deterministic Turing machine that} \\ \text{decides } L \text{ in time } t(n)\}$</span></p>
+<p><span class="math inline"><em>N</em><em>P</em> = ⋃<sub><em>c</em> &gt; 0</sub><em>N</em><em>T</em><em>I</em><em>M</em><em>E</em>(<em>n</em><sup><em>c</em></sup>)</span>, i.e. languages for which it is easy to verify membership.</p>
+<p><span class="math inline"><em>P</em> ⊆ <em>N</em><em>P</em></span></p>
+<p><span class="math inline"><em>N</em><em>P</em> ⊆ <em>E</em><em>X</em><em>P</em></span></p>
+<p><em>Verifier-based definition for <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>:</em> there exists a deterministic polytime Turing machine <span class="math inline"><em>V</em></span> and a constant <span class="math inline"><em>c</em></span> such that <span class="math inline"><em>L</em> = {<em>x</em> ∈ <em>Σ</em><sup>⋆</sup> : ∃<em>y</em> ∈ <em>Σ</em><sup>⋆</sup>, |<em>y</em>| ≤ |<em>x</em>|<sup><em>c</em></sup>, <em>V</em> accepts (<em>x</em>, <em>y</em>)}</span>.</p>
+<p>A function is <em>polytime computable</em> if <span class="math inline"><em>f</em> : <em>Σ</em><sup>⋆</sup> → <em>Σ</em><sup>⋆</sup></span> if there exists a Turing machine <span class="math inline"><em>M</em></span> that has <span class="math inline"><em>x</em></span> as input, runs for time poly(<span class="math inline">|<em>x</em>|</span>) and halts with <span class="math inline"><em>f</em>(<em>x</em>)</span> written on the tape.</p>
+<p><span class="math inline"><em>f</em></span> is a <em>polytime reduction</em> from language <span class="math inline"><em>A</em></span> to language <span class="math inline"><em>B</em></span>, denoted <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>B</em></span> if (1) <span class="math inline"><em>f</em>(<em>A</em>) ⊆ <em>B</em></span>, (2) <span class="math inline">$f(\overline{A}) \subseteq \overline{B}$</span>, and (3) <span class="math inline"><em>f</em></span> is a polytime computable function.</p>
+<p>If <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>B</em></span> and <span class="math inline"><em>B</em> ∈ <em>P</em></span> then <span class="math inline"><em>A</em> ∈ <em>P</em></span>.</p>
+<p>A language <span class="math inline"><em>L</em></span> is <em><span class="math inline"><em>N</em><em>P</em></span>-hard</em> if <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>L</em></span> for all <span class="math inline"><em>A</em> ∈ <em>N</em><em>P</em></span>. A language <span class="math inline"><em>L</em></span> is <em><span class="math inline"><em>N</em><em>P</em></span>-complete</em> if <span class="math inline"><em>L</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-hard and <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>.</p>
+<p>If <span class="math inline"><em>P</em> ≠ <em>N</em><em>P</em></span>, then there exists language <span class="math inline"><em>L</em></span> such that <span class="math inline"><em>L</em> ∉ <em>N</em><em>P</em></span>-complete, <span class="math inline"><em>L</em> ∉ <em>P</em></span>, and <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>.</p>
+<p>If (1) <span class="math inline"><em>B</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete, (2) <span class="math inline"><em>C</em> ∈ <em>N</em><em>P</em></span>, and (3) <span class="math inline"><em>B</em>≤<sub><em>P</em></sub><em>C</em></span>, then <span class="math inline"><em>C</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete.</p>
+<p><span class="math inline"><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete</p>
+<p><span class="math inline">3<em>S</em><em>A</em><em>T</em>≤<sub><em>P</em></sub><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span></p>
+<p><span class="math inline">3<em>S</em><em>A</em><em>T</em>≤<sub><em>P</em></sub><em>M</em><em>A</em><em>X</em><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span></p>
+<p>Reductions from <span class="math inline">3<em>S</em><em>A</em><em>T</em></span> often involves <em>gadgets</em>:</p>
+<ul>
+<li><p><em>Clause gadgets:</em> for the assignemnt to pick a true literal in each clause (a clique must pick a vertex from each group)</p></li>
+<li><p><em>Variable gadget:</em> force assignemnt to set each variable either to true or false but not both (a clique cannot pick both <span class="math inline"><em>x</em><sub><em>i</em></sub></span> and <span class="math inline">$\overline{x_i}$</span>).</p></li>
+</ul>
+<p><span class="math inline"><em>S</em><em>A</em><em>T</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete via <span class="math inline"><em>a</em></span> where <br /><span class="math display">$$\begin{gathered}
+		C = Q \cup \{\#\} \cup \Gamma \\
+		x_{i, j, s} = true \Leftrightarrow cell[i, j] = s \\
+		\Phi_{start} = x_{1, 1, \#} \land x_{1, 2, q_{start}} \land x_{1, 3, w_1} \land \dots \\
+		\land x_{1, n^k-1, \text{\textvisiblespace}} \land x_{1, n^k, \#} \\
+		\Phi_{cell} = \bigwedge\limits_{i, j = 1}^{n^k} \left(\bigvee\limits_{s \in C} x_{i, j, s} \land \right. \\
+		\left. \bigwedge\limits_{s, t \in C, 1 \leq i, j \leq n^k} \lnot (x_{i, j, s} \land x_{i, j, t})\right) \\
+		\Phi_{moves} = \bigwedge\limits_{i, j \geq n^k} \text{(window}[i, j] \text{ is valid)} \\
+		\Phi_{accept} = \bigvee\limits_{1 \leq i, j \leq n^k} x_{i, j, q_{accept}}
+	\end{gathered}$$</span><br /></p>
+<p><span class="math inline">$coNP = \{\text{language } L : \overline{L} \in NP\}$</span>, i.e. languages for which it is easy to verify non-membership. Machine model for <span class="math inline"><em>L</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em></span> is when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, all leaves are accepting configurations; otherwise, when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, there exists one leaf which is a rejecting configuration.</p>
+<p><span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>-complete <span class="math inline"> = {language <em>B</em> : <em>B</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em>, ∀<em>A</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em>, <em>A</em>≤<sub><em>P</em></sub><em>B</em>}</span>.</p>
+<p><span class="math inline"><em>N</em><em>O</em><em>S</em><em>A</em><em>T</em></span> is <span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>-complete.</p>
+<p><span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>-complete iff <span class="math inline">$\overline{L} \in coNP$</span>-complete.</p>
+<h1 id="probabilistic-turing-machines">Probabilistic Turing Machines</h1>
+<p><span class="math inline"><em>R</em><em>P</em></span>, or randomized polynomial time, are the languages <span class="math inline"><em>L</em></span> for which there is a <em>probabilistic</em> Turing machine that, on input <span class="math inline"><em>x</em></span>, runs in poly(<span class="math inline">|<em>x</em>|</span>) and when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline">$\geq \frac{1}{2}$</span>; otherwise, when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> = 1</span>.</p>
+<p><em>Second definition for <span class="math inline"><em>R</em><em>P</em></span>:</em> it contains languages <span class="math inline"><em>L</em></span> for which there exists a deterministic polytime Turing machine <span class="math inline"><em>V</em></span> such that when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, for at least half of all <span class="math inline"><em>y</em></span> with <span class="math inline">|<em>y</em>| ≤ poly(|<em>x</em>|), <em>V</em></span> accepts <span class="math inline">(<em>x</em>, <em>y</em>)</span>; when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, for all <span class="math inline"><em>y</em></span> with <span class="math inline">|<em>y</em>| ≤ poly(|<em>x</em>|), <em>V</em></span> rejects <span class="math inline">(<em>x</em>, <em>y</em>)</span>.</p>
+<p>Contrast with <span class="math inline"><em>N</em><em>P</em></span>, where <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> &gt; 0</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> = 1</span>.</p>
+<p><span class="math inline"><em>R</em><em>P</em> ⊆ <em>N</em><em>P</em></span></p>
+<p><span class="math inline"><em>c</em><em>o</em><em>R</em><em>P</em></span>: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> = 1</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline">$\geq \frac{1}{2}$</span>.</p>
+<p><span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> = 1</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> &gt; 0</span>.</p>
+<p><span class="math inline"><em>B</em><em>P</em><em>P</em></span>, or bounded error probabilistic polynomial time: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline">$\geq \frac{2}{3}$</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline">$\geq \frac{2}{3}$</span>.</p>
+<p><span class="math inline"><em>R</em><em>P</em> ⊆ <em>B</em><em>P</em><em>P</em></span></p>
+<p><span class="math inline"><em>c</em><em>o</em><em>R</em><em>P</em> ⊆ <em>B</em><em>P</em><em>P</em></span></p>
+<p><span class="math inline">$RP(\frac{1}{2}) = RP(\frac{3}{4})$</span> (proof via amplification)</p>
+<p><span class="math inline"><em>R</em><em>P</em></span> is closed under composition.</p>
+<h1 id="communication-complexity">Communication Complexity</h1>
+<p>Model:</p>
+<ul>
+<li><p>Finite sets <span class="math inline"><em>X</em>, <em>Y</em>, <em>Z</em></span></p></li>
+<li><p>Function <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → <em>Z</em></span></p></li>
+<li><p>Two player, Alice and Bob</p></li>
+<li><p>Decide on a communication protocol beforehand</p></li>
+<li><p>Alice has <span class="math inline"><em>x</em> ∈ <em>X</em></span>, Bob has <span class="math inline"><em>y</em> ∈ <em>Y</em></span></p></li>
+<li><p>Goal: collaboratively compute <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> by sending bits back and forth (must end with both side knowing <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>)</p></li>
+</ul>
+<p>The <em>trivial prototol:</em></p>
+<ul>
+<li><p>Alice sends <span class="math inline"><em>x</em></span> to Bob (<span class="math inline">log |<em>X</em>|</span>)</p></li>
+<li><p>Bob computes and sends <span class="math inline"><em>z</em> = <em>f</em>(<em>x</em>, <em>y</em>)</span> to Alice (<span class="math inline">log |<em>Z</em>|</span>)</p></li>
+</ul>
+<p>Total: <span class="math inline">log |<em>X</em>| + log |<em>Z</em>|</span> or <span class="math inline">log |<em>Y</em>| + log |<em>Z</em>|</span></p>
+<p>A <em>communication protocol</em> is a binary tree where each node is labelled by either <span class="math inline"><em>a</em><sub><em>v</em></sub> : <em>X</em> → {<em>L</em>, <em>R</em>}</span> or <span class="math inline"><em>b</em><sub><em>v</em></sub> : <em>Y</em> → {<em>L</em>, <em>R</em>}</span> and each leaf is labelled by an element of <span class="math inline"><em>Z</em></span>. The depth of the protocol tree is the maximum number of bits sent by the protocol.</p>
+<p>The deterministic communication complexity of a function <span class="math inline"><em>f</em></span> is <br /><span class="math display">$$\begin{aligned}
+	D(f) &amp; = \min\limits_{\text{tree for } f} \left(\max\limits_{(x, y)}(\text{number of bits}) \right) \\
+	&amp; = \min\limits_{\text{tree for } f} (\text{depth of tree})\end{aligned}$$</span><br /></p>
+<p><span class="math inline"><em>D</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) ≤ <em>n</em> + 1</span></p>
+<p>A <em>rectangle</em> in <span class="math inline"><em>X</em> × <em>Y</em></span> is a set of the form <span class="math inline"><em>R</em> = <em>A</em> × <em>B</em></span> where <span class="math inline"><em>A</em> ⊆ <em>X</em></span> and <span class="math inline"><em>B</em> ⊆ <em>Y</em></span>. <span class="math inline"><em>R</em></span> is a rectangle iff <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>R</em> ∧ (<em>x</em>′, <em>y</em>′) ∈ <em>R</em> ⇔ (<em>x</em>, <em>y</em>′) ∈ <em>R</em> ∧ (<em>x</em>′, <em>y</em>) ∈ <em>R</em></span></p>
+<p>Let <span class="math inline"><em>T</em></span> be a protocol tree, <span class="math inline"><em>R</em><sub><em>v</em></sub></span> be the set of inputs that causes the protocol to arrive at node <span class="math inline"><em>v</em></span>. Then <span class="math inline"><em>R</em><sub><em>v</em></sub></span> is a rectangle.</p>
+<p>A rectangle is called <em><span class="math inline"><em>f</em></span>-monochromatic</em> if <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> is the same for all <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>R</em></span>.</p>
+<p>Let <span class="math inline"><em>R</em><sub><em>i</em></sub> ⊂ <em>X</em> × <em>Y</em></span> be a rectangle for <span class="math inline"><em>i</em> = 1, …, <em>k</em></span>. The set <span class="math inline">ℛ = {<em>R</em><sub>1</sub>, …, <em>R</em><sub><em>k</em></sub>}</span> is called an <em><span class="math inline"><em>f</em></span>-monochromatic partition (into rectangles)</em> if each <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is <span class="math inline"><em>f</em></span>-monochromatic, and each <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>X</em> × <em>Y</em></span> is contained in exactly one <span class="math inline"><em>R</em><sub><em>i</em></sub></span>.</p>
+<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) = min {|ℛ| : ℛ is an <em>f</em>-monochromatic partition}</span></p>
+<p>For any protocol tree <span class="math inline"><em>T</em></span>, the rectangles <span class="math inline">{<em>R</em> : <em>v</em> is a leaf in <em>T</em>}</span> are an <span class="math inline"><em>f</em></span>-monochromatic partition.</p>
+<p><span class="math inline">$C^{\text{partition}}(f) \leq \min\limits_{\text{protocol tree } T} |\text{number of leaves in } T|$</span></p>
+<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ ⌈log<sub>2</sub><em>C</em><sup>partition</sup>(<em>f</em>)⌉</span></p>
+<p>A <em>fooling set</em> <span class="math inline"><em>S</em> ⊆ <em>X</em> × <em>Y</em></span> is a set where all points <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>S</em></span> have the same value <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>z</em></span>, and for any distinct points <span class="math inline">(<em>x</em>, <em>y</em>)</span> and <span class="math inline">(<em>x</em>′, <em>y</em>′)</span> in <span class="math inline"><em>S</em></span>, either <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>′) ≠ <em>z</em></span> or <span class="math inline"><em>f</em>(<em>x</em>′, <em>y</em>) ≠ <em>z</em></span>.</p>
+<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) ≥ |<em>S</em>| + 1</span>, where <span class="math inline"><em>S</em></span> is a fooling set for <span class="math inline"><em>f</em></span></p>
+<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ ⌈log<sub>2</sub>(|<em>S</em>|+1)⌉</span>, where <span class="math inline"><em>S</em></span> is a fooling set for <span class="math inline"><em>f</em></span></p>
+<p><span class="math inline"><em>D</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) = <em>D</em>(<em>G</em><em>T</em><em>E</em><sub><em>n</em></sub>) = <em>D</em>(<em>D</em><em>I</em><em>S</em><em>J</em><sub><em>n</em></sub>) = <em>n</em> + 1</span></p>
+<p>Model for <em>non-deterministic communication complexity</em>:</p>
+<ul>
+<li><p>Function <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → <em>Z</em></span> is known to all</p></li>
+<li><p>Bob does not know <span class="math inline"><em>x</em></span>, Alice does not know <span class="math inline"><em>y</em></span></p></li>
+<li><p>Alice and Bob do not communicate</p></li>
+<li><p>Piere tries to force Alice and Bob to accept by sending certificate <span class="math inline"><em>z</em></span>. How short can <span class="math inline"><em>z</em></span> be?</p></li>
+</ul>
+<p><span class="math inline">$N(f) = \min\limits_{nondet protocol}(\text{length of cert})$</span>. Or, <span class="math inline"><em>N</em>(<em>f</em>) = min {<em>k</em>}</span> such that there exist <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span>, for all <span class="math inline"><em>x</em> ∈ <em>X</em></span>, <span class="math inline"><em>y</em> ∈ <em>Y</em></span>, <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1 ⇒ ∃<em>z</em> ∈ {0, 1}<sup><em>k</em></sup>, <em>A</em>(<em>x</em>, <em>z</em>) = 1 ∧ <em>B</em>(<em>y</em>, <em>z</em>) = 1</span>, <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 0 ⇒ ∀<em>z</em> ∈ {0, 1}<sup><em>k</em></sup>, <em>A</em>(<em>x</em>, <em>z</em>) = 0 ∨ <em>B</em>(<em>y</em>, <em>z</em>) = 0</span>.</p>
+<p><span class="math inline"><em>N</em>(¬<em>D</em><em>I</em><em>S</em><em>J</em><sub><em>n</em></sub>) ≤ log <em>n</em></span></p>
+<p>For all <span class="math inline"><em>f</em></span>, <span class="math inline"><em>D</em>(<em>f</em>) = <em>D</em>(¬<em>f</em>)</span>.</p>
+<p><span class="math inline"><em>N</em>(¬<em>E</em><em>Q</em><sub><em>n</em></sub>) ≤ log (<em>n</em>) + 1</span></p>
+<p>Let <span class="math inline"><em>S</em></span> be a fooling set where <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1</span> for all <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>S</em></span>. Then <span class="math inline"><em>N</em>(<em>f</em>) ≥ ⌈log<sub>2</sub>(|<em>S</em>|)⌉</span>.</p>
+<p><span class="math inline"><em>N</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) ≥ <em>n</em></span></p>
+<p>The set <span class="math inline">ℛ = {<em>R</em><sub>1</sub>, …, <em>R</em><sub><em>k</em></sub>}</span> is a cover of the <span class="math inline">1</span>-entries (by rectangles) if (1) each <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is a rectangle containing only <span class="math inline">1</span>s, and (2) every <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>X</em> × <em>Y</em></span> with <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1</span> is contained in at least one <span class="math inline"><em>R</em><sub><em>i</em></sub></span>.</p>
+<p><span class="math inline"><em>C</em><sup>1-cover</sup>(<em>f</em>) = min {|ℛ| : ℛ is a cover of the 1-entries}</span></p>
+<p><span class="math inline"><em>C</em><sup>0-cover</sup>(<em>f</em>) = <em>C</em><sup>1-cover</sup>(¬<em>f</em>)</span>.</p>
+<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) = <em>C</em><sup>1-cover</sup>(<em>f</em>) + <em>C</em><sup>0-cover</sup>(<em>f</em>)</span>.</p>
+<p><span class="math inline"><em>N</em>(<em>f</em>) = ⌈log<sub>2</sub>(<em>C</em><sup>1-cover</sup>(<em>f</em>))⌉</span></p>
+<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ <em>N</em>(<em>f</em>)</span></p>
+<p><span class="math inline"><em>D</em>(¬<em>f</em>) = <em>N</em>(<em>f</em>)</span></p>
+<p>Let <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → {0, 1}</span> be arbitrary, <span class="math inline"><em>C</em><sub>0</sub></span> be a cover of the <span class="math inline">0</span>-entries, and <span class="math inline"><em>C</em><sub>1</sub></span> be a cover of the <span class="math inline">1</span>-entries. Then <span class="math inline"><em>D</em>(<em>f</em>) = <em>O</em>(log <em>C</em><sub>0</sub> * log <em>C</em><sub>1</sub>)</span>.</p>
+<p><span class="math inline"><em>D</em>(<em>f</em>) = <em>O</em>(<em>N</em>(<em>f</em>) * <em>N</em>(¬<em>f</em>))</span></p>
 
             </div>
         </div>
