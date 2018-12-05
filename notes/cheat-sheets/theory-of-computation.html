@@ -48,7 +48,7 @@
 <li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a set of accepting states.</p></li>
 </ul>
 <p>If <span class="math inline"><em>δ</em></span> is not fully specified, we assume an implicit transition to an <em>error state</em>.</p>
-<p>A deterministic finite automaton <span class="math inline"><em>M</em></span> accepts input string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em><sup>⋆</sup></span>) if there exists a sequence of states <span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<p>A deterministic finite automaton <span class="math inline"><em>M</em></span> accepts input string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>) if there exists a sequence of states <span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
 <ul>
 <li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
 <li><p>for all <span class="math inline"><em>i</em> ∈ {1, …, <em>n</em>}</span>, <span class="math inline"><em>r</em><sub><em>i</em></sub> = <em>δ</em>(<em>r</em><sub><em>i</em> − 1</sub>, <em>w</em><sub><em>i</em></sub>)</span>, and</p></li>
@@ -60,7 +60,7 @@
 <li><p><span class="math inline"><em>Q</em>, <em>Σ</em>, <em>q</em><sub>0</sub>, <em>F</em></span> are the same as a deterministic finite automaton’s, and</p></li>
 <li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em></sup></span>.</p></li>
 </ul>
-<p>A non-deterministic finite automaton accepts the string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em><sup>⋆</sup></span>) if there exist a string <span class="math inline"><em>y</em> = <em>y</em><sub>1</sub><em>y</em><sub>2</sub>…<em>y</em><sub><em>m</em></sub></span> (<span class="math inline"><em>y</em><sub><em>i</em></sub> ∈ (<em>Σ</em> ∪ {<em>ϵ</em>})<sup>⋆</sup></span>) and a sequence <span class="math inline"><em>r</em> = <em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<p>A non-deterministic finite automaton accepts the string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>) if there exist a string <span class="math inline"><em>y</em> = <em>y</em><sub>1</sub><em>y</em><sub>2</sub>…<em>y</em><sub><em>m</em></sub></span> (<span class="math inline"><em>y</em><sub><em>i</em></sub> ∈ <em>Σ</em> ∪ {<em>ϵ</em>}</span>) and a sequence <span class="math inline"><em>r</em> = <em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
 <ul>
 <li><p><span class="math inline"><em>w</em> = <em>y</em><sub>1</sub> ∘ <em>y</em><sub>2</sub> ∘ ⋯ ∘ <em>y</em><sub><em>m</em></sub></span> (i.e. <span class="math inline"><em>y</em></span> is <span class="math inline"><em>w</em></span> with some <span class="math inline"><em>ϵ</em></span> inserted),</p></li>
 <li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
@@ -116,7 +116,7 @@
 <li><p><span class="math inline"><em>Q</em></span> is a finite set of states,</p></li>
 <li><p><span class="math inline"><em>Σ</em></span> is its input alphabet,</p></li>
 <li><p><span class="math inline"><em>Γ</em></span> is its stack alphabet,</p></li>
-<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) × (<em>Γ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em> × (<em>Γ</em> ∪ <em>ϵ</em>)</sup></span> is its transition function,</p></li>
+<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) × (<em>Γ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em> × (<em>Γ</em> ∪ {<em>ϵ</em>})</sup></span> is its transition function,</p></li>
 <li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is its starting state, and</p></li>
 <li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a finite set of accepting states.</p></li>
 </ul>
