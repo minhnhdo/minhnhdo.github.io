@@ -36,16 +36,16 @@
 
 <article>
 <h2 id="sets">Sets</h2>
-<p>A <em>set</em> is a collection of objects. For example, <span class="math inline">\(S = \{1, \delta, \circ, \{2, \gamma\}\}\)</span>. Note that <span class="math inline">\(|S| = 4\)</span>.</p>
+<p>A <em>set</em> is a collection of objects. These objects are referred to as the <em>elements</em> of the set. For example, <span class="math inline">\(S = \{1, \delta, \circ, \{2, \gamma\}\}\)</span>. Note that <span class="math inline">\(|S| = 4\)</span>.</p>
 <p>Another notation for writing down a set is <span class="math inline">\(S = \{x : P(x) \text{ is true}\}\)</span>, which means “S is a set of <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(x)\)</span> is true”. <span class="math inline">\(P\)</span> is a <em>property</em> of <span class="math inline">\(x\)</span> and if it is true, it will put <span class="math inline">\(x\)</span> in <span class="math inline">\(S\)</span>. For example, <span class="math inline">\(S = \{x : x &lt; 2\}\)</span> means <span class="math inline">\(S\)</span> is a set of <span class="math inline">\(x\)</span> such that <span class="math inline">\(x\)</span> is less than <span class="math inline">\(2\)</span>.</p>
 <p><span class="math inline">\(x \in S\)</span> means <span class="math inline">\(x\)</span> is in <span class="math inline">\(S\)</span>. <span class="math inline">\(x \notin S\)</span> means <span class="math inline">\(x\)</span> is not in <span class="math inline">\(S\)</span>. <span class="math inline">\(\emptyset\)</span> is the <em>empty set</em>.</p>
-<p><span class="math inline">\(A \subset B\)</span> means <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(B\)</span>, which means if <span class="math inline">\(x \in A\)</span> then <span class="math inline">\(x \in B\)</span> (or <span class="math inline">\(x \in A \implies x \in B\)</span>).</p>
+<p><span class="math inline">\(A \subset B\)</span> means <span class="math inline">\(A\)</span> is a <em>subset</em> of <span class="math inline">\(B\)</span>, or <span class="math inline">\(B\)</span> <em>contains</em> <span class="math inline">\(A\)</span>, which means if <span class="math inline">\(x \in A\)</span> then <span class="math inline">\(x \in B\)</span> (or <span class="math inline">\(x \in A \implies x \in B\)</span>).</p>
 <p>If <span class="math inline">\(A \subset B\)</span> and <span class="math inline">\(A \not\subset B\)</span>, then set <span class="math inline">\(A\)</span> is a <em>proper subset</em> of <span class="math inline">\(B\)</span>.</p>
 <p>If <span class="math inline">\(A \subset B\)</span> and <span class="math inline">\(B \subset A\)</span>, then <span class="math inline">\(A = B\)</span>, else <span class="math inline">\(A \neq B\)</span>.</p>
 <h3 id="operations-on-sets">Operations on Sets</h3>
 <p>Union: <span class="math inline">\(A \cup B = \{x : x \in A \text{ or } x \in B\}\)</span>.</p>
-<p>Intersection: <span class="math inline">\(A \cup B = \{x : x \in A \text{ and } x \in B\}\)</span>.</p>
-<p>Complement: <span class="math inline">\(A^C = \{x : x \notin A\}\)</span>.</p>
+<p>Intersection: <span class="math inline">\(A \cap B = \{x : x \in A \text{ and } x \in B\}\)</span>.</p>
+<p>Complement: <span class="math inline">\(A^c = \{x : x \notin A\}\)</span>.</p>
 <p>Minus: <span class="math inline">\(A \setminus B = \{x : x \in A \text{ and } x \notin B\}\)</span>.</p>
 <p>Product: <span class="math inline">\(A \times B = \{(x, y) : x \in A \text{ and } y \in B\}\)</span>.</p>
 <h2 id="relations">Relations</h2>
@@ -57,7 +57,7 @@
 <li>symmetric, i.e. <span class="math inline">\(aRb \implies bRa\)</span>,</li>
 <li>transitive, i.e. if <span class="math inline">\(aRb\)</span> and <span class="math inline">\(bRc\)</span> then <span class="math inline">\(aRc\)</span>.</li>
 </ol>
-<p>A <em>function</em> <span class="math inline">\(F\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, denoted <span class="math inline">\(F : A \rightarrow B\)</span>, is a relation such that if <span class="math inline">\(aFb\)</span> and <span class="math inline">\(aFb'\)</span> then <span class="math inline">\(b = b'\)</span>. Informally, <span class="math inline">\(F\)</span> assigns each <span class="math inline">\(a \in A\)</span> to a single <span class="math inline">\(b \in B\)</span>. We also write <span class="math inline">\(F(a) = b\)</span>.</p>
+<p>A <em>function</em> <span class="math inline">\(F\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, denoted <span class="math inline">\(F : A \rightarrow B\)</span>, is a relation such that if <span class="math inline">\(aFb\)</span> and <span class="math inline">\(aFb'\)</span> then <span class="math inline">\(b = b'\)</span>. Informally, <span class="math inline">\(F\)</span> assigns each <span class="math inline">\(a \in A\)</span> to a single <span class="math inline">\(b \in B\)</span>. <span class="math inline">\(A\)</span> is the <em>domain</em> of <span class="math inline">\(F\)</span>. <span class="math inline">\(B\)</span> is the <em>codomain</em> of <span class="math inline">\(F\)</span>. The <em>range</em> of <span class="math inline">\(F\)</span> is a subset of <span class="math inline">\(B\)</span>, given by <span class="math inline">\(\{y \in B : y = F(x) \text{ for some } x \in A\}\)</span>. We also write <span class="math inline">\(F(a) = b\)</span>.</p>
 <h2 id="the-rational-numbers-mathbbq">The Rational Numbers <span class="math inline">\(\mathbb{Q}\)</span></h2>
 <h3 id="construction-of-mathbbq">Construction of <span class="math inline">\(\mathbb{Q}\)</span></h3>
 <p>Assume <span class="math inline">\(\mathbb{Z}\)</span>, the integers, their arithmetic and order.</p>
