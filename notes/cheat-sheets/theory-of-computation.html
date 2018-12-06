@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Theory of Computation - MrOrdinaire</title>
         <link rel="stylesheet" type="text/css" href="../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     </head>
     <body>
         <div id="header-strip">
@@ -15,7 +16,7 @@
                 </div>
                 <div id="navigation">
                     <a href="../../resume.pdf">Résumé</a>
-                    <a href="../../notes.html">Notes</a>
+                    <a href="../../notes/">Notes</a>
                     <a href="../../posts/">Posts</a>
                     <a href="https://twitter.com/mrordinaire">Twitter</a>
                     <a href="https://github.com/mrordinaire">GitHub</a>
@@ -29,104 +30,104 @@
 
                 
 <h1 id="prerequisite-definitions">Prerequisite Definitions</h1>
-<p><em>Alphabets</em> <span class="math inline"><em>Σ</em></span>, and <span class="math inline"><em>Γ</em></span> are finite nonempty sets of symbols.</p>
+<p><em>Alphabets</em> <span class="math inline">\(\Sigma\)</span>, and <span class="math inline">\(\Gamma\)</span> are finite nonempty sets of symbols.</p>
 <p>A <em>string</em> is a finite sequence of zero or more symbols from an alphabet.</p>
-<p><span class="math inline"><em>Σ</em><sup>⋆</sup></span> is the set of all strings over alphabet <span class="math inline"><em>Σ</em></span>.</p>
-<p><span class="math inline"><em>ϵ</em></span> is the empty string and cannot be in <span class="math inline"><em>Σ</em></span>.</p>
+<p><span class="math inline">\(\Sigma^\star\)</span> is the set of all strings over alphabet <span class="math inline">\(\Sigma\)</span>.</p>
+<p><span class="math inline">\(\epsilon\)</span> is the empty string and cannot be in <span class="math inline">\(\Sigma\)</span>.</p>
 <p>A <em>problem</em> is a mapping from strings to strings.</p>
 <p>A <em>decision problem</em> is a problem whose output is yes/no (or often accept/reject).</p>
 <p>A decision problem be thought of as the set of all strings for which the function outputs “accept”.</p>
-<p>A <em>language</em> is a set of strings, so any set <span class="math inline"><em>S</em> ⊆ <em>Σ</em><sup>⋆</sup></span> is a language, even <span class="math inline">∅</span>. Thus, decision problems are equivalent to languages.</p>
+<p>A <em>language</em> is a set of strings, so any set <span class="math inline">\(S \subseteq \Sigma^\star\)</span> is a language, even <span class="math inline">\(\emptyset\)</span>. Thus, decision problems are equivalent to languages.</p>
 <h1 id="regular-languages">Regular Languages</h1>
-<p><span class="math inline"><em>L</em>(<em>M</em>)</span> is the language accepted by machine <span class="math inline"><em>M</em></span>.</p>
-<p>A deterministic finite automaton is a 5-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<p><span class="math inline">\(L(M)\)</span> is the language accepted by machine <span class="math inline">\(M\)</span>.</p>
+<p>A deterministic finite automaton is a 5-tuple <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span>, where</p>
 <ul>
-<li><p><span class="math inline"><em>Q</em></span> is a finite set of states,</p></li>
-<li><p><span class="math inline"><em>Σ</em></span> is an alphabet,</p></li>
-<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × <em>Σ</em> → <em>Q</em></span> is a transition function describing its transitions and labels,</p></li>
-<li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is the starting state, and</p></li>
-<li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a set of accepting states.</p></li>
+<li><p><span class="math inline">\(Q\)</span> is a finite set of states,</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span> is an alphabet,</p></li>
+<li><p><span class="math inline">\(\delta : Q \times \Sigma \rightarrow Q\)</span> is a transition function describing its transitions and labels,</p></li>
+<li><p><span class="math inline">\(q_0 \in Q\)</span> is the starting state, and</p></li>
+<li><p><span class="math inline">\(F \subseteq Q\)</span> is a set of accepting states.</p></li>
 </ul>
-<p>If <span class="math inline"><em>δ</em></span> is not fully specified, we assume an implicit transition to an <em>error state</em>.</p>
-<p>A deterministic finite automaton <span class="math inline"><em>M</em></span> accepts input string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>) if there exists a sequence of states <span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<p>If <span class="math inline">\(\delta\)</span> is not fully specified, we assume an implicit transition to an <em>error state</em>.</p>
+<p>A deterministic finite automaton <span class="math inline">\(M\)</span> accepts input string <span class="math inline">\(w = w_1w_2 \dots w_n\)</span> (<span class="math inline">\(w_i \in \Sigma\)</span>) if there exists a sequence of states <span class="math inline">\(r_0, r_1, r_2, \dots, r_n\)</span> (<span class="math inline">\(r_i \in Q\)</span>) such that</p>
 <ul>
-<li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
-<li><p>for all <span class="math inline"><em>i</em> ∈ {1, …, <em>n</em>}</span>, <span class="math inline"><em>r</em><sub><em>i</em></sub> = <em>δ</em>(<em>r</em><sub><em>i</em> − 1</sub>, <em>w</em><sub><em>i</em></sub>)</span>, and</p></li>
-<li><p><span class="math inline"><em>r</em><sub><em>n</em></sub> ∈ <em>F</em></span>.</p></li>
+<li><p><span class="math inline">\(r_0 = q_0\)</span>,</p></li>
+<li><p>for all <span class="math inline">\(i \in \{1, \dots, n\}\)</span>, <span class="math inline">\(r_i = \delta(r_{i-1}, w_i)\)</span>, and</p></li>
+<li><p><span class="math inline">\(r_n \in F\)</span>.</p></li>
 </ul>
-<p><span class="math inline"><em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, <em>r</em><sub>2</sub>, …, <em>r</em><sub><em>n</em></sub></span> are the sequence of states visited during the machine’s computation.</p>
-<p>A non-deterministic finite automaton is a 5-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<p><span class="math inline">\(r_0, r_1, r_2, \dots, r_n\)</span> are the sequence of states visited during the machine’s computation.</p>
+<p>A non-deterministic finite automaton is a 5-tuple <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span>, where</p>
 <ul>
-<li><p><span class="math inline"><em>Q</em>, <em>Σ</em>, <em>q</em><sub>0</sub>, <em>F</em></span> are the same as a deterministic finite automaton’s, and</p></li>
-<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em></sup></span>.</p></li>
+<li><p><span class="math inline">\(Q, \Sigma, q_0, F\)</span> are the same as a deterministic finite automaton’s, and</p></li>
+<li><p><span class="math inline">\(\delta : Q \times (\Sigma \cup \{\epsilon\}) \rightarrow 2^Q\)</span>.</p></li>
 </ul>
-<p>A non-deterministic finite automaton accepts the string <span class="math inline"><em>w</em> = <em>w</em><sub>1</sub><em>w</em><sub>2</sub>…<em>w</em><sub><em>n</em></sub></span> (<span class="math inline"><em>w</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>) if there exist a string <span class="math inline"><em>y</em> = <em>y</em><sub>1</sub><em>y</em><sub>2</sub>…<em>y</em><sub><em>m</em></sub></span> (<span class="math inline"><em>y</em><sub><em>i</em></sub> ∈ <em>Σ</em> ∪ {<em>ϵ</em>}</span>) and a sequence <span class="math inline"><em>r</em> = <em>r</em><sub>0</sub>, <em>r</em><sub>1</sub>, …, <em>r</em><sub><em>n</em></sub></span> (<span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>Q</em></span>) such that</p>
+<p>A non-deterministic finite automaton accepts the string <span class="math inline">\(w = w_1w_2 \dots w_n\)</span> (<span class="math inline">\(w_i \in \Sigma\)</span>) if there exist a string <span class="math inline">\(y = y_1y_2 \dots y_m\)</span> (<span class="math inline">\(y_i \in \Sigma \cup \{\epsilon\}\)</span>) and a sequence <span class="math inline">\(r = r_0, r_1, \dots, r_n\)</span> (<span class="math inline">\(r_i \in Q\)</span>) such that</p>
 <ul>
-<li><p><span class="math inline"><em>w</em> = <em>y</em><sub>1</sub> ∘ <em>y</em><sub>2</sub> ∘ ⋯ ∘ <em>y</em><sub><em>m</em></sub></span> (i.e. <span class="math inline"><em>y</em></span> is <span class="math inline"><em>w</em></span> with some <span class="math inline"><em>ϵ</em></span> inserted),</p></li>
-<li><p><span class="math inline"><em>r</em><sub>0</sub> = <em>q</em><sub>0</sub></span>,</p></li>
-<li><p>for all <span class="math inline"><em>i</em> = {1, …, <em>m</em>}</span>, <span class="math inline"><em>r</em><sub><em>i</em></sub> ∈ <em>δ</em>(<em>r</em><sub><em>i</em> − 1</sub>, <em>q</em><sub><em>i</em></sub>)</span>, and</p></li>
-<li><p><span class="math inline"><em>r</em><sub><em>m</em></sub> ∈ <em>F</em></span>.</p></li>
+<li><p><span class="math inline">\(w = y_1 \circ y_2 \circ \cdots \circ y_m\)</span> (i.e. <span class="math inline">\(y\)</span> is <span class="math inline">\(w\)</span> with some <span class="math inline">\(\epsilon\)</span> inserted),</p></li>
+<li><p><span class="math inline">\(r_0 = q_0\)</span>,</p></li>
+<li><p>for all <span class="math inline">\(i = \{1, \dots, m\}\)</span>, <span class="math inline">\(r_i \in \delta(r_{i-1}, q_i)\)</span>, and</p></li>
+<li><p><span class="math inline">\(r_m \in F\)</span>.</p></li>
 </ul>
-<p>The <em><span class="math inline"><em>ϵ</em></span>-closure</em> for any set <span class="math inline"><em>S</em> ⊆ <em>Q</em></span> is denoted <span class="math inline"><em>E</em>(<em>S</em>)</span>, which is the set of all states in <span class="math inline"><em>Q</em></span> that can be reachable by following any number of <span class="math inline"><em>ϵ</em></span>-transition.</p>
+<p>The <em><span class="math inline">\(\epsilon\)</span>-closure</em> for any set <span class="math inline">\(S \subseteq Q\)</span> is denoted <span class="math inline">\(E(S)\)</span>, which is the set of all states in <span class="math inline">\(Q\)</span> that can be reachable by following any number of <span class="math inline">\(\epsilon\)</span>-transition.</p>
 <p>A non-deterministic finite automaton can be converted to an equivalent deterministic finite automaton.</p>
 <p>A <em>regular language</em> is any language accepted by some finite automaton. The set of all regular languages is called the <em>class of regular languages</em>.</p>
 <p>Regular languages are closed under</p>
 <ul>
-<li><p>Concatenation <span class="math inline"><em>L</em><sub>1</sub> ∘ <em>L</em><sub>2</sub> = {<em>x</em> ∘ <em>y</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> and <em>y</em> ∈ <em>L</em><sub>2</sub>}</span>. Note: <span class="math inline"><em>L</em><sub>1</sub> ⊈ <em>L</em><sub>1</sub> ∘ <em>L</em><sub>2</sub></span>.</p></li>
-<li><p>Union <span class="math inline"><em>L</em><sub>1</sub> ∪ <em>L</em><sub>2</sub> = {<em>x</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> or <em>x</em> ∈ <em>L</em><sub>2</sub>}</span>.</p></li>
-<li><p>Intersection <span class="math inline"><em>L</em><sub>1</sub> ∩ <em>L</em><sub>2</sub> = {<em>x</em> : <em>x</em> ∈ <em>L</em><sub>1</sub> and <em>x</em> ∈ <em>L</em><sub>2</sub>}</span>.</p></li>
-<li><p>Complement <span class="math inline">$\overline{L} = \Sigma^\star \setminus L = \{x : x \notin L\}$</span>.</p></li>
-<li><p>Star <span class="math inline"><em>L</em><sup>⋆</sup> = {<em>x</em><sub>1</sub> ∘ <em>x</em><sub>2</sub> ∘ ⋯ ∘ <em>x</em><sub><em>k</em></sub> : <em>x</em><sub><em>i</em></sub> ∈ <em>L</em> and <em>k</em> ≥ 0}</span>.</p></li>
+<li><p>Concatenation <span class="math inline">\(L_1 \circ L_2 = \{x \circ y : x \in L_1 \text{ and } y \in L_2\}\)</span>. Note: <span class="math inline">\(L_1 \not\subseteq L_1 \circ L_2\)</span>.</p></li>
+<li><p>Union <span class="math inline">\(L_1 \cup L_2 = \{x : x \in L_1 \text{ or } x \in L_2\}\)</span>.</p></li>
+<li><p>Intersection <span class="math inline">\(L_1 \cap L_2 = \{x : x \in L_1 \text{ and } x \in L_2\}\)</span>.</p></li>
+<li><p>Complement <span class="math inline">\(\overline{L} = \Sigma^\star \setminus L = \{x : x \notin L\}\)</span>.</p></li>
+<li><p>Star <span class="math inline">\(L^\star = \{x_1 \circ x_2 \circ \cdots \circ x_k : x_i \in L \text{ and } k \geq 0\}\)</span>.</p></li>
 </ul>
-<p><span class="math inline"><em>R</em></span> is a regular expression if <span class="math inline"><em>R</em></span> is</p>
+<p><span class="math inline">\(R\)</span> is a regular expression if <span class="math inline">\(R\)</span> is</p>
 <ul>
-<li><p><span class="math inline"><em>a</em> ∈ <em>Σ</em></span>,</p></li>
-<li><p><span class="math inline"><em>ϵ</em></span>,</p></li>
-<li><p><span class="math inline">∅</span>,</p></li>
-<li><p><span class="math inline"><em>R</em><sub>1</sub> ∪ <em>R</em><sub>2</sub></span>, or <span class="math inline"><em>R</em><sub>1</sub>|<em>R</em><sub>2</sub></span>,</p></li>
-<li><p><span class="math inline"><em>R</em><sub>1</sub> ∘ <em>R</em><sub>2</sub></span>, or <span class="math inline"><em>R</em><sub>1</sub><em>R</em><sub>2</sub></span>,</p></li>
-<li><p><span class="math inline"><em>R</em><sub>1</sub><sup>⋆</sup></span>,</p></li>
-<li><p>Shorthand: <span class="math inline"><em>Σ</em> = (<em>a</em><sub>1</sub>|<em>a</em><sub>2</sub>|…|<em>a</em><sub><em>k</em></sub>)</span>, <span class="math inline"><em>a</em><sub><em>i</em></sub> ∈ <em>Σ</em></span>,</p></li>
+<li><p><span class="math inline">\(a \in \Sigma\)</span>,</p></li>
+<li><p><span class="math inline">\(\epsilon\)</span>,</p></li>
+<li><p><span class="math inline">\(\emptyset\)</span>,</p></li>
+<li><p><span class="math inline">\(R_1 \cup R_2\)</span>, or <span class="math inline">\(R_1 | R_2\)</span>,</p></li>
+<li><p><span class="math inline">\(R_1 \circ R_2\)</span>, or <span class="math inline">\(R_1R_2\)</span>,</p></li>
+<li><p><span class="math inline">\(R_1^\star\)</span>,</p></li>
+<li><p>Shorthand: <span class="math inline">\(\Sigma = (a_1 | a_2 | \dots | a_k)\)</span>, <span class="math inline">\(a_i \in \Sigma\)</span>,</p></li>
 </ul>
-<p>where <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is a regular expression.</p>
+<p>where <span class="math inline">\(R_i\)</span> is a regular expression.</p>
 <p>Identities of Regular Languages</p>
 <ul>
-<li><p><span class="math inline">∅ ∪ <em>R</em> = <em>R</em> ∪ ∅ = <em>R</em></span></p></li>
-<li><p><span class="math inline">∅ ∘ <em>R</em> = <em>R</em> ∘ ∅ = ∅</span></p></li>
-<li><p><span class="math inline"><em>ϵ</em> ∘ <em>R</em> = <em>R</em> ∘ <em>ϵ</em> = <em>R</em></span></p></li>
-<li><p><span class="math inline"><em>ϵ</em><sup>⋆</sup> = <em>ϵ</em></span></p></li>
-<li><p><span class="math inline">∅<sup>⋆</sup> = ∅</span></p></li>
-<li><p><span class="math inline">∅ ∪ <em>R</em> ∘ <em>R</em><sup>⋆</sup> = <em>R</em> ∘ <em>R</em><sup>⋆</sup> ∪ <em>ϵ</em> = <em>R</em><sup>⋆</sup></span></p></li>
-<li><p><span class="math inline">(<em>a</em>|<em>b</em>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup>|<em>b</em><sup>⋆</sup>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup><em>b</em><sup>⋆</sup>)<sup>⋆</sup> = (<em>a</em><sup>⋆</sup>|<em>b</em>)<sup>⋆</sup> = (<em>a</em>|<em>b</em><sup>⋆</sup>)<sup>⋆</sup> = <em>a</em><sup>⋆</sup>(<em>b</em><em>a</em><sup>⋆</sup>)<sup>⋆</sup> = <em>b</em><sup>⋆</sup>(<em>a</em><em>b</em><sup>⋆</sup>)<sup>⋆</sup></span></p></li>
+<li><p><span class="math inline">\(\emptyset \cup R = R \cup \emptyset = R\)</span></p></li>
+<li><p><span class="math inline">\(\emptyset \circ R = R \circ \emptyset = \emptyset\)</span></p></li>
+<li><p><span class="math inline">\(\epsilon \circ R = R \circ \epsilon = R\)</span></p></li>
+<li><p><span class="math inline">\(\epsilon^\star = \epsilon\)</span></p></li>
+<li><p><span class="math inline">\(\emptyset^\star = \emptyset\)</span></p></li>
+<li><p><span class="math inline">\(\emptyset \cup R \circ R^\star = R \circ R^\star \cup \epsilon = R^\star\)</span></p></li>
+<li><p><span class="math inline">\((a | b)^\star = (a^\star | b^\star)^\star = (a^\star b^\star)^\star = (a^\star | b)^\star = (a | b^\star)^\star = a^\star(ba^\star)^\star = b^\star(ab^\star)^\star\)</span></p></li>
 </ul>
 <p>Languages accepted by DFAs = languages accepted by NFAs = regular languages</p>
-<p>If <span class="math inline"><em>L</em></span> is a finite language, <span class="math inline"><em>L</em></span> is regular.</p>
+<p>If <span class="math inline">\(L\)</span> is a finite language, <span class="math inline">\(L\)</span> is regular.</p>
 <p>If a computation path of any finite automaton is longer than the number of states it has, there must be a cycle in that computation path.</p>
 <p>Every regular language satisfies the pumping condition.</p>
-<p><em>Pumping condition</em>: There exists an integer <span class="math inline"><em>p</em></span> such that for every string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, there exist strings <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span> such that for all <span class="math inline"><em>i</em> ≥ 0</span>, <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∈ <em>L</em></span>.</p>
-<p><em>Negation of pumping condition</em>: For all integers <span class="math inline"><em>p</em></span>, there exists a string <span class="math inline"><em>w</em> ∈ <em>L</em></span>, with <span class="math inline">|<em>w</em>| ≥ <em>p</em></span>, for all <span class="math inline"><em>x</em>, <em>y</em>, <em>z</em> ∈ <em>Σ</em><sup>⋆</sup></span> with <span class="math inline"><em>w</em> = <em>x</em><em>y</em><em>z</em>, <em>y</em> ≠ <em>ϵ</em>, |<em>x</em><em>y</em>| ≤ <em>p</em></span>, there exists <span class="math inline"><em>i</em> ≥ 0, <em>i</em> ≠ 1</span> such that <span class="math inline"><em>x</em><em>y</em><sup><em>i</em></sup><em>z</em> ∉ <em>L</em></span>.</p>
+<p><em>Pumping condition</em>: There exists an integer <span class="math inline">\(p\)</span> such that for every string <span class="math inline">\(w \in L\)</span>, with <span class="math inline">\(|w| \geq p\)</span>, there exist strings <span class="math inline">\(x, y, z \in \Sigma^\star\)</span> with <span class="math inline">\(w = xyz, y \neq \epsilon, |xy| \leq p\)</span> such that for all <span class="math inline">\(i \geq 0\)</span>, <span class="math inline">\(xy^iz \in L\)</span>.</p>
+<p><em>Negation of pumping condition</em>: For all integers <span class="math inline">\(p\)</span>, there exists a string <span class="math inline">\(w \in L\)</span>, with <span class="math inline">\(|w| \geq p\)</span>, for all <span class="math inline">\(x, y, z \in \Sigma^\star\)</span> with <span class="math inline">\(w = xyz, y \neq \epsilon, |xy| \leq p\)</span>, there exists <span class="math inline">\(i \geq 0, i \neq 1\)</span> such that <span class="math inline">\(xy^iz \notin L\)</span>.</p>
 <p>Limitations of finite automata:</p>
 <ul>
 <li><p>Only read input once, left to right.</p></li>
 <li><p>Only finite memory.</p></li>
 </ul>
 <h1 id="context-free-languages">Context-Free Languages</h1>
-<p>A pushdown automaton is a 6-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>Γ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>F</em>)</span>, where</p>
+<p>A pushdown automaton is a 6-tuple <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, F)\)</span>, where</p>
 <ul>
-<li><p><span class="math inline"><em>Q</em></span> is a finite set of states,</p></li>
-<li><p><span class="math inline"><em>Σ</em></span> is its input alphabet,</p></li>
-<li><p><span class="math inline"><em>Γ</em></span> is its stack alphabet,</p></li>
-<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × (<em>Σ</em> ∪ {<em>ϵ</em>}) × (<em>Γ</em> ∪ {<em>ϵ</em>}) → 2<sup><em>Q</em> × (<em>Γ</em> ∪ {<em>ϵ</em>})</sup></span> is its transition function,</p></li>
-<li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is its starting state, and</p></li>
-<li><p><span class="math inline"><em>F</em> ⊆ <em>Q</em></span> is a finite set of accepting states.</p></li>
+<li><p><span class="math inline">\(Q\)</span> is a finite set of states,</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span> is its input alphabet,</p></li>
+<li><p><span class="math inline">\(\Gamma\)</span> is its stack alphabet,</p></li>
+<li><p><span class="math inline">\(\delta : Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \rightarrow 2^{Q \times (\Gamma \cup \{\epsilon\})}\)</span> is its transition function,</p></li>
+<li><p><span class="math inline">\(q_0 \in  Q\)</span> is its starting state, and</p></li>
+<li><p><span class="math inline">\(F \subseteq Q\)</span> is a finite set of accepting states.</p></li>
 </ul>
-<p>Labels: <span class="math inline"><em>a</em>, <em>b</em> → <em>c</em></span>: if input symbol is <span class="math inline"><em>a</em></span>, and top of stack is <span class="math inline"><em>b</em></span>, pop it and push <span class="math inline"><em>c</em></span>. In other words, input symbol read, stack symbol popped <span class="math inline">→</span> stack symbol pushed, e.g. <span class="math inline">0, <em>ϵ</em> → $</span>.</p>
-<p>Suppose <span class="math inline"><em>u</em>, <em>v</em>, <em>w</em></span> are strings of variables and terminals, and there is a rule <span class="math inline"><em>A</em> → <em>w</em></span>. From the string <span class="math inline"><em>u</em><em>A</em><em>v</em></span>, we can obtain <span class="math inline"><em>u</em><em>w</em><em>v</em></span>. We write <span class="math inline"><em>u</em><em>A</em><em>v</em> → <em>u</em><em>w</em><em>v</em></span>, and say <span class="math inline"><em>u</em><em>A</em><em>v</em></span> yields <span class="math inline"><em>u</em><em>w</em><em>v</em></span>.</p>
-<p>If <span class="math inline"><em>u</em><sub>1</sub> → <em>u</em><sub>2</sub> → … → <em>u</em><sub><em>k</em></sub></span>, then <span class="math inline"><em>u</em><sub>1</sub>→<sup>⋆</sup><em>u</em><sub><em>k</em></sub></span>, or <span class="math inline"><em>u</em><sub>1</sub></span> derives <span class="math inline"><em>u</em><sub><em>k</em></sub></span>. There must be a finite number of arrows between <span class="math inline"><em>u</em><sub>1</sub></span> and <span class="math inline"><em>u</em><sub><em>k</em></sub></span>.</p>
-<p>Given a grammar <span class="math inline"><em>G</em></span>, the language derived by the grammar is <span class="math inline"><em>L</em>(<em>G</em>) = {<em>w</em> ∈ <em>Σ</em><sup>⋆</sup> : <em>S</em>→<sup>⋆</sup><em>w</em> and <em>S</em> is the start variable}</span></p>
-<p><em>Context-free grammar:</em> the lhs of rules is a single variable, rhs is any string of variables and terminals. A <em>context-free language</em> is one that can be derived from a context-free grammar. An example context-free grammar is <span class="math inline"><em>G</em> = (<em>V</em>, <em>Σ</em>, <em>R</em>, ⟨<code>EXPR</code>⟩)</span>, where <span class="math inline"><em>V</em> = {⟨<code>EXPR</code>⟩, ⟨<code>TERM</code>⟩, ⟨<code>FACTOR</code>⟩}</span>, <span class="math inline"><em>Σ</em> = {<em>a</em>, +,×,(,)}</span>, and <span class="math inline"><em>R</em> = {⟨<code>EXPR</code>⟩ → ⟨<code>EXPR</code>⟩ + ⟨<code>TERM</code>⟩|⟨<code>TERM</code>⟩, ⟨<code>TERM</code>⟩ → ⟨<code>TERM</code>⟩ × ⟨<code>FACTOR</code>⟩|⟨<code>FACTOR</code>⟩, ⟨<code>FACTOR</code>⟩ → (⟨<code>EXPR</code>⟩)}</span>.</p>
-<p>A <em>left-most derivation</em> is a sequence <span class="math inline"><em>S</em> → <em>u</em><sub>1</sub> → <em>u</em><sub>2</sub> → … → <em>u</em><sub><em>k</em></sub> → <em>w</em></span> where each step applies a rule to the left-most variable. A grammar is <em>ambiguous</em> when it has multiple left-most derivations for the same string.</p>
-<p>A language <span class="math inline"><em>L</em></span> is recognized by a pushdown automaton iff <span class="math inline"><em>L</em></span> is described by a context-free grammar.</p>
+<p>Labels: <span class="math inline">\(a, b \rightarrow c\)</span>: if input symbol is <span class="math inline">\(a\)</span>, and top of stack is <span class="math inline">\(b\)</span>, pop it and push <span class="math inline">\(c\)</span>. In other words, input symbol read, stack symbol popped <span class="math inline">\(\rightarrow\)</span> stack symbol pushed, e.g. <span class="math inline">\(0, \epsilon \rightarrow \$\)</span>.</p>
+<p>Suppose <span class="math inline">\(u, v, w\)</span> are strings of variables and terminals, and there is a rule <span class="math inline">\(A \rightarrow w\)</span>. From the string <span class="math inline">\(uAv\)</span>, we can obtain <span class="math inline">\(uwv\)</span>. We write <span class="math inline">\(uAv \rightarrow uwv\)</span>, and say <span class="math inline">\(uAv\)</span> yields <span class="math inline">\(uwv\)</span>.</p>
+<p>If <span class="math inline">\(u_1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k\)</span>, then <span class="math inline">\(u_1 \rightarrow^\star u_k\)</span>, or <span class="math inline">\(u_1\)</span> derives <span class="math inline">\(u_k\)</span>. There must be a finite number of arrows between <span class="math inline">\(u_1\)</span> and <span class="math inline">\(u_k\)</span>.</p>
+<p>Given a grammar <span class="math inline">\(G\)</span>, the language derived by the grammar is <span class="math inline">\(L(G) = \{w \in \Sigma^\star : S \rightarrow^\star w \text{ and } S \text{ is the start variable}\}\)</span></p>
+<p><em>Context-free grammar:</em> the lhs of rules is a single variable, rhs is any string of variables and terminals. A <em>context-free language</em> is one that can be derived from a context-free grammar. An example context-free grammar is <span class="math inline">\(G = (V, \Sigma, R, \langle \texttt{EXPR} \rangle)\)</span>, where <span class="math inline">\(V = \{\langle \texttt{EXPR} \rangle, \langle \texttt{TERM} \rangle, \langle \texttt{FACTOR} \rangle\}\)</span>, <span class="math inline">\(\Sigma = \{a, +, \times, (, )\}\)</span>, and <span class="math inline">\(R = \{\langle \texttt{EXPR} \rangle \rightarrow \langle \texttt{EXPR} \rangle + \langle \texttt{TERM} \rangle | \langle \texttt{TERM} \rangle, \langle \texttt{TERM} \rangle \rightarrow \langle \texttt{TERM} \rangle \times \langle \texttt{FACTOR} \rangle | \langle \texttt{FACTOR} \rangle, \langle \texttt{FACTOR} \rangle \rightarrow (\langle \texttt{EXPR} \rangle)\}\)</span>.</p>
+<p>A <em>left-most derivation</em> is a sequence <span class="math inline">\(S \rightarrow u_1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k \rightarrow w\)</span> where each step applies a rule to the left-most variable. A grammar is <em>ambiguous</em> when it has multiple left-most derivations for the same string.</p>
+<p>A language <span class="math inline">\(L\)</span> is recognized by a pushdown automaton iff <span class="math inline">\(L\)</span> is described by a context-free grammar.</p>
 <p>Context-free languages are closed under union, concatenation, star.</p>
 <h1 id="recognizable-languages">Recognizable Languages</h1>
 <p>Differences from previous models</p>
@@ -136,90 +137,90 @@
 <li><p>It can move left and right on tape.</p></li>
 <li><p>It halts immediately when it reaches an accepting or rejecting state. The rejecting state must exist but may not be shown.</p></li>
 </ul>
-<p>A deterministic Turing machine is a 7-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>Γ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub>, <em>q</em><sub><em>r</em><em>e</em><em>j</em><em>e</em><em>c</em><em>t</em></sub>)</span>, where</p>
+<p>A deterministic Turing machine is a 7-tuple <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})\)</span>, where</p>
 <ul>
-<li><p><span class="math inline"><em>Q</em></span> is its finite non-empty set of states,</p></li>
-<li><p><span class="math inline"><em>Σ</em></span> is its input alphabet,</p></li>
-<li><p><span class="math inline"><em>Γ</em></span> is its tape alphabet (<span class="math inline"><em>Σ</em> ⊂ <em>Γ</em></span> and <span class="math inline">$\text{\textvisiblespace } \in \Gamma \setminus \Sigma$</span>),</p></li>
-<li><p><span class="math inline"><em>δ</em> : <em>Q</em> × <em>Γ</em> → <em>Q</em> × <em>Γ</em> × {<em>L</em>, <em>R</em>}</span> is its transition function,</p></li>
-<li><p><span class="math inline"><em>q</em><sub>0</sub> ∈ <em>Q</em></span> is its starting state,</p></li>
-<li><p><span class="math inline"><em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub> ∈ <em>Q</em></span> is its accepting state, and</p></li>
-<li><p><span class="math inline"><em>q</em><sub><em>r</em><em>e</em><em>j</em><em>e</em><em>c</em><em>t</em></sub> ∈ <em>Q</em></span> is its rejecting state (<span class="math inline"><em>q</em><sub><em>r</em><em>e</em><em>j</em><em>e</em><em>c</em><em>t</em></sub> ≠ <em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub></span>).</p></li>
+<li><p><span class="math inline">\(Q\)</span> is its finite non-empty set of states,</p></li>
+<li><p><span class="math inline">\(\Sigma\)</span> is its input alphabet,</p></li>
+<li><p><span class="math inline">\(\Gamma\)</span> is its tape alphabet (<span class="math inline">\(\Sigma \subset \Gamma\)</span> and <span class="math inline">\(\text{\textvisiblespace } \in \Gamma \setminus \Sigma\)</span>),</p></li>
+<li><p><span class="math inline">\(\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}\)</span> is its transition function,</p></li>
+<li><p><span class="math inline">\(q_0 \in Q\)</span> is its starting state,</p></li>
+<li><p><span class="math inline">\(q_{accept} \in Q\)</span> is its accepting state, and</p></li>
+<li><p><span class="math inline">\(q_{reject} \in Q\)</span> is its rejecting state (<span class="math inline">\(q_{reject} \neq q_{accept}\)</span>).</p></li>
 </ul>
-<p>Labels: <span class="math inline"><em>a</em> → <em>b</em>, <em>R</em></span>: if tape symbol is <span class="math inline"><em>a</em></span>, write <span class="math inline"><em>b</em></span> and move head right. <span class="math inline"><em>a</em> → <em>R</em></span>: if tape symbol is <span class="math inline"><em>a</em></span>, move head right. <span class="math inline"><em>a</em>, <em>b</em>, <em>c</em> → <em>R</em></span>: if tape symbol is <span class="math inline"><em>a</em>, <em>b</em></span>, or <span class="math inline"><em>c</em></span>, move head right.</p>
-<p>On input <span class="math inline"><em>x</em></span>, a Turing machine can (1) accept, (2) reject, or (3) run in an infinite loop.</p>
-<p>The language <em>recognized</em> by a Turing machine <span class="math inline"><em>M</em></span> is <span class="math inline"><em>L</em>(<em>M</em>) = {<em>x</em> : on input <em>x</em>, <em>M</em> halts in <em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub>}</span>. A language is <em>recognizable</em> if there exists a Turing machine which recognizes it.</p>
-<p>Regular languages <span class="math inline">⊆</span> context-free languages <span class="math inline">⊆</span> decidable languages <span class="math inline">⊆</span> recognizable languages</p>
-<p>A <em>configuration</em> is a way to describe the entire state of the Turing machine. It is a string <span class="math inline"><em>a</em><em>q</em><em>b</em></span> where <span class="math inline"><em>a</em> ∈ <em>Γ</em><sup>⋆</sup>, <em>q</em> ∈ <em>Q</em>, <em>b</em> ∈ <em>Γ</em><sup>⋆</sup></span>, which indicates that <span class="math inline"><em>q</em></span> is the current state of the Turing machine, the tape content currently is <span class="math inline"><em>a</em><em>b</em></span> and its head is currently pointing at the first symbol of <span class="math inline"><em>b</em></span>. Any Turing machine halts if its configuration is of the form <span class="math inline"><em>a</em><em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub><em>b</em></span>, or <span class="math inline"><em>a</em><em>q</em><sub><em>r</em><em>e</em><em>j</em><em>e</em><em>c</em><em>t</em></sub><em>b</em></span> for any <span class="math inline"><em>a</em><em>b</em></span>. Config(<span class="math inline"><em>i</em></span>) uniquely determines Config(<span class="math inline"><em>i</em> + 1</span>).</p>
-<p>Every <span class="math inline"><em>k</em></span>-tape Turing machine has an equivalent single tape Turing machine.</p>
-<p>If the alphabet of the multitape Turing machine is <span class="math inline"><em>Γ</em></span>, we can make the single tape Turing machine’s alphabet <span class="math inline">(<em>Γ</em> ∪ {#}) × {<code>normal</code>, <code>bold</code>}</span>.</p>
-<p>A non-deterministic Turing machine is a 7-tuple <span class="math inline"><em>M</em> = (<em>Q</em>, <em>Σ</em>, <em>Γ</em>, <em>δ</em>, <em>q</em><sub>0</sub>, <em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub>, <em>q</em><sub><em>r</em><em>e</em><em>j</em><em>e</em><em>c</em><em>t</em></sub>)</span>, where the only difference from a deterministic Turing machine is the transition function <span class="math inline"><em>d</em><em>e</em><em>l</em><em>t</em><em>a</em> : <em>Q</em> × <em>Γ</em> → 2<sup><em>Q</em> × <em>Γ</em> × {<em>L</em>, <em>R</em>}</sup></span>.</p>
-<p>A non-deterministic Turing machine accepts its input iff some node in the configuration tree has <span class="math inline"><em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub></span>. It does not accept its input iff the configuration tree grows forever (infinite loop) or no node in the tree has <span class="math inline"><em>q</em><sub><em>a</em><em>c</em><em>c</em><em>e</em><em>p</em><em>t</em></sub></span>.</p>
-<p><em>Acceptance of a non-deterministic Turing machine:</em> input <span class="math inline"><em>w</em></span> is accepted if there exist configurations <span class="math inline"><em>c</em><sub>0</sub>, <em>c</em><sub>1</sub>, …, <em>c</em><sub><em>k</em></sub></span> where</p>
+<p>Labels: <span class="math inline">\(a \rightarrow b, R\)</span>: if tape symbol is <span class="math inline">\(a\)</span>, write <span class="math inline">\(b\)</span> and move head right. <span class="math inline">\(a \rightarrow R\)</span>: if tape symbol is <span class="math inline">\(a\)</span>, move head right. <span class="math inline">\(a, b, c \rightarrow R\)</span>: if tape symbol is <span class="math inline">\(a, b\)</span>, or <span class="math inline">\(c\)</span>, move head right.</p>
+<p>On input <span class="math inline">\(x\)</span>, a Turing machine can (1) accept, (2) reject, or (3) run in an infinite loop.</p>
+<p>The language <em>recognized</em> by a Turing machine <span class="math inline">\(M\)</span> is <span class="math inline">\(L(M) = \{x : \text{on input } x, M \text{ halts in } q_{accept}\}\)</span>. A language is <em>recognizable</em> if there exists a Turing machine which recognizes it.</p>
+<p>Regular languages <span class="math inline">\(\subseteq\)</span> context-free languages <span class="math inline">\(\subseteq\)</span> decidable languages <span class="math inline">\(\subseteq\)</span> recognizable languages</p>
+<p>A <em>configuration</em> is a way to describe the entire state of the Turing machine. It is a string <span class="math inline">\(aqb\)</span> where <span class="math inline">\(a \in \Gamma^\star, q \in Q, b \in \Gamma^\star\)</span>, which indicates that <span class="math inline">\(q\)</span> is the current state of the Turing machine, the tape content currently is <span class="math inline">\(ab\)</span> and its head is currently pointing at the first symbol of <span class="math inline">\(b\)</span>. Any Turing machine halts if its configuration is of the form <span class="math inline">\(aq_{accept}b\)</span>, or <span class="math inline">\(aq_{reject}b\)</span> for any <span class="math inline">\(ab\)</span>. Config(<span class="math inline">\(i\)</span>) uniquely determines Config(<span class="math inline">\(i + 1\)</span>).</p>
+<p>Every <span class="math inline">\(k\)</span>-tape Turing machine has an equivalent single tape Turing machine.</p>
+<p>If the alphabet of the multitape Turing machine is <span class="math inline">\(\Gamma\)</span>, we can make the single tape Turing machine’s alphabet <span class="math inline">\((\Gamma \cup \{\#\}) \times \{\texttt{normal}, \texttt{bold}\}\)</span>.</p>
+<p>A non-deterministic Turing machine is a 7-tuple <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})\)</span>, where the only difference from a deterministic Turing machine is the transition function <span class="math inline">\(delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \{L, R\}}\)</span>.</p>
+<p>A non-deterministic Turing machine accepts its input iff some node in the configuration tree has <span class="math inline">\(q_{accept}\)</span>. It does not accept its input iff the configuration tree grows forever (infinite loop) or no node in the tree has <span class="math inline">\(q_{accept}\)</span>.</p>
+<p><em>Acceptance of a non-deterministic Turing machine:</em> input <span class="math inline">\(w\)</span> is accepted if there exist configurations <span class="math inline">\(c_0, c_1, \dots, c_k\)</span> where</p>
 <ul>
-<li><p><span class="math inline"><em>c</em><sub>0</sub> = <em>q</em><sub><em>s</em><em>t</em><em>a</em><em>r</em><em>t</em></sub><em>w</em></span>, and</p></li>
-<li><p><span class="math inline"><em>c</em><sub><em>i</em></sub> ⇒ <em>c</em><sub><em>i</em> + 1</sub></span> (<span class="math inline"><em>c</em><sub><em>i</em> + 1</sub></span> is a possible configuration from <span class="math inline"><em>c</em><sub><em>i</em></sub></span>, following the transition function <span class="math inline"><em>δ</em></span>).</p></li>
+<li><p><span class="math inline">\(c_0 = q_{start}w\)</span>, and</p></li>
+<li><p><span class="math inline">\(c_i \Rightarrow c_{i+1}\)</span> (<span class="math inline">\(c_{i+1}\)</span> is a possible configuration from <span class="math inline">\(c_i\)</span>, following the transition function <span class="math inline">\(\delta\)</span>).</p></li>
 </ul>
 <p>The outcomes could be</p>
 <ul>
-<li><p><span class="math inline"><em>w</em></span> is accepted, i.e. there exists a node in the tree which is an accepting configuration,</p></li>
-<li><p><span class="math inline"><em>w</em></span> is explicitly rejected, i.e. the tree is finite but no node is an accepting configuration (all leaves are rejecting configurations), or</p></li>
-<li><p>the non-deterministic Turing machine runs forever on <span class="math inline"><em>w</em></span>, i.e. the tree is infinite but no node is an accepting configuration (there might be finite branches terminating in a rejecting configuration in the tree).</p></li>
+<li><p><span class="math inline">\(w\)</span> is accepted, i.e. there exists a node in the tree which is an accepting configuration,</p></li>
+<li><p><span class="math inline">\(w\)</span> is explicitly rejected, i.e. the tree is finite but no node is an accepting configuration (all leaves are rejecting configurations), or</p></li>
+<li><p>the non-deterministic Turing machine runs forever on <span class="math inline">\(w\)</span>, i.e. the tree is infinite but no node is an accepting configuration (there might be finite branches terminating in a rejecting configuration in the tree).</p></li>
 </ul>
 <p>A Turing machien is a <em>decider</em> if it halts on all inputs, i.e. it either rejects or accepts all inputs.</p>
 <p>Every non-deterministic Turing machine has an equivalent deterministic Turing machine. If that non-deterministic Turing machine is a decider, there is an equivalent deterministic Turing machine decider.</p>
 <p>Recognizable languages are closed under union, intersection, concatenation, star.</p>
-<p>Implementation level description of a multitape Turing machine for <span class="math inline"><em>L</em> = {<em>x</em>#<em>x</em> : <em>x</em> ∈ {0, 1}<sup>⋆</sup>}</span>:</p>
+<p>Implementation level description of a multitape Turing machine for <span class="math inline">\(L = \{x\#x : x \in \{0, 1\}^\star\}\)</span>:</p>
 <ul>
-<li><p>Scan the first head to the right until it reads a <span class="math inline">#</span>. Move right. The second head is still at the start of the second tape.</p></li>
-<li><p>Repeatedly read symbol from the first tape (reject if the symbol is not <span class="math inline">0</span> or <span class="math inline">1</span>), write it to the second tape, and move both heads right, until seeing a blank on the first tape.</p></li>
-<li><p>Move the first head left until a <span class="math inline">#</span> is under it. Replace the symbol with a blank ().</p></li>
-<li><p>Move both heads left until they reach the start of their respective tapes (using the <span class="math inline">$</span> sign hack to mark the start of the tape).</p></li>
+<li><p>Scan the first head to the right until it reads a <span class="math inline">\(\#\)</span>. Move right. The second head is still at the start of the second tape.</p></li>
+<li><p>Repeatedly read symbol from the first tape (reject if the symbol is not <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>), write it to the second tape, and move both heads right, until seeing a blank on the first tape.</p></li>
+<li><p>Move the first head left until a <span class="math inline">\(\#\)</span> is under it. Replace the symbol with a blank ().</p></li>
+<li><p>Move both heads left until they reach the start of their respective tapes (using the <span class="math inline">\(\$\)</span> sign hack to mark the start of the tape).</p></li>
 <li><p>Repeat until seeing a blank on both tapes.</p>
 <ul>
 <li><p>If the symbols on the two tapes differ, reject.</p></li>
 <li><p>Otherwise, move both head right.</p></li>
 </ul></li>
 </ul>
-<p><span class="math inline">⟨<em>O</em>⟩</span> is a string encoding for the object <span class="math inline"><em>O</em></span>.</p>
-<p><em>Cardinality of Sets:</em> two sets <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span> have the same <em>cardinality</em> if there exists a bijection <span class="math inline"><em>f</em> : <em>A</em> → <em>B</em></span>.</p>
-<p><span class="math inline">ℕ = {1, 2, 3, …}</span> is the set of all natural numbers. A set is <em>finite</em> if it has a bijection to {1..n} for some natural number <span class="math inline"><em>n</em></span>. A set is <em>countably infinite</em> if it has the same cardinality as <span class="math inline">ℕ</span>. A set is <em>countable</em> or <em>at most countable</em> if it is finite or countably infinite.</p>
-<p>Any language <span class="math inline"><em>L</em></span> is countable.</p>
+<p><span class="math inline">\(\langle O \rangle\)</span> is a string encoding for the object <span class="math inline">\(O\)</span>.</p>
+<p><em>Cardinality of Sets:</em> two sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have the same <em>cardinality</em> if there exists a bijection <span class="math inline">\(f : A \rightarrow B\)</span>.</p>
+<p><span class="math inline">\(\mathbb{N} = \{1, 2, 3, \dots\}\)</span> is the set of all natural numbers. A set is <em>finite</em> if it has a bijection to {1..n} for some natural number <span class="math inline">\(n\)</span>. A set is <em>countably infinite</em> if it has the same cardinality as <span class="math inline">\(\mathbb{N}\)</span>. A set is <em>countable</em> or <em>at most countable</em> if it is finite or countably infinite.</p>
+<p>Any language <span class="math inline">\(L\)</span> is countable.</p>
 <p>The set of all Turing machines is countable.</p>
-<p>The set <span class="math inline">ℬ</span> of all infinite bit-sequences is not countable.</p>
-<p><span class="math inline">2<sup><em>Σ</em><sup>⋆</sup></sup></span> is uncountable.</p>
+<p>The set <span class="math inline">\(\mathcal{B}\)</span> of all infinite bit-sequences is not countable.</p>
+<p><span class="math inline">\(2^{\Sigma^\star}\)</span> is uncountable.</p>
 <h1 id="reductions">Reductions</h1>
-<p><span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub> = {⟨<em>M</em>, <em>w</em>⟩ : <em>M</em> accepts <em>w</em>}</span> and <span class="math inline"><em>H</em><em>A</em><em>L</em><em>T</em><sub><em>T</em><em>M</em></sub> = {⟨<em>M</em>, <em>w</em>⟩ : <em>M</em> halts on input <em>w</em>}</span> are recognizable but not decidable.</p>
-<p>If <span class="math inline"><em>L</em></span> and <span class="math inline">$\overline{L}$</span> are recognizable, then <span class="math inline"><em>L</em></span> is decidable (and so is <span class="math inline">$\overline{L}$</span>).</p>
-<p><span class="math inline">$\overline{A_{TM}}$</span> is unrecognizable.</p>
-<p><em>Proof template for undecidability via Turing reduction:</em> Reduce a problem known to be undecidable to that language <span class="math inline"><em>L</em></span>, usually <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub></span>, i.e. <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub>≤<sub><em>T</em></sub><em>L</em></span>. Assume a Turing machine decider <span class="math inline"><em>R</em></span> for <span class="math inline"><em>L</em></span>. Construct <span class="math inline"><em>S</em></span> that decides <span class="math inline"><em>A</em><sub><em>T</em><em>M</em></sub></span> using <span class="math inline"><em>R</em></span>.</p>
-<p><em>Runtime of a deterministic Turing machine</em> is a function <span class="math inline"><em>f</em> : ℕ → ℕ</span> given by <span class="math inline"><em>f</em>(<em>n</em>) = <em>m</em><em>a</em><em>x</em><sub><em>x</em> ∈ <em>Σ</em><sup>⋆</sup>, |<em>x</em>| = <em>n</em></sub>(no. of steps of <em>M</em> on input <em>x</em>)</span>.</p>
-<p><span class="math inline">$TIME(t(n)) = \{\text{language } L : \exists \text{deterministic Turing machine that} \\ \text{decides } L \text{ in time } O(t(n))\}$</span>.</p>
-<p><span class="math inline"><em>P</em> = ⋃<sub><em>c</em> ≥ 0</sub><em>T</em><em>I</em><em>M</em><em>E</em>(<em>n</em><sup><em>c</em></sup>)</span></p>
-<p><span class="math inline"><em>E</em><em>X</em><em>P</em> = ⋃<sub><em>k</em> ≥ 0</sub><em>T</em><em>I</em><em>M</em><em>E</em>(2<sup><em>n</em><sup><em>k</em></sup></sup>)</span></p>
-<p>If <span class="math inline"><em>f</em> : ℕ → ℕ</span> is reasonable and <span class="math inline"><em>f</em> = <em>Ω</em>(<em>n</em>log <em>n</em>)</span> then <span class="math inline"><em>T</em><em>I</em><em>M</em><em>E</em>(<em>f</em>(<em>n</em>)) ⊂ <em>T</em><em>I</em><em>M</em><em>E</em>(<em>f</em>(<em>n</em>)<sup>2</sup>)</span>.</p>
-<p><span class="math inline"><em>P</em> ⊂ <em>E</em><em>X</em><em>P</em></span></p>
+<p><span class="math inline">\(A_{TM} = \{\langle M, w \rangle : M \text{ accepts } w\}\)</span> and <span class="math inline">\(HALT_{TM} = \{\langle M, w \rangle : M \text{ halts on input } w\}\)</span> are recognizable but not decidable.</p>
+<p>If <span class="math inline">\(L\)</span> and <span class="math inline">\(\overline{L}\)</span> are recognizable, then <span class="math inline">\(L\)</span> is decidable (and so is <span class="math inline">\(\overline{L}\)</span>).</p>
+<p><span class="math inline">\(\overline{A_{TM}}\)</span> is unrecognizable.</p>
+<p><em>Proof template for undecidability via Turing reduction:</em> Reduce a problem known to be undecidable to that language <span class="math inline">\(L\)</span>, usually <span class="math inline">\(A_{TM}\)</span>, i.e. <span class="math inline">\(A_{TM} \leq_T L\)</span>. Assume a Turing machine decider <span class="math inline">\(R\)</span> for <span class="math inline">\(L\)</span>. Construct <span class="math inline">\(S\)</span> that decides <span class="math inline">\(A_{TM}\)</span> using <span class="math inline">\(R\)</span>.</p>
+<p><em>Runtime of a deterministic Turing machine</em> is a function <span class="math inline">\(f : \mathbb{N} \rightarrow \mathbb{N}\)</span> given by <span class="math inline">\(f(n) = max_{x \in \Sigma^\star, |x| = n} (\text{no. of steps of } M \text{ on input } x)\)</span>.</p>
+<p><span class="math inline">\(TIME(t(n)) = \{\text{language } L : \exists \text{deterministic Turing machine that} \\ \text{decides } L \text{ in time } O(t(n))\}\)</span>.</p>
+<p><span class="math inline">\(P = \bigcup_{c \geq 0} TIME(n^c)\)</span></p>
+<p><span class="math inline">\(EXP = \bigcup_{k \geq 0} TIME(2^{n^k})\)</span></p>
+<p>If <span class="math inline">\(f : \mathbb{N} \rightarrow \mathbb{N}\)</span> is reasonable and <span class="math inline">\(f = \Omega(n\log n)\)</span> then <span class="math inline">\(TIME(f(n)) \subset TIME(f(n)^2)\)</span>.</p>
+<p><span class="math inline">\(P \subset EXP\)</span></p>
 <p><em>Runtime of a non-deterministic Turing machine</em> is the height of the configuration tree.</p>
-<p><span class="math inline">$NTIME(t(n)) = \{\text{language } L : \exists \text{ non-deterministic Turing machine that} \\ \text{decides } L \text{ in time } t(n)\}$</span></p>
-<p><span class="math inline"><em>N</em><em>P</em> = ⋃<sub><em>c</em> &gt; 0</sub><em>N</em><em>T</em><em>I</em><em>M</em><em>E</em>(<em>n</em><sup><em>c</em></sup>)</span>, i.e. languages for which it is easy to verify membership.</p>
-<p><span class="math inline"><em>P</em> ⊆ <em>N</em><em>P</em></span></p>
-<p><span class="math inline"><em>N</em><em>P</em> ⊆ <em>E</em><em>X</em><em>P</em></span></p>
-<p><em>Verifier-based definition for <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>:</em> there exists a deterministic polytime Turing machine <span class="math inline"><em>V</em></span> and a constant <span class="math inline"><em>c</em></span> such that <span class="math inline"><em>L</em> = {<em>x</em> ∈ <em>Σ</em><sup>⋆</sup> : ∃<em>y</em> ∈ <em>Σ</em><sup>⋆</sup>, |<em>y</em>| ≤ |<em>x</em>|<sup><em>c</em></sup>, <em>V</em> accepts (<em>x</em>, <em>y</em>)}</span>.</p>
-<p>A function is <em>polytime computable</em> if <span class="math inline"><em>f</em> : <em>Σ</em><sup>⋆</sup> → <em>Σ</em><sup>⋆</sup></span> if there exists a Turing machine <span class="math inline"><em>M</em></span> that has <span class="math inline"><em>x</em></span> as input, runs for time poly(<span class="math inline">|<em>x</em>|</span>) and halts with <span class="math inline"><em>f</em>(<em>x</em>)</span> written on the tape.</p>
-<p><span class="math inline"><em>f</em></span> is a <em>polytime reduction</em> from language <span class="math inline"><em>A</em></span> to language <span class="math inline"><em>B</em></span>, denoted <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>B</em></span> if (1) <span class="math inline"><em>f</em>(<em>A</em>) ⊆ <em>B</em></span>, (2) <span class="math inline">$f(\overline{A}) \subseteq \overline{B}$</span>, and (3) <span class="math inline"><em>f</em></span> is a polytime computable function.</p>
-<p>If <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>B</em></span> and <span class="math inline"><em>B</em> ∈ <em>P</em></span> then <span class="math inline"><em>A</em> ∈ <em>P</em></span>.</p>
-<p>A language <span class="math inline"><em>L</em></span> is <em><span class="math inline"><em>N</em><em>P</em></span>-hard</em> if <span class="math inline"><em>A</em>≤<sub><em>P</em></sub><em>L</em></span> for all <span class="math inline"><em>A</em> ∈ <em>N</em><em>P</em></span>. A language <span class="math inline"><em>L</em></span> is <em><span class="math inline"><em>N</em><em>P</em></span>-complete</em> if <span class="math inline"><em>L</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-hard and <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>.</p>
-<p>If <span class="math inline"><em>P</em> ≠ <em>N</em><em>P</em></span>, then there exists language <span class="math inline"><em>L</em></span> such that <span class="math inline"><em>L</em> ∉ <em>N</em><em>P</em></span>-complete, <span class="math inline"><em>L</em> ∉ <em>P</em></span>, and <span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>.</p>
-<p>If (1) <span class="math inline"><em>B</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete, (2) <span class="math inline"><em>C</em> ∈ <em>N</em><em>P</em></span>, and (3) <span class="math inline"><em>B</em>≤<sub><em>P</em></sub><em>C</em></span>, then <span class="math inline"><em>C</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete.</p>
-<p><span class="math inline"><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete</p>
-<p><span class="math inline">3<em>S</em><em>A</em><em>T</em>≤<sub><em>P</em></sub><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span></p>
-<p><span class="math inline">3<em>S</em><em>A</em><em>T</em>≤<sub><em>P</em></sub><em>M</em><em>A</em><em>X</em><em>C</em><em>L</em><em>I</em><em>Q</em><em>U</em><em>E</em></span></p>
-<p>Reductions from <span class="math inline">3<em>S</em><em>A</em><em>T</em></span> often involves <em>gadgets</em>:</p>
+<p><span class="math inline">\(NTIME(t(n)) = \{\text{language } L : \exists \text{ non-deterministic Turing machine that} \\ \text{decides } L \text{ in time } t(n)\}\)</span></p>
+<p><span class="math inline">\(NP = \bigcup_{c &gt; 0} NTIME(n^c)\)</span>, i.e. languages for which it is easy to verify membership.</p>
+<p><span class="math inline">\(P \subseteq NP\)</span></p>
+<p><span class="math inline">\(NP \subseteq EXP\)</span></p>
+<p><em>Verifier-based definition for <span class="math inline">\(L \in NP\)</span>:</em> there exists a deterministic polytime Turing machine <span class="math inline">\(V\)</span> and a constant <span class="math inline">\(c\)</span> such that <span class="math inline">\(L = \{x \in \Sigma^\star : \exists y \in \Sigma^\star, |y| \leq |x|^c, V \text{ accepts } (x, y)\}\)</span>.</p>
+<p>A function is <em>polytime computable</em> if <span class="math inline">\(f : \Sigma^\star \rightarrow \Sigma^\star\)</span> if there exists a Turing machine <span class="math inline">\(M\)</span> that has <span class="math inline">\(x\)</span> as input, runs for time poly(<span class="math inline">\(|x|\)</span>) and halts with <span class="math inline">\(f(x)\)</span> written on the tape.</p>
+<p><span class="math inline">\(f\)</span> is a <em>polytime reduction</em> from language <span class="math inline">\(A\)</span> to language <span class="math inline">\(B\)</span>, denoted <span class="math inline">\(A \leq_P B\)</span> if (1) <span class="math inline">\(f(A) \subseteq B\)</span>, (2) <span class="math inline">\(f(\overline{A}) \subseteq \overline{B}\)</span>, and (3) <span class="math inline">\(f\)</span> is a polytime computable function.</p>
+<p>If <span class="math inline">\(A \leq_P B\)</span> and <span class="math inline">\(B \in P\)</span> then <span class="math inline">\(A \in P\)</span>.</p>
+<p>A language <span class="math inline">\(L\)</span> is <em><span class="math inline">\(NP\)</span>-hard</em> if <span class="math inline">\(A \leq_P L\)</span> for all <span class="math inline">\(A \in NP\)</span>. A language <span class="math inline">\(L\)</span> is <em><span class="math inline">\(NP\)</span>-complete</em> if <span class="math inline">\(L\)</span> is <span class="math inline">\(NP\)</span>-hard and <span class="math inline">\(L \in NP\)</span>.</p>
+<p>If <span class="math inline">\(P \neq NP\)</span>, then there exists language <span class="math inline">\(L\)</span> such that <span class="math inline">\(L \notin NP\)</span>-complete, <span class="math inline">\(L \notin P\)</span>, and <span class="math inline">\(L \in NP\)</span>.</p>
+<p>If (1) <span class="math inline">\(B\)</span> is <span class="math inline">\(NP\)</span>-complete, (2) <span class="math inline">\(C \in NP\)</span>, and (3) <span class="math inline">\(B \leq_P C\)</span>, then <span class="math inline">\(C\)</span> is <span class="math inline">\(NP\)</span>-complete.</p>
+<p><span class="math inline">\(CLIQUE\)</span> is <span class="math inline">\(NP\)</span>-complete</p>
+<p><span class="math inline">\(3SAT \leq_P CLIQUE\)</span></p>
+<p><span class="math inline">\(3SAT \leq_P MAXCLIQUE\)</span></p>
+<p>Reductions from <span class="math inline">\(3SAT\)</span> often involves <em>gadgets</em>:</p>
 <ul>
 <li><p><em>Clause gadgets:</em> for the assignemnt to pick a true literal in each clause (a clique must pick a vertex from each group)</p></li>
-<li><p><em>Variable gadget:</em> force assignemnt to set each variable either to true or false but not both (a clique cannot pick both <span class="math inline"><em>x</em><sub><em>i</em></sub></span> and <span class="math inline">$\overline{x_i}$</span>).</p></li>
+<li><p><em>Variable gadget:</em> force assignemnt to set each variable either to true or false but not both (a clique cannot pick both <span class="math inline">\(x_i\)</span> and <span class="math inline">\(\overline{x_i}\)</span>).</p></li>
 </ul>
-<p><span class="math inline"><em>S</em><em>A</em><em>T</em></span> is <span class="math inline"><em>N</em><em>P</em></span>-complete via <span class="math inline"><em>a</em></span> where <br /><span class="math display">$$\begin{gathered}
+<p><span class="math inline">\(SAT\)</span> is <span class="math inline">\(NP\)</span>-complete via <span class="math inline">\(a\)</span> where <span class="math display">\[\begin{gathered}
 		C = Q \cup \{\#\} \cup \Gamma \\
 		x_{i, j, s} = true \Leftrightarrow cell[i, j] = s \\
 		\Phi_{start} = x_{1, 1, \#} \land x_{1, 2, q_{start}} \land x_{1, 3, w_1} \land \dots \\
@@ -228,78 +229,78 @@
 		\left. \bigwedge\limits_{s, t \in C, 1 \leq i, j \leq n^k} \lnot (x_{i, j, s} \land x_{i, j, t})\right) \\
 		\Phi_{moves} = \bigwedge\limits_{i, j \geq n^k} \text{(window}[i, j] \text{ is valid)} \\
 		\Phi_{accept} = \bigvee\limits_{1 \leq i, j \leq n^k} x_{i, j, q_{accept}}
-	\end{gathered}$$</span><br /></p>
-<p><span class="math inline">$coNP = \{\text{language } L : \overline{L} \in NP\}$</span>, i.e. languages for which it is easy to verify non-membership. Machine model for <span class="math inline"><em>L</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em></span> is when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, all leaves are accepting configurations; otherwise, when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, there exists one leaf which is a rejecting configuration.</p>
-<p><span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>-complete <span class="math inline"> = {language <em>B</em> : <em>B</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em>, ∀<em>A</em> ∈ <em>c</em><em>o</em><em>N</em><em>P</em>, <em>A</em>≤<sub><em>P</em></sub><em>B</em>}</span>.</p>
-<p><span class="math inline"><em>N</em><em>O</em><em>S</em><em>A</em><em>T</em></span> is <span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>-complete.</p>
-<p><span class="math inline"><em>L</em> ∈ <em>N</em><em>P</em></span>-complete iff <span class="math inline">$\overline{L} \in coNP$</span>-complete.</p>
+	\end{gathered}\]</span></p>
+<p><span class="math inline">\(coNP = \{\text{language } L : \overline{L} \in NP\}\)</span>, i.e. languages for which it is easy to verify non-membership. Machine model for <span class="math inline">\(L \in coNP\)</span> is when <span class="math inline">\(x \in L\)</span>, all leaves are accepting configurations; otherwise, when <span class="math inline">\(x \notin L\)</span>, there exists one leaf which is a rejecting configuration.</p>
+<p><span class="math inline">\(coNP\)</span>-complete <span class="math inline">\(= \{\text{language } B : B \in coNP, \forall A \in coNP, A \leq_P B\}\)</span>.</p>
+<p><span class="math inline">\(NOSAT\)</span> is <span class="math inline">\(coNP\)</span>-complete.</p>
+<p><span class="math inline">\(L \in NP\)</span>-complete iff <span class="math inline">\(\overline{L} \in coNP\)</span>-complete.</p>
 <h1 id="probabilistic-turing-machines">Probabilistic Turing Machines</h1>
-<p><span class="math inline"><em>R</em><em>P</em></span>, or randomized polynomial time, are the languages <span class="math inline"><em>L</em></span> for which there is a <em>probabilistic</em> Turing machine that, on input <span class="math inline"><em>x</em></span>, runs in poly(<span class="math inline">|<em>x</em>|</span>) and when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline">$\geq \frac{1}{2}$</span>; otherwise, when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> = 1</span>.</p>
-<p><em>Second definition for <span class="math inline"><em>R</em><em>P</em></span>:</em> it contains languages <span class="math inline"><em>L</em></span> for which there exists a deterministic polytime Turing machine <span class="math inline"><em>V</em></span> such that when <span class="math inline"><em>x</em> ∈ <em>L</em></span>, for at least half of all <span class="math inline"><em>y</em></span> with <span class="math inline">|<em>y</em>| ≤ poly(|<em>x</em>|), <em>V</em></span> accepts <span class="math inline">(<em>x</em>, <em>y</em>)</span>; when <span class="math inline"><em>x</em> ∉ <em>L</em></span>, for all <span class="math inline"><em>y</em></span> with <span class="math inline">|<em>y</em>| ≤ poly(|<em>x</em>|), <em>V</em></span> rejects <span class="math inline">(<em>x</em>, <em>y</em>)</span>.</p>
-<p>Contrast with <span class="math inline"><em>N</em><em>P</em></span>, where <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> &gt; 0</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> = 1</span>.</p>
-<p><span class="math inline"><em>R</em><em>P</em> ⊆ <em>N</em><em>P</em></span></p>
-<p><span class="math inline"><em>c</em><em>o</em><em>R</em><em>P</em></span>: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> = 1</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline">$\geq \frac{1}{2}$</span>.</p>
-<p><span class="math inline"><em>c</em><em>o</em><em>N</em><em>P</em></span>: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline"> = 1</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline"> &gt; 0</span>.</p>
-<p><span class="math inline"><em>B</em><em>P</em><em>P</em></span>, or bounded error probabilistic polynomial time: <span class="math inline">∀<em>x</em> ∈ <em>L</em></span>, Pr[reaching accept] <span class="math inline">$\geq \frac{2}{3}$</span>, <span class="math inline">∀<em>x</em> ∉ <em>L</em></span>, Pr[reaching reject] <span class="math inline">$\geq \frac{2}{3}$</span>.</p>
-<p><span class="math inline"><em>R</em><em>P</em> ⊆ <em>B</em><em>P</em><em>P</em></span></p>
-<p><span class="math inline"><em>c</em><em>o</em><em>R</em><em>P</em> ⊆ <em>B</em><em>P</em><em>P</em></span></p>
-<p><span class="math inline">$RP(\frac{1}{2}) = RP(\frac{3}{4})$</span> (proof via amplification)</p>
-<p><span class="math inline"><em>R</em><em>P</em></span> is closed under composition.</p>
+<p><span class="math inline">\(RP\)</span>, or randomized polynomial time, are the languages <span class="math inline">\(L\)</span> for which there is a <em>probabilistic</em> Turing machine that, on input <span class="math inline">\(x\)</span>, runs in poly(<span class="math inline">\(|x|\)</span>) and when <span class="math inline">\(x \in L\)</span>, Pr[reaching accept] <span class="math inline">\(\geq \frac{1}{2}\)</span>; otherwise, when <span class="math inline">\(x \notin L\)</span>, Pr[reaching reject] <span class="math inline">\(= 1\)</span>.</p>
+<p><em>Second definition for <span class="math inline">\(RP\)</span>:</em> it contains languages <span class="math inline">\(L\)</span> for which there exists a deterministic polytime Turing machine <span class="math inline">\(V\)</span> such that when <span class="math inline">\(x \in L\)</span>, for at least half of all <span class="math inline">\(y\)</span> with <span class="math inline">\(|y| \leq \text{poly}(|x|), V\)</span> accepts <span class="math inline">\((x, y)\)</span>; when <span class="math inline">\(x \notin L\)</span>, for all <span class="math inline">\(y\)</span> with <span class="math inline">\(|y| \leq \text{poly}(|x|), V\)</span> rejects <span class="math inline">\((x, y)\)</span>.</p>
+<p>Contrast with <span class="math inline">\(NP\)</span>, where <span class="math inline">\(\forall x \in L\)</span>, Pr[reaching accept] <span class="math inline">\(&gt; 0\)</span>, <span class="math inline">\(\forall x \notin L\)</span>, Pr[reaching reject] <span class="math inline">\(= 1\)</span>.</p>
+<p><span class="math inline">\(RP \subseteq NP\)</span></p>
+<p><span class="math inline">\(coRP\)</span>: <span class="math inline">\(\forall x \in L\)</span>, Pr[reaching accept] <span class="math inline">\(= 1\)</span>, <span class="math inline">\(\forall x \notin L\)</span>, Pr[reaching reject] <span class="math inline">\(\geq \frac{1}{2}\)</span>.</p>
+<p><span class="math inline">\(coNP\)</span>: <span class="math inline">\(\forall x \in L\)</span>, Pr[reaching accept] <span class="math inline">\(= 1\)</span>, <span class="math inline">\(\forall x \notin L\)</span>, Pr[reaching reject] <span class="math inline">\(&gt; 0\)</span>.</p>
+<p><span class="math inline">\(BPP\)</span>, or bounded error probabilistic polynomial time: <span class="math inline">\(\forall x \in L\)</span>, Pr[reaching accept] <span class="math inline">\(\geq \frac{2}{3}\)</span>, <span class="math inline">\(\forall x \notin L\)</span>, Pr[reaching reject] <span class="math inline">\(\geq \frac{2}{3}\)</span>.</p>
+<p><span class="math inline">\(RP \subseteq BPP\)</span></p>
+<p><span class="math inline">\(coRP \subseteq BPP\)</span></p>
+<p><span class="math inline">\(RP(\frac{1}{2}) = RP(\frac{3}{4})\)</span> (proof via amplification)</p>
+<p><span class="math inline">\(RP\)</span> is closed under composition.</p>
 <h1 id="communication-complexity">Communication Complexity</h1>
 <p>Model:</p>
 <ul>
-<li><p>Finite sets <span class="math inline"><em>X</em>, <em>Y</em>, <em>Z</em></span></p></li>
-<li><p>Function <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → <em>Z</em></span></p></li>
+<li><p>Finite sets <span class="math inline">\(X, Y, Z\)</span></p></li>
+<li><p>Function <span class="math inline">\(f : X \times Y \rightarrow Z\)</span></p></li>
 <li><p>Two player, Alice and Bob</p></li>
 <li><p>Decide on a communication protocol beforehand</p></li>
-<li><p>Alice has <span class="math inline"><em>x</em> ∈ <em>X</em></span>, Bob has <span class="math inline"><em>y</em> ∈ <em>Y</em></span></p></li>
-<li><p>Goal: collaboratively compute <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> by sending bits back and forth (must end with both side knowing <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>)</p></li>
+<li><p>Alice has <span class="math inline">\(x \in X\)</span>, Bob has <span class="math inline">\(y \in Y\)</span></p></li>
+<li><p>Goal: collaboratively compute <span class="math inline">\(f(x, y)\)</span> by sending bits back and forth (must end with both side knowing <span class="math inline">\(f(x, y)\)</span>)</p></li>
 </ul>
 <p>The <em>trivial prototol:</em></p>
 <ul>
-<li><p>Alice sends <span class="math inline"><em>x</em></span> to Bob (<span class="math inline">log |<em>X</em>|</span>)</p></li>
-<li><p>Bob computes and sends <span class="math inline"><em>z</em> = <em>f</em>(<em>x</em>, <em>y</em>)</span> to Alice (<span class="math inline">log |<em>Z</em>|</span>)</p></li>
+<li><p>Alice sends <span class="math inline">\(x\)</span> to Bob (<span class="math inline">\(\log |X|\)</span>)</p></li>
+<li><p>Bob computes and sends <span class="math inline">\(z = f(x, y)\)</span> to Alice (<span class="math inline">\(\log |Z|\)</span>)</p></li>
 </ul>
-<p>Total: <span class="math inline">log |<em>X</em>| + log |<em>Z</em>|</span> or <span class="math inline">log |<em>Y</em>| + log |<em>Z</em>|</span></p>
-<p>A <em>communication protocol</em> is a binary tree where each node is labelled by either <span class="math inline"><em>a</em><sub><em>v</em></sub> : <em>X</em> → {<em>L</em>, <em>R</em>}</span> or <span class="math inline"><em>b</em><sub><em>v</em></sub> : <em>Y</em> → {<em>L</em>, <em>R</em>}</span> and each leaf is labelled by an element of <span class="math inline"><em>Z</em></span>. The depth of the protocol tree is the maximum number of bits sent by the protocol.</p>
-<p>The deterministic communication complexity of a function <span class="math inline"><em>f</em></span> is <br /><span class="math display">$$\begin{aligned}
+<p>Total: <span class="math inline">\(\log |X| + \log |Z|\)</span> or <span class="math inline">\(\log |Y| + \log |Z|\)</span></p>
+<p>A <em>communication protocol</em> is a binary tree where each node is labelled by either <span class="math inline">\(a_v : X \rightarrow \{L, R\}\)</span> or <span class="math inline">\(b_v : Y \rightarrow \{L, R\}\)</span> and each leaf is labelled by an element of <span class="math inline">\(Z\)</span>. The depth of the protocol tree is the maximum number of bits sent by the protocol.</p>
+<p>The deterministic communication complexity of a function <span class="math inline">\(f\)</span> is <span class="math display">\[\begin{aligned}
 	D(f) &amp; = \min\limits_{\text{tree for } f} \left(\max\limits_{(x, y)}(\text{number of bits}) \right) \\
-	&amp; = \min\limits_{\text{tree for } f} (\text{depth of tree})\end{aligned}$$</span><br /></p>
-<p><span class="math inline"><em>D</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) ≤ <em>n</em> + 1</span></p>
-<p>A <em>rectangle</em> in <span class="math inline"><em>X</em> × <em>Y</em></span> is a set of the form <span class="math inline"><em>R</em> = <em>A</em> × <em>B</em></span> where <span class="math inline"><em>A</em> ⊆ <em>X</em></span> and <span class="math inline"><em>B</em> ⊆ <em>Y</em></span>. <span class="math inline"><em>R</em></span> is a rectangle iff <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>R</em> ∧ (<em>x</em>′, <em>y</em>′) ∈ <em>R</em> ⇔ (<em>x</em>, <em>y</em>′) ∈ <em>R</em> ∧ (<em>x</em>′, <em>y</em>) ∈ <em>R</em></span></p>
-<p>Let <span class="math inline"><em>T</em></span> be a protocol tree, <span class="math inline"><em>R</em><sub><em>v</em></sub></span> be the set of inputs that causes the protocol to arrive at node <span class="math inline"><em>v</em></span>. Then <span class="math inline"><em>R</em><sub><em>v</em></sub></span> is a rectangle.</p>
-<p>A rectangle is called <em><span class="math inline"><em>f</em></span>-monochromatic</em> if <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> is the same for all <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>R</em></span>.</p>
-<p>Let <span class="math inline"><em>R</em><sub><em>i</em></sub> ⊂ <em>X</em> × <em>Y</em></span> be a rectangle for <span class="math inline"><em>i</em> = 1, …, <em>k</em></span>. The set <span class="math inline">ℛ = {<em>R</em><sub>1</sub>, …, <em>R</em><sub><em>k</em></sub>}</span> is called an <em><span class="math inline"><em>f</em></span>-monochromatic partition (into rectangles)</em> if each <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is <span class="math inline"><em>f</em></span>-monochromatic, and each <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>X</em> × <em>Y</em></span> is contained in exactly one <span class="math inline"><em>R</em><sub><em>i</em></sub></span>.</p>
-<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) = min {|ℛ| : ℛ is an <em>f</em>-monochromatic partition}</span></p>
-<p>For any protocol tree <span class="math inline"><em>T</em></span>, the rectangles <span class="math inline">{<em>R</em> : <em>v</em> is a leaf in <em>T</em>}</span> are an <span class="math inline"><em>f</em></span>-monochromatic partition.</p>
-<p><span class="math inline">$C^{\text{partition}}(f) \leq \min\limits_{\text{protocol tree } T} |\text{number of leaves in } T|$</span></p>
-<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ ⌈log<sub>2</sub><em>C</em><sup>partition</sup>(<em>f</em>)⌉</span></p>
-<p>A <em>fooling set</em> <span class="math inline"><em>S</em> ⊆ <em>X</em> × <em>Y</em></span> is a set where all points <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>S</em></span> have the same value <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>z</em></span>, and for any distinct points <span class="math inline">(<em>x</em>, <em>y</em>)</span> and <span class="math inline">(<em>x</em>′, <em>y</em>′)</span> in <span class="math inline"><em>S</em></span>, either <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>′) ≠ <em>z</em></span> or <span class="math inline"><em>f</em>(<em>x</em>′, <em>y</em>) ≠ <em>z</em></span>.</p>
-<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) ≥ |<em>S</em>| + 1</span>, where <span class="math inline"><em>S</em></span> is a fooling set for <span class="math inline"><em>f</em></span></p>
-<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ ⌈log<sub>2</sub>(|<em>S</em>|+1)⌉</span>, where <span class="math inline"><em>S</em></span> is a fooling set for <span class="math inline"><em>f</em></span></p>
-<p><span class="math inline"><em>D</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) = <em>D</em>(<em>G</em><em>T</em><em>E</em><sub><em>n</em></sub>) = <em>D</em>(<em>D</em><em>I</em><em>S</em><em>J</em><sub><em>n</em></sub>) = <em>n</em> + 1</span></p>
+	&amp; = \min\limits_{\text{tree for } f} (\text{depth of tree})\end{aligned}\]</span></p>
+<p><span class="math inline">\(D(EQ_n) \leq n + 1\)</span></p>
+<p>A <em>rectangle</em> in <span class="math inline">\(X \times Y\)</span> is a set of the form <span class="math inline">\(R = A \times B\)</span> where <span class="math inline">\(A \subseteq X\)</span> and <span class="math inline">\(B \subseteq Y\)</span>. <span class="math inline">\(R\)</span> is a rectangle iff <span class="math inline">\((x, y) \in R \land (x', y') \in R \Leftrightarrow (x, y') \in R \land (x', y) \in R\)</span></p>
+<p>Let <span class="math inline">\(T\)</span> be a protocol tree, <span class="math inline">\(R_v\)</span> be the set of inputs that causes the protocol to arrive at node <span class="math inline">\(v\)</span>. Then <span class="math inline">\(R_v\)</span> is a rectangle.</p>
+<p>A rectangle is called <em><span class="math inline">\(f\)</span>-monochromatic</em> if <span class="math inline">\(f(x, y)\)</span> is the same for all <span class="math inline">\((x, y) \in R\)</span>.</p>
+<p>Let <span class="math inline">\(R_i \subset X \times Y\)</span> be a rectangle for <span class="math inline">\(i = 1, \dots, k\)</span>. The set <span class="math inline">\(\mathcal{R} = \{R_1, \dots, R_k\}\)</span> is called an <em><span class="math inline">\(f\)</span>-monochromatic partition (into rectangles)</em> if each <span class="math inline">\(R_i\)</span> is <span class="math inline">\(f\)</span>-monochromatic, and each <span class="math inline">\((x, y) \in X \times Y\)</span> is contained in exactly one <span class="math inline">\(R_i\)</span>.</p>
+<p><span class="math inline">\(C^{\text{partition}}(f) = \min \{|\mathcal{R}| : \mathcal{R} \text{ is an }f\text{-monochromatic partition}\}\)</span></p>
+<p>For any protocol tree <span class="math inline">\(T\)</span>, the rectangles <span class="math inline">\(\{R : v \text{ is a leaf in } T\}\)</span> are an <span class="math inline">\(f\)</span>-monochromatic partition.</p>
+<p><span class="math inline">\(C^{\text{partition}}(f) \leq \min\limits_{\text{protocol tree } T} |\text{number of leaves in } T|\)</span></p>
+<p><span class="math inline">\(D(f) \geq \left \lceil \log_2 C^{\text{partition}}(f) \right \rceil\)</span></p>
+<p>A <em>fooling set</em> <span class="math inline">\(S \subseteq X \times Y\)</span> is a set where all points <span class="math inline">\((x, y) \in S\)</span> have the same value <span class="math inline">\(f(x, y) = z\)</span>, and for any distinct points <span class="math inline">\((x, y)\)</span> and <span class="math inline">\((x', y')\)</span> in <span class="math inline">\(S\)</span>, either <span class="math inline">\(f(x, y') \neq z\)</span> or <span class="math inline">\(f(x', y) \neq z\)</span>.</p>
+<p><span class="math inline">\(C^{\text{partition}}(f) \geq |S| + 1\)</span>, where <span class="math inline">\(S\)</span> is a fooling set for <span class="math inline">\(f\)</span></p>
+<p><span class="math inline">\(D(f) \geq \left \lceil \log_2(|S| + 1) \right \rceil\)</span>, where <span class="math inline">\(S\)</span> is a fooling set for <span class="math inline">\(f\)</span></p>
+<p><span class="math inline">\(D(EQ_n) = D(GTE_n) = D(DISJ_n) = n + 1\)</span></p>
 <p>Model for <em>non-deterministic communication complexity</em>:</p>
 <ul>
-<li><p>Function <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → <em>Z</em></span> is known to all</p></li>
-<li><p>Bob does not know <span class="math inline"><em>x</em></span>, Alice does not know <span class="math inline"><em>y</em></span></p></li>
+<li><p>Function <span class="math inline">\(f : X \times Y \rightarrow Z\)</span> is known to all</p></li>
+<li><p>Bob does not know <span class="math inline">\(x\)</span>, Alice does not know <span class="math inline">\(y\)</span></p></li>
 <li><p>Alice and Bob do not communicate</p></li>
-<li><p>Piere tries to force Alice and Bob to accept by sending certificate <span class="math inline"><em>z</em></span>. How short can <span class="math inline"><em>z</em></span> be?</p></li>
+<li><p>Piere tries to force Alice and Bob to accept by sending certificate <span class="math inline">\(z\)</span>. How short can <span class="math inline">\(z\)</span> be?</p></li>
 </ul>
-<p><span class="math inline">$N(f) = \min\limits_{nondet protocol}(\text{length of cert})$</span>. Or, <span class="math inline"><em>N</em>(<em>f</em>) = min {<em>k</em>}</span> such that there exist <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span>, for all <span class="math inline"><em>x</em> ∈ <em>X</em></span>, <span class="math inline"><em>y</em> ∈ <em>Y</em></span>, <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1 ⇒ ∃<em>z</em> ∈ {0, 1}<sup><em>k</em></sup>, <em>A</em>(<em>x</em>, <em>z</em>) = 1 ∧ <em>B</em>(<em>y</em>, <em>z</em>) = 1</span>, <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 0 ⇒ ∀<em>z</em> ∈ {0, 1}<sup><em>k</em></sup>, <em>A</em>(<em>x</em>, <em>z</em>) = 0 ∨ <em>B</em>(<em>y</em>, <em>z</em>) = 0</span>.</p>
-<p><span class="math inline"><em>N</em>(¬<em>D</em><em>I</em><em>S</em><em>J</em><sub><em>n</em></sub>) ≤ log <em>n</em></span></p>
-<p>For all <span class="math inline"><em>f</em></span>, <span class="math inline"><em>D</em>(<em>f</em>) = <em>D</em>(¬<em>f</em>)</span>.</p>
-<p><span class="math inline"><em>N</em>(¬<em>E</em><em>Q</em><sub><em>n</em></sub>) ≤ log (<em>n</em>) + 1</span></p>
-<p>Let <span class="math inline"><em>S</em></span> be a fooling set where <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1</span> for all <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>S</em></span>. Then <span class="math inline"><em>N</em>(<em>f</em>) ≥ ⌈log<sub>2</sub>(|<em>S</em>|)⌉</span>.</p>
-<p><span class="math inline"><em>N</em>(<em>E</em><em>Q</em><sub><em>n</em></sub>) ≥ <em>n</em></span></p>
-<p>The set <span class="math inline">ℛ = {<em>R</em><sub>1</sub>, …, <em>R</em><sub><em>k</em></sub>}</span> is a cover of the <span class="math inline">1</span>-entries (by rectangles) if (1) each <span class="math inline"><em>R</em><sub><em>i</em></sub></span> is a rectangle containing only <span class="math inline">1</span>s, and (2) every <span class="math inline">(<em>x</em>, <em>y</em>) ∈ <em>X</em> × <em>Y</em></span> with <span class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 1</span> is contained in at least one <span class="math inline"><em>R</em><sub><em>i</em></sub></span>.</p>
-<p><span class="math inline"><em>C</em><sup>1-cover</sup>(<em>f</em>) = min {|ℛ| : ℛ is a cover of the 1-entries}</span></p>
-<p><span class="math inline"><em>C</em><sup>0-cover</sup>(<em>f</em>) = <em>C</em><sup>1-cover</sup>(¬<em>f</em>)</span>.</p>
-<p><span class="math inline"><em>C</em><sup>partition</sup>(<em>f</em>) = <em>C</em><sup>1-cover</sup>(<em>f</em>) + <em>C</em><sup>0-cover</sup>(<em>f</em>)</span>.</p>
-<p><span class="math inline"><em>N</em>(<em>f</em>) = ⌈log<sub>2</sub>(<em>C</em><sup>1-cover</sup>(<em>f</em>))⌉</span></p>
-<p><span class="math inline"><em>D</em>(<em>f</em>) ≥ <em>N</em>(<em>f</em>)</span></p>
-<p><span class="math inline"><em>D</em>(¬<em>f</em>) = <em>N</em>(<em>f</em>)</span></p>
-<p>Let <span class="math inline"><em>f</em> : <em>X</em> × <em>Y</em> → {0, 1}</span> be arbitrary, <span class="math inline"><em>C</em><sub>0</sub></span> be a cover of the <span class="math inline">0</span>-entries, and <span class="math inline"><em>C</em><sub>1</sub></span> be a cover of the <span class="math inline">1</span>-entries. Then <span class="math inline"><em>D</em>(<em>f</em>) = <em>O</em>(log <em>C</em><sub>0</sub> * log <em>C</em><sub>1</sub>)</span>.</p>
-<p><span class="math inline"><em>D</em>(<em>f</em>) = <em>O</em>(<em>N</em>(<em>f</em>) * <em>N</em>(¬<em>f</em>))</span></p>
+<p><span class="math inline">\(N(f) = \min\limits_{nondet protocol}(\text{length of cert})\)</span>. Or, <span class="math inline">\(N(f) = \min\{k\}\)</span> such that there exist <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, for all <span class="math inline">\(x \in X\)</span>, <span class="math inline">\(y \in Y\)</span>, <span class="math inline">\(f(x, y) = 1 \Rightarrow \exists z \in \{0, 1\}^k, A(x, z) = 1 \land B(y, z) = 1\)</span>, <span class="math inline">\(f(x, y) = 0 \Rightarrow \forall z \in \{0, 1\}^k, A(x, z) = 0 \lor B(y, z) = 0\)</span>.</p>
+<p><span class="math inline">\(N(\lnot DISJ_n) \leq \log n\)</span></p>
+<p>For all <span class="math inline">\(f\)</span>, <span class="math inline">\(D(f) = D(\lnot f)\)</span>.</p>
+<p><span class="math inline">\(N(\lnot EQ_n) \leq \log(n) + 1\)</span></p>
+<p>Let <span class="math inline">\(S\)</span> be a fooling set where <span class="math inline">\(f(x, y) = 1\)</span> for all <span class="math inline">\((x, y) \in S\)</span>. Then <span class="math inline">\(N(f) \geq \left \lceil \log_2(|S|) \right \rceil\)</span>.</p>
+<p><span class="math inline">\(N(EQ_n) \geq n\)</span></p>
+<p>The set <span class="math inline">\(\mathcal{R} = \{R_1, \dots, R_k\}\)</span> is a cover of the <span class="math inline">\(1\)</span>-entries (by rectangles) if (1) each <span class="math inline">\(R_i\)</span> is a rectangle containing only <span class="math inline">\(1\)</span>s, and (2) every <span class="math inline">\((x, y) \in X \times Y\)</span> with <span class="math inline">\(f(x, y) = 1\)</span> is contained in at least one <span class="math inline">\(R_i\)</span>.</p>
+<p><span class="math inline">\(C^{1\text{-cover}}(f) = \min \{|\mathcal{R}| : \mathcal{R} \text{ is a cover of the } 1\text{-entries}\}\)</span></p>
+<p><span class="math inline">\(C^{0\text{-cover}}(f) = C^{1\text{-cover}}(\lnot f)\)</span>.</p>
+<p><span class="math inline">\(C^{\text{partition}}(f) = C^{1\text{-cover}}(f) + C^{0\text{-cover}}(f)\)</span>.</p>
+<p><span class="math inline">\(N(f) = \left \lceil \log_2(C^{1\text{-cover}}(f) ) \right \rceil\)</span></p>
+<p><span class="math inline">\(D(f) \geq N(f)\)</span></p>
+<p><span class="math inline">\(D(\lnot f) = N(f)\)</span></p>
+<p>Let <span class="math inline">\(f : X \times Y \rightarrow \{0, 1\}\)</span> be arbitrary, <span class="math inline">\(C_0\)</span> be a cover of the <span class="math inline">\(0\)</span>-entries, and <span class="math inline">\(C_1\)</span> be a cover of the <span class="math inline">\(1\)</span>-entries. Then <span class="math inline">\(D(f) = O(\log C_0 * \log C_1)\)</span>.</p>
+<p><span class="math inline">\(D(f) = O(N(f) * N(\lnot f))\)</span></p>
 
             </div>
         </div>

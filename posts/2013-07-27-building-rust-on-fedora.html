@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Building Rust on Fedora - MrOrdinaire</title>
         <link rel="stylesheet" type="text/css" href="../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
     </head>
     <body>
         <div id="header-strip">
@@ -15,7 +16,7 @@
                 </div>
                 <div id="navigation">
                     <a href="../resume.pdf">Résumé</a>
-                    <a href="../notes.html">Notes</a>
+                    <a href="../notes/">Notes</a>
                     <a href="../posts/">Posts</a>
                     <a href="https://twitter.com/mrordinaire">Twitter</a>
                     <a href="https://github.com/mrordinaire">GitHub</a>
@@ -62,7 +63,6 @@
 <a class="sourceLine" id="cb2-3" title="3"><span class="ex">./configure</span> --enable-ccache <span class="co"># this may take a while if this is your first time, as it downloads LLVM</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="fu">make</span> <span class="co"># this will download stage-0 Rust compiler in order to compile the Rust source</span></a></code></pre></div>
 <p>If the process runs smoothly, you will have the Rust compiler and toolchain residing in <code>&lt;archtecture&gt;/stage2/bin</code> (on my machine, it’s <code>x86_64-unknown-linux-gnu/stage2/bin</code>).</p>
-</article>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -78,6 +78,8 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</article>
 
             </div>
         </div>

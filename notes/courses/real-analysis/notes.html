@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <h1>Real Analysis</h1>
+
+                <div class="info">
+  
+  These are my notes for the Real Analysis course taught by Francis Su (https://www.youtube.com/playlist?list=PL0E754696F72137EC) and the Understanding Analysis book written by Stephen Abbott (https://www.amazon.com/dp/1493927116/).
+  
+</div>
+
+<article>
+<h2 id="sets">Sets</h2>
+<p>A <em>set</em> is a collection of objects. For example, <span class="math inline">\(S = \{1, \delta, \circ, \{2, \gamma\}\}\)</span>. Note that <span class="math inline">\(|S| = 4\)</span>.</p>
+<p>Another notation for writing down a set is <span class="math inline">\(S = \{x : P(x) \text{ is true}\}\)</span>, which means “S is a set of <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(x)\)</span> is true”. <span class="math inline">\(P\)</span> is a <em>property</em> of <span class="math inline">\(x\)</span> and if it is true, it will put <span class="math inline">\(x\)</span> in <span class="math inline">\(S\)</span>. For example, <span class="math inline">\(S = \{x : x &lt; 2\}\)</span> means <span class="math inline">\(S\)</span> is a set of <span class="math inline">\(x\)</span> such that <span class="math inline">\(x\)</span> is less than <span class="math inline">\(2\)</span>.</p>
+<p><span class="math inline">\(x \in S\)</span> means <span class="math inline">\(x\)</span> is in <span class="math inline">\(S\)</span>. <span class="math inline">\(x \notin S\)</span> means <span class="math inline">\(x\)</span> is not in <span class="math inline">\(S\)</span>. <span class="math inline">\(\emptyset\)</span> is the <em>empty set</em>.</p>
+<p><span class="math inline">\(A \subset B\)</span> means <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(B\)</span>, which means if <span class="math inline">\(x \in A\)</span> then <span class="math inline">\(x \in B\)</span> (or <span class="math inline">\(x \in A \implies x \in B\)</span>).</p>
+<p>If <span class="math inline">\(A \subset B\)</span> and <span class="math inline">\(A \not\subset B\)</span>, then set <span class="math inline">\(A\)</span> is a <em>proper subset</em> of <span class="math inline">\(B\)</span>.</p>
+<p>If <span class="math inline">\(A \subset B\)</span> and <span class="math inline">\(B \subset A\)</span>, then <span class="math inline">\(A = B\)</span>, else <span class="math inline">\(A \neq B\)</span>.</p>
+<h3 id="operations-on-sets">Operations on Sets</h3>
+<p>Union: <span class="math inline">\(A \cup B = \{x : x \in A \text{ or } x \in B\}\)</span>.</p>
+<p>Intersection: <span class="math inline">\(A \cup B = \{x : x \in A \text{ and } x \in B\}\)</span>.</p>
+<p>Complement: <span class="math inline">\(A^C = \{x : x \notin A\}\)</span>.</p>
+<p>Minus: <span class="math inline">\(A \setminus B = \{x : x \in A \text{ and } x \notin B\}\)</span>.</p>
+<p>Product: <span class="math inline">\(A \times B = \{(x, y) : x \in A \text{ and } y \in B\}\)</span>.</p>
+<h2 id="relations">Relations</h2>
+<p>A <em>(binary) relation</em> <span class="math inline">\(R\)</span> is a subset of <span class="math inline">\(A \times B\)</span>. If <span class="math inline">\((a, b) \in R\)</span>, then we can write <span class="math inline">\(aRb\)</span>.</p>
+<p>For example, <span class="math inline">\(A\)</span>, “is an ancestor of”, is a relation on <span class="math inline">\(P \times P\)</span>, where <span class="math inline">\(P\)</span> is a set of people. Another example is <span class="math inline">\(\lt\)</span>, “less than”, is a relation on <span class="math inline">\(\mathbb{Z} \times \mathbb{Z}\)</span>.</p>
+<p>An <em>equivalent relation</em> <span class="math inline">\(R\)</span> on <span class="math inline">\(S\)</span>, often denoted as <span class="math inline">\(\sim\)</span>, <span class="math inline">\(\approx\)</span>, <span class="math inline">\(\cong\)</span>, etc, is a relation on <span class="math inline">\(S \times S\)</span> such that it is</p>
+<ol type="1">
+<li>reflexive, i.e. <span class="math inline">\(aRa\)</span> is true,</li>
+<li>symmetric, i.e. <span class="math inline">\(aRb \implies bRa\)</span>,</li>
+<li>transitive, i.e. if <span class="math inline">\(aRb\)</span> and <span class="math inline">\(bRc\)</span> then <span class="math inline">\(aRc\)</span>.</li>
+</ol>
+<p>A <em>function</em> <span class="math inline">\(F\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, denoted <span class="math inline">\(F : A \rightarrow B\)</span>, is a relation such that if <span class="math inline">\(aFb\)</span> and <span class="math inline">\(aFb'\)</span> then <span class="math inline">\(b = b'\)</span>. Informally, <span class="math inline">\(F\)</span> assigns each <span class="math inline">\(a \in A\)</span> to a single <span class="math inline">\(b \in B\)</span>. We also write <span class="math inline">\(F(a) = b\)</span>.</p>
+<h2 id="the-rational-numbers-mathbbq">The Rational Numbers <span class="math inline">\(\mathbb{Q}\)</span></h2>
+<h3 id="construction-of-mathbbq">Construction of <span class="math inline">\(\mathbb{Q}\)</span></h3>
+<p>Assume <span class="math inline">\(\mathbb{Z}\)</span>, the integers, their arithmetic and order.</p>
+<p>An <em>equivalent class</em> is a set whose members satisfy an equivalent relation. For example, <span class="math inline">\((1, 3) \sim (2, 6)\)</span> are equivalent ordered pairs from the class “<span class="math inline">\(\frac{1}{3}\)</span>”.</p>
+<p>Informally, <span class="math inline">\(\mathbb{Q}\)</span>, the <em>rational numbers</em>, is the set of all such equivalent classes. Formally, <span class="math inline">\(\mathbb{Q} = \left \{\frac{m}{n} : m, n \in \mathbb{Z}, n \neq 0 \right \}\)</span>, where <span class="math inline">\(\frac{m}{n}\)</span> is an equivalent class of <span class="math inline">\((m, n)\)</span> with relation <span class="math inline">\((p, q) \sim (m, n)\)</span> if <span class="math inline">\(pn = qm\)</span> and <span class="math inline">\(q, n \neq 0\)</span>.</p>
+<p>Check that <span class="math inline">\(\sim\)</span> is an equivalent relation:</p>
+<ol type="1">
+<li>Reflexivity: Since <span class="math inline">\(mn = nm\)</span> for all <span class="math inline">\(m, n \in \mathbb{Z}\)</span> and <span class="math inline">\(n \neq 0\)</span>, <span class="math inline">\((m, n) \sim (m, n)\)</span> is true.</li>
+<li>Symmetry: Assume <span class="math inline">\((p, q) \sim (m, n)\)</span> where <span class="math inline">\(p, q, m, n \in \mathbb{Z}\)</span> and <span class="math inline">\(q, n \neq 0\)</span>. We have <span class="math inline">\(pn = qm\)</span>, which is the same as <span class="math inline">\(mq = np\)</span>, so <span class="math inline">\((m, n) \sim (p, q)\)</span>. Thus, <span class="math inline">\((p, q) \sim (m, n) \implies (m, n) \sim (p, q)\)</span>.</li>
+<li>Transitivity: Assume <span class="math inline">\((a, b) \sim (c, d)\)</span> and <span class="math inline">\((c, d) \sim (e, f)\)</span> where <span class="math inline">\(a, b, c, d, e, f \in \mathbb{Z}\)</span> and <span class="math inline">\(b, d, f \neq 0\)</span>. We have <span class="math inline">\(ad = bc\)</span> since <span class="math inline">\((a, b) \sim (c, d)\)</span> and <span class="math inline">\(cf = de\)</span> since <span class="math inline">\((c, d) \sim (e, f)\)</span>. We also have <span class="math display">\[\begin{align}
+&amp; ad = bc \\
+\implies &amp; adf = bcf &amp; \text{(since } f \neq 0 \text{)} \\
+\implies &amp; adf = bde &amp; \text{(since } cf = de \text{)} \\
+\implies &amp; af = be &amp; \text{(by cancellation law on } \mathbb{Z} \text{)} \\
+\implies &amp; (a, b) \sim (e, f)
+\end{align}\]</span> Thus, <span class="math inline">\((a, b) \sim (c, d)\)</span> and <span class="math inline">\((c, d) \sim (e, f) \implies (a, b) \sim (e, f)\)</span>.</li>
+</ol>
+</article>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'minhdo'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
