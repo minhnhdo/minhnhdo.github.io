@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <h1>Real Analysis</h1>
+                
+                <p id="subtitle">Bounds</p>
+                
+
+                <article>
+<h2 id="bounds">Bounds</h2>
+<p>Let set <span class="math inline">\(E \subset S\)</span> be ordered. If there exists <span class="math inline">\(\beta \in S\)</span> such that for all <span class="math inline">\(x \in E\)</span>, we have <span class="math inline">\(x \leq \beta\)</span>, then <span class="math inline">\(\beta\)</span> is an <em>upper bound</em> for <span class="math inline">\(E\)</span>, and <span class="math inline">\(E\)</span> is <em>bounded above</em>. Similarly, if there exists <span class="math inline">\(\beta \in S\)</span> such that for all <span class="math inline">\(x \in E\)</span>, we have <span class="math inline">\(x \geq \beta\)</span>, then <span class="math inline">\(\beta\)</span> is a <em>lower bound</em> for <span class="math inline">\(E\)</span>, and <span class="math inline">\(E\)</span> is <em>bounded below</em>.</p>
+<p>For example, <span class="math inline">\(\frac{3}{2}\)</span> is an upper bound for <span class="math inline">\(A = \{x : x^2 &lt; 2\}\)</span>. If not, then there exists <span class="math inline">\(x &gt; \frac{3}{2}\)</span>, which implies <span class="math inline">\(x^2 &gt; \frac{9}{4} &gt; 2\)</span>. So, <span class="math inline">\(x \notin A\)</span>, which is a contradiction. Thus, <span class="math inline">\(\frac{3}{2}\)</span> is an upper bound for <span class="math inline">\(A\)</span>.</p>
+<p>If there is an <span class="math inline">\(\alpha \in S\)</span> such that (1) <span class="math inline">\(\alpha\)</span> is an <em>upper bound</em>, and (2) if <span class="math inline">\(\gamma &lt; \alpha \implies \gamma\)</span> is not an upper bound for <span class="math inline">\(E\)</span>, then <span class="math inline">\(\alpha\)</span> is the <em>least upper bound</em> for <span class="math inline">\(E\)</span>, or <em>supremum</em> of <span class="math inline">\(E\)</span>, denoted <span class="math inline">\(\sup E\)</span>.</p>
+<p>For example, let <span class="math inline">\(S = \mathbb{Q}\)</span>.</p>
+<ol type="1">
+<li>(Finite sets have a supremum) <span class="math inline">\(E = \{\frac{1}{2}, 1, 2\}\)</span>. <span class="math inline">\(\sup E = 2\)</span> because all elements of <span class="math inline">\(E\)</span> is less than or equal to <span class="math inline">\(2\)</span> and if <span class="math inline">\(\gamma &lt; 2\)</span> then <span class="math inline">\(\gamma\)</span> is not an upper bound for <span class="math inline">\(E\)</span>.</li>
+<li><span class="math inline">\(E = \mathbb{Q}_{-}\)</span>, the negative rationals. <span class="math inline">\(\sup E = 0\)</span>.</li>
+<li><span class="math inline">\(E = \mathbb{Q}\)</span>. <span class="math inline">\(E\)</span> is <em>unbounded above</em>, denoted <span class="math inline">\(\sup E = +\infty\)</span>.</li>
+<li><span class="math inline">\(E = \{x : x^2 &lt; 2\}\)</span>. <span class="math inline">\(\sup E\)</span> does not exist although <span class="math inline">\(E\)</span> is bounded. One such bound is <span class="math inline">\(\frac{3}{2}\)</span>. . To show <span class="math inline">\(\sup A = \sup B\)</span>, one strategy is to show for all <span class="math inline">\(a \in A\)</span>, there exists <span class="math inline">\(b \in B\)</span> such that <span class="math inline">\(a \leq b\)</span>, so <span class="math inline">\(\sup A \leq \sup B\)</span>; similarly, show <span class="math inline">\(\sup B \leq \sup A\)</span>.</li>
+</ol>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
