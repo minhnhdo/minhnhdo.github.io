@@ -52,7 +52,7 @@ x + (-\infty) := -\infty. \\
 \]</span></p>
 <p>Inner product, or dot product: <span class="math display">\[\vec{x} \cdot \vec{y} := \sum_{i = 1}^{k} x_iy_i.\]</span></p>
 <p>Norm, or length: <span class="math display">\[|\vec{x}| := \sqrt{\vec{x} \cdot \vec{x}}.\]</span></p>
-<h2 id="complex-number-field-mathbbr2">Complex Number Field <span class="math inline">\(\mathbb{R}^2\)</span></h2>
+<h2 id="complex-number-field-mathbbc">Complex Number Field <span class="math inline">\(\mathbb{C}\)</span></h2>
 <p>Complex numbers <span class="math inline">\(\mathbb{C} = \mathbb{R}^2\)</span> has a <em>field structure</em>.</p>
 <p><span class="math display">\[
 (a, b) + (c, d) := (a + c, b + d). \\
@@ -95,14 +95,14 @@ z \cdot \overline{z} = \text{Re}(z)^2 + \text{Im}(z)^2. \\
 &amp; \leq |z|^2 + 2|z||w| + |w|^2 = (|z| + |w|)^2.
 \end{align}\]</span></p>
 <p>This yields the desired inequality. QED.</p>
-<h3 id="cauchy---schwarz-inequality">Cauchy - Schwarz Inequality</h3>
+<h2 id="cauchy---schwarz-inequality">Cauchy - Schwarz Inequality</h2>
 <p>Version for complex numbers: If <span class="math inline">\(a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{C}\)</span>, then <span class="math display">\[\left|\sum_{i = 1}^{n} a_i\overline{b_i} \right|^2 \leq \sum_{i = 1}^{n} |a_i|^2 \cdot \sum_{i = 1}^{n} |b_i|^2\]</span>.</p>
 <p>Version for real numbers: If <span class="math inline">\(a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{R}\)</span>, then <span class="math display">\[\left|\sum_{i = 1}^{n} a_ib_i \right|^2 \leq \sum_{i = 1}^{n} a_i^2 \cdot \sum_{i = 1}^{n} b_i^2\]</span>.</p>
 <p>Version for real vectors: Given <span class="math inline">\(\vec{x}, \vec{y} \in \mathbb{R}^k\)</span>. Then <span class="math inline">\(|\vec{x} \cdot \vec{y}| \leq |\vec{x}||\vec{y}|\)</span>.</p>
 <p>Version for complex vectors: Given <span class="math inline">\(\vec{x}, \vec{y} \in \mathbb{C}^k\)</span>. Then <span class="math inline">\(\left| \langle \vec{x}, \vec{y} \rangle \right|^2 \leq \langle \vec{x}, \vec{x} \rangle \langle \vec{y}, \vec{y} \rangle\)</span>.</p>
 <p><em>Proof.</em> Let <span class="math inline">\(\vec{a}, \vec{b} \in \mathbb{C}^n\)</span>, and <span class="math inline">\(y = \frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle}\)</span>.</p>
 <p>Consider <span class="math inline">\(\overline{y}\)</span>. <span class="math display">\[
-\overline{y} = \overline{\left(\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} \right)} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\left \langle \vec{b}, \vec{b} \right \rangle}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\sum_{i = 1}^{n} b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} \overline{b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} b_i\overline{b_i}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle}
+\overline{y} = \overline{\left(\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} \right)} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\left \langle \vec{b}, \vec{b} \right \rangle}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\sum_{i = 1}^{n} b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} \overline{b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} b_i\overline{b_i}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle}.
 \]</span></p>
 <p>Consider the following inequality. <span class="math display">\[\begin{align}
 0 \leq \left|\vec{a} - y\vec{b}\right|^2 &amp; = \left \langle \vec{a} - y\vec{b}, \vec{a} - y\vec{b} \right \rangle \\
@@ -112,7 +112,7 @@ z \cdot \overline{z} = \text{Re}(z)^2 + \text{Im}(z)^2. \\
 &amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle} \left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left \langle \vec{a}, \vec{b} \right \rangle \overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left| \left \langle \vec{b}, \vec{b} \right \rangle\right|^2} \\
 &amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle \left \langle \vec{b}, \vec{b} \right \rangle} \\
 &amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{2\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} \\
-&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left| \left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle}
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left| \left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle}.
 \end{align}\]</span></p>
 <p>This yields the desired inequality after multiplying by <span class="math inline">\(\left \langle \vec{b}, \vec{b} \right \rangle\)</span>. QED.</p>
 </article>
