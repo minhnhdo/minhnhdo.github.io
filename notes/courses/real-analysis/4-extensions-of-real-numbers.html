@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <h1>Real Analysis</h1>
+                
+                <p id="subtitle">Extensions of Real Numbers</p>
+                
+
+                <article>
+<h2 id="extended-real-numbers-overlinemathbbr">Extended Real Numbers <span class="math inline">\(\overline{\mathbb{R}}\)</span></h2>
+<p><span class="math display">\[\overline{\mathbb{R}} := \mathbb{R} \cup \{-\infty, +\infty\}.\]</span></p>
+<p>Order: <span class="math display">\[\forall x \in \mathbb{R}, -\infty &lt; x &lt; +\infty.\]</span></p>
+<p>Arithmetic: <span class="math display">\[
+x + (+\infty) := +\infty. \\
+x + (-\infty) := -\infty. \\
+\text{If } x &gt; 0, x \cdot (+\infty) := +\infty. \\
+\text{If } x &lt; 0, x \cdot (+\infty) := -\infty. \\
+\dots
+\]</span></p>
+<p>Every subset of <span class="math inline">\(\overline{\mathbb{R}}\)</span> has a supremum (possibly <span class="math inline">\(+\infty\)</span>).</p>
+<h2 id="euclidean-space-mathbbrk">Euclidean Space <span class="math inline">\(\mathbb{R}^k\)</span></h2>
+<p><span class="math display">\[\mathbb{R}^k := \{(x_1, x_2, \dots, x_k) : x_i \in \mathbb{R}\}.\]</span></p>
+<p>Arithmetic: <span class="math display">\[
+\underbrace{(x_1, x_2, \dots, x_k)}_{\vec{x}} + \underbrace{(y_1, y_2, \dots, y_k)}_{\vec{y}} := (x_1 + y_1, x_1 + y_2, \dots, x_k + y_k). \\
+\alpha (x_1, x_2, \dots, x_k) := (\alpha x_1, \alpha x_2, \dots, \alpha x_k)\text{, where } \alpha \in \mathbb{R}\text{, called a scalar}.
+\]</span></p>
+<p>Inner product, or dot product: <span class="math display">\[\vec{x} \cdot \vec{y} := \sum_{i = 1}^{k} x_iy_i.\]</span></p>
+<p>Norm, or length: <span class="math display">\[|\vec{x}| := \sqrt{\vec{x} \cdot \vec{x}}.\]</span></p>
+<h2 id="complex-number-field-mathbbr2">Complex Number Field <span class="math inline">\(\mathbb{R}^2\)</span></h2>
+<p>Complex numbers <span class="math inline">\(\mathbb{C} = \mathbb{R}^2\)</span> has a <em>field structure</em>.</p>
+<p><span class="math display">\[
+(a, b) + (c, d) := (a + c, b + d). \\
+(a, b) \cdot (c, d) := (ac - bd, ad + bc).
+\]</span></p>
+<p>The additive identity is <span class="math inline">\(0^\star := (0, 0)\)</span>. The multiplicative identity is <span class="math inline">\(1^\star := (1, 0)\)</span>.</p>
+<p><span class="math inline">\(\mathbb{C}\)</span> extends <span class="math inline">\(\mathbb{R}\)</span>. Consider subfield <span class="math inline">\(\{(a, 0) : a \in \mathbb{R}\}\)</span> which behaves just like <span class="math inline">\(\mathbb{R}\)</span>, or is <em>isomorphic</em> to <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Note: <span class="math inline">\((0, 1) + (0, 1) = (-1, 0)\)</span>. So, let <span class="math inline">\(i = (0, 1)\)</span> then <span class="math inline">\(i^2 = -1\)</span>, a real number.</p>
+<p>So, write <span class="math inline">\(a + bi\)</span> for <span class="math inline">\((a, b)\)</span>.</p>
+<p>Let <span class="math inline">\(z = a + bi\)</span>. The <em>real part</em> of <span class="math inline">\(z\)</span> is <span class="math inline">\(\text{Re}(z) = a\)</span>. The imaginary part of <span class="math inline">\(z\)</span> is <span class="math inline">\(\text{Im}(z) = b\)</span>.</p>
+<p>The <em>conjugate</em> of <span class="math inline">\(z\)</span> is <span class="math inline">\(\overline{z} = a - bi\)</span>. <span class="math display">\[
+\overline{z + w} = \overline{z} + \overline{w}. \\
+\overline{z \cdot w} = \overline{z} \cdot \overline{w}. \\
+z + \overline{z} = 2\text{Re}(z). \\
+z - \overline{z} = 2\text{Im}(z). \\
+z \cdot \overline{z} = \text{Re}(z)^2 + \text{Im}(z)^2. \\
+\]</span></p>
+<p>Define length, or absolute value, of <span class="math inline">\(z\)</span> to be <span class="math inline">\(|z| = \sqrt{z \cdot \overline{z}}\)</span>, which is the same as the length in <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+<p>In <span class="math inline">\(\mathbb{C}^k = \{(z_1, z_2, \dots, z_k) : z \in \mathbb{C}\}\)</span>, the inner product is <span class="math inline">\(\langle \vec{x}, \vec{y} \rangle := \sum_{i = 1}^{k} x_i\overline{y_i}\)</span>.</p>
+<p>Notice that <span class="math inline">\(\overline{\left \langle \vec{a}, \vec{b} \right \rangle} = \left \langle \vec{b}, \vec{a} \right \rangle\)</span>.</p>
+<p><em>Proof.</em> <span class="math display">\[\begin{align}
+\overline{\left \langle \vec{a}, \vec{b} \right \rangle} &amp; = \overline{\sum_{i} a_i\overline{b_i}} &amp; \text{(by definition of } \left \langle \vec{a}, \vec{b} \right \rangle \text{)} \\
+&amp; = \sum_{i} \overline{a_i\overline{b_i}} &amp; \text{(due to } \overline{z + w} = \overline{z} + \overline{w} \text{)} \\
+&amp; = \sum_{i} \overline{a_i}b_i &amp; \text{(due to } \overline{z \cdot w} = \overline{z} \cdot \overline{w} \text{)} \\
+&amp; = \sum_{i} b_i\overline{a_i} &amp; \text{(due to commutativity of multiplication)} \\
+&amp; = \left \langle \vec{b}, \vec{a} \right \rangle &amp; \text{(by definition of } \left \langle \vec{b}, \vec{a} \right \rangle \text{)} \\
+\end{align}\]</span> QED.</p>
+<h3 id="properties-of-mathbbc">Properties of <span class="math inline">\(\mathbb{C}\)</span></h3>
+<p><span class="math display">\[
+|z| \geq 0. \\
+|\overline{z}| = |z|. \\
+|zw| = |z||w|. \\
+\text{Re}(z) \leq |z|. \\
+|z + w| \leq |z| + |w|. \\
+\]</span></p>
+<p><em>Proof for <span class="math inline">\(|z + w| \leq |z| + |w|\)</span>.</em> <span class="math display">\[\begin{align}
+|z + w|^2 &amp; = (z + w)(\overline{z} + \overline{w}) \\
+&amp; = z \cdot \overline{z} + z \cdot \overline{w} + w \cdot \overline{z} + w \cdot \overline{w} \\
+&amp; = |z|^2 + 2\text{Re}(z \overline{w}) + |w|^2 \\
+&amp; \leq |z|^2 + 2|z||w| + |w|^2 = (|z| + |w|)^2.
+\end{align}\]</span></p>
+<p>This yields the desired inequality. QED.</p>
+<h3 id="cauchy---schwarz-inequality">Cauchy - Schwarz Inequality</h3>
+<p>Version for complex numbers: If <span class="math inline">\(a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{C}\)</span>, then <span class="math display">\[\left|\sum_{i = 1}^{n} a_i\overline{b_i} \right|^2 \leq \sum_{i = 1}^{n} |a_i|^2 \cdot \sum_{i = 1}^{n} |b_i|^2\]</span>.</p>
+<p>Version for real numbers: If <span class="math inline">\(a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{R}\)</span>, then <span class="math display">\[\left|\sum_{i = 1}^{n} a_ib_i \right|^2 \leq \sum_{i = 1}^{n} a_i^2 \cdot \sum_{i = 1}^{n} b_i^2\]</span>.</p>
+<p>Version for real vectors: Given <span class="math inline">\(\vec{x}, \vec{y} \in \mathbb{R}^k\)</span>. Then <span class="math inline">\(|\vec{x} \cdot \vec{y}| \leq |\vec{x}||\vec{y}|\)</span>.</p>
+<p>Version for complex vectors: Given <span class="math inline">\(\vec{x}, \vec{y} \in \mathbb{C}^k\)</span>. Then <span class="math inline">\(\left| \langle \vec{x}, \vec{y} \rangle \right|^2 \leq \langle \vec{x}, \vec{x} \rangle \langle \vec{y}, \vec{y} \rangle\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math inline">\(\vec{a}, \vec{b} \in \mathbb{C}^n\)</span>, and <span class="math inline">\(y = \frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle}\)</span>.</p>
+<p>Consider <span class="math inline">\(\overline{y}\)</span>. <span class="math display">\[
+\overline{y} = \overline{\left(\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} \right)} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\left \langle \vec{b}, \vec{b} \right \rangle}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\sum_{i = 1}^{n} b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} \overline{b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} b_i\overline{b_i}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle}
+\]</span></p>
+<p>Consider the following inequality. <span class="math display">\[\begin{align}
+0 \leq \left|\vec{a} - y\vec{b}\right|^2 &amp; = \left \langle \vec{a} - y\vec{b}, \vec{a} - y\vec{b} \right \rangle \\
+&amp; = \sum_{i = 1}^{n} (a_i - yb_i)(\overline{a_i} - \overline{y}\overline{b_i}) \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \overline{y}\left \langle \vec{a}, \vec{b} \right \rangle - y\left \langle \vec{b}, \vec{a} \right \rangle + |y|^2 \left \langle \vec{b}, \vec{b} \right \rangle \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle} \left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left \langle \vec{a}, \vec{b} \right \rangle \left \langle \vec{b}, \vec{a} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} + \left|\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle}\right|^2 \left \langle \vec{b}, \vec{b} \right \rangle \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle} \left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left \langle \vec{a}, \vec{b} \right \rangle \overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left| \left \langle \vec{b}, \vec{b} \right \rangle\right|^2} \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle \left \langle \vec{b}, \vec{b} \right \rangle} \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{2\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} \\
+&amp; = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left| \left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle}
+\end{align}\]</span></p>
+<p>This yields the desired inequality after multiplying by <span class="math inline">\(\left \langle \vec{b}, \vec{b} \right \rangle\)</span>. QED.</p>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
