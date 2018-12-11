@@ -35,8 +35,6 @@
                 <article>
 <h2 id="the-set-of-real-numbers-mathbbr">The Set of Real Numbers <span class="math inline">\(\mathbb{R}\)</span></h2>
 <p><em>Theorem:</em> <span class="math inline">\(\mathbb{R}\)</span> is an ordered field, with the <em>least upper bound property</em>, and <span class="math inline">\(\mathbb{R}\)</span> contains <span class="math inline">\(\mathbb{Q}\)</span> as a <em>subfield</em>.</p>
-<h3 id="the-least-upper-bound-property">The Least Upper Bound Property</h3>
-<p>A set <span class="math inline">\(S\)</span> has the <em>least upper bound property</em> (or satisfies the <em>completeness axiom</em>) if every nonempty subset of <span class="math inline">\(S\)</span> has an upper bound, also has least upper bound in <span class="math inline">\(S\)</span>.</p>
 <h3 id="construction-of-mathbbr">Construction of <span class="math inline">\(\mathbb{R}\)</span></h3>
 <p>Dedekind: A <em>cut</em> <span class="math inline">\(\alpha\)</span> is a subset of <span class="math inline">\(\mathbb{Q}\)</span> satisfying</p>
 <ol type="1">
@@ -98,25 +96,15 @@
 <p><span class="math inline">\(\mathbb{R}\)</span> is the <em>only</em> ordered field with the least upper bound property.</p>
 <p>Consequence: the length “<span class="math inline">\(\sqrt{2}\)</span>” can be thought of as <span class="math inline">\(\sup\{1, 1.4, 1.41, 1.414, 1.4142, \dots\}\)</span>, whose shorthand is <span class="math inline">\(1.4142135\dots\)</span>.</p>
 <p>More generally, <span class="math inline">\(a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n &lt; a\}\)</span>, i.e. roots exist.</p>
-<h4 id="the-greatest-lower-bound">The Greatest Lower Bound</h4>
-<p>The <em>greatest lower bound</em>, or <em>infinum</em>, of a set <span class="math inline">\(A\)</span> is denoted <span class="math inline">\(\inf A\)</span>.</p>
+<h3 id="greatest-lower-bounds-in-mathbbr">Greatest Lower Bounds in <span class="math inline">\(\mathbb{R}\)</span></h3>
 <p>Show that <span class="math inline">\(\inf A = -\sup(-A)\)</span>.</p>
-<p>The infinum exists if a set if <em>bounded below</em>.</p>
+<p>The infinum exists if a set is <em>bounded below</em>.</p>
 <h5 id="consequences">Consequences</h5>
 <p><em>Archimedean property:</em> if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>.</p>
 <p><em>Proof (by contradiction).</em> Consider <span class="math inline">\(A = \{nx : n \in \mathbb{N}\}\)</span>. If <span class="math inline">\(A\)</span> is bounded by <span class="math inline">\(y\)</span> (i.e. <span class="math inline">\(nx &lt; y\)</span> for all <span class="math inline">\(n\)</span>) then <span class="math inline">\(A\)</span> has a least upper bound <span class="math inline">\(\alpha\)</span> (by the least upper bound property). Then <span class="math inline">\(\alpha - x\)</span> is not an upper bound for <span class="math inline">\(A\)</span>. Hence, <span class="math inline">\(\alpha - x &lt; mx\)</span> for some <span class="math inline">\(m \in \mathbb{N}\)</span>. Then <span class="math inline">\(\alpha &lt; (m + 1)x\)</span>. Thus <span class="math inline">\(\alpha\)</span> is not an upper bound for <span class="math inline">\(A\)</span>, a contradiction! Therefore, if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>. QED.</p>
 <p><em>Corollary.</em> If <span class="math inline">\(x &gt; 0\)</span> then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; x\)</span>.</p>
 <p><em>Theorem</em> (<span class="math inline">\(\mathbb{Q}\)</span> is dense in <span class="math inline">\(\mathbb{R}\)</span>)<em>.</em> Between <span class="math inline">\(x, y \in \mathbb{R}\)</span>, and <span class="math inline">\(x &lt; y\)</span>, there is a <span class="math inline">\(q \in \mathbb{Q}\)</span> such that <span class="math inline">\(x &lt; q &lt; y\)</span>.</p>
 <p><em>Proof.</em> Choose <span class="math inline">\(n\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; y - x\)</span> (by Archimedean property). Consider multiples of <span class="math inline">\(\frac{1}{n}\)</span>. These are unbounded (by the Archimedean property). Choose the first multiple such that <span class="math inline">\(\frac{m}{n} &gt; x\)</span>. If <span class="math inline">\(\frac{m}{n}\)</span> is not less than <span class="math inline">\(y\)</span> then <span class="math inline">\(\frac{m - 1}{n} &lt; x\)</span> and <span class="math inline">\(\frac{m}{n} &gt; y\)</span>, which implies <span class="math inline">\(\frac{1}{n} &gt; y - x\)</span>, a constradiction. So, <span class="math inline">\(\frac{m}{n} &lt; y\)</span>. QED.</p>
-<h2 id="properties-of-suprema">Properties of Suprema</h2>
-<ol type="a">
-<li><span class="math inline">\(\gamma\)</span> is an upper bound of some set <span class="math inline">\(A\)</span> if and only if <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
-<li>For all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a \leq \gamma\)</span> if and only if <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
-<li>If for all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a &lt; \gamma\)</span> then <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
-<li>If <span class="math inline">\(\gamma &lt; \sup A\)</span> then there exists <span class="math inline">\(a \in A\)</span> such that <span class="math inline">\(a &gt; \gamma\)</span> and <span class="math inline">\(a \leq \sup A\)</span>.</li>
-<li>If <span class="math inline">\(A \subset B\)</span> then <span class="math inline">\(\sup A \leq \sup B\)</span>.</li>
-<li>To show <span class="math inline">\(\sup A = \sup B\)</span>, one strategy is to show for all <span class="math inline">\(a \in A\)</span>, there exists <span class="math inline">\(b \in B\)</span> such that <span class="math inline">\(a \leq b\)</span>, so <span class="math inline">\(\sup A \leq \sup B\)</span>; similarly, show <span class="math inline">\(\sup B \leq \sup A\)</span>.</li>
-</ol>
 </article>
 
 

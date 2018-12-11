@@ -36,6 +36,7 @@
 <h2 id="bounds">Bounds</h2>
 <p>Let set <span class="math inline">\(E \subset S\)</span> be ordered. If there exists <span class="math inline">\(\beta \in S\)</span> such that for all <span class="math inline">\(x \in E\)</span>, we have <span class="math inline">\(x \leq \beta\)</span>, then <span class="math inline">\(\beta\)</span> is an <em>upper bound</em> for <span class="math inline">\(E\)</span>, and <span class="math inline">\(E\)</span> is <em>bounded above</em>. Similarly, if there exists <span class="math inline">\(\beta \in S\)</span> such that for all <span class="math inline">\(x \in E\)</span>, we have <span class="math inline">\(x \geq \beta\)</span>, then <span class="math inline">\(\beta\)</span> is a <em>lower bound</em> for <span class="math inline">\(E\)</span>, and <span class="math inline">\(E\)</span> is <em>bounded below</em>.</p>
 <p>For example, <span class="math inline">\(\frac{3}{2}\)</span> is an upper bound for <span class="math inline">\(A = \{x : x^2 &lt; 2\}\)</span>. If not, then there exists <span class="math inline">\(x &gt; \frac{3}{2}\)</span>, which implies <span class="math inline">\(x^2 &gt; \frac{9}{4} &gt; 2\)</span>. So, <span class="math inline">\(x \notin A\)</span>, which is a contradiction. Thus, <span class="math inline">\(\frac{3}{2}\)</span> is an upper bound for <span class="math inline">\(A\)</span>.</p>
+<h3 id="the-least-upper-bound">The Least Upper Bound</h3>
 <p>If there is an <span class="math inline">\(\alpha \in S\)</span> such that (1) <span class="math inline">\(\alpha\)</span> is an <em>upper bound</em>, and (2) if <span class="math inline">\(\gamma &lt; \alpha \implies \gamma\)</span> is not an upper bound for <span class="math inline">\(E\)</span>, then <span class="math inline">\(\alpha\)</span> is the <em>least upper bound</em> for <span class="math inline">\(E\)</span>, or <em>supremum</em> of <span class="math inline">\(E\)</span>, denoted <span class="math inline">\(\sup E\)</span>.</p>
 <p>For example, let <span class="math inline">\(S = \mathbb{Q}\)</span>.</p>
 <ol class="example" type="1">
@@ -44,6 +45,19 @@
 <li><span class="math inline">\(E = \mathbb{Q}\)</span>. <span class="math inline">\(E\)</span> is <em>unbounded above</em>, denoted <span class="math inline">\(\sup E = +\infty\)</span>.</li>
 <li><span class="math inline">\(E = \{x : x^2 &lt; 2\}\)</span>. <span class="math inline">\(\sup E\)</span> does not exist although <span class="math inline">\(E\)</span> is bounded. One such bound is <span class="math inline">\(\frac{3}{2}\)</span>. . To show <span class="math inline">\(\sup A = \sup B\)</span>, one strategy is to show for all <span class="math inline">\(a \in A\)</span>, there exists <span class="math inline">\(b \in B\)</span> such that <span class="math inline">\(a \leq b\)</span>, so <span class="math inline">\(\sup A \leq \sup B\)</span>; similarly, show <span class="math inline">\(\sup B \leq \sup A\)</span>.</li>
 </ol>
+<h3 id="the-least-upper-bound-property">The Least Upper Bound Property</h3>
+<p>A set <span class="math inline">\(S\)</span> has the <em>least upper bound property</em> (or satisfies the <em>completeness axiom</em>) if every nonempty subset of <span class="math inline">\(S\)</span> has an upper bound, also has least upper bound in <span class="math inline">\(S\)</span>.</p>
+<h3 id="properties-of-suprema">Properties of Suprema</h3>
+<ol type="a">
+<li><span class="math inline">\(\gamma\)</span> is an upper bound of some set <span class="math inline">\(A\)</span> if and only if <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
+<li>For all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a \leq \gamma\)</span> if and only if <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
+<li>If for all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a &lt; \gamma\)</span> then <span class="math inline">\(\sup A \leq \gamma\)</span>.</li>
+<li>If <span class="math inline">\(\gamma &lt; \sup A\)</span> then there exists <span class="math inline">\(a \in A\)</span> such that <span class="math inline">\(a &gt; \gamma\)</span> and <span class="math inline">\(a \leq \sup A\)</span>.</li>
+<li>If <span class="math inline">\(A \subset B\)</span> then <span class="math inline">\(\sup A \leq \sup B\)</span>.</li>
+<li>To show <span class="math inline">\(\sup A = \sup B\)</span>, one strategy is to show for all <span class="math inline">\(a \in A\)</span>, there exists <span class="math inline">\(b \in B\)</span> such that <span class="math inline">\(a \leq b\)</span>, so <span class="math inline">\(\sup A \leq \sup B\)</span>; similarly, show <span class="math inline">\(\sup B \leq \sup A\)</span>.</li>
+</ol>
+<h4 id="the-greatest-lower-bound">The Greatest Lower Bound</h4>
+<p>The <em>greatest lower bound</em>, or <em>infinum</em>, of a set <span class="math inline">\(A\)</span> is denoted <span class="math inline">\(\inf A\)</span>.</p>
 </article>
 
 
