@@ -59,6 +59,15 @@
 <h3 id="the-greatest-lower-bound">The Greatest Lower Bound</h3>
 <p>The <em>greatest lower bound</em>, or <em>infinum</em>, of a set <span class="math inline">\(A\)</span> is denoted <span class="math inline">\(\inf A\)</span>.</p>
 <p>The infinum exists if a set is <em>bounded below</em>.</p>
+<p>Show that <span class="math inline">\(\inf A = -\sup(-A)\)</span>.</p>
+<p><em>Proof.</em> By definition, <span class="math inline">\(-A = \{-a : a \in A\}\)</span>. Let <span class="math inline">\(\alpha = \inf A\)</span>. By definition, it has the following properties.</p>
+<ul>
+<li>For all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(\alpha \leq a\)</span>.</li>
+<li>For all lower bound <span class="math inline">\(\gamma\)</span> for <span class="math inline">\(A\)</span>, <span class="math inline">\(\gamma \leq \alpha\)</span>.</li>
+</ul>
+<p>Since for all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(\alpha \leq a\)</span>, we have <span class="math inline">\(-a \leq -\alpha\)</span>. Thus, <span class="math inline">\(-\alpha\)</span> is also an upper bound for <span class="math inline">\(-A\)</span>. Let <span class="math inline">\(\beta = \sup(-A)\)</span>. So, <span class="math inline">\(\beta \leq -\alpha\)</span>. Hence, <span class="math inline">\(-\beta \geq \alpha\)</span>.</p>
+<p>For all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(-a \leq \beta\)</span> since <span class="math inline">\(\beta\)</span> is the least upper bound for <span class="math inline">\(-A\)</span>. Hence, for all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(a \geq -\beta\)</span>. So, <span class="math inline">\(-\beta\)</span> is a lower bound for <span class="math inline">\(A\)</span>. Thus, <span class="math inline">\(-\beta \leq \alpha\)</span>.</p>
+<p>Therefore, <span class="math inline">\(-\beta = \alpha\)</span>, or <span class="math inline">\(\inf A = -\sup(-A)\)</span>. QED.</p>
 </article>
 
 
