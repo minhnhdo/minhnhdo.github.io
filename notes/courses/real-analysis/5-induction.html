@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <h1>Real Analysis</h1>
+                
+                <p id="subtitle">Induction</p>
+                
+
+                <article>
+<p>Let <span class="math inline">\(\mathbb{N} = \{1, 2, 3, \dots\}\)</span>, the natural numbers.</p>
+<h2 id="the-well-ordering-property">The Well-Ordering Property</h2>
+<p>The <em>well-ordering property</em> of <span class="math inline">\(\mathbb{N}\)</span>: every non-empty subset of <span class="math inline">\(\mathbb{N}\)</span> has a least element. It can be taken as an axiom of <span class="math inline">\(\mathbb{N}\)</span>.</p>
+<h2 id="principle-of-induction">Principle of Induction</h2>
+<p>Let <span class="math inline">\(S \subset \mathbb{N}\)</span> such that</p>
+<ol type="1">
+<li><span class="math inline">\(1 \in S\)</span>, and</li>
+<li>if <span class="math inline">\(k \in S\)</span> then <span class="math inline">\(k + 1 \in S\)</span>.</li>
+</ol>
+<p>Then <span class="math inline">\(S = \mathbb{N}\)</span>.</p>
+<p>The well-ordering property is equivalent to the principle of induction.</p>
+<p><em>Proof that the well-ordering property implies the principle of induction (by contradiction).</em> Suppose <span class="math inline">\(S\)</span> exists with the given properties but <span class="math inline">\(S \neq \mathbb{N}\)</span>.</p>
+<p>Let <span class="math inline">\(A := \mathbb{N} \setminus S\)</span>, so it is non-empty. Then <span class="math inline">\(A\)</span> has a least element by the well-ordering property, call it <span class="math inline">\(n\)</span>. Notice <span class="math inline">\(n &gt; 1\)</span> because <span class="math inline">\(1 \in S\)</span> which implies <span class="math inline">\(1 \notin A\)</span>.</p>
+<p>Consider <span class="math inline">\(n - 1\)</span>. It is not in <span class="math inline">\(A\)</span> because <span class="math inline">\(n\)</span> is the least element. So <span class="math inline">\(n - 1 \in S\)</span>. By property (2), <span class="math inline">\(n - 1 + 1 \in S\)</span>, which implies <span class="math inline">\(n \in S\)</span>. This is a contradiction because <span class="math inline">\(n \in A\)</span>.</p>
+<p>Therefore, the well-ordering property implies the principle of induction. QED.</p>
+<p><em>Proof that the principle of induction implies the well-ordering property (by induction on the number of elements in the subset).</em> Let <span class="math inline">\(S\)</span> be a subset of <span class="math inline">\(\mathbb{N}\)</span> and <span class="math inline">\(n\)</span> be the number of elements in <span class="math inline">\(S\)</span>.</p>
+<p>For the base case where <span class="math inline">\(n = 1\)</span>, the least element of any subset <span class="math inline">\(S\)</span> is the only element it has, so the base case holds.</p>
+<p>For the inductive step, assume for all subsets <span class="math inline">\(S\)</span> of <span class="math inline">\(\mathbb{N}\)</span> with size <span class="math inline">\(n\)</span>, each has a least element. Consider a subset <span class="math inline">\(S\)</span> of <span class="math inline">\(\mathbb{N}\)</span> with size <span class="math inline">\(n + 1\)</span> and a subset <span class="math inline">\(S'\)</span> of <span class="math inline">\(S\)</span> with size <span class="math inline">\(n\)</span>. By the inductive hypothesis, <span class="math inline">\(S'\)</span> has a least element; call it <span class="math inline">\(a\)</span>. Let <span class="math inline">\(b\)</span> is the only element in <span class="math inline">\(S\)</span> that is not in <span class="math inline">\(S'\)</span>. Since <span class="math inline">\(\mathbb{N}\)</span> is ordered, either <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(a = b\)</span>, or <span class="math inline">\(a &gt; b\)</span>, by law of trichotomy. When <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(a\)</span> is a least element of <span class="math inline">\(S\)</span>. When <span class="math inline">\(a = b\)</span>, <span class="math inline">\(a\)</span> is also a least element of <span class="math inline">\(S\)</span>. When <span class="math inline">\(a &gt; b\)</span>, <span class="math inline">\(b\)</span> is less than all elements of <span class="math inline">\(S'\)</span>, so <span class="math inline">\(b\)</span> is a least element of <span class="math inline">\(S\)</span>.</p>
+<p>Therefore, the principle of induction implies the well-ordering property. QED.</p>
+<h2 id="proof-by-induction">Proof by Induction</h2>
+<p>Let <span class="math inline">\(P(n)\)</span> be statements indexed by the natural numbers <span class="math inline">\(\mathbb{N}\)</span>. To show that <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>, we must show</p>
+<ol type="1">
+<li>(base case) <span class="math inline">\(P(1)\)</span> is true, and</li>
+<li>(inductive step) if <span class="math inline">\(P(k)\)</span> is true then <span class="math inline">\(P(k + 1)\)</span> is true.</li>
+</ol>
+<p>Then, by the principle of induction, <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>.</p>
+<p>The statement <span class="math inline">\(P(k)\)</span> is true is called the <em>inductive hypothesis</em>.</p>
+<h2 id="strong-induction">Strong Induction</h2>
+<p>Let <span class="math inline">\(P(n)\)</span> be statements indexed by the natural numbers <span class="math inline">\(\mathbb{N}\)</span>. To show that <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>, we must show</p>
+<ol type="1">
+<li>(base case) <span class="math inline">\(P(1)\)</span> is true, and</li>
+<li>(inductive step) if <span class="math inline">\(P(1)\)</span> through <span class="math inline">\(P(k)\)</span> are true then <span class="math inline">\(P(k + 1)\)</span> is true.</li>
+</ol>
+<p>Then, by the principle of strong induction, <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>.</p>
+<p>For example, every <span class="math inline">\(2^n \times 2^n\)</span> chessboard with one square removed can be tiled by L-shaped tiles.</p>
+<p><em>Proof (by induction on <span class="math inline">\(n\)</span>).</em></p>
+<p>For base case, a <span class="math inline">\(2 \times 2\)</span> board</p>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
