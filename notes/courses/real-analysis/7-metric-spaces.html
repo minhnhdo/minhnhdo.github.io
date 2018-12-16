@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <header>
+                    <h1>Real Analysis</h1>
+                    
+                    <p id="subtitle">Metric Spaces</p>
+                    
+                </header>
+
+                <article>
+<h2 id="metric-spaces">Metric Spaces</h2>
+<p>A set <span class="math inline">\(X\)</span> is a <em>metric space</em> if there exists a metric <span class="math inline">\(d : X \times X \rightarrow \mathbb{R}\)</span> such that for all <span class="math inline">\(p, q \in X\)</span></p>
+<ol type="1">
+<li>(non-negativity) <span class="math inline">\(d(p, q) \geq 0\)</span> (<span class="math inline">\(= 0\)</span> iff <span class="math inline">\(p = q\)</span>),</li>
+<li>(symmetry) <span class="math inline">\(d(p, q) = d(q, p)\)</span>, and</li>
+<li>(triangle inequality) <span class="math inline">\(d(p, q) \leq d(p, r) + d(r, q)\)</span> for all <span class="math inline">\(r \in X\)</span>.</li>
+</ol>
+<p>For example,</p>
+<ol class="example" type="1">
+<li><span class="math inline">\(\mathbb{R}^n\)</span> with <span class="math inline">\(d(\vec{x}, \vec{y}) = \sqrt{(x_1 - y_1)^2 + \dots + (x_n - y_n)^2}\)</span>, also known as the <em>Euclidean metric</em> on <span class="math inline">\(\mathbb{R}^n\)</span>, which is the implicit metric on <span class="math inline">\(\mathbb{R}^n\)</span> if left unspecified.</li>
+<li><span class="math inline">\(\mathbb{R}\)</span> with <span class="math inline">\(d(x, y) = |x - y|\)</span>, a specialization of the above example where <span class="math inline">\(n = 1\)</span>.</li>
+<li><span class="math inline">\(\mathbb{R}^n\)</span> with <span class="math inline">\(d(\vec{x}, \vec{y}) = \sum_{i = 1}^n |x_i - y_i|\)</span>, also known as the staircase metric.</li>
+<li>For a space of trees, <span class="math inline">\(d_T(x, y) =\)</span> length of the shortest path between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</li>
+<li>For a space of genome sequences, <span class="math inline">\(d_G(x, y) =\)</span> number of letters that are different.</li>
+<li>For a space of continuous functions on <span class="math inline">\([a, b]\)</span>, denoted <span class="math inline">\(\mathcal{C}([a, b])\)</span>, <span class="math inline">\(d_I(f, g) = \int_a^b |f - g| dx\)</span>.</li>
+<li>For a space of continuous bounded functions on <span class="math inline">\(\mathbb{R}\)</span>, denoted <span class="math inline">\(\mathcal{C}_b(\mathbb{R})\)</span>, <span class="math inline">\(d_{\sup}(f, g) = \sup_{x \in R} |f(x) - g(x)|\)</span>, also known as <em>sup norm</em>. The supremum exists because the functions are bounded in their values.</li>
+</ol>
+<h3 id="open-ball">Open Ball</h3>
+<p><span class="math inline">\(N_r(x) = \{y : d(x, y) &lt; r\}\)</span>. <span class="math inline">\(N_r\)</span> is called the <em>neighborhood of radius <span class="math inline">\(r\)</span></em>.</p>
+<h3 id="closed-ball">Closed Ball</h3>
+<p><span class="math inline">\(\overline{N_r(x)} = \{y : d(x, y) \leq r\}\)</span>.</p>
+<h3 id="limit-points">Limit Points</h3>
+<p>Say <span class="math inline">\(p \in X\)</span> is a <em>limit point</em> of <span class="math inline">\(E \subset X\)</span> if every neighborhood of <span class="math inline">\(p\)</span> contains a point <span class="math inline">\(q \neq p\)</span> such that <span class="math inline">\(q \in E\)</span>.</p>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>

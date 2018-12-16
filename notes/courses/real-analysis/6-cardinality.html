@@ -30,7 +30,7 @@
                 <header>
                     <h1>Real Analysis</h1>
                     
-                    <p id="subtitle">Countability</p>
+                    <p id="subtitle">Cardinality</p>
                     
                 </header>
 
@@ -41,7 +41,7 @@
 <p>When <span class="math inline">\(f(A) = B\)</span>, i.e. the <em>range</em> of <span class="math inline">\(A\)</span> is the same as its <em>codomain</em>, <span class="math inline">\(f\)</span> is <em>onto</em>, or a <em>surjection</em>, denoted <span class="math inline">\(f : A \twoheadrightarrow B\)</span>.</p>
 <p>When <span class="math inline">\(f(x) = f(y)\)</span> implies <span class="math inline">\(x = y\)</span>, <span class="math inline">\(f\)</span> is <em>one-to-one</em>, or an <em>injection</em>, denoted <span class="math inline">\(f : A \hookrightarrow B\)</span>, or <span class="math inline">\(f : A \rightarrowtail B\)</span>.</p>
 <p>When <span class="math inline">\(f\)</span> is one-to-one and onto, <span class="math inline">\(f\)</span> is a <em>bijection</em> (<span class="math inline">\(f\)</span> is denoted by an arrow with a hook on its tail and two heads pointing to the right), and <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are in <em>one-to-one correspondence</em>, denoted <span class="math inline">\(A \sim B\)</span>.</p>
-<h2 id="countability">Countability</h2>
+<h2 id="cardinality">Cardinality</h2>
 <p>Let <span class="math inline">\(J_n := \{1, 2, \dots, n\}\)</span>, and <span class="math inline">\(J_0 := \emptyset\)</span>.</p>
 <p>A set <span class="math inline">\(A\)</span> is <em>finite</em> if <span class="math inline">\(A \sim J_n\)</span>. Otherwise, <span class="math inline">\(A\)</span> is <em>infinite</em>. <span class="math inline">\(A\)</span> is <em>countable</em> if <span class="math inline">\(A \sim \mathbb{N}\)</span>.</p>
 <p>For example,</p>
@@ -83,6 +83,35 @@ f(n) =
 <p><strong>Theorem.</strong> <span class="math inline">\(\mathbb{R}\)</span> is not countable.</p>
 <p>The proof for <span class="math inline">\(\mathbb{R}\)</span> not being countable does not imply <span class="math inline">\(\mathbb{Q}\)</span> is not countable because the resulting constructed number may not be in <span class="math inline">\(\mathbb{Q}\)</span>.</p>
 <p><strong>Theorem.</strong> For any set <span class="math inline">\(A\)</span>, <span class="math inline">\(A \nsim 2^A\)</span>, where <span class="math inline">\(2^A\)</span> is the power set of <span class="math inline">\(A\)</span>.</p>
+<p><strong>Theorem.</strong> The countable union of countable sets is countable.</p>
+<p><em>Proof.</em> Let each <span class="math inline">\(A_1, A_2, A_3, \dots\)</span> be countable. Then, <span class="math display">\[\begin{align}
+A_1 &amp; = \{a_{11}, a_{12}, a_{13}, a_{14}, \dots\}, \\
+A_2 &amp; = \{a_{21}, a_{22}, a_{23}, a_{24}, \dots\}, \\
+A_3 &amp; = \{a_{31}, a_{32}, a_{33}, a_{34}, \dots\}, \\
+A_4 &amp; = \{a_{41}, a_{42}, a_{43}, a_{44}, \dots\}, \\
+\vdots
+\end{align}\]</span></p>
+<p>Zigzagging through the above listings gives a listing, implying <span class="math inline">\(\bigcup_{i=1}^{\infty} A_i\)</span> is countable. QED.</p>
+<p>Notation: Use <span class="math inline">\(\bigcup_{\alpha \in J} A_\alpha\)</span>, where <span class="math inline">\(J\)</span> is an index set, for possibly uncountable collection.</p>
+<p>For example,</p>
+<ol start="7" class="example" type="1">
+<li><p>The set of computer programs is at most countable.</p>
+<p>Recall <span class="math inline">\(\mathbb{R}\)</span> is not countable (say <span class="math inline">\(\mathbb{R}\)</span> is uncountable).</p>
+<p>So there are real numbers that are not computable (it cannot be specified up to some arbitrary precision)!</p></li>
+</ol>
+<p><strong>Cantor’s Theorem (diagonalization argument).</strong> For any set <span class="math inline">\(A\)</span>, we have <span class="math inline">\(A \nsim 2^A\)</span>.</p>
+<p><em>Proof (by contradiction).</em> Suppose there exists a bijection <span class="math inline">\(f : A \rightarrow 2^A\)</span>. Then <span class="math inline">\(a \mapsto f(a) \subset A\)</span>. Let <span class="math inline">\(B = \{a : a \notin f(a)\}.\)</span></p>
+<p>If <span class="math inline">\(B = f(x)\)</span> for some <span class="math inline">\(x \in A\)</span>, consider <span class="math inline">\(x\)</span>. If <span class="math inline">\(x \in B\)</span> then <span class="math inline">\(x \notin f(x) = B\)</span>, a contradiction. Hence, <span class="math inline">\(x \notin B\)</span>, which implies <span class="math inline">\(x \notin f(x)\)</span>, so <span class="math inline">\(x \in B\)</span>, a contradiction.</p>
+<p>Thus, <span class="math inline">\(B \neq f(x)\)</span> for any <span class="math inline">\(x \in A\)</span> (or <span class="math inline">\(B\)</span> is not an image of <span class="math inline">\(x\)</span> for any <span class="math inline">\(x \in A\)</span>). QED.</p>
+<p>For example,</p>
+<ol start="8" class="example" type="1">
+<li><span class="math inline">\(2^A \sim \{\text{function } f : A \rightarrow \{0, 1\}\}\)</span>, by membership relation.</li>
+<li><p><span class="math inline">\(2^{\mathbb{R}} \sim\)</span> all functions from <span class="math inline">\(\mathbb{R}\)</span> to <span class="math inline">\(\{0, 1\}\)</span>.</p>
+<p>There are infinitely many cardinalities. Let <span class="math inline">\(\omega\)</span> be an ordinal number. <span class="math display">\[
+0, 1, 2, \dots, \aleph_0, \aleph_1, \aleph_2, \dots, \aleph_\omega, \dots
+\]</span></p>
+<p>The continuum hypothesis (<span class="math inline">\(\aleph_1 = c\)</span>, where <span class="math inline">\(c\)</span> is the cardinality of <span class="math inline">\(\mathbb{R}\)</span>) is provably undecidable (independent of ZFC).</p></li>
+</ol>
 </article>
 
 
