@@ -51,13 +51,18 @@
 <li>For a space of genome sequences, <span class="math inline">\(d_G(x, y) =\)</span> number of letters that are different.</li>
 <li>For a space of continuous functions on <span class="math inline">\([a, b]\)</span>, denoted <span class="math inline">\(\mathcal{C}([a, b])\)</span>, <span class="math inline">\(d_I(f, g) = \int_a^b |f - g| dx\)</span>.</li>
 <li>For a space of continuous bounded functions on <span class="math inline">\(\mathbb{R}\)</span>, denoted <span class="math inline">\(\mathcal{C}_b(\mathbb{R})\)</span>, <span class="math inline">\(d_{\sup}(f, g) = \sup_{x \in R} |f(x) - g(x)|\)</span>, also known as <em>sup norm</em>. The supremum exists because the functions are bounded in their values.</li>
+<li>For any set <span class="math inline">\(X\)</span>, a <em>discrete metric</em> is defined as <span class="math display">\[\begin{align}
+d_{discrete} =
+\begin{cases}
+0 &amp; \text{ if } p = q\\
+1 &amp; \text{ otherwise}
+\end{cases}
+\end{align}\]</span></li>
 </ol>
-<h3 id="open-ball">Open Ball</h3>
-<p><span class="math inline">\(N_r(x) = \{y : d(x, y) &lt; r\}\)</span>. <span class="math inline">\(N_r\)</span> is called the <em>neighborhood of radius <span class="math inline">\(r\)</span></em>.</p>
-<h3 id="closed-ball">Closed Ball</h3>
-<p><span class="math inline">\(\overline{N_r(x)} = \{y : d(x, y) \leq r\}\)</span>.</p>
-<h3 id="limit-points">Limit Points</h3>
-<p>Say <span class="math inline">\(p \in X\)</span> is a <em>limit point</em> of <span class="math inline">\(E \subset X\)</span> if every neighborhood of <span class="math inline">\(p\)</span> contains a point <span class="math inline">\(q \neq p\)</span> such that <span class="math inline">\(q \in E\)</span>.</p>
+<h3 id="open-balls">Open Balls</h3>
+<p>A <em>neighborhood</em>, or <em>open ball</em>, of radius <span class="math inline">\(r\)</span> is <span class="math inline">\(N_r(x) = \{y : d(x, y) &lt; r\}\)</span>. It tells us which points are nearby each other.</p>
+<h3 id="closed-balls">Closed Balls</h3>
+<p>A <em>closed ball</em> of radius <span class="math inline">\(r\)</span> is <span class="math inline">\(\overline{N_r(x)} = \{y : d(x, y) \leq r\}\)</span>.</p>
 </article>
 
 

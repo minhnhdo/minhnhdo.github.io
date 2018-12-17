@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <header>
+                    <h1>Real Analysis</h1>
+                    
+                    <p id="subtitle">Limit points</p>
+                    
+                </header>
+
+                <article>
+<h2 id="limit-points">Limit Points</h2>
+<p>Say <span class="math inline">\(p \in X\)</span> is a <em>limit point</em> of <span class="math inline">\(E \subset X\)</span> if every neighborhood of <span class="math inline">\(p\)</span> (i.e. <span class="math inline">\(N_r(p)\)</span> for all <span class="math inline">\(r\)</span>) contains a point <span class="math inline">\(q \neq p\)</span> such that <span class="math inline">\(q \in E\)</span>.</p>
+<p>So, a point <span class="math inline">\(p\)</span> is not a limit point of <span class="math inline">\(E\)</span> if there exists a neighborhood <span class="math inline">\(N\)</span> such that <span class="math inline">\(N\)</span> does not contain any other points of <span class="math inline">\(E\)</span>.</p>
+<p>For example,</p>
+<ol class="example" type="1">
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(G = \{\frac{1}{n} : n \in \mathbb{Z}\}\)</span>. <span class="math inline">\(0\)</span> is a limit point of <span class="math inline">\(G\)</span>. In <span class="math inline">\(\mathbb{R}\)</span>, a neighborhood of a point <span class="math inline">\(p\)</span> is an open interval <span class="math inline">\((p - \epsilon, p + \epsilon)\)</span>.</li>
+</ol>
+<h2 id="isolated-points">Isolated Points</h2>
+<p>A point <span class="math inline">\(p \in X\)</span> is an <em>isolated point</em> of <span class="math inline">\(E \subset X\)</span> if <span class="math inline">\(p \in E\)</span> and <span class="math inline">\(p\)</span> is not a limit point of <span class="math inline">\(E\)</span>.</p>
+<p>For exmple,</p>
+<ol start="2" class="example" type="1">
+<li>All points of <span class="math inline">\(G = \{\frac{1}{n} : n \in \mathbb{Z}\}\)</span> are isolated.</li>
+</ol>
+<h2 id="interior-points">Interior Points</h2>
+<p>A point <span class="math inline">\(p \in X\)</span> is an <em>interior point</em> of <span class="math inline">\(E \subset X\)</span> if <span class="math inline">\(p \in E\)</span> and there exists a neighborhood <span class="math inline">\(N\)</span> of <span class="math inline">\(p\)</span> such that <span class="math inline">\(N \subset E\)</span>.</p>
+<p>For example,</p>
+<ol start="3" class="example" type="1">
+<li><span class="math inline">\(G = \{\frac{1}{n} : n \in \mathbb{Z}\}\)</span> has no interior points.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, for <span class="math inline">\(\mathbb{R}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and are limit points, and <span class="math inline">\(\mathbb{Q}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are interior and are limit points.</li>
+<li>In (<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\text{discrete}\)</span>), <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, <span class="math inline">\(\mathbb{R}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and isolated, and <span class="math inline">\(\mathbb{Q}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are interior and isolated.</li>
+</ol>
+<p><strong>Theorem.</strong> If <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(E\)</span>, then every neighborhood of <span class="math inline">\(p\)</span> contains infinitely many points of <span class="math inline">\(E\)</span>.</p>
+<p><em>Proof (by contradiction).</em> Assume there exists a neighborhood <span class="math inline">\(N\)</span> of <span class="math inline">\(p\)</span> with only finitely many points in <span class="math inline">\(E\)</span>, call them <span class="math inline">\(e_1, e_2, \dots, e_n\)</span>.</p>
+<p>Let <span class="math inline">\(r = \min_{i = 1}^{n} \{d(p, e_i)\}\)</span> (<span class="math inline">\(r\)</span> exists because <span class="math inline">\(e_i\)</span> is finite). But <span class="math inline">\(N_r(p)\)</span> has no points other than <span class="math inline">\(p\)</span>, a contradiction! QED.</p>
+<h2 id="open-sets">Open Sets</h2>
+<p>A set <span class="math inline">\(E\)</span> is <em>open</em> if every point of <span class="math inline">\(E\)</span> is an interior point of <span class="math inline">\(E\)</span>.</p>
+<p>For example,</p>
+<ol start="6" class="example" type="1">
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, any open interval <span class="math inline">\((a, b)\)</span> is open.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> is open.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}\)</span> is open.</li>
+</ol>
+<h2 id="closed-sets">Closed Sets</h2>
+<p>A set <span class="math inline">\(E\)</span> is <em>closed</em> if <span class="math inline">\(E\)</span> contains all its limit points.</p>
+<p>For example,</p>
+<ol start="9" class="example" type="1">
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, a single point <span class="math inline">\(p\)</span> is closed.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> is closed.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}\)</span> is closed.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, any closed interval <span class="math inline">\([a, b]\)</span> is closed.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, any half-open interval <span class="math inline">\([a, b)\)</span> or <span class="math inline">\((a, b]\)</span> is neither open nor closed.</li>
+</ol>
+<p>Sets which are both open and closed is called <em>clopen</em>.</p>
+<h2 id="closing-a-non-closed-set">Closing a Non-Closed Set</h2>
+<p>The <em>closure</em> of <span class="math inline">\(E\)</span>, denoted <span class="math inline">\(\overline{E}\)</span>, is the union of <span class="math inline">\(E\)</span> and the set of its limit points.</p>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
