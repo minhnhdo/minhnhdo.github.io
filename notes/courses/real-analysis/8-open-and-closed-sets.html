@@ -54,7 +54,7 @@
 <ol start="3" class="example" type="1">
 <li><span class="math inline">\(G = \{\frac{1}{n} : n \in \mathbb{Z}\}\)</span> has no interior points.</li>
 <li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, for <span class="math inline">\(\mathbb{R}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and are limit points, and <span class="math inline">\(\mathbb{Q}\)</span> has no isolated points and no interior points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are limit points.</li>
-<li>In (<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\text{discrete}\)</span>), <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, <span class="math inline">\(\mathbb{R}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and isolated, and <span class="math inline">\(\mathbb{Q}\)</span> has no limit points and no interior points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are isolated.</li>
+<li>In (<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\text{discrete}\)</span>), <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, <span class="math inline">\(\mathbb{R}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and isolated, and <span class="math inline">\(\mathbb{Q}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are interior and isolated.</li>
 </ol>
 <p><strong>Theorem.</strong> If <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(E\)</span>, then every neighborhood of <span class="math inline">\(p\)</span> contains infinitely many points of <span class="math inline">\(E\)</span>.</p>
 <p><em>Proof (by contradiction).</em> Assume there exists a neighborhood <span class="math inline">\(N\)</span> of <span class="math inline">\(p\)</span> with only finitely many points in <span class="math inline">\(E\)</span>, call them <span class="math inline">\(e_1, e_2, \dots, e_n\)</span>.</p>
@@ -100,7 +100,8 @@ E \text{ is open} &amp; \Leftrightarrow \text{all points } p \in E \text{ has a 
 &amp; \Leftrightarrow \forall p \in E, \exists N_r(p) \subset E \\
 &amp; \Leftrightarrow \forall p \in E, \exists N_r(p) \cap E^c = \emptyset \\
 &amp; \Leftrightarrow \forall p \in E, p \text{ is not a limit point of } E^c \\
-&amp; \Leftrightarrow E^c \text{ contains all its limit points}
+&amp; \Leftrightarrow E^c \text{ contains all its limit points} \\
+&amp; \Leftrightarrow E^c \text{ is closed}
 \end{align}\]</span> QED.</p>
 <p>For example,</p>
 <ol start="14" class="example" type="1">
