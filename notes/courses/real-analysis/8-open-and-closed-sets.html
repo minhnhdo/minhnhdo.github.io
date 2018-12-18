@@ -53,8 +53,8 @@
 <p>For example,</p>
 <ol start="3" class="example" type="1">
 <li><span class="math inline">\(G = \{\frac{1}{n} : n \in \mathbb{Z}\}\)</span> has no interior points.</li>
-<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, for <span class="math inline">\(\mathbb{R}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and are limit points, and <span class="math inline">\(\mathbb{Q}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are interior and are limit points.</li>
-<li>In (<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\text{discrete}\)</span>), <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, <span class="math inline">\(\mathbb{R}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and isolated, and <span class="math inline">\(\mathbb{Q}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are interior and isolated.</li>
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, for <span class="math inline">\(\mathbb{R}\)</span> has no isolated points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and are limit points, and <span class="math inline">\(\mathbb{Q}\)</span> has no isolated points and no interior points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are limit points.</li>
+<li>In (<span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\text{discrete}\)</span>), <span class="math inline">\(\emptyset\)</span> has no limit points, no interior points, and no isolated points, <span class="math inline">\(\mathbb{R}\)</span> has no limit points but all points in <span class="math inline">\(\mathbb{R}\)</span> are interior and isolated, and <span class="math inline">\(\mathbb{Q}\)</span> has no limit points and no interior points but all points in <span class="math inline">\(\mathbb{Q}\)</span> are isolated.</li>
 </ol>
 <p><strong>Theorem.</strong> If <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(E\)</span>, then every neighborhood of <span class="math inline">\(p\)</span> contains infinitely many points of <span class="math inline">\(E\)</span>.</p>
 <p><em>Proof (by contradiction).</em> Assume there exists a neighborhood <span class="math inline">\(N\)</span> of <span class="math inline">\(p\)</span> with only finitely many points in <span class="math inline">\(E\)</span>, call them <span class="math inline">\(e_1, e_2, \dots, e_n\)</span>.</p>
@@ -95,7 +95,28 @@
 <h2 id="relationship-between-open-and-closed-sets">Relationship between Open and Closed Sets</h2>
 <p>For a set <span class="math inline">\(E\)</span>, the complement of <span class="math inline">\(E\)</span>, denoted <span class="math inline">\(E^c\)</span>, is <span class="math inline">\(X \setminus E = \{x : x \notin E\}\)</span>.</p>
 <p><strong>Theorem.</strong> <span class="math inline">\(E\)</span> is open if and only if <span class="math inline">\(E^c\)</span> is closed.</p>
-<p><em>Proof.</em></p>
+<p><em>Proof.</em> <span class="math display">\[\begin{align}
+E \text{ is open} &amp; \Leftrightarrow \text{all points } p \in E \text{ has a neighborhood } N \subset E \\
+&amp; \Leftrightarrow \forall p \in E, \exists N_r(p) \subset E \\
+&amp; \Leftrightarrow \forall p \in E, \exists N_r(p) \cap E^c = \emptyset \\
+&amp; \Leftrightarrow \forall p \in E, p \text{ is not a limit point of } E^c \\
+&amp; \Leftrightarrow E^c \text{ contains all its limit points}
+\end{align}\]</span> QED.</p>
+<p>For example,</p>
+<ol start="14" class="example" type="1">
+<li>Let <span class="math inline">\(K_i = \left[-1 + \frac{1}{n}, 1 - \frac{1}{n}\right]\)</span> (each <span class="math inline">\(K_i\)</span> is closed). We have <span class="math inline">\(\bigcup_{n = 1}^\infty K_i = (-1, 1)\)</span>, which is open and not closed.</li>
+<li>Let <span class="math inline">\(K_i = \left(-\frac{1}{n}, \frac{1}{n}\right)\)</span> (each <span class="math inline">\(K_i\)</span> is open). We have <span class="math inline">\(\bigcap_{n = 1}^\infty K_i = \{0\}\)</span>, which is closed and not open.</li>
+</ol>
+<p><strong>Lemma.</strong> Let <span class="math inline">\(\{E_\alpha\}_{\alpha \in I}\)</span> be a collection of sets. Then <span class="math inline">\((\bigcup_{\alpha \in I} E_\alpha)^c = \bigcap_{\alpha \in I} E_\alpha^c\)</span>.</p>
+<p><em>Proof.</em> <span class="math display">\[\begin{align}
+x \in LHS &amp; \Leftrightarrow x \notin \text{any } E_\alpha \\
+&amp; \Leftrightarrow x \in E_\alpha^c \text{ for all } \alpha \\
+&amp; \Leftrightarrow x \in \bigcap_{\alpha \in I} E_\alpha^c
+\end{align}\]</span> QED.</p>
+<p><strong>Theorem.</strong> Any arbitrary union of open sets is open.</p>
+<p><strong>Theorem.</strong> Any arbitrary intersection of closed sets is closed.</p>
+<p><strong>Theorem.</strong> Any finite intersection of open sets is open.</p>
+<p><strong>Theorem.</strong> Any finite union of closed sets is closed.</p>
 </article>
 
 
