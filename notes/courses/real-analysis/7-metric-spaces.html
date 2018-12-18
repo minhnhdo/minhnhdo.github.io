@@ -61,8 +61,6 @@ d_{discrete} =
 </ol>
 <h3 id="open-balls">Open Balls</h3>
 <p>A <em>neighborhood</em>, or <em>open ball</em>, of radius <span class="math inline">\(r\)</span> is <span class="math inline">\(N_r(x) = \{y : d(x, y) &lt; r\}\)</span>. It tells us which points are nearby each other.</p>
-<p><strong>Lemma.</strong> Neighborhoods are open.</p>
-<p><em>Proof.</em> Consider a neighborhood <span class="math inline">\(N\)</span> around a point <span class="math inline">\(p\)</span> with radius <span class="math inline">\(r\)</span>. Consider a point <span class="math inline">\(q \in N\)</span>. So <span class="math inline">\(d(p, q) &lt; r\)</span>. Let <span class="math inline">\(a = d(p, q)\)</span>. Let <span class="math inline">\(r' = r - a &gt; 0\)</span>. Consider <span class="math inline">\(N_{r'}(q)\)</span>. For all points <span class="math inline">\(x \in N'\)</span>, we have <span class="math inline">\(d(q, x) &lt; r'\)</span>. Then <span class="math inline">\(d(x, p) \leq d(x, q) + d(q, p) &lt; r' + a = r.\)</span> Thus, <span class="math inline">\(x \in N\)</span>. Therefore, <span class="math inline">\(N_{r'} \subset N_r\)</span>. QED.</p>
 <h3 id="closed-balls">Closed Balls</h3>
 <p>A <em>closed ball</em> of radius <span class="math inline">\(r\)</span> is <span class="math inline">\(\overline{N_r(x)} = \{y : d(x, y) \leq r\}\)</span>.</p>
 </article>
