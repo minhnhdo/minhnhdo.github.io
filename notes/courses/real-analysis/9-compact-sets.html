@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - MrOrdinaire</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/site.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <div id="header-strip">
+            <div id="header">
+                <div id="logo">
+                    <a href="../../../">MrOrdinaire</a>
+                    <span>Programming and other stuff</span>
+                </div>
+                <div id="navigation">
+                    <a href="../../../resume.pdf">Résumé</a>
+                    <a href="../../../notes/">Notes</a>
+                    <a href="../../../posts/">Posts</a>
+                    <a href="https://twitter.com/mrordinaire">Twitter</a>
+                    <a href="https://github.com/mrordinaire">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="content">
+                <header>
+                    <h1>Real Analysis</h1>
+                    
+                    <p id="subtitle">Compact Sets</p>
+                    
+                </header>
+
+                <article>
+<h2 id="set-covers">Set Covers</h2>
+<p>An <em>open cover</em>, or cover, of a set <span class="math inline">\(E\)</span> in metric space <span class="math inline">\(X\)</span> is a collection of open sets, denoted <span class="math inline">\(\{G_\alpha\}\)</span>, whose union covers, or contains, <span class="math inline">\(E\)</span>.</p>
+<p>A <em>subcover</em> of <span class="math inline">\(\{G_\alpha\}\)</span> is a subcollection <span class="math inline">\(\{G_{\alpha_\gamma}\}\)</span> that still covers <span class="math inline">\(E\)</span>.</p>
+<p>For example,</p>
+<ol class="example" type="1">
+<li>In <span class="math inline">\(\mathbb{R}\)</span>, we have <span class="math inline">\(\left[\frac{1}{2}, 1\right)\)</span> has cover <span class="math inline">\(\{V_n\}_{n = 3}^{\infty}\)</span> where <span class="math inline">\(V_n = \left(\frac{1}{n}, 1 - \frac{1}{n}\right)\)</span>. It also has cover <span class="math inline">\(\{(0, 2)\}\)</span>. It also has cover <span class="math inline">\(\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}\)</span>, where <span class="math inline">\(W_x = N_\frac{1}{10}(x)\)</span>. <span class="math inline">\(\{V_n\}_{n = 3}^{\infty}\)</span> has subcovers <span class="math inline">\(\{V_n\}_{n = 22}^{\infty}\)</span> and <span class="math inline">\(\{V_n\}_{n = 1000000}^{\infty}\)</span>. <span class="math inline">\(\{(0, 2)\}\)</span> has only one subcover <span class="math inline">\(\{(0, 2)\}\)</span>. <span class="math inline">\(\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}\)</span> has a subcover <span class="math inline">\(\left\{W_\frac{5}{10}, W_\frac{6}{10}, W_\frac{7}{10}, W_\frac{8}{10}, W_\frac{8}{10}, W_\frac{9}{10}\right\}\)</span>.</li>
+<li><span class="math inline">\([0, 1] \in \mathbb{R}\)</span> has a cover by <span class="math inline">\(\{V_n\} \cup \{W_0, W_1\}\)</span>. A finite subcover is <span class="math inline">\(\{W_0, W_1, V_{11}\}\)</span>.</li>
+</ol>
+<h2 id="compact-sets">Compact Sets</h2>
+<p>A set <span class="math inline">\(K\)</span> is <em>compact</em> (in <span class="math inline">\(X\)</span>) if every open cover of <span class="math inline">\(K\)</span> contains a finite subcover.</p>
+<p>So, <span class="math inline">\(K\)</span> is not compact means there exists an open cover of <span class="math inline">\(K\)</span> with no finite subcover.</p>
+<p>For example,</p>
+<ol start="3" class="example" type="1">
+<li><span class="math inline">\(\left[\frac{1}{2}, 1\right)\)</span> is not compact (see <span class="math inline">\(\{V_n\}\)</span>).</li>
+<li><span class="math inline">\(\mathbb{Z}\)</span> in <span class="math inline">\(\mathbb{R}\)</span> is not compact. One witness cover is <span class="math inline">\(\{U_i\}_{i \in \mathbb{Z}}\)</span>, where <span class="math inline">\(U_i = \left(i - \frac{1}{10}, i + \frac{1}{10}\right)\)</span>.</li>
+</ol>
+<p><strong>Theorem.</strong> Finite sets are compact.</p>
+<p><em>Proof.</em> Consider some open cover <span class="math inline">\(\{G_\alpha\}\)</span> covering <span class="math inline">\(x_1, x_2, \dots, x_n\)</span>. For all <span class="math inline">\(x_i\)</span>, choose <span class="math inline">\(G_{\alpha_i}\)</span>. Then <span class="math inline">\(\{G_{\alpha_i}\}_{i = 1}^n\)</span> covers the set. QED.</p>
+<p>A set <span class="math inline">\(K\)</span> is <em>bounded</em> if there is some ball <span class="math inline">\(N_r(x)\)</span> for some <span class="math inline">\(x \in X\)</span> such that <span class="math inline">\(K \subset N_r(x)\)</span>.</p>
+<p><strong>Theorem.</strong> Compact sets are bounded.</p>
+<p><em>Proof.</em> Consider a compact set <span class="math inline">\(K\)</span>. Let <span class="math inline">\(B(x) = N_1(x)\)</span>, i.e. <span class="math inline">\(B(x)\)</span> are balls of radius <span class="math inline">\(1\)</span>. Consider a collection <span class="math inline">\(\{B(x)\}_{x \in K}\)</span>, which is an open cover of <span class="math inline">\(K\)</span>. By compactness of <span class="math inline">\(K\)</span>, there exists a finite subcover <span class="math inline">\(\{B(x_i)\}_{i = 1}^n\)</span>. Let <span class="math inline">\(R = max_{1 \leq i \leq n}\{d(x_1, x_i)\}\)</span>; this maximum exists because the set <span class="math inline">\(\{x_1, \dots, x_n\}\)</span> is finite. Then <span class="math inline">\(N_{R + 2}(x_1)\)</span> contains all of <span class="math inline">\(K\)</span>. QED.</p>
+<h2 id="relative-open-sets">Relative Open Sets</h2>
+<p>If <span class="math inline">\(Y \subset X\)</span>, where <span class="math inline">\(X\)</span> is a metric space, <span class="math inline">\(Y\)</span> is said to <em>inherit</em> a metric from <span class="math inline">\(X\)</span>.</p>
+<p>A set <span class="math inline">\(U\)</span> is <em>open</em> in <span class="math inline">\(Y\)</span> (or <em>open relative</em> to <span class="math inline">\(Y\)</span>) if every point of <span class="math inline">\(U\)</span> is an interior point of <span class="math inline">\(U\)</span>. Here, the notion of interior is using the neighborhoods in <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Theorem.</strong> Suppose <span class="math inline">\(E \subset Y \subset X\)</span>. Then <span class="math inline">\(E\)</span> is open in <span class="math inline">\(Y\)</span> if and only if <span class="math inline">\(E = Y \cap G\)</span> for some <span class="math inline">\(G\)</span> open in <span class="math inline">\(X\)</span>.</p>
+<h2 id="compactness-is-intrinsic">Compactness is Intrinsic</h2>
+<p><strong>Theorem.</strong> Suppose <span class="math inline">\(K \subset Y \subset X\)</span>, where <span class="math inline">\(X\)</span> is a metric space. Then <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(Y\)</span> if and only if <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(X\)</span>.</p>
+<p><em>Proof.</em></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>): Assume <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(Y\)</span>. Consider any open cover <span class="math inline">\(\{U_\alpha\}\)</span> of <span class="math inline">\(K\)</span> in <span class="math inline">\(X\)</span>. Let <span class="math inline">\(V_\alpha = U_\alpha \cap Y\)</span>. Then <span class="math inline">\(\{V_\alpha\}\)</span> covers <span class="math inline">\(K\)</span> in <span class="math inline">\(Y\)</span>. Since <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(Y\)</span>, there exists a finite subcover <span class="math inline">\(\{V_{\alpha_1}, \dots, V_{\alpha_n}\}\)</span> in <span class="math inline">\(Y\)</span>. Then <span class="math inline">\(\{U_{\alpha_1}, \dots, U_{\alpha_n}\}\)</span> is a finite subcover of <span class="math inline">\(K\)</span> in <span class="math inline">\(X\)</span>, as desired.</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>): Assume <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(X\)</span>. Consider any open cover <span class="math inline">\(\{V_\alpha\}\)</span> of <span class="math inline">\(K\)</span> in <span class="math inline">\(Y\)</span>. By above theorem, there exists open <span class="math inline">\(U_\alpha\)</span> such that <span class="math inline">\(V_\alpha = U_\alpha \cap Y\)</span>. Then <span class="math inline">\(\{U_\alpha\}\)</span> covers <span class="math inline">\(K\)</span> in <span class="math inline">\(X\)</span>. Since <span class="math inline">\(K\)</span> is compact in <span class="math inline">\(X\)</span>, there exists a finite subcover <span class="math inline">\(\{U_{\alpha_1}, \dots, U_{\alpha_n}\}\)</span>. Then <span class="math inline">\(\{V_{\alpha_1}, \dots, V_{\alpha_n}\}\)</span> is a finite subcover of <span class="math inline">\(K\)</span> in <span class="math inline">\(Y\)</span>, as desired. QED.</p>
+<h2 id="relationship-between-compact-sets-and-closed-sets">Relationship between Compact Sets and Closed Sets</h2>
+<p><strong>Theorem.</strong> Compact sets are closed.</p>
+<p><em>Proof.</em> Let <span class="math inline">\(K\)</span> be compact. Consider <span class="math inline">\(p \notin K\)</span>. We’ll show <span class="math inline">\(p\)</span> has a neighborhood that does not intersect <span class="math inline">\(K\)</span> (or <span class="math inline">\(p\)</span> is not a limit point of <span class="math inline">\(K\)</span>). For any <span class="math inline">\(q \in K\)</span>, let <span class="math inline">\(V_q = N_\frac{r}{2}(q)\)</span> and <span class="math inline">\(U_q = N_\frac{r}{2}(p)\)</span>, where <span class="math inline">\(r = d(p, q)\)</span>. Notice <span class="math inline">\(\{V_q\}\)</span> is an open cover of <span class="math inline">\(K\)</span>. By compactness of <span class="math inline">\(K\)</span>, there exists a finite subcover <span class="math inline">\(\{V_{q_1}, \dots, V_{q_n}\}\)</span>. Let <span class="math inline">\(W = \bigcap_{i = 1}^n U_{q_i}\)</span>. So <span class="math inline">\(W\)</span> is an intersection of finitely many open sets. Hence, <span class="math inline">\(W\)</span> is open (it is a ball of radius <span class="math inline">\(\min \left\{\frac{d(p, q_i)}{2}\right\}\)</span>). We have <span class="math inline">\(W \cap V_{q_i} = \emptyset\)</span> for all <span class="math inline">\(q_i\)</span> because <span class="math inline">\(W \subset V_{q_i}\)</span> and <span class="math inline">\(V_{q_i} \cap U_{q_i} = \emptyset\)</span>. So <span class="math inline">\(W\)</span> is the desired neighborhood. QED.</p>
+<p>For example,</p>
+<ol start="5" class="example" type="1">
+<li><span class="math inline">\((0, 1)\)</span> in <span class="math inline">\(\mathbb{R}\)</span> is not compact because it’s not closed.</li>
+<li><span class="math inline">\(\mathbb{R}\)</span> in <span class="math inline">\(\mathbb{R}\)</span> is not compact although it’s closed because it’s not bounded.</li>
+</ol>
+<p><strong>Theorem.</strong> A closed subset <span class="math inline">\(B\)</span> of a compact set <span class="math inline">\(K\)</span> is compact.</p>
+</article>
+
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+            </div>
+        </div>
+        <div id="footer-strip">
+            <div id="footer">
+                Site proudly generated by
+                <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+                and
+                <a href="http://fvisser.nl/clay/">Clay</a>
+                <br />
+                with
+                <a href="http://ethanschoonover.com/solarized">Solarized</a>
+                color scheme.
+            </div>
+        </div>
+    </body>
+</html>
