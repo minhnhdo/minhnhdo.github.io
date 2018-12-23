@@ -24,17 +24,16 @@
             </div>
         </header>
 
-        <div id="content">
+        <article>
             <h1>Real Analysis</h1>
             
             <p id="subtitle">Induction</p>
             
 
-            <article>
-<p>Let <span class="math inline">\(\mathbb{N} = \{1, 2, 3, \dots\}\)</span>, the natural numbers.</p>
-<h2 id="the-well-ordering-property">The Well-Ordering Property</h2>
+            <p>Let <span class="math inline">\(\mathbb{N} = \{1, 2, 3, \dots\}\)</span>, the natural numbers.</p>
+<h1 id="the-well-ordering-property">The Well-Ordering Property</h1>
 <p>The <em>well-ordering property</em> of <span class="math inline">\(\mathbb{N}\)</span>: every non-empty subset of <span class="math inline">\(\mathbb{N}\)</span> has a least element. It can be taken as an axiom of <span class="math inline">\(\mathbb{N}\)</span>.</p>
-<h2 id="principle-of-induction">Principle of Induction</h2>
+<h1 id="principle-of-induction">Principle of Induction</h1>
 <p>Let <span class="math inline">\(S \subset \mathbb{N}\)</span> such that</p>
 <ol type="1">
 <li><span class="math inline">\(1 \in S\)</span>, and</li>
@@ -50,7 +49,7 @@
 <p>For the base case where <span class="math inline">\(n = 1\)</span>, the least element of any subset <span class="math inline">\(S\)</span> is the only element it has, so the base case holds.</p>
 <p>For the inductive step, assume for all subsets <span class="math inline">\(S\)</span> of <span class="math inline">\(\mathbb{N}\)</span> with size <span class="math inline">\(n\)</span>, each has a least element. Consider a subset <span class="math inline">\(S\)</span> of <span class="math inline">\(\mathbb{N}\)</span> with size <span class="math inline">\(n + 1\)</span> and a subset <span class="math inline">\(S'\)</span> of <span class="math inline">\(S\)</span> with size <span class="math inline">\(n\)</span>. By the inductive hypothesis, <span class="math inline">\(S'\)</span> has a least element; call it <span class="math inline">\(a\)</span>. Let <span class="math inline">\(b\)</span> is the only element in <span class="math inline">\(S\)</span> that is not in <span class="math inline">\(S'\)</span>. Since <span class="math inline">\(\mathbb{N}\)</span> is ordered, either <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(a = b\)</span>, or <span class="math inline">\(a &gt; b\)</span>, by law of trichotomy. When <span class="math inline">\(a &lt; b\)</span>, <span class="math inline">\(a\)</span> is a least element of <span class="math inline">\(S\)</span>. When <span class="math inline">\(a = b\)</span>, <span class="math inline">\(a\)</span> is also a least element of <span class="math inline">\(S\)</span>. When <span class="math inline">\(a &gt; b\)</span>, <span class="math inline">\(b\)</span> is less than all elements of <span class="math inline">\(S'\)</span>, so <span class="math inline">\(b\)</span> is a least element of <span class="math inline">\(S\)</span>.</p>
 <p>Therefore, the principle of induction implies the well-ordering property. QED.</p>
-<h2 id="proof-by-induction">Proof by Induction</h2>
+<h1 id="proof-by-induction">Proof by Induction</h1>
 <p>Let <span class="math inline">\(P(n)\)</span> be statements indexed by the natural numbers <span class="math inline">\(\mathbb{N}\)</span>. To show that <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>, we must show</p>
 <ol type="1">
 <li>(base case) <span class="math inline">\(P(1)\)</span> is true, and</li>
@@ -58,7 +57,7 @@
 </ol>
 <p>Then, by the principle of induction, <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>.</p>
 <p>The statement <span class="math inline">\(P(k)\)</span> is true is called the <em>inductive hypothesis</em>.</p>
-<h2 id="strong-induction">Strong Induction</h2>
+<h1 id="strong-induction">Strong Induction</h1>
 <p>Let <span class="math inline">\(P(n)\)</span> be statements indexed by the natural numbers <span class="math inline">\(\mathbb{N}\)</span>. To show that <span class="math inline">\(P(n)\)</span> is true for all <span class="math inline">\(n\)</span>, we must show</p>
 <ol type="1">
 <li>(base case) <span class="math inline">\(P(1)\)</span> is true, and</li>
@@ -68,16 +67,14 @@
 <p>For example, every <span class="math inline">\(2^n \times 2^n\)</span> chessboard with one square removed can be tiled by L-shaped tiles.</p>
 <p><em>Proof (by induction on <span class="math inline">\(n\)</span>).</em></p>
 <p>For base case, a <span class="math inline">\(2 \times 2\)</span> board</p>
-</article>
-
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        </div>
+        </article>
 
-        <div id="footer">
+        <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and
@@ -86,6 +83,6 @@
             with
             <a href="http://ethanschoonover.com/solarized">Solarized</a>
             color scheme.
-        </div>
+        </footer>
     </body>
 </html>

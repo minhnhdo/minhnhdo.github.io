@@ -24,16 +24,15 @@
             </div>
         </header>
 
-        <div id="content">
+        <article>
             <h1>Real Analysis</h1>
             
             <p id="subtitle">Real Numbers</p>
             
 
-            <article>
-<h2 id="the-set-of-real-numbers-mathbbr">The Set of Real Numbers <span class="math inline">\(\mathbb{R}\)</span></h2>
+            <h1 id="the-set-of-real-numbers-mathbbr">The Set of Real Numbers <span class="math inline">\(\mathbb{R}\)</span></h1>
 <p><em>Theorem:</em> <span class="math inline">\(\mathbb{R}\)</span> is an ordered field, with the <em>least upper bound property</em>, and <span class="math inline">\(\mathbb{R}\)</span> contains <span class="math inline">\(\mathbb{Q}\)</span> as a <em>subfield</em>.</p>
-<h3 id="construction-of-mathbbr">Construction of <span class="math inline">\(\mathbb{R}\)</span></h3>
+<h2 id="construction-of-mathbbr">Construction of <span class="math inline">\(\mathbb{R}\)</span></h2>
 <p>Dedekind: A <em>cut</em> <span class="math inline">\(\alpha\)</span> is a subset of <span class="math inline">\(\mathbb{Q}\)</span> satisfying</p>
 <ol type="1">
 <li>(nontriviality) i.e. <span class="math inline">\(\alpha \neq \emptyset, \mathbb{Q}\)</span>,</li>
@@ -42,15 +41,15 @@
 </ol>
 <p>For example, the set <span class="math inline">\(A = \{x : x^2 &lt; 2\}\)</span> is not a cut because it does not satisfy (2). The set <span class="math inline">\(\mathbb{Q}_{-}\)</span> is a cut. The set <span class="math inline">\(\beta = \{x \in \mathbb{Q} : x \leq 2\}\)</span> is not a cut because it does not satisfy (3).</p>
 <p>Let <span class="math inline">\(\mathbb{R} := \{\alpha : \alpha \text{ is a cut}\}\)</span> (<span class="math inline">\(:=\)</span> means defined to be).</p>
-<h3 id="properties-of-mathbbr">Properties of <span class="math inline">\(\mathbb{R}\)</span></h3>
-<h4 id="order-on-mathbbr">Order on <span class="math inline">\(\mathbb{R}\)</span></h4>
+<h2 id="properties-of-mathbbr">Properties of <span class="math inline">\(\mathbb{R}\)</span></h2>
+<h3 id="order-on-mathbbr">Order on <span class="math inline">\(\mathbb{R}\)</span></h3>
 <p><span class="math inline">\(\alpha &lt; \beta\)</span> is defined as <span class="math inline">\(\alpha \subsetneq \beta\)</span>, or <span class="math inline">\(\alpha\)</span> is a proper subset of <span class="math inline">\(\beta\)</span>.</p>
 <p><em>Proof of well-definedness.</em> This definition is well-defined because it satisfies</p>
 <ul>
 <li>trichotomy: for all cuts <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, either <span class="math inline">\(\alpha \subsetneq \beta\)</span>, <span class="math inline">\(\alpha = \beta\)</span>, or <span class="math inline">\(\beta \subsetneq \alpha\)</span>, and thus either <span class="math inline">\(\alpha &lt; \beta\)</span>, <span class="math inline">\(\alpha = \beta\)</span>, or <span class="math inline">\(\beta &lt; \alpha\)</span>.</li>
 <li>transitivity: let <span class="math inline">\(\alpha, \beta, \gamma\)</span> be cuts, <span class="math inline">\(\alpha &lt; \beta\)</span>, and <span class="math inline">\(\beta &lt; \gamma\)</span>. Since <span class="math inline">\(\alpha &lt; \beta\)</span>, <span class="math inline">\(\alpha \subsetneq \beta\)</span>. Similarly, <span class="math inline">\(\beta \subsetneq \gamma\)</span>. Thus, <span class="math inline">\(\alpha \subsetneq \gamma\)</span>, due to transitivity of inclusion. Hence, <span class="math inline">\(\alpha &lt; \gamma\)</span>. QED.</li>
 </ul>
-<h4 id="operations-on-mathbbr">Operations on <span class="math inline">\(\mathbb{R}\)</span></h4>
+<h3 id="operations-on-mathbbr">Operations on <span class="math inline">\(\mathbb{R}\)</span></h3>
 <p>Let <span class="math inline">\(\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}\)</span>.</p>
 <p><em>Proof of well-definedness.</em> Let <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> be cuts. <span class="math inline">\(\alpha + \beta\)</span> is a cut because</p>
 <ul>
@@ -75,12 +74,12 @@
 <p>Definition of multiplication: if <span class="math inline">\(\alpha, \beta \in \mathbb{R}_{+}\)</span> (<span class="math inline">\(\alpha, \beta &gt; 0^\star\)</span>), then <span class="math inline">\(\alpha\beta := \{p : p &lt; rs \text{ for some } r \in \alpha, s \in \beta, r &gt; 0, s &gt; 0\}\)</span>.</p>
 <p>Multiplicative identity <span class="math inline">\(1^\star := \{q \in \mathbb{Q} : q &lt; 1\}\)</span>.</p>
 <p>Given a set of cuts <span class="math inline">\(A\)</span>, let <span class="math inline">\(\gamma = \bigcup \{x : x \in \alpha\}\)</span>. <span class="math inline">\(\gamma\)</span> is a cut and is <span class="math inline">\(\sup A\)</span>.</p>
-<h4 id="mathbbr-is-an-extension-of-mathbbq"><span class="math inline">\(\mathbb{R}\)</span> is an Extension of <span class="math inline">\(\mathbb{Q}\)</span></h4>
+<h3 id="mathbbr-is-an-extension-of-mathbbq"><span class="math inline">\(\mathbb{R}\)</span> is an Extension of <span class="math inline">\(\mathbb{Q}\)</span></h3>
 <p><span class="math inline">\(\mathbb{R}\)</span> contains <span class="math inline">\(\mathbb{Q}\)</span> as a <em>subfield</em>. Associate <span class="math inline">\(q \in \mathbb{Q}\)</span> with the cut <span class="math inline">\(q^\star = \{r \in \mathbb{Q} : r &lt; q\}\)</span>.</p>
 <p>Formally, <span class="math inline">\(f : \mathbb{Q} \rightarrow \mathbb{R}\)</span> is <span class="math inline">\(f(q \in \mathbb{Q}) = q^\star\)</span>, where <span class="math inline">\(q^\star = \{r \in \mathbb{Q} : r &lt; q\}\)</span>.</p>
 <p>Then <span class="math inline">\(\mathbb{Q}' = \{q^\star : q \in \mathbb{Q}\}\)</span> is a subfield of <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p>Notice “<span class="math inline">\(\sqrt{2}\)</span>” sits in <span class="math inline">\(\mathbb{R}\)</span> as the cut <span class="math inline">\(\gamma = \{q : q^2 &lt; 2 \text{ or } q &lt; 0\}\)</span>.</p>
-<h4 id="mathbbr-has-the-least-upper-bound-property"><span class="math inline">\(\mathbb{R}\)</span> has the Least Upper Bound Property</h4>
+<h3 id="mathbbr-has-the-least-upper-bound-property"><span class="math inline">\(\mathbb{R}\)</span> has the Least Upper Bound Property</h3>
 <p>Let <span class="math inline">\(A\)</span> contain cuts with upper bound <span class="math inline">\(\beta\)</span>, and <span class="math inline">\(\gamma = \bigcup\{\alpha : \alpha \in A\}\)</span>, a subset of <span class="math inline">\(\mathbb{Q}\)</span>.</p>
 <p>Check that <span class="math inline">\(\gamma\)</span> is a cut and <span class="math inline">\(\gamma = \sup A\)</span>.</p>
 <p><em>Proof.</em> <span class="math inline">\(\gamma\)</span> is a cut because</p>
@@ -94,22 +93,20 @@
 <p><span class="math inline">\(\mathbb{R}\)</span> is the <em>only</em> ordered field with the least upper bound property.</p>
 <p>Consequence: the length “<span class="math inline">\(\sqrt{2}\)</span>” can be thought of as <span class="math inline">\(\sup\{1, 1.4, 1.41, 1.414, 1.4142, \dots\}\)</span>, whose shorthand is <span class="math inline">\(1.4142135\dots\)</span>.</p>
 <p>More generally, <span class="math inline">\(a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n &lt; a\}\)</span>, i.e. roots exist.</p>
-<h4 id="consequences">Consequences</h4>
+<h3 id="consequences">Consequences</h3>
 <p><em>Archimedean property:</em> if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>.</p>
 <p><em>Proof (by contradiction).</em> Consider <span class="math inline">\(A = \{nx : n \in \mathbb{N}\}\)</span>. If <span class="math inline">\(A\)</span> is bounded by <span class="math inline">\(y\)</span> (i.e. <span class="math inline">\(nx &lt; y\)</span> for all <span class="math inline">\(n\)</span>) then <span class="math inline">\(A\)</span> has a least upper bound <span class="math inline">\(\alpha\)</span> (by the least upper bound property). Then <span class="math inline">\(\alpha - x\)</span> is not an upper bound for <span class="math inline">\(A\)</span>. Hence, <span class="math inline">\(\alpha - x &lt; mx\)</span> for some <span class="math inline">\(m \in \mathbb{N}\)</span>. Then <span class="math inline">\(\alpha &lt; (m + 1)x\)</span>. Thus <span class="math inline">\(\alpha\)</span> is not an upper bound for <span class="math inline">\(A\)</span>, a contradiction! Therefore, if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>. QED.</p>
 <p><em>Corollary.</em> If <span class="math inline">\(x &gt; 0\)</span> then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; x\)</span>.</p>
 <p><em>Theorem</em> (<span class="math inline">\(\mathbb{Q}\)</span> is dense in <span class="math inline">\(\mathbb{R}\)</span>)<em>.</em> Between <span class="math inline">\(x, y \in \mathbb{R}\)</span>, and <span class="math inline">\(x &lt; y\)</span>, there is a <span class="math inline">\(q \in \mathbb{Q}\)</span> such that <span class="math inline">\(x &lt; q &lt; y\)</span>.</p>
 <p><em>Proof.</em> Choose <span class="math inline">\(n\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; y - x\)</span> (by Archimedean property). Consider multiples of <span class="math inline">\(\frac{1}{n}\)</span>. These are unbounded (by the Archimedean property). Choose the first multiple such that <span class="math inline">\(\frac{m}{n} &gt; x\)</span>. If <span class="math inline">\(\frac{m}{n}\)</span> is not less than <span class="math inline">\(y\)</span> then <span class="math inline">\(\frac{m - 1}{n} &lt; x\)</span> and <span class="math inline">\(\frac{m}{n} &gt; y\)</span>, which implies <span class="math inline">\(\frac{1}{n} &gt; y - x\)</span>, a constradiction. So, <span class="math inline">\(\frac{m}{n} &lt; y\)</span>. QED.</p>
-</article>
-
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        </div>
+        </article>
 
-        <div id="footer">
+        <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and
@@ -118,6 +115,6 @@
             with
             <a href="http://ethanschoonover.com/solarized">Solarized</a>
             color scheme.
-        </div>
+        </footer>
     </body>
 </html>

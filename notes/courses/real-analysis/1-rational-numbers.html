@@ -24,15 +24,14 @@
             </div>
         </header>
 
-        <div id="content">
+        <article>
             <h1>Real Analysis</h1>
             
             <p id="subtitle">Rational Numbers</p>
             
 
-            <article>
-<h2 id="the-set-of-rational-numbers-mathbbq">The Set of Rational Numbers <span class="math inline">\(\mathbb{Q}\)</span></h2>
-<h3 id="construction-of-mathbbq">Construction of <span class="math inline">\(\mathbb{Q}\)</span></h3>
+            <h1 id="the-set-of-rational-numbers-mathbbq">The Set of Rational Numbers <span class="math inline">\(\mathbb{Q}\)</span></h1>
+<h2 id="construction-of-mathbbq">Construction of <span class="math inline">\(\mathbb{Q}\)</span></h2>
 <p>Assume <span class="math inline">\(\mathbb{Z}\)</span>, the integers, their arithmetic and order.</p>
 <p>An <em>equivalent class</em> is a set whose members satisfy an equivalent relation. For example, <span class="math inline">\((1, 3) \sim (2, 6)\)</span> are equivalent ordered pairs from the class “<span class="math inline">\(\frac{1}{3}\)</span>”.</p>
 <p>Informally, <span class="math inline">\(\mathbb{Q}\)</span>, the <em>rational numbers</em>, is the set of all such equivalent classes. Formally, <span class="math inline">\(\mathbb{Q} = \left \{\frac{m}{n} : m, n \in \mathbb{Z}, n \neq 0 \right \}\)</span>, where <span class="math inline">\(\frac{m}{n}\)</span> is an equivalent class of ordered pairs <span class="math inline">\((m, n)\)</span> with relation <span class="math inline">\((p, q) \sim (m, n)\)</span> if <span class="math inline">\(pn = qm\)</span> and <span class="math inline">\(q, n \neq 0\)</span>.</p>
@@ -48,8 +47,8 @@
 \implies &amp; (a, b) \sim (e, f)
 \end{align}\]</span> Thus, <span class="math inline">\((a, b) \sim (c, d)\)</span> and <span class="math inline">\((c, d) \sim (e, f) \implies (a, b) \sim (e, f)\)</span>.</li>
 </ol>
-<h3 id="properties-of-mathbbq">Properties of <span class="math inline">\(\mathbb{Q}\)</span></h3>
-<h4 id="addition">Addition</h4>
+<h2 id="properties-of-mathbbq">Properties of <span class="math inline">\(\mathbb{Q}\)</span></h2>
+<h3 id="addition">Addition</h3>
 <p>The chosen definition of addition should not depend on the representative chosen, i.e. it should be <em>well-defined</em>. The following definition is not well-defined. <span class="math display">\[
 \frac{a}{b} + \frac{c}{d} = \frac{a + c}{b + d}
 \]</span> Check: <span class="math inline">\(\frac{1}{2} + \frac{2}{3} = \frac{3}{5}\)</span> but <span class="math inline">\(\frac{2}{4} + \frac{2}{3} = \frac{4}{7}\)</span>.</p>
@@ -60,15 +59,15 @@
 \frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}
 \]</span> To show that the definition is well-defined, we must show that if <span class="math inline">\((a, b) \sim (a', b')\)</span> and <span class="math inline">\((c, d) \sim (c', d')\)</span> then <span class="math inline">\((ad + bc, bd) \sim (a'd' + b'c', b'd')\)</span>.</p>
 <p>Proof. Assume <span class="math inline">\((a, b) \sim (a', b')\)</span> and <span class="math inline">\((c, d) \sim (c', d')\)</span>. So, <span class="math inline">\(ab' = ba'\)</span> and <span class="math inline">\(cd' = dc'\)</span>. Since <span class="math inline">\(ab' = ba'\)</span>, <span class="math inline">\(ab'dd' = ba'dd'\)</span>, which is the same as <span class="math inline">\(adb'd' = bda'd'\)</span>. Since <span class="math inline">\(cd' = dc'\)</span>, <span class="math inline">\(cd'bb' = dc'bb'\)</span>, which is the same as <span class="math inline">\(bcb'd' = bdb'c'\)</span>. Hence, <span class="math inline">\(adb'd' + bcb'd' = bda'd' + bdb'c'\)</span>, which means <span class="math inline">\((ad + bc)b'd' = bd(a'd' + b'c')\)</span>. So, <span class="math inline">\((ad + bc, bd) \sim (a'd' + b'c', b'd')\)</span>. Thus, if <span class="math inline">\((a, b) \sim (a', b')\)</span> and <span class="math inline">\((c, d) \sim (c', d')\)</span> then <span class="math inline">\((ad + bc, bd) \sim (a'd' + b'c', b'd')\)</span>. QED.</p>
-<h4 id="multiplication">Multiplication</h4>
+<h3 id="multiplication">Multiplication</h3>
 <p>Definition of multiplication on <span class="math inline">\(\mathbb{Q}\)</span>: <span class="math display">\[
 \frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}
 \]</span></p>
 <p>Proof of well-definedness. Assume <span class="math inline">\((a, b) \sim (a', b')\)</span> and <span class="math inline">\((c, d) \sim (c', d')\)</span>. So, <span class="math inline">\(ab' = ba'\)</span> and <span class="math inline">\(cd' = dc'\)</span>. Hence, <span class="math inline">\(ab'cd' = ba'dc'\)</span>, which is the same as <span class="math inline">\(acb'd' = bda'c'\)</span>. So, <span class="math inline">\((ac, bd) \sim (a'c', b'd')\)</span>. Thus, if <span class="math inline">\((a, b) \sim (a', b')\)</span> and <span class="math inline">\((c, d) \sim (c', d')\)</span> then <span class="math inline">\((ac, bd) \sim (a'c', b'd')\)</span>. QED.</p>
-<h4 id="mathbbq-is-an-extension-of-mathbbz"><span class="math inline">\(\mathbb{Q}\)</span> is an Extension of <span class="math inline">\(\mathbb{Z}\)</span></h4>
+<h3 id="mathbbq-is-an-extension-of-mathbbz"><span class="math inline">\(\mathbb{Q}\)</span> is an Extension of <span class="math inline">\(\mathbb{Z}\)</span></h3>
 <p><span class="math inline">\(\left\{\frac{n}{1} : n \in \mathbb{Z} \right\}\)</span> behaves the same as <span class="math inline">\(\mathbb{Z}\)</span>. The correspondence is <span class="math inline">\(\frac{n}{1} \longleftrightarrow n\)</span>.</p>
 <p>Proof. Assume <span class="math inline">\(m, n \in \mathbb{Z}\)</span>. Note that <span class="math inline">\(\frac{n}{1} + \frac{m}{1} = \frac{n \cdot 1 + m \cdot 1}{1 \cdot 1} = \frac{n + m}{1}\)</span> and <span class="math inline">\(\frac{n}{1} \cdot \frac{m}{1} = \frac{n \cdot m}{1 \cdot 1} = \frac{nm}{1}\)</span>. QED.</p>
-<h4 id="order-on-mathbbq">Order on <span class="math inline">\(\mathbb{Q}\)</span></h4>
+<h3 id="order-on-mathbbq">Order on <span class="math inline">\(\mathbb{Q}\)</span></h3>
 <p>An <em>order</em> on a set <span class="math inline">\(S\)</span> is a relation, denoted <span class="math inline">\(\lt\)</span>, satisfying</p>
 <ol type="1">
 <li>(law of trichotomy) if <span class="math inline">\(x, y \in S\)</span>, exactly one of these is true: <span class="math inline">\(x &lt; y\)</span>, <span class="math inline">\(x = y\)</span>, <span class="math inline">\(y &lt; x\)</span>, and</li>
@@ -130,13 +129,13 @@
 \end{align}\]</span></p>
 <p>Therefore, if <span class="math inline">\(\frac{a}{b} &lt; \frac{c}{d}\)</span>, <span class="math inline">\((a, b) \sim (a', b')\)</span>, and <span class="math inline">\((c, d) \sim (c', d')\)</span> then <span class="math inline">\(\frac{a'}{b'} &lt; \frac{c'}{d'}\)</span>. QED.</p>
 <p>Write <span class="math inline">\(x &gt; y\)</span> for <span class="math inline">\(x &lt; y\)</span>. Write <span class="math inline">\(x \leq y\)</span> for <span class="math inline">\(x &lt; y\)</span> or <span class="math inline">\(x = y\)</span>.</p>
-<h4 id="x2-2-has-no-solution-in-mathbbq"><span class="math inline">\(x^2 = 2\)</span> has No Solution in <span class="math inline">\(\mathbb{Q}\)</span></h4>
+<h3 id="x2-2-has-no-solution-in-mathbbq"><span class="math inline">\(x^2 = 2\)</span> has No Solution in <span class="math inline">\(\mathbb{Q}\)</span></h3>
 <p>Proof (by constradiction). Assume that <span class="math inline">\(x^2 = 2\)</span> has a solution in <span class="math inline">\(\mathbb{Q}\)</span>, i.e. let <span class="math inline">\(x = \frac{p}{q}\)</span>, where <span class="math inline">\(p, q \in \mathbb{Z}\)</span>, <span class="math inline">\(q \neq 0\)</span>, and <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are in <em>lowest terms</em>, i.e. they have no common factors.</p>
 <p>So, <span class="math inline">\(\left(\frac{p}{q}\right)^2 = 2\)</span>, hence <span class="math inline">\(p^2 = 2q^2\)</span>. Then <span class="math inline">\(p^2\)</span> is even (divisible by 2). Then <span class="math inline">\(p\)</span> is even (because if <span class="math inline">\(p\)</span> were odd, <span class="math inline">\(p^2\)</span> would be odd).</p>
 <p>So, <span class="math inline">\(p = 2m\)</span> for some <span class="math inline">\(m \in \mathbb{Z}\)</span>, hence <span class="math inline">\(p^2 = 4m^2\)</span> and <span class="math inline">\(4m^2 = 2q^2\)</span>. Then <span class="math inline">\(q^2 = 2m^2\)</span>.</p>
 <p>Then <span class="math inline">\(q^2\)</span> is even, hence <span class="math inline">\(q\)</span> is even. This contradicts the fact that <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> are in lowest terms.</p>
 <p>Therefore, <span class="math inline">\(x^2 = 2\)</span> must have no solution in <span class="math inline">\(\mathbb{Q}\)</span>. QED.</p>
-<h4 id="mathbbq-is-a-field"><span class="math inline">\(\mathbb{Q}\)</span> is a Field</h4>
+<h3 id="mathbbq-is-a-field"><span class="math inline">\(\mathbb{Q}\)</span> is a Field</h3>
 <p>A <em>field</em> is a set <span class="math inline">\(F\)</span> with two <em>operations</em> <span class="math inline">\(+\)</span>, and <span class="math inline">\(\times\)</span>, satisfying the following <em>axioms</em>:</p>
 <ul>
 <li>(A1). <span class="math inline">\(F\)</span> is <em>closed</em> under <span class="math inline">\(+\)</span>.</li>
@@ -158,16 +157,14 @@
 <li><span class="math inline">\(y &lt; z \implies x + y &lt; x + z\)</span>, and</li>
 <li><span class="math inline">\(y &lt; z, x &gt; 0 \implies xy &lt; xz\)</span>.</li>
 </ol>
-</article>
-
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        </div>
+        </article>
 
-        <div id="footer">
+        <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and
@@ -176,6 +173,6 @@
             with
             <a href="http://ethanschoonover.com/solarized">Solarized</a>
             color scheme.
-        </div>
+        </footer>
     </body>
 </html>

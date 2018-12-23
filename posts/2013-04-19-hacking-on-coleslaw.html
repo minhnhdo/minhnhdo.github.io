@@ -24,7 +24,7 @@
             </div>
         </header>
 
-        <div id="content">
+        <article>
             <h1>Hacking on coleslaw</h1>
             
 
@@ -37,12 +37,11 @@
 <div class="tags">Tagged with <a href="../tags/hack.html">hack</a>, <a href="../tags/common-lisp.html">common-lisp</a>, <a href="../tags/coleslaw.html">coleslaw</a>, <a href="../tags/github.html">github</a>, <a href="../tags/pages.html">pages</a> </div>
 
 
-<article>
 <p><em>In this post, I document how I hacked <a href="https://github.com/redline6561/coleslaw">coleslaw</a> to add <a href="http://pages.github.com/">Github’s pages</a> integration.</em></p>
-<h2 id="what-is-coleslaw">What is coleslaw?</h2>
+<h1 id="what-is-coleslaw">What is coleslaw?</h1>
 <p>coleslaw is a static blog generator written in Common Lisp, much like <a href="http://jekyllrb.com/">Jekyll</a>, albeit with less features.</p>
 <p>I’ve been using <a href="http://octopress.org/">Octopress</a> to generate this site. Since I don’t know <a href="http://ruby-lang.org/">Ruby</a>, and have to intention to learn it, I can’t hack on Octopress’s code nor on Jekyll’s, which is a shame. As I am learning <a href="http://en.wikipedia.org/wiki/Common_Lisp/">Common Lisp</a>, and wanting to work on something in it, switching to coleslaw seems perfect for me.</p>
-<h2 id="trying-coleslaw-out">Trying coleslaw out</h2>
+<h1 id="trying-coleslaw-out">Trying coleslaw out</h1>
 <p>Here’s how I set up and use coleslaw.</p>
 <ul>
 <li>Install <a href="http://git-scm.com/">git</a></li>
@@ -99,9 +98,9 @@
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="bu">cd</span> /path/to/deploy/.curr/</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="ex">php</span> -S localhost:8080</a></code></pre></div>
-<h2 id="motivation">Motivation</h2>
+<h1 id="motivation">Motivation</h1>
 <p>As I want to put my blog on Github’s pages with my custom domain, I need the generator to put a file named <code>CNAME</code>, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with <code>post</code> extension, along with files in the <code>static</code> folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that <code>CNAME</code> file under the root of the site.</p>
-<h2 id="forking-the-code">Forking the code</h2>
+<h1 id="forking-the-code">Forking the code</h1>
 <p>The usual workflow on Github is to fork the code, hack on it, commit and then send a pull request to the original author.</p>
 <p>After forking the code and cloning it to my machine, I need to setup Quicklisp’s quickproject according to <a href="http://xach.livejournal.com/278047.html">this</a> so that it sees my code.</p>
 <p>Since I have generated the posts using coleslaw, Quicklisp must have pulled the code from its repository. For safety, I uninstall Quicklisp’s coleslaw.</p>
@@ -110,7 +109,7 @@
 <a class="sourceLine" id="cb9-3" title="3">(uninstall (release <span class="st">&quot;coleslaw&quot;</span>))</a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="co">; instructions gotten from</span></a>
 <a class="sourceLine" id="cb9-5" title="5"><span class="co">;   https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4</span></a></code></pre></div>
-<h2 id="hack-on-it">Hack on it</h2>
+<h1 id="hack-on-it">Hack on it</h1>
 <p>I add a property to class <code>blog</code> in order to capture user’s intent to integrate with Github’s pages.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp"><a class="sourceLine" id="cb10-1" title="1"><span class="co">; in src/config.lisp</span></a>
 <a class="sourceLine" id="cb10-2" title="2">(<span class="kw">defclass</span><span class="fu"> blog </span>()</a>
@@ -135,18 +134,17 @@
 <a class="sourceLine" id="cb11-13" title="13">        (<span class="kw">when</span> (<span class="kw">probe-file</span> prev)</a>
 <a class="sourceLine" id="cb11-14" title="14">        <span class="co">; [...]</span></a>
 <a class="sourceLine" id="cb11-15" title="15">        )))))</a></code></pre></div>
-<h2 id="not-send-a-pull-request-to-the-original-author">(Not) Send a pull request to the original author</h2>
+<h1 id="not-send-a-pull-request-to-the-original-author">(Not) Send a pull request to the original author</h1>
 <p>Since the way I pulled out the domain name from the <code>blog</code> object is very ad-hoc, I don’t think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won’t send a pull request to the original author.</p>
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-</article>
 
-        </div>
+        </article>
 
-        <div id="footer">
+        <footer>
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and
@@ -155,6 +153,6 @@
             with
             <a href="http://ethanschoonover.com/solarized">Solarized</a>
             color scheme.
-        </div>
+        </footer>
     </body>
 </html>
