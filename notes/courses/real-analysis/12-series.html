@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Real Analysis</h1>
+            
+            <p id="subtitle">Series</p>
+            
+
+            <h1 id="series">Series</h1>
+<p>Given a sequence <span class="math inline">\(\{a_n\}\)</span>, define <span class="math inline">\(\sum\limits_{i = p}^q a_i := a_p + a_{p + 1} + \dots + a_q\)</span>.</p>
+<p>Let <span class="math inline">\(s_n = \sum\limits_{k = 1}^n a_k\)</span>, called the <em><span class="math inline">\(n\)</span>th partial sum</em>.</p>
+<p>Then <span class="math inline">\(\{s_n\}\)</span> is a sequence, denoted <span class="math inline">\(\sum\limits_{n = 1}^\infty a_n\)</span> or sometimes <span class="math inline">\(\sum a_n\)</span>, called an <em>infinite series</em>, which may or may not converge. If it does converge, say to some number <span class="math inline">\(s\)</span>, then write <span class="math inline">\(\sum\limits_{n = 1}^\infty a_n = s\)</span>.</p>
+<p>Notice: <span class="math inline">\(\sum\limits_{n = 1}^\infty a_n = \lim\limits_{n \rightarrow \infty} s_n = \lim\limits_{n \rightarrow \infty} \sum\limits_{k = 1}^n a_k\)</span>.</p>
+<h1 id="convergent-series">Convergent Series</h1>
+<p><strong>Theorem.</strong> A series <span class="math inline">\(\sum a_n\)</span> <em>converges</em> if and only if for every <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\mathcal{N}\)</span> such that <span class="math inline">\(m, n &gt; \mathcal{N}\)</span> implies <span class="math inline">\(\left|\sum\limits_{k = n}^m a_k\right| &lt; \epsilon\)</span>.</p>
+<p><strong>Corollary.</strong> If <span class="math inline">\(\sum a_n\)</span> converges then <span class="math inline">\(\lim\limits_{n \rightarrow \infty} a_n = 0\)</span>.</p>
+<p><strong>Theorem (non-negative series).</strong> If <span class="math inline">\(a_n \geq 0\)</span>, then <span class="math inline">\(\sum a_n\)</span> converges if and only if the partial sums are bounded.</p>
+<p><em>Proof.</em> If <span class="math inline">\(a_n \geq 0\)</span>, the partial sums are monotonically increasing. But they are also bounded. So they must converge. QED.</p>
+<p><strong>Theorem (comparison test).</strong></p>
+<ol type="a">
+<li><p>If <span class="math inline">\(|a_n| \leq c_n\)</span> for <span class="math inline">\(n\)</span> large enough (say <span class="math inline">\(n &gt; \mathcal{N}_1\)</span>) and <span class="math inline">\(\sum c_n\)</span> converges then <span class="math inline">\(\sum a_n\)</span> converges.</p></li>
+<li><p>If <span class="math inline">\(a_n \geq d_n \geq 0\)</span> for <span class="math inline">\(n\)</span> large enough (say <span class="math inline">\(n &gt; \mathcal{N}_1\)</span>) and <span class="math inline">\(\sum d_n\)</span> diverges then <span class="math inline">\(\sum a_n\)</span> diverges.</p></li>
+</ol>
+<p><em>Proof of (a).</em> Fix <span class="math inline">\(\epsilon &gt; 0\)</span>. Since <span class="math inline">\(\sum c_n\)</span> converges, there exists <span class="math inline">\(\mathcal{N}_2\)</span> such that <span class="math inline">\(m, n &gt; \mathcal{N}_2\)</span> implies <span class="math inline">\(\left|\sum\limits_{k = n}^m c_k\right| &lt; \epsilon\)</span>. Let <span class="math inline">\(\mathcal{N} = \max\{\mathcal{N}_1, \mathcal{N}_2\}\)</span>. For <span class="math inline">\(m, n &gt; \mathcal{N}\)</span>, <span class="math inline">\(\left|\sum\limits_{k = n}^m a_k\right| \leq \sum\limits_{k = n}^m |a_k| \leq \sum\limits_{k = n}^m c_k &lt; \epsilon\)</span>, as desired. QED.</p>
+<p><em>Proof of (b).</em> The contrapositive of (b) is if <span class="math inline">\(\sum a_n\)</span> converges, so does <span class="math inline">\(\sum d_n\)</span>, which is shown in (a). QED.</p>
+<p><strong>Theorem (geometric series).</strong> If <span class="math inline">\(|x| &lt; 1\)</span> then <span class="math inline">\(\sum\limits_{n = 0}^\infty x^n = \frac{1}{1 - x}\)</span>. If <span class="math inline">\(|x| \geq 1\)</span> then <span class="math inline">\(\sum\limits_{n = 0}^\infty x^n\)</span> diverges.</p>
+<p><em>Proof.</em> Consider <span class="math inline">\(|x| &lt; 1\)</span>. Let <span class="math inline">\(s_n = 1 + x + \dots + x^n\)</span>. Then <span class="math inline">\(s_n = \frac{1 - x^{n + 1}}{1 - x}\)</span>. So, <span class="math inline">\(\lim\limits_{n \rightarrow \infty} s_n = \frac{1}{1 - x} \cdot \lim\limits_{n \rightarrow \infty} (1 - x^{n + 1}) = \frac{1}{1 - x}\)</span>.</p>
+<p>Consider <span class="math inline">\(|x| \geq 1\)</span>. Terms don’t go to <span class="math inline">\(0\)</span> so the <span class="math inline">\(\sum x_n\)</span> diverges. QED.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
