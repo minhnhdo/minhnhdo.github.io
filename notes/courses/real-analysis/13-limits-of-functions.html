@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Real Analysis</h1>
+            
+            <p id="subtitle">Limits of Functions</p>
+            
+
+            <h1 id="limits-of-functions">Limits of Functions</h1>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be metric spaces, <span class="math inline">\(E \subset X\)</span>, <span class="math inline">\(p\)</span> a limit point of <span class="math inline">\(E\)</span>, and <span class="math inline">\(f : E \rightarrow Y\)</span> be a function. To say <span class="math inline">\(f(x) \rightarrow q\)</span> as <span class="math inline">\(x \rightarrow p\)</span> or <span class="math inline">\(\lim\limits_{x \rightarrow p} f(x) = q\)</span> means there exists a <span class="math inline">\(q \in Y\)</span> such that for every <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\delta &gt; 0\)</span> such that for all <span class="math inline">\(x \in E\)</span>, <span class="math inline">\(0 &lt; d(x, p) &lt; \delta\)</span> implies <span class="math inline">\(d(f(x), q) &lt; \epsilon\)</span>.</p>
+<p>To show convergence: given <span class="math inline">\(\epsilon &gt; 0\)</span>, find a <span class="math inline">\(\delta &gt; 0\)</span> that works.</p>
+<p><strong>Theorem.</strong> <span class="math inline">\(\lim\limits_{x \rightarrow p} f(x) = q\)</span> if and only if for all sequences <span class="math inline">\(\{p_n\}\)</span> in <span class="math inline">\(E\)</span>, <span class="math inline">\(p_n \neq p\)</span> and <span class="math inline">\(p_n \rightarrow p\)</span>, we have <span class="math inline">\(f(p_n) \rightarrow q\)</span>.</p>
+<p><em>Proof.</em></p>
+<p>(<span class="math inline">\(\Rightarrow\)</span>): Given <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math inline">\(0 &lt; d(x, p) &lt; \delta\)</span> implies <span class="math inline">\(d(f(x), q) &lt; \epsilon\)</span>. So, for any sequence <span class="math inline">\(\{p_n\}\)</span> satisfying the conditions in the theorem, there exists <span class="math inline">\(\mathcal{N}\)</span> such that <span class="math inline">\(d(p_\mathcal{N}, p) &lt; \delta\)</span>. So <span class="math inline">\(n \geq \mathcal{N}\)</span> implies <span class="math inline">\(d(f(p_n), q) &lt; \epsilon\)</span> (by definition of limits of functions).</p>
+<p>(<span class="math inline">\(\Leftarrow\)</span>, by contrapositive): Assume <span class="math inline">\(\lim\limits_{x \rightarrow p} f(x) \neq q\)</span>. So, there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that for all <span class="math inline">\(\delta &gt; 0\)</span>, there exists <span class="math inline">\(x \in E\)</span> such that <span class="math inline">\(0 &lt; d(x, p) &lt; \delta\)</span> but <span class="math inline">\(d(f(x), q) \geq \epsilon\)</span>. Use <span class="math inline">\(\delta_n = \frac{1}{n}\)</span>, choose <span class="math inline">\(x_n\)</span> satisfying the previous condition. Then <span class="math inline">\(x_n \rightarrow p\)</span> but <span class="math inline">\(d(f(x_n), q) \geq \epsilon\)</span> by definition. So <span class="math inline">\(f(x) \not\rightarrow q\)</span>. QED.</p>
+<p>From theorems on limits of sequences,</p>
+<ul>
+<li>limits are unique,</li>
+<li>limits of sums are sums of limits, and</li>
+<li>limits of products are products of limits.</li>
+</ul>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
