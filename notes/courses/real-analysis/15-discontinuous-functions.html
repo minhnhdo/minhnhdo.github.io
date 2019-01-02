@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Real Analysis</h1>
+            
+            <p id="subtitle">Discontinuous Functions</p>
+            
+
+            <h1 id="discontinuity">Discontinuity</h1>
+<p>Consider <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span>, which is discontinuous at <span class="math inline">\(x\)</span> with <span class="math inline">\(f(x) = q\)</span> and is continuous everywhere else. Write <span class="math inline">\(f(x^+) \rightarrow q\)</span> or <span class="math inline">\(\lim\limits_{p \rightarrow x^+} f(p) = q\)</span>. Similarly, <span class="math inline">\(f(x^-) \rightarrow q'\)</span> or <span class="math inline">\(\lim\limits_{p \rightarrow x^-} f(p) = q'\)</span>.</p>
+<p><span class="math inline">\(\lim\limits_{p \rightarrow x} f(p)\)</span> exists if and only if <span class="math inline">\(\lim\limits_{p \rightarrow x^+} f(p) = \lim\limits_{p \rightarrow x^-} f(p)\)</span>. If <span class="math inline">\(f\)</span> is discontinuous at <span class="math inline">\(x\)</span> but <span class="math inline">\(\lim\limits_{p \rightarrow x^+} f(p)\)</span> and <span class="math inline">\(\lim\limits_{p \rightarrow x^-} f(p)\)</span> exist, say <span class="math inline">\(f\)</span> has a <em>discontinuity of the first kind</em> (or a <em>simple discontinuity</em>). Otherwise, say <span class="math inline">\(f\)</span> has a <em>discontinuity of the second kind</em>.</p>
+<p>For example,</p>
+<ol class="example" type="1">
+<li>Dirichlet function: <span class="math display">\[\begin{align}
+f(x) =
+\begin{cases}
+1 &amp; \text{if } x \in \mathbb{Q} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\end{align}\]</span> <span class="math inline">\(f\)</span> has discontinuities of the second kind at every point.</li>
+<li><span class="math display">\[\begin{align}
+f(x) =
+\begin{cases}
+\frac{1}{q} &amp; \text{if } x = \frac{p}{q} \text{ in lowest terms} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\end{align}\]</span> <span class="math inline">\(f\)</span> has discontinuities of the first kind at rationals (all discontinuities are simple) but is continuous at irrationals.</li>
+<li><span class="math display">\[\begin{align}
+f(x) =
+\begin{cases}
+0 &amp; \text{if } x \leq 0 \\
+\sin\left(\frac{1}{x}\right) &amp; \text{otherwise}
+\end{cases}
+\end{align}\]</span> <span class="math inline">\(f\)</span> has a discontinuity of the second kind at <span class="math inline">\(0\)</span>.</li>
+<li><span class="math display">\[\begin{align}
+f(x) =
+\begin{cases}
+x^2 &amp; \text{if } x \in \mathbb{Q} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\end{align}\]</span> <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(0\)</span> and all the discontinuities are of the second kind.</li>
+</ol>
+<h1 id="monotonic-functions">Monotonic Functions</h1>
+<p>A function <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span> is <em>monotonically increasing</em> if <span class="math inline">\(x \leq y\)</span> implies <span class="math inline">\(f(x) \leq f(y)\)</span>. A function <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span> is <em>monotonically decreasing</em> if <span class="math inline">\(x \leq y\)</span> implies <span class="math inline">\(f(x) \geq f(y)\)</span>.</p>
+<p><strong>Theorem.</strong> If <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span> is monotonically increasing then <span class="math inline">\(\sup\limits_{t \in (a, x)} f(t) \leq f(x) \leq \inf\limits_{t \in (x, b)} f(t)\)</span>.</p>
+<p><strong>Theorem.</strong> If <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span> is monotonically increasing/decreasing on <span class="math inline">\((a, b)\)</span> then <span class="math inline">\(f(x^+)\)</span> and <span class="math inline">\(f(x^-)\)</span> exist for all <span class="math inline">\(x \in (a, b)\)</span>.</p>
+<p><strong>Corollary.</strong> Monotonic functions have no discontinuity of the second kind.</p>
+<p><strong>Theorem.</strong> If <span class="math inline">\(f : (a, b) \rightarrow \mathbb{R}\)</span> is monotone on <span class="math inline">\((a, b)\)</span> then the set of points where <span class="math inline">\(f\)</span> is not continuous is countable.</p>
+<p><em>Proof idea:</em> let <span class="math inline">\(D\)</span> be the set of points where <span class="math inline">\(f\)</span> is discontinous. For every point <span class="math inline">\(x \in D\)</span>, pick <span class="math inline">\(r(x) \in \mathbb{Q}\)</span> such that <span class="math inline">\(f(x^-) &lt; r(x) &lt; f(x^+)\)</span>. If <span class="math inline">\(x, y \in D\)</span> then <span class="math inline">\(r(x) \neq r(y)\)</span> because <span class="math inline">\(f\)</span> is monotone. Get a 1-1 correspondence between <span class="math inline">\(D\)</span> and a subset of <span class="math inline">\(\mathbb{Q}\)</span>.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
