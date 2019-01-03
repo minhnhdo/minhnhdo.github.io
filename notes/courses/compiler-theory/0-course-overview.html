@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Compiler Theory - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Compiler Theory</h1>
+            
+            <p id="subtitle">Course Overview</p>
+            
+
+            <h1 id="course-schedule">Course Schedule</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Weeks</th>
+<th style="text-align: center;">Topics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1-5</td>
+<td style="text-align: center;">Basics of programming language theory (with homework)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5-6</td>
+<td style="text-align: center;">Mathematical models of compilers (using a high-level language such as a functional or object-oriented language)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6-12</td>
+<td style="text-align: center;">Seminars on compiler correctness (paper reading)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12-15</td>
+<td style="text-align: center;">Class projects</td>
+</tr>
+</tbody>
+</table>
+<h2 id="course-project">Course Project</h2>
+<p>The deliverable for the course project is a 5-page report consisting of mostly math and an in-class presentation. The goal of the project is to design a translation both satisfying a correctness property and violating another.</p>
+<ul>
+<li>Mathematically model the source and target language</li>
+<li>Describe the transformation</li>
+<li>State the first correctness property</li>
+<li>Argue that it holds for the transformation</li>
+<li>State the second correctness property</li>
+<li>Show a counterexample program</li>
+</ul>
+<h2 id="expectation">Expectation</h2>
+<p>Come to class with prepared questions and finished homework.</p>
+<h1 id="overview">Overview</h1>
+<p>Compilers are traditionally thought of as transformations from programs in a source language to programs in a target language.</p>
+<pre><code>compiler : SourceLanguage program -&gt; TargetLanguage program</code></pre>
+<p>However, this course encourages us to think about compilers as transformations on languages.</p>
+<pre><code>compiler : language -&gt; language</code></pre>
+<p>The transformations should preserve desirable properties. In other words, for all programs in the source language, the compiler produces programs in the target language, preserving desirable properties. When we talk about correctness of compilers, we are talking about this property preservation characteristic of compilers. Some examples of desirable properties are security (e.g. not leaking passwords) and data encapsulation properties (e.g. not exposing internal methods).</p>
+<p>This course focuses on four correctness properties.</p>
+<ul>
+<li><p>Type preservation</p></li>
+<li><p>Whole program correctness (traditionally called correctness, this property does not deal with external code linking)</p></li>
+<li><p>Separate compilation (correctness while linking with other code)</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(e\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dashrightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\downarrow\)</span></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"><span class="math inline">\(\downarrow\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(e'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dashrightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(L'\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where <span class="math inline">\(e\)</span> is a program in the source language, <span class="math inline">\(e'\)</span> is a corresponding program in the target language, <span class="math inline">\(L\)</span> is a library, <span class="math inline">\(L'\)</span> is a corresponding compiled library in the target language, <span class="math inline">\(\dashrightarrow\)</span> represents linking (<span class="math inline">\(e\)</span> is linked with <span class="math inline">\(L\)</span> and <span class="math inline">\(e'\)</span> is linked with <span class="math inline">\(L'\)</span>), and <span class="math inline">\(\downarrow\)</span> represents compilation.</p></li>
+<li><p>Secure compilation (traditionally called full abstraction, this is a very abstract property, can represent any interesting property like not leaking passwords, interacting correctly with the outside world, etc.)</p></li>
+</ul>
+<p>This course deals with correctness proofs of programs and program transformations.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
