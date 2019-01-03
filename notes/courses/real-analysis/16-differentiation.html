@@ -63,6 +63,25 @@ x^\frac{4}{3}\sin\left(\frac{1}{x}\right) &amp; \text{otherwise}
 f(x) = \sum\limits_{n = 1}^\infty b^n cos(a^n \pi x)
 \]</span></p></li>
 </ol>
+<h1 id="the-mean-value-theorem">The Mean Value Theorem</h1>
+<p><strong>Theorem (the mean value theorem).</strong> If <span class="math inline">\(f\)</span> is continuous on <span class="math inline">\([a, b]\)</span> and differentiable on <span class="math inline">\((a, b)\)</span> then there exists a point <span class="math inline">\(c \in (a, b)\)</span> such that <span class="math inline">\(f(b) - f(a) = (b - a)f'(c)\)</span>.</p>
+<p><span class="math inline">\(f(b) - f(a) = (b - a)f'(c)\)</span> relates value of <span class="math inline">\(f\)</span> to value of <span class="math inline">\(f'\)</span> without involving limits.</p>
+<p>For example,</p>
+<ol start="7" class="example" type="1">
+<li><p>If <span class="math inline">\(f'(x) &gt; 0\)</span> for all <span class="math inline">\(x \in (a, b)\)</span> then <span class="math inline">\(f(b) &gt; f(a)\)</span>.</p>
+<p><em>Proof.</em> By the mean value theorem, <span class="math inline">\(f(b) - f(a) = (b - a)f'(c) &gt; 0\)</span> for some <span class="math inline">\(c \in (a, b)\)</span>, as desired. QED.</p></li>
+</ol>
+<p><strong>Theorem (the generalized mean value theorem).</strong> If <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> are continuous on <span class="math inline">\([a, b]\)</span> and differentiable on <span class="math inline">\((a, b)\)</span> then there exists a point <span class="math inline">\(c \in (a, b)\)</span> such that <span class="math inline">\((f(b) - f(a))g'(c) = (g(b) - g(a))f'(c)\)</span>.</p>
+<p>If <span class="math inline">\(g(x) = x\)</span>, we get the mean value theorem.</p>
+<p>Consider <span class="math inline">\(h(x) = (f(b) - f(a))g'(c) - (g(b) - g(a))f'(c)\)</span>. Notice <span class="math inline">\(h(a) = 0\)</span> and <span class="math inline">\(h(b) = 0\)</span>.</p>
+<h1 id="taylors-theorem">Taylor’s Theorem</h1>
+<p>Suppose we know about <span class="math inline">\(f(a)\)</span>. We want to approximate <span class="math inline">\(f(b)\)</span>. The mean value theorem says <span class="math inline">\(f(b) = f(a) + (b - a)f'(c)\)</span> for some <span class="math inline">\(c \in (a, b)\)</span>. <span class="math inline">\((b - a)f'(c)\)</span> is an error term, not precisely known. This suggests <span class="math inline">\(f(b) = f(a) + f'(a)(b - a) + e\)</span> with <span class="math inline">\(e\)</span> as an error term. In fact, <span class="math inline">\(e = \frac{f''(d)}{2}(b - a)^2\)</span>, for some <span class="math inline">\(d \in (a, b)\)</span>.</p>
+<p>More generally, if <span class="math inline">\(P_{n - 1}(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \dots + \frac{f^{(n - 1)}(a)}{(n - 1)!}(x - a)^{n - 1}\)</span>, which is a polynomial with degree <span class="math inline">\(n - 1\)</span>, then Taylor’s theorem states that <span class="math inline">\(P_{n - 1}(x)\)</span> approximates <span class="math inline">\(f(x)\)</span> with a small error term.</p>
+<p><strong>Theorem (due to Taylor).</strong> If <span class="math inline">\(f^{(n - 1)}\)</span> is continuous on <span class="math inline">\([a, b]\)</span> and <span class="math inline">\(f^{(n)}\)</span> exists on <span class="math inline">\((a, b)\)</span> then <span class="math inline">\(P_{n - 1}(x)\)</span> approximates <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(f(x) = P_{n - 1}(x) + \frac{f^{(n)}(c)}{n!}(x - a)^n\)</span> for some <span class="math inline">\(c \in (a, b)\)</span>.</p>
+<ul>
+<li>When <span class="math inline">\(n = 1\)</span>, Taylor’s theorem is the mean value theorem.</li>
+<li><span class="math inline">\(P_n(x)\)</span> is the “best” polynomial approximation of order <span class="math inline">\(n\)</span> at <span class="math inline">\(a\)</span>.</li>
+</ul>
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
