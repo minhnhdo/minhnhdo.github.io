@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Real Analysis</h1>
+            
+            <p id="subtitle">Sequences of Functions</p>
+            
+
+            <h1 id="sequences-of-functions">Sequences of Functions</h1>
+<h2 id="pointwise-convergence">Pointwise Convergence</h2>
+<p>Consider <span class="math inline">\(\{f_n(x)\}\)</span>. For every point <span class="math inline">\(x\)</span>, <span class="math inline">\(f(x) = \lim\limits_{n \rightarrow \infty} f_n(x)\)</span>.</p>
+<p>For example,</p>
+<ol class="example" type="1">
+<li><span class="math inline">\(f_n(x) = \frac{x}{n} \xrightarrow{\text{pointwise}} f(x) = 0\)</span>.</li>
+<li>Let the domain <span class="math inline">\(E\)</span> of <span class="math inline">\(f_n\)</span> be <span class="math inline">\([0, 1]\)</span>. <span class="math display">\[\begin{align}
+f_n(x) = x^n \xrightarrow{\text{pointwise}} f(x) =
+\begin{cases}
+0 &amp; \text{if } x \neq 1 \\
+1 &amp; \text{otherwise}
+\end{cases}
+\end{align}\]</span></li>
+<li><span class="math inline">\(f_n(x) = \frac{1}{n}\sin(n^2x) \xrightarrow{\text{pointwise}} f(x) = 0\)</span>.</li>
+</ol>
+<p>This notion of limit does not preserve continuity, derivation, and integration.</p>
+<h2 id="uniform-convergence">Uniform Convergence</h2>
+<p>Let <span class="math inline">\(\|f\| = \sup\limits_{x \in E} |f(x)|\)</span>. Say <span class="math inline">\(f_n \xrightarrow{\text{uniform}} f\)</span> (<span class="math inline">\(f_n\)</span> <em>converges uniformly</em> to <span class="math inline">\(f\)</span> on <span class="math inline">\(E\)</span>) if for every <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\mathcal{N}\)</span> such that <span class="math inline">\(n \geq \mathcal{N}\)</span> implies <span class="math inline">\(\|f_n - f\| &lt; \epsilon\)</span>.</p>
+<p>Informally, we can draw an <span class="math inline">\(\epsilon\)</span>-ribbon about the limit <span class="math inline">\(f\)</span> and <span class="math inline">\(f_n\)</span> eventually stays in the ribbon. The same <span class="math inline">\(\mathcal{N}\)</span> works for every <span class="math inline">\(x \in E\)</span>.</p>
+<p>This is the usual convergence in metric space <span class="math inline">\(\mathcal{C}_b(E)\)</span>, the continuous bounded functions on <span class="math inline">\(E\)</span>, where <span class="math inline">\(d(f, g) = \|f - g\|\)</span>.</p>
+<p><strong>Theorem.</strong> <span class="math inline">\(\mathcal{C}_b(E)\)</span> is complete when the image is in <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<p>So we have the Cauchy criterion.</p>
+<p><strong>Theorem.</strong> <span class="math inline">\(f_n \xrightarrow{\text{uniform}} f\)</span> on <span class="math inline">\(E\)</span> if and only if for every <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists <span class="math inline">\(\mathcal{N}\)</span> such that for all <span class="math inline">\(m, n &gt; \mathcal{N}\)</span> and <span class="math inline">\(x \in E\)</span>, <span class="math inline">\(|f_n(x) - f_m(x)| &lt; \epsilon\)</span>.</p>
+<p><strong>Theorem.</strong> If <span class="math inline">\(f_n \xrightarrow{\text{uniform}} f\)</span> on <span class="math inline">\(E\)</span> and <span class="math inline">\(f_n\)</span> is continuous then <span class="math inline">\(f\)</span> is continuous.</p>
+<p><em>Proof.</em> Clearly, <span class="math inline">\(|f(x) - f(y)| \leq |f(x) - f_n(x)| + |f_n(x) - f_n(y)| + |f_n(y) - f(y)|\)</span>. Fix <span class="math inline">\(x \in E\)</span>. For all <span class="math inline">\(\epsilon &gt; 0\)</span>, choose <span class="math inline">\(f_n\)</span> so that <span class="math inline">\(\|f_n - f\| &lt; \frac{\epsilon}{3}\)</span>. Thus, <span class="math inline">\(|f(x) - f_n(x)| &lt; \frac{\epsilon}{3}\)</span> and <span class="math inline">\(|f_n(y) - f(y)| &lt; \frac{\epsilon}{3}\)</span>. Since <span class="math inline">\(f_n\)</span> is continuous, there exists <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math inline">\(|x - y| &lt; \delta\)</span> implies <span class="math inline">\(|f_n(x) - f_n(y)| &lt; \frac{\epsilon}{3}\)</span>. So, for every <span class="math inline">\(\epsilon &gt; 0\)</span>, we found <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math inline">\(|f(x) - f(y)| &lt; \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon\)</span>. QED.</p>
+<p><strong>Theorem.</strong> There exists <span class="math inline">\(f : [0, 1] \rightarrow [0, 1]^2\)</span> that is space filling.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>

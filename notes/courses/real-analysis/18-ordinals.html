@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Real Analysis - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Real Analysis</h1>
+            
+            <p id="subtitle">Ordinals</p>
+            
+
+            <h1 id="ordinal-numbers">Ordinal Numbers</h1>
+<p>Suppose there are sets <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and orders on them, namely <span class="math inline">\((X, &lt;)\)</span> and <span class="math inline">\((Y, &lt;)\)</span>. Say they have the same <em>order-type</em> if there exists a bijection <span class="math inline">\(f : X \rightarrow Y\)</span> such that <span class="math inline">\(x &lt; y\)</span> if and only if <span class="math inline">\(f(x) &lt; f(y)\)</span>. <span class="math inline">\(f\)</span> is called an <em>order-isomorphism</em>.</p>
+<p>Recall <span class="math inline">\(X\)</span> is <em>well-ordered</em> if every non-empty subset of <span class="math inline">\(X\)</span> has a least element.</p>
+<p>Construct <span class="math inline">\(\emptyset\)</span>, <span class="math inline">\(\{\emptyset\}\)</span>, <span class="math inline">\(\{\emptyset, \{\emptyset\}\}\)</span>, <span class="math inline">\(\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}\)</span>, etc. Ordering on them is defined as set containment.</p>
+<p>An <em>ordinal</em> is a set that is</p>
+<ol type="1">
+<li>transitive/complete (every member is a subset), and</li>
+<li>strictly well-ordered by membership.</li>
+</ol>
+<h2 id="observations">Observations</h2>
+<ol type="1">
+<li>If <span class="math inline">\(\alpha\)</span> is an ordinal then <span class="math inline">\(S(\alpha) = \alpha \cup \{\alpha\}\)</span> is an ordinal, called the <em>successor ordinal</em>.</li>
+<li>If <span class="math inline">\(\alpha\)</span> is an ordinal and <span class="math inline">\(\beta \in \alpha\)</span> then <span class="math inline">\(\beta\)</span> is an ordinal.</li>
+<li>If <span class="math inline">\(A\)</span> is a set of ordinals then <span class="math inline">\(\sup A = \bigcup A\)</span> is an ordinal.</li>
+</ol>
+<h2 id="theorems">Theorems</h2>
+<p><strong>Theorem.</strong> Any well-ordered set is order-isomorphic to some ordinal <span class="math inline">\(\alpha\)</span>.</p>
+<p><span class="math inline">\(\omega\)</span>, called the <em>limit ordinal</em> is the first infinite ordinal. It is not the successor of any ordinal (i.e. <span class="math inline">\(\omega \neq S(\alpha)\)</span> for any ordinal <span class="math inline">\(\alpha\)</span>). <span class="math inline">\(\epsilon_0\)</span> is the first ordinal such that <span class="math inline">\(\epsilon_0 = \omega^{\epsilon_0}\)</span>. <span class="math inline">\(\omega_1\)</span> is the first uncountable ordinal.</p>
+<p><span class="math display">\[
+0, 1, 2, 3, \dots, \omega, \omega + 1, \omega + 2, \dots, \\
+\underbrace{\omega + \omega}_{\omega \cdot 2}, \omega \cdot 2 + 1, \dots, \omega \cdot 3, \dots, \\
+\underbrace{\omega\omega}_{\omega^2}, \omega^2 + 1, \dots, \omega^3, \dots, \\
+\omega^\omega, \omega^\omega + 1, \dots, \omega^{\omega^\omega}, \dots, \\
+\epsilon_0, \epsilon_0 + 1, \dots, \epsilon_1, \dots, \\
+\omega_1, \omega_1 + 1
+\]</span></p>
+<h1 id="transfinite-induction">Transfinite Induction</h1>
+<p>Recall strong induction: Let <span class="math inline">\(S_n = \{i \in \mathbb{N} : i &lt; n\}\)</span>, called a <em>section</em>. <span class="math inline">\(A \subset \mathcal{N}\)</span> is <em>inductive</em> if for all <span class="math inline">\(n \in \mathcal{N}\)</span>, <span class="math inline">\(S_n \subset A\)</span> implies <span class="math inline">\(n \in A\)</span>.</p>
+<p>Recall the principle of strong induction: If <span class="math inline">\(A \subset \mathbb{N}\)</span> is inductive then <span class="math inline">\(A = \mathcal{N}\)</span>.</p>
+<p><em>Proof (by contradiction).</em> If <span class="math inline">\(A \neq \mathbb{N}\)</span> then <span class="math inline">\(\mathbb{N} \setminus A\)</span> has a smallest element <span class="math inline">\(n\)</span>. But then <span class="math inline">\(S_n \subset A\)</span> which implies <span class="math inline">\(n \in A\)</span>, a contradiction. QED.</p>
+<p><strong>Theorem.</strong> Every set can be well-ordered.</p>
+<p>The proof depends on the <em>axiom of choice</em>.</p>
+<p>Well-order the index set of statements <span class="math inline">\(J\)</span>. Let <span class="math inline">\(S_\alpha = \{\gamma \in J : \gamma &lt; \alpha\}\)</span>, called a section. A set <span class="math inline">\(A \subset J\)</span> is <em>inductive</em> if for all <span class="math inline">\(\alpha \in J\)</span>, <span class="math inline">\(S_\alpha \subset A\)</span> implies <span class="math inline">\(\alpha \in A\)</span>.</p>
+<p>The principle of transfinite induction: Suppose <span class="math inline">\(J\)</span> is well-ordered. A set <span class="math inline">\(A \subset J\)</span> is inductive implies <span class="math inline">\(A = J\)</span>.</p>
+<h2 id="applications">Applications</h2>
+<p><strong>Theorem.</strong> There exists a set <span class="math inline">\(K\)</span> in <span class="math inline">\(\mathbb{R}^2\)</span> that intersect every line in the plane twice.</p>
+<p><em>Proof (depends on the axiom of choice).</em> Let <span class="math inline">\(L\)</span> be the set of all lines in <span class="math inline">\(\mathbb{R}^2\)</span> (so <span class="math inline">\(|L| = |\mathbb{R}|\)</span>). Well-order <span class="math inline">\(L\)</span> with the type <span class="math inline">\(J\)</span> of the first ordinal with the same cardinality as <span class="math inline">\(\mathbb{R}\)</span> (all elements of <span class="math inline">\(J\)</span> have cardinality less than that of <span class="math inline">\(\mathbb{R}\)</span>). Write <span class="math inline">\(L = \{L_\alpha\}_{\alpha \in J}\)</span>. Let <span class="math display">\[\begin{align}
+A = \{\alpha \in J : \exists \text{ set } K_\alpha \text{ such that } &amp; (1) |K_\alpha| &lt; |\mathbb{R}| \text{ and}\\
+&amp; (2) \text{ no three points are colinear} \text{ and} \\
+&amp; (3) |K_\alpha \cap L_\beta| = 2 \text{ if } \alpha \leq \beta \text{ and} \\
+&amp; (4) K_\beta \subset K_\alpha \text{ if } \beta &lt; \alpha\}
+\end{align}\]</span> We need to show that <span class="math inline">\(A\)</span> is inductive, so <span class="math inline">\(A = J\)</span>.</p>
+<p>Base case: Clearly, <span class="math inline">\(1 \in A\)</span> (let <span class="math inline">\(K_1\)</span> be the set of two points on <span class="math inline">\(L_1\)</span>).</p>
+<p>Inductive step: If <span class="math inline">\(S_\alpha \subset A\)</span>, let <span class="math inline">\(K = \bigcup\limits_{\beta &lt; \alpha} K_\beta\)</span>. <span class="math inline">\(K\)</span> has the same cardinality as <span class="math inline">\(\mathbb{R}\)</span> (by (1)) and has no three point colinear (by (2) and (3)). The set of all lines through <span class="math inline">\(K_\alpha\)</span> have cardinality less than that of <span class="math inline">\(\mathbb{R}\)</span> so it can’t hit all of <span class="math inline">\(L_\alpha\)</span>. Pick 1 or 2 points to form <span class="math inline">\(K_\alpha = K \cup \{\text{1 or 2 extra points}\}\)</span>. So <span class="math inline">\(\alpha \in A\)</span>. QED.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
