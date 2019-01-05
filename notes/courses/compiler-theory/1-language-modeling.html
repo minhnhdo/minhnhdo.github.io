@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Compiler Theory - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Compiler Theory</h1>
+            
+            <p id="subtitle">Language Modeling</p>
+            
+
+            <h1 id="example-compilers">Example Compilers</h1>
+<table style="width:59%;">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 13%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Source Language</th>
+<th style="text-align: center;">Compiler</th>
+<th style="text-align: center;">Target Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">GCC</td>
+<td style="text-align: center;">x86</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">Clang</td>
+<td style="text-align: center;">LLVM IR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">LLVM IR</td>
+<td style="text-align: center;">LLVM</td>
+<td style="text-align: center;">x86</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">JavaScript 2016</td>
+<td style="text-align: center;">Babel</td>
+<td style="text-align: center;">JavaScript 5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">JavaScript</td>
+<td style="text-align: center;">Minifier</td>
+<td style="text-align: center;">Compressed JS</td>
+</tr>
+</tbody>
+</table>
+<h1 id="languages-in-practice-versus-in-theory">Languages in Practice versus in Theory</h1>
+<p>In practice, languages are defined by their syntaxes, semantics, and paradigms (functional vs. object-oriented vs. etc.).</p>
+<p>In theory, languages are modelled by calculi along with set theory and logic.</p>
+<h1 id="language-definition">Language Definition</h1>
+<p>A language is</p>
+<ul>
+<li>a collection of expression,</li>
+<li>some operations, and</li>
+<li>shared properties (static and dynamic guarantees).</li>
+</ul>
+<h1 id="syntax">Syntax</h1>
+<p>Language syntax is defined using a <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF grammar</a>. This is an inductive construction.</p>
+<p>b <code>::= true | false</code><br />
+n <code>::= 0 | 1 | 2 |</code> … <code>| 42 |</code> … <code>| 1000 |</code> …<br />
+e <code>::=</code> n <code>|</code> b <code>|</code> e <code>+</code> e <code>|</code> e <code>-</code> e | <code>if</code> e <code>then</code> e <code>else</code> e</p>
+<p>An alternative is using set notation, which is avoided due to its verbosity.</p>
+<p>b = <span class="math inline">\(\{\)</span><code>true</code>, <code>false</code><span class="math inline">\(\}\)</span><br />
+n = <span class="math inline">\(\mathbb{N}\)</span><br />
+e = b <span class="math inline">\(\cup\)</span> n <span class="math inline">\(\cup\)</span> <span class="math inline">\(\{\)</span> e<sub>1</sub> <code>+</code> e<sub>2</sub> <span class="math inline">\(:\)</span> e<sub>1</sub> <span class="math inline">\(\in\)</span> e, e<sub>2</sub> <span class="math inline">\(\in\)</span> e<span class="math inline">\(\} \cup \dots\)</span></p>
+<p>Examples expressions in this languages are</p>
+<ol class="example" type="1">
+<li><code>true</code></li>
+<li><code>1 + 2</code></li>
+<li>e<sub>1</sub> <code>+</code> e<sub>2</sub> (where e<sub>1</sub> and e<sub>2</sub> are expressions)</li>
+</ol>
+<h1 id="semantics">Semantics</h1>
+<p>Semantics answer the question how to define <code>eval</code>.</p>
+<pre><code>eval(e) = v</code></pre>
+<h2 id="denotational-semantics">Denotational Semantics</h2>
+<p>Denotational semantics interpret expressions as math, e.g.</p>
+<ul>
+<li>set theory</li>
+<li>category theory</li>
+<li>domain theory</li>
+<li>logics (first-order logic, <a href="https://en.wikipedia.org/wiki/Computation_tree_logic">CTL</a>, <a href="https://en.wikipedia.org/wiki/Linear_temporal_logic">LTL</a>, etc.)</li>
+</ul>
+<p>For example, consider the semantic function <span class="math inline">\([\![]\!]\)</span> <code>: Expression -&gt; SetExpression</code>.</p>
+<p><span class="math inline">\([\![\)</span> <code>n</code> <span class="math inline">\(]\!] = \mathbb{N}\)</span><br />
+<span class="math inline">\([\![\)</span> e<sub>1</sub> <code>+</code> e<sub>2</sub> <span class="math inline">\(]\!] = [\![\)</span> e<sub>1</sub> <span class="math inline">\(]\!] + [\![\)</span> e<sub>2</sub> <span class="math inline">\(]\!]\)</span><br />
+<span class="math inline">\([\![\)</span> e<sub>1</sub> <code>-</code> e<sub>2</sub> <span class="math inline">\(]\!] = [\![\)</span> e<sub>1</sub> <span class="math inline">\(]\!] - [\![\)</span> e<sub>2</sub> <span class="math inline">\(]\!]\)</span></p>
+<p>The evaluation function <code>eval</code> is then defined using the semantic function <span class="math inline">\([\![]\!]\)</span>.</p>
+<p><code>eval(</code>e<code>)</code> <span class="math inline">\(= [\![\)</span> e <span class="math inline">\(]\!]\)</span></p>
+<h2 id="operational-semantics">Operational Semantics</h2>
+<p>Operational semantics are defined using reduction relation (<span class="math inline">\(\rightarrow\)</span>) and conversion relation (<span class="math inline">\(\rightarrow^\star\)</span>), assuming some existing language.</p>
+<p>Notation for reduction relations: expression <span class="math inline">\(\rightarrow\)</span> simpler expression, i.e. e <span class="math inline">\(\rightarrow\)</span> e’.</p>
+<p>In the following example, <code>n ::= 0 | add1 e</code>.</p>
+<p><code>if true then</code> e<sub>1</sub> <code>else</code> e<sub>2</sub> <span class="math inline">\(\rightarrow\)</span> e<sub>1</sub><br />
+<code>if false then</code> e<sub>1</sub> <code>else</code> e<sub>2</sub> <span class="math inline">\(\rightarrow\)</span> e<sub>2</sub><br />
+<code>0 +</code> e<sub>2</sub> <span class="math inline">\(\rightarrow\)</span> e<sub>2</sub><br />
+<code>add1 0 +</code> e<sub>2</sub> <span class="math inline">\(\rightarrow\)</span> e<sub>2</sub></p>
+<p>For example, <code>1 + 2</code>, which is short for <code>add1 0 + add1 (add1 0)</code>, <span class="math inline">\(\rightarrow\)</span> <code>0 + add1 (add1 (add1 0))</code> <span class="math inline">\(\rightarrow\)</span> <code>add1 (add1 (add1 0))</code>, i.e. <code>3</code>.</p>
+<p>Inference rule notation: <span class="math inline">\(\frac{P_1 \quad P_2 \quad \dots \quad P_n}{C}\)</span>, where <span class="math inline">\(P_i\)</span> are premises and <span class="math inline">\(C\)</span> is the conclusion.</p>
+<p>Notation for reduction relations: expression <span class="math inline">\(\rightarrow^\star\)</span> expression, i.e. e <span class="math inline">\(\rightarrow^\star\)</span> e’.</p>
+<p>For example,</p>
+<p><span class="math display">\[
+\frac{}{e \rightarrow^\star e}\text{Reflexive} \\
+\frac{e_1 \rightarrow e_2 \quad e_2 \rightarrow^\star e_3}{e_1 \rightarrow^\star e_3}\text{Transitive} \\
+\]</span> The rest of the rules are congruence rules. <span class="math display">\[
+\frac{e_1 \rightarrow^\star e_1' \quad e_2 \rightarrow^\star e_2'}{e_1 + e_2 \rightarrow e_1' + e_2'}\text{Congruence-Addition} \\
+\frac{e \rightarrow^\star e'}{\texttt{if } e \texttt{ then } e_1 \texttt{ else } e_2 \rightarrow^\star \texttt{if } e' \texttt{ then } e_1 \texttt{ else } e_2}\text{Congruence-If} \\
+\]</span> etc.</p>
+<p>Equivalence relation: e <span class="math inline">\(\equiv\)</span> e’</p>
+<p><span class="math display">\[
+\frac{e \rightarrow^\star e'}{e \equiv e'} \\
+\frac{e' \equiv e}{e \equiv e'} \\
+\]</span></p>
+<p>For example, consider <code>1 + 2</code>.</p>
+<p><span class="math display">\[
+\frac{\texttt{1 + 2} \rightarrow \texttt{0 + 3} \quad \frac{\texttt{0 + 3} \rightarrow^\star \texttt{3} \quad 3 \rightarrow^\star 3}{\texttt{0 + 3} \rightarrow^\star \texttt{3}}}{\texttt{1 + 2} \rightarrow \texttt{3}}
+\]</span></p>
+<p>Valid output/value (can put output in registers, heaps, etc. here): v <code>::=</code> n <code>|</code> b</p>
+<p>The evaluation function <code>eval</code> is then defined as follows.</p>
+<p><code>eval(</code>e<code>)</code> = v <code>|</code> e <span class="math inline">\(\rightarrow\)</span> v</p>
+<p>which is read as the result of evaluating e is v given that e converts to v.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
