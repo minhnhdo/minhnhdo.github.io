@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>PSSWRD - Minh Do</title>
+        <title>Solving PSSWRD - Minh Do</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/site.css" type="text/css" />
         <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
         </header>
 
         <article>
-            <h1>PSSWRD</h1>
+            <h1>Solving PSSWRD</h1>
             
 
             <div class="info">
@@ -39,10 +39,11 @@
 
 <h1 id="a-challenge">A Challenge</h1>
 <p>My friend just wrote a guessing game, called <a href="http://walisu.com/psswrd">psswrd</a>, and challenged me to solve it. Being a lazy programmer, it follows naturally that I want to solve it with programming.</p>
-<p>The game asks the player to guess a password, which consists of all distinct characters drawn from a provided character set, and whose length is also provided. After submitting a guess, the server sends back hints for that guess and all previous hints and guesses. The hints for each guess consist of what the game calls <code>gold</code> and <code>silver</code>, where a <code>gold</code> means that the guess contains a character in the same position as in the password, and a <code>silver</code> means that the guess contains a character in the password but in the wrong position. For example, let’s say the password is <code>1234</code> and the guess is <code>5231</code>; the hints then will be <code>2 GOLD 1 SILVER</code>.</p>
+<p>The game asks the player to guess a password, which consists of all distinct characters drawn from a provided character set, and whose length is also provided. The player is given a limited number of tries and each try is timed. On higher levels, the character set is bigger, and the password length is larger but the player is given more tries. After submitting a guess, the server sends back hints for that guess and all previous hints and guesses. The hints for each guess consist of what the game calls <code>gold</code> and <code>silver</code>, where a <code>gold</code> means that the guess contains a character in the same position as in the password, and a <code>silver</code> means that the guess contains a character in the password but in the wrong position. For example, let’s say the password is <code>1234</code> and the guess is <code>5231</code>; the hints then will be <code>2 GOLD 1 SILVER</code>.</p>
 <p>My first thought is a simple generate-and-test solution, where all the possible guesses are generated and tested against the hints returned from the server.</p>
-<h1 id="test-generation">Test Generation</h1>
-<p>Let’s think of the easier part of the generate-and-test solution, i.e. testing the possible solution. For each hint provided by the game server, I generate a function testing a new guess against the old guess, comparing the number of golds and silvers for a match. In other words, this test function checks my newly generated solution to make sure it returns the same hint as the server would; otherwise, this is not the solution I’m looking for.</p>
+<h1 id="test-functions">Test Functions</h1>
+<p>Let’s think of the easier part of the generate-and-test solution, which is testing the possible solutions. For each hint provided by the game server, I generate a function testing a new guess against the old guess, comparing the number of golds and silvers for a match. In other words, this test function checks my newly generated solution to make sure it returns the same hint as the server would; otherwise, this is not the solution I’m looking for.</p>
+<p>To continue with the previous example, let’s consider some new generated guesses, say <code>5132</code> and <code>4251</code>. The right password cannot be <code>5132</code> since the hint for the previous guess, <code>5231</code>, would be <code>2 GOLD 2 SILVER</code>, instead of the returned hint <code>2 GOLD 1 SILVER</code>. On the other hand, <code>4251</code> is a good candidate since if the password were so, the returned hint would be <code>2 GOLD 1 SILVER</code>, as was returned by the game server.</p>
 <h1 id="first-attempt---generate-all-possible-solutions">First Attempt - Generate All Possible Solutions</h1>
 <p>My first attempt is very simple; just generate all the possible solutions and test them against the returned hints. This solution searches a space of <code>mCn * n!</code> where <code>m</code> is the number of possible characters, <code>n</code> is the length of the password, <code>mCn</code> is the number of ways to choose <code>n</code> characters from a set of <code>m</code> characters without replacement, <code>n!</code> is the total number of ways of arranging <code>n</code> characters. For example, let’s assume the character set is <code>0123456789</code> and the length of the password is 4. In this example, <code>m</code> is 10, <code>n</code> is 4 and the total number of solutions is <code>10C4 * 4!</code>, or 5040.</p>
 <p>This first attempt gets me to level 5 or so. Not bad for a very first attempt.</p>
@@ -54,7 +55,7 @@
 <p>A near match is a guess where the sum of golds and silvers is at worst two less than the length of the password. Whenever the solution finds such a guess, it changes the character sets to that guess and the remaining characters from the original character set, selecting the correct number of characters from each set. For example, let’s assume the character set is <code>0123456789abcde</code>, the password length is 6 and the near match guess <code>3276ed</code> returns <code>2 GOLD and 2 SILVER</code>. The solution will switch to the character sets <code>3276ed</code> and <code>014589abc</code>, selecting 4 characters from the former set and 2 characters from the latter.</p>
 <p>This optimization plus removing impossible characters, implemented on top of the second attempt, gets me to level 15 or so. Sometimes luck strikes and this solution gets me to level 17 but no more than that.</p>
 <h1 id="third-attempt---guess-the-correct-characters-first-and-then-find-the-correct-permutation">Third Attempt - Guess the Correct Characters First and then Find the Correct Permutation</h1>
-<p>This attempt is born out of the observation that after guessing the correct constituent characters, the solution hones in on the correct permutation very quickly. Instead of testing permutations of the selected characters, I submit the concatenation of selections of characters. However, the test generated by testing the number of golds and silvers against the ones returned from the hint is too strict, as it will incorrectly reject concatentations based on the number of golds. I have to relax the test by testing only for the sum of the number of golds and silvers instead. Only after finding the correct constituent characters do I test more rigorously like previously done.</p>
+<p>This attempt is born out of the observation that after guessing the correct constituent characters, the program hones in on the correct permutation very quickly. Instead of testing permutations of the selected characters, I submit the concatenation of selections of characters. However, the test generated by testing the number of golds and silvers against the ones returned from the hint is too strict, as it will incorrectly reject concatentations based on the number of golds. I have to relax the test by testing only for the sum of the number of golds and silvers instead. Only after finding the correct constituent characters do I test more rigorously like previously done.</p>
 <p>The previous attempts frequently time out before they can give a guess to the server. This latest attempt, however, generates solutions more quickly but takes many more tries. The disadvantage of the third attempt makes it unsuitable for the first few levels where the number of guesses is more limited. Therefore, I use the second attempted solution for the first few level (up to and including level 2) instead of this solution.</p>
 <p>This third and final attempt helps me beat the game. Phew!</p>
 <h1 id="conclusion">Conclusion</h1>
