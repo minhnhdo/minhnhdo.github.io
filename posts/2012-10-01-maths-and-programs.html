@@ -77,8 +77,8 @@
 <blockquote>
 <p>There exists in set <code>s</code> an element that satisfies the predicate <code>p</code> when not all of the elements in <code>s</code> satisfies the negation of <code>p</code>.</p>
 </blockquote>
-<p>That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatical symbols!</p>
-<p>∃x:P(x) ≡ ¬∀x:¬P(x)</p>
+<p>That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatic symbols!</p>
+<p>∃x:P(x) ⇔ ¬∀x:¬P(x)</p>
 <p>compared with</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">def</span> <span class="fu">exists</span>(s: Set, p: Int =&gt; Boolean): Boolean = !<span class="fu">forall</span>(s, x =&gt; !<span class="fu">p</span>(x))</a></code></pre></div>
 <p>The correspondence is remarkable!</p>
