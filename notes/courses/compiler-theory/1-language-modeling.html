@@ -84,9 +84,9 @@
 </ul>
 <h1 id="syntax">Syntax</h1>
 <p>Language syntax is defined using a <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF grammar</a>. This is an inductive construction.</p>
-<p>b <code>::= true | false</code><br />
-n <code>::= 0 | 1 | 2 |</code> … <code>| 42 |</code> … <code>| 1000 |</code> …<br />
-e <code>::=</code> n <code>|</code> b <code>|</code> e <code>+</code> e <code>|</code> e <code>-</code> e | <code>if</code> e <code>then</code> e <code>else</code> e</p>
+<p>b <code>::=</code> <code>true</code> | <code>false</code><br />
+n <code>::=</code> <code>0</code> | <code>1</code> | <code>2</code> | … | <code>42</code> | … | <code>1000</code> | …<br />
+e <code>::=</code> n | b | e <code>+</code> e | e <code>-</code> e | <code>if</code> e <code>then</code> e <code>else</code> e</p>
 <p>An alternative is using set notation, which is avoided due to its verbosity.</p>
 <p>b = {<code>true</code>, <code>false</code>}<br />
 n = ℕ<br />
@@ -117,7 +117,7 @@ e = b ∪ n ∪ { e<sub>1</sub> <code>+</code> e<sub>2</sub> : e<sub>1</sub> ∈
 <h2 id="operational-semantics">Operational Semantics</h2>
 <p>Operational semantics are defined using reduction relation (→) and conversion relation (→*), assuming some existing language.</p>
 <p>Notation for reduction relations: expression → simpler expression, i.e. e → e’.</p>
-<p>In the following example, n <code>::= 0 | add1</code> e.</p>
+<p>In the following example, n <code>::=</code> <code>0</code> | <code>add1</code> e.</p>
 <p><code>if true then</code> e<sub>1</sub> <code>else</code> e<sub>2</sub> → e<sub>1</sub><br />
 <code>if false then</code> e<sub>1</sub> <code>else</code> e<sub>2</sub> → e<sub>2</sub><br />
 <code>0 +</code> e<sub>2</sub> → e<sub>2</sub><br />
@@ -156,10 +156,31 @@ e = b ∪ n ∪ { e<sub>1</sub> <code>+</code> e<sub>2</sub> : e<sub>1</sub> ∈
  1 + 2 → 0 + 3         0 + 3 →* 3
 ———————————————————————————————————————
              1 + 2 → 3</code></pre>
-<p>Valid output/value (can put output in registers, heaps, etc. here): v <code>::=</code> n <code>|</code> b</p>
+<p>Valid output/value (can put output in registers, heaps, etc. here): v <code>::=</code> n | b.</p>
 <p>The evaluation function <code>eval</code> is then defined as follows.</p>
-<p><code>eval(</code>e<code>)</code> = v <code>|</code> e → v</p>
+<p><code>eval(</code>e<code>)</code> = v | e → v</p>
 <p>which is read as the result of evaluating e is v given that e converts to v.</p>
+<h1 id="extending-the-language">Extending the language</h1>
+<p>Let’s extend the language to support pairs.</p>
+<h2 id="syntax-extension">Syntax extension</h2>
+<p>e <code>::=</code> … <code>| (</code>e<code>,</code> e<code>) | fst</code> e <code>| snd</code> e</p>
+<h2 id="semantic-extensions">Semantic extensions</h2>
+<h3 id="reduction-rules">Reduction rules</h3>
+<p>These should be the most primitive rules/operations.</p>
+<pre><code>fst (e₁, e₂) → e₁</code></pre>
+<pre><code>snd (e₁, e₂) → e₂</code></pre>
+<p>The rules for <code>fst</code> and <code>snd</code> are called elimination rules. The introduction rule for a pair is its constructor.</p>
+<h3 id="conversion-rules">Conversion rules</h3>
+<pre><code> e₁ →* e₁'   e₂ →* e₂'
+——————————————————————— Congruence-Pair
+(e₁, e₂) →* (e₁', e₂')</code></pre>
+<pre><code>     e →* e'
+————————————————— Congruence-fst
+ fst e →* fst e'</code></pre>
+<pre><code>     e →* e'
+————————————————— Congruence-snd
+ snd e →* snd e'</code></pre>
+<p>Conversion rules let us work on sub-expressions.</p>
 
 <div id="disqus_thread"></div>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
