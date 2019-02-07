@@ -34,7 +34,7 @@
 <p>As defined currently, we cannot say much about our programming language: there is no shared properties for programs in our language. One way to remedy that is to define a type system to rule out “bad” programs.</p>
 <h1 id="check-for-no-free-variables">Check for no free variables</h1>
 <p>Γ <code>::=</code> • | Γ,<code>x</code></p>
-<p><span class="boxed">Γ ⊢ e</span></p>
+<h2 id="γ-e"><span class="boxed">Γ ⊢ e</span></h2>
 <pre><code>———————
  Γ ⊢ n</code></pre>
 <pre><code>———————
@@ -46,7 +46,7 @@
 ——————————
  Γ ⊢ λx.e</code></pre>
 <p>and so on.</p>
-<p><span class="boxed">eval(e) = v</span></p>
+<h2 id="evale-v"><span class="boxed">eval(e) = v</span></h2>
 <pre><code> • ⊢ e     •, e →* M', v
 —————————————————————————
       eval(e) = v</code></pre>
@@ -54,7 +54,7 @@
 <h1 id="check-for-types">Check for types</h1>
 <p>A, B <code>::=</code> <code>Nat</code> | <code>Bool</code> | A <code>→</code> B</p>
 <p>Γ <code>::=</code> • | Γ,<code>x</code> : A</p>
-<p><span class="boxed">Γ ⊢ e : A</span></p>
+<h2 id="γ-e-a"><span class="boxed">Γ ⊢ e : A</span></h2>
 <pre><code> x : A ∈ Γ
 ——————————— Type-Var
  Γ ⊢ x : A</code></pre>
@@ -71,7 +71,7 @@
 <pre><code> Γ ⊢ e₁ : Nat     Γ ⊢ e₂ : Nat
 ——————————————————————————————— Type-Add
        Γ ⊢ e₁ + e₂ : Nat</code></pre>
-<p><span class="boxed">eval(e) = v</span></p>
+<h2 id="evale-v-1"><span class="boxed">eval(e) = v</span></h2>
 <pre><code> • ⊢ e : A     •, e →* M', v
 —————————————————————————————
         eval(e) = v</code></pre>

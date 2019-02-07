@@ -35,9 +35,9 @@
 <p>e <code>::=</code> … | <code>λx.</code>e | <code>(</code>e e<code>)</code> | <code>x</code> | <code>y</code> | … | <code>xᵢ</code>, where <code>x</code>, <code>y</code>, …, <code>xᵢ</code> (i ∈ ℕ).</p>
 <p>The introduction rule for functions is <code>λx.</code>e.</p>
 <h2 id="semantics">Semantics</h2>
-<p><span class="boxed">e → e</span> Reductions</p>
+<h3 id="e-e-reductions"><span class="boxed">e → e</span> Reductions</h3>
 <p><code>(λx.</code>e<code>)</code> e’ → e[e’/<code>x</code>]</p>
-<p><span class="boxed">e[e’/<code>x</code>] = e</span> Substitutions</p>
+<h3 id="eex-e-substitutions"><span class="boxed">e[e’/<code>x</code>] = e</span> Substitutions</h3>
 <pre><code>———————————————————
  true[e'/x] = true</code></pre>
 <p>and so on, for all values.</p>
