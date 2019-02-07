@@ -72,10 +72,10 @@
 <h1 id="overview">Overview</h1>
 <p>Compilers are traditionally thought of as transformations from programs in a source language to programs in a target language.</p>
 <pre><code>                 transform
-Source programs -----------&gt; target programs</code></pre>
+Source programs ———————————&gt; target programs</code></pre>
 <p>However, this course encourages us to think about compilers as transformations on languages.</p>
 <pre><code>                 transform
-Source language -----------&gt; target language</code></pre>
+Source language ———————————&gt; target language</code></pre>
 <p>The transformations should preserve desirable properties. In other words, for all programs in the source language, the compiler produces programs in the target language, preserving desirable properties. When we talk about correctness of compilers, we are talking about this property preservation characteristic of compilers. Some examples of desirable properties are security (e.g. not leaking passwords) and data encapsulation properties (e.g. not exposing internal methods).</p>
 <p>This course focuses on four correctness properties.</p>
 <ul>
@@ -85,23 +85,23 @@ Source language -----------&gt; target language</code></pre>
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(e\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dashrightarrow\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(L\)</span></td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">—&gt;</td>
+<td style="text-align: center;">L</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\downarrow\)</span></td>
+<td style="text-align: center;">↓</td>
 <td style="text-align: center;"> </td>
-<td style="text-align: center;"><span class="math inline">\(\downarrow\)</span></td>
+<td style="text-align: center;">↓</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(e'\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dashrightarrow\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(L'\)</span></td>
+<td style="text-align: center;">e’</td>
+<td style="text-align: center;">—&gt;</td>
+<td style="text-align: center;">L</td>
 </tr>
 </tbody>
 </table>
-<p>where <span class="math inline">\(e\)</span> is a program in the source language, <span class="math inline">\(e'\)</span> is a corresponding program in the target language, <span class="math inline">\(L\)</span> is a library, <span class="math inline">\(L'\)</span> is a corresponding compiled library in the target language, <span class="math inline">\(\dashrightarrow\)</span> represents linking (<span class="math inline">\(e\)</span> is linked with <span class="math inline">\(L\)</span> and <span class="math inline">\(e'\)</span> is linked with <span class="math inline">\(L'\)</span>), and <span class="math inline">\(\downarrow\)</span> represents compilation.</p></li>
+<p>where e is a program in the source language, e’ is a corresponding program in the target language, L is a library, L’ is a corresponding compiled library in the target language, —&gt; represents linking (e is linked with L and e’ is linked with L’), and ↓ represents compilation.</p></li>
 <li><p>Secure compilation (traditionally called full abstraction, this is a very abstract property, can represent any interesting property like not leaking passwords, interacting correctly with the outside world, etc.)</p></li>
 </ul>
 <p>This course deals with correctness proofs of programs and program transformations.</p>
