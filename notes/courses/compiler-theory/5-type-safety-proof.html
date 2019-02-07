@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Compiler Theory - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Compiler Theory</h1>
+            
+            <p id="subtitle">Type Safety Proof</p>
+            
+
+            <h1 id="prerequisites">Prerequisites</h1>
+<p>A type safety proof for our languages requires</p>
+<ul>
+<li>principle of implication
+<ul>
+<li>If P implies Q and P then Q</li>
+</ul></li>
+<li>principle of induction
+<ul>
+<li>Let J be some inductively defined judgment, defined by R₁, R₂, …, Rₙ.</li>
+<li>To prove some property for J, i.e. P(J), it suffices to prove
+<ol type="1">
+<li>If P(sub-derivations of R₀) then P(R₀)</li>
+<li>If P(sub-derivations of R₁) then P(R₁)</li>
+<li>and so on, up to Rₙ.</li>
+</ol></li>
+</ul></li>
+</ul>
+<h1 id="examples">Examples</h1>
+<p>We first have to define some equivalence relation <code>a</code> ≡ <code>b**, in order to talk about some results of</code>eval being equivalent.</p>
+<h2 id="v-ᵥ-v-value-equivalence"><span class="boxed">v ≡ᵥ v</span> Value equivalence</h2>
+<pre><code>————————
+ n ≡ᵥ n</code></pre>
+<pre><code>————————
+ b ≡ᵥ b</code></pre>
+<pre><code> v₁ ≡ᵥ v₁'     v₂ ≡ᵥ v₂'
+—————————————————————————
+ (v₁, v₂) ≡ᵥ (v₁', v₂')</code></pre>
+<h2 id="a-b-equivalence"><span class="boxed">a ≡ b</span> Equivalence</h2>
+<pre><code> a ≡ᵥ b
+————————
+ a ≡ b</code></pre>
+<pre><code> a ≡ b     b ≡ c
+—————————————————
+      a ≡ c</code></pre>
+<h2 id="theorems">Theorems</h2>
+<p><strong>Theorem:</strong> for all <code>n</code>, <code>m</code> : <code>Nat</code>, <code>eval(n + add1 m)</code> ≡ <code>eval(add1 n + m)</code>.</p>
+<p><em>Proof (by induction on <code>n</code>):</em></p>
+<p>Case <code>0</code>: <code>eval(0 + add1 m)</code> ≡ <code>eval(add1 0 + m)</code></p>
+<ul>
+<li>Since <code>0 + add1 m</code> → <code>add1 m</code> and <code>add1 0 + m</code> → <code>0 + add1 m</code> → <code>add1 m</code>, <code>eval(0 + add1 m)</code> ≡ <code>eval(add1 0 + m)</code>, as desired.</li>
+</ul>
+<p>Case <code>add1 n'</code>: <code>eval(add1 n' + add1 m)</code> ≡ <code>eval(add1 (add1 n') + m)</code>.</p>
+<ul>
+<li>Since <code>add1 n' + add1 m</code> → <code>n' + add1 (add1 m)</code> and <code>add1 (add1 n') + m</code> → <code>add1 n' + add1 m</code> → <code>n' + add1 (add1 m)</code>, <code>eval(add1 n' + add1 m)</code> ≡ <code>eval(add1 (add1 n') + m)</code>, as desired.</li>
+</ul>
+<p>QED.</p>
+<p><strong>Theorem:</strong> for all <code>n</code>, <code>m</code> : <code>Nat</code>, <code>eval(add1 n + m)</code> ≡ <code>eval(add1 (n + m))</code>.</p>
+<p><em>Proof (by induction on <code>n</code>):</em></p>
+<p>Case <code>0</code>: <code>eval(add1 0 + m)</code> ≡ <code>eval(add1 (0 + m))</code></p>
+<ul>
+<li>Since <code>add1 0 + m</code> → <code>0 + add1 m</code> → <code>add1 m</code> and <code>add1 (0 + m)</code> → <code>add1 m</code>, <code>eval(add1 0 + m)</code> ≡ <code>eval(add1 (0 + m))</code>, as desired.</li>
+</ul>
+<p>Case <code>add1 n'</code>: <code>eval(add1 (add1 n') + m)</code> ≡ <code>eval(add1 (add1 n' + m))</code></p>
+<ul>
+<li><p>Our induction hypothesis is <code>eval(add1 n' + m)</code> ≡ <code>eval(add1 (n' + m))</code></p></li>
+<li><p>Since <code>add1 (add1 n') + m</code> → <code>add1 n' + add1 m</code> and <code>eval(add1 n' + add1 m)</code> ≡ <code>eval(add1 (n' + add1 m))</code> (by our induction hypothesis), <code>eval(add1 (add1 n') + m)</code> ≡ <code>eval(add1 (n' + add1 m))</code>.</p></li>
+<li><p>Also, since <code>add1 (add1 n' + m)</code> → <code>add1 (n' + add1 m)</code>, <code>eval(add1 (add1 n' + m))</code> ≡ <code>eval(add1 (n' + add1 m))</code>.</p></li>
+<li><p>Thus, <code>eval(add1 (add1 n') + m)</code> ≡ <code>eval(add1 (add1 n' + m))</code>, as desired.</p></li>
+</ul>
+<p>QED.</p>
+<p><strong>Theorem:</strong> for all <code>n</code> : <code>Nat</code>, <code>eval(n + 0)</code> ≡ <code>eval(n)</code>.</p>
+<p><em>Proof (by induction on <code>n</code>):</em></p>
+<p>Case <code>0</code>: <code>eval(0 + 0)</code> ≡ <code>eval(0)</code></p>
+<ul>
+<li>Since <code>0 + 0</code> → <code>0</code>, <code>eval(0 + 0)</code> ≡ <code>eval(0)</code>, as desired.</li>
+</ul>
+<p>Case <code>add1 m</code>: <code>eval(add1 m + 0)</code> ≡ <code>eval(add1 m)</code></p>
+<ul>
+<li><p>Our induction hypothesis is <code>eval(m + 0)</code> ≡ <code>eval(m)</code>.</p></li>
+<li><p>Since <code>eval(add1 m + 0)</code> ≡ <code>eval(add1 (m + 0))</code> and <code>eval(m + 0)</code> ≡ <code>eval(m)</code> (by our induction hypothesis), <code>eval(add1 m + 0)</code> ≡ <code>eval(add1 m)</code>, as desired.</p></li>
+</ul>
+<p>QED.</p>
+<p><strong>Theorem:</strong> for all <code>n</code>, <code>m</code> : <code>Nat</code>, <code>eval(n + m)</code> ≡ <code>eval(m + n)</code>.</p>
+<p><em>Proof (by induction on n):</em></p>
+<p>Case <code>0</code>: <code>eval(0 + m)</code> ≡ <code>eval(m + 0)</code></p>
+<ul>
+<li><p>Since <code>0 + m</code> → <code>m</code>, <code>eval(0 + m)</code> ≡ <code>eval(m)</code>.</p></li>
+<li><p>Since <code>eval(m + 0)</code> ≡ <code>eval(m)</code>, <code>eval(m + 0)</code> ≡ <code>eval(0 + m)</code>, as desired.</p></li>
+</ul>
+<p>Case <code>add1 n'</code>: <code>eval(add1 n' + m)</code> ≡ <code>eval(m + add1 n')</code></p>
+<ul>
+<li><p>Our induction hypothesis is <code>eval(n' + m)</code> ≡ <code>eval(m + n')</code>. Hence, <code>eval(add1 (n' + m))</code> ≡ <code>eval(add1 (m + n'))</code>.</p></li>
+<li><p>Since <code>eval(add1 n' + m)</code> ≡ <code>eval(add1 (n' + m))</code>, <code>eval(m + add1 n')</code> ≡ <code>eval(add1 m + n')</code>, <code>eval(add1 m + n')</code> ≡ <code>eval(add1 (m + n'))</code>, and <code>eval(add1 (n' + m))</code> ≡ <code>eval(add1 (m + n'))</code>, we have <code>eval(add1 n' + m)</code> ≡ <code>eval(m + add1 n')</code>, as desired.</p></li>
+</ul>
+<p>QED.</p>
+<h1 id="type-safety-proof">Type safety proof</h1>
+<p><em>Proof (by induction on • ⊢ e : A):</em></p>
+<p>Case <code>Nat</code>: if • ⊢ <code>n</code> : <code>Nat</code>, then <code>eval(n)</code> = <code>n</code>.</p>
+<ul>
+<li><p>By definition of <code>eval</code>:</p>
+<pre><code>   ————————
+    n →* n
+—————————————
+ eval(n) = n</code></pre>
+<p>as desired.</p></li>
+</ul>
+<p>Case <code>Bool</code>: elided for brevity</p>
+<p>Case <code>If</code>: If • ⊢ e : <code>Bool</code> implies <code>eval(</code>e<code>)</code> = <code>v</code>, • ⊢ e₁ : A implies <code>eval(</code>e₁<code>)</code> = v₁, • ⊢ e₂ : A implies <code>eval(</code>e₂<code>)</code> = v₂, then • ⊢ <code>if</code> e <code>then</code> e₁ <code>else</code> e2 implies <code>eval(if</code> e <code>then</code> e₁ <code>else</code> e₂<code>)</code> = v₃.</p>
+<ul>
+<li>This requires proof of canonical form.
+<ul>
+<li>If Γ ⊢ <code>v</code> : <code>Bool</code>, then <code>v</code> = <code>true</code> or <code>v</code> = <code>false</code>.</li>
+</ul></li>
+</ul>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
