@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Theory of Computing - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Theory of Computing</h1>
+            
+            <p id="subtitle">Turing Machine Reductions</p>
+            
+
+            <h1 id="turing-machine-reductions">Turing machine reductions</h1>
+<h2 id="notation">Notation</h2>
+<ul>
+<li>≤<sub>T</sub>
+<ul>
+<li>Read as “reduces to”, or “can be solved using”</li>
+<li>T is for Turing machine</li>
+</ul></li>
+<li>L₁ ≤<sub>T</sub> L₂
+<ul>
+<li>Read as
+<ul>
+<li>deciding L₁ is no harder than deciding L₂</li>
+<li>L₂ is as least as head as L₁</li>
+</ul></li>
+<li>There is a Turing machine that decides L₁ that uses a Turing machine that decides L₂.</li>
+</ul></li>
+</ul>
+<h2 id="reduction-as-a-tool">Reduction as a tool</h2>
+<ul>
+<li>Goal: show problem 2 is hard</li>
+<li>Known: problem 1 is hard</li>
+<li>Method: reduce problem 1 to problem 2</li>
+<li>Logic: if problem 1 is hard, then problem 2 is hard</li>
+<li>Notation: problem 1 ≤<sub>T</sub> problem 2</li>
+<li>Conclusion: problem 2 is hard</li>
+<li>Key point: in order to show problem 2 is hard, we reduce problem 1 to problem 2.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Recap: A<sub>TM</sub> = {⟨M, ω⟩ : M accepts ω}. HALT<sub>TM</sub> = {⟨M, ω⟩ : M halts on input ω}.</p>
+<p><strong>Theorem:</strong> HALT<sub>TM</sub> is undecidable.</p>
+<p>We already know A<sub>TM</sub> is undecidable. So we need to show A<sub>TM</sub> ≤<sub>T</sub> HALT<sub>TM</sub>.</p>
+<p><em>Proof (by contradiction):</em></p>
+<p>Suppose we had a Turing machine R that decides HALT<sub>TM</sub>. Then we want to create a Turing machine S that decides A<sub>TM</sub>.</p>
+<ul>
+<li>S = &quot;on input x:
+<ul>
+<li>reject if x is not of the form ⟨M, ω⟩.</li>
+<li>run R on input ⟨M, ω⟩
+<ul>
+<li>if R accepts (then we know M halts on in put ω),
+<ul>
+<li>simulate M on input ω.</li>
+<li>accept if M accepts; otherwise, reject.</li>
+</ul></li>
+<li>else (M runs forever on input ω)
+<ul>
+<li>reject.&quot;</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>S is a decider for A<sub>TM</sub>, which is a contradiction.</p>
+<p>∴ HALT<sub>TM</sub> is undecidable.</p>
+<p>QED.</p>
+<h2 id="lemmas">Lemmas</h2>
+<p><strong>Lemma:</strong> suppose L and Σ*  L are recognizable. Then L is decidable, and so is Σ*  L).</p>
+<p><em>Proof:</em></p>
+<p>Let M₁ and M₂ be Turing machines that recognize L and Σ*  L, respectively. Define a new Turing machine M₃ as follows.</p>
+<ul>
+<li>M₃ = &quot;on input x:
+<ul>
+<li>In parallel, simulate both M₁ and M₂ on x.</li>
+<li>If M₁ halts and accepts then accept.</li>
+<li>If M₂ halts and accepts then reject.&quot;</li>
+</ul></li>
+</ul>
+<p>Suppose x ∈ L then M₁ accepts x so M₃ accepts x.</p>
+<p>Suppose x ∉ L then M₂ accepts x so M₃ rejects x.</p>
+<p>So M₃ decides L.</p>
+<p>∴ L is decidable (and similarly, so is Σ*  L).</p>
+<p>QED.</p>
+<p><strong>Corollary:</strong> Σ*  A<sub>TM</sub> is not recognizable.</p>
+<p><em>Proof (by contradiction):</em> If it were recognizable, claim would imply A<sub>TM</sub> is decidable, which is a contradiction. Therefore, Σ*  A<sub>TM</sub> is not recognizable. QED.</p>
+<p><strong>Lemma:</strong> E<sub>TM</sub> = {⟨N⟩ : N is a Turing machine such that L(N) = ∅} is undecidable.</p>
+<p><em>Proof (by contradiction):</em></p>
+<p>We know A<sub>TM</sub> is undecidable, so it remains to show that A<sub>TM</sub> reduces to E<sub>TM</sub>. Assume R is a Turing machine that decides E<sub>TM</sub>. Construct a Turing machine S that decides A<sub>TM</sub>.</p>
+<ul>
+<li>S = &quot;on input x:
+<ul>
+<li>if x is not of the form ⟨M, ω⟩, reject.</li>
+<li>construct Turing machine N = &quot;on input y:
+<ul>
+<li>if y ≠ ω, reject.</li>
+<li>else
+<ul>
+<li>simulate M on input ω.</li>
+<li>if M accepts, accept.</li>
+<li>if M rejects, reject.&quot;</li>
+</ul></li>
+</ul></li>
+<li>run R on ⟨N⟩.</li>
+<li>accept if R rejects; otherwise, reject.&quot;</li>
+</ul></li>
+</ul>
+<p>Suppose M accepts ω. Hence, R rejects ⟨N⟩ (due to L(N) = {ω}) and thus S accepts.</p>
+<p>Suppose M rejects or run forever on ω. Hence, R accepts ⟨N⟩ (due to L(N) = ∅) and thus S rejects.</p>
+<p>Therefore, S is a decider for A<sub>TM</sub>, which is a contradiction.</p>
+<p>∴ E<sub>TM</sub> is undecidable.</p>
+<p>QED.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
