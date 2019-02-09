@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Compiler Theory - Minh Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+        <script src="//minhdo.disqus.com/embed.js" async></script>
+    </head>
+    <body>
+        <header>
+            <div id="logo">
+                <a href="../../../">Minh Do</a>
+            </div>
+            <div id="navigation">
+                <a href="../../../resume.pdf">Résumé</a>
+                <a href="../../../posts/">Posts</a>
+                <a href="../../../notes/">Notes</a>
+                <a href="https://github.com/mrordinaire">Code</a>
+            </div>
+        </header>
+
+        <article>
+            <h1>Compiler Theory</h1>
+            
+            <p id="subtitle">Logical Relations</p>
+            
+
+            <h1 id="logical-relations">Logical relations</h1>
+<p>Logical relations is a proof technique which strengthens the induction hypothesis. In order to use logical relations, we break the original theorem/lemma to be proven into two lemmas.</p>
+<p><strong>Lemma (fundamental property):</strong> if Γ ⊢ e : A then P(e)</p>
+<p><strong>Lemma:</strong> If P(e** then the desired property holds.</p>
+<h1 id="example-strong-normalization-via-e-sna">Example: strong normalization, via <span class="boxed">e SN(A)</span></h1>
+<p>Note that the name SN is highly suggestive, but is not strong normalization.</p>
+<p>We want to prove that our language strongly normalizes, i.e. e →* i. Applying logical relation proof technique, we get the following two lemmas.</p>
+<p><strong>Lemma:</strong> Γ ⊢ e : A implies e SN(A).</p>
+<p><strong>Lemma:</strong> e SN(A) implies e →* i.</p>
+<p>Previously, we have defined well-typed programs with <span class="boxed">⊢ e</span>. Now, we define well-typed components, <span class="boxed">Γ ⊢ e</span>.</p>
+<h2 id="γ-e-well-typed-components"><span class="boxed">Γ ⊢ e</span> Well-typed components</h2>
+<pre><code> Γ ⊢ e : Nat
+—————————————
+    Γ ⊢ e</code></pre>
+<pre><code> Γ ⊢ e : Bool
+—————————————
+    Γ ⊢ e</code></pre>
+<h2 id="γe-e-linking"><span class="boxed">γ(e) = e’</span> Linking</h2>
+<p>Linking is also called closing substitution because after substitution, the expression is closed.</p>
+<p>γ <code>::=</code> • | γ[<code>x</code> ↦ e]</p>
+<pre><code>——————————
+ •(e) = e</code></pre>
+<pre><code>  γ(e₂[e₁/x]) = e'
+————————————————————
+ γ[x ↦ e₁](e₂) = e'</code></pre>
+<h2 id="γ-γ-well-typed-substitution"><span class="boxed">Γ ⊢ γ</span> Well-typed substitution</h2>
+<pre><code>———————
+ • ⊢ •</code></pre>
+<pre><code> Γ ⊢ γ     • ⊢ e : A
+—————————————————————
+  Γ,x : A ⊢ γ[x ↦ e]</code></pre>
+<h2 id="lemma">Lemma</h2>
+<p>If e is a well-typed component and γ is a well-typed substitution for e then e linked using γ is well-typed and closed. Or, more formally,</p>
+<p><strong>Lemma:</strong> if Γ ⊢ e and Γ ⊢ γ then ⊢ γ(e).</p>
+<h2 id="i-sna-value-in-relation-at-type-a"><span class="boxed">i SN(A)</span> Value in relation at type A</h2>
+<pre><code>———————————
+ n SN(Nat)</code></pre>
+<pre><code>————————————
+ b SN(Bool)</code></pre>
+<pre><code> ∀e' SN(A'), e[e'/x] SN(B)
+———————————————————————————
+   (λx:A'. e) SN(A → B)</code></pre>
+<h2 id="e-sna-expression-in-relation-at-type-a">[e SN(A)] Expression in relation at type A</h2>
+<pre><code> e →* i     i SN(A)
+————————————————————
+      e SN(A)</code></pre>
+<p>For ease of proving, we further construct <span class="boxed">γ SN(Γ)</span>.</p>
+<h2 id="γ-snγ">[γ SN(Γ)]</h2>
+<pre><code>—————————
+ • SN(̱•)</code></pre>
+<pre><code> e SN(A)      γ SN(Γ)
+——————————————————————
+ γ[x ↦ e] SN(Γ,x : A)</code></pre>
+<h2 id="proof-of-the-fundamental-property">Proof of the fundamental property</h2>
+<p><strong>Lemma (fundamental property):</strong> if Γ ⊢ e : A, Γ ⊢ γ, and γ SN(Γ) then γ(e) SN(A).</p>
+<p>Proof is by induction on Γ ⊢ e : A.</p>
+<h2 id="strong-normalization-theorem">Strong normalization theorem</h2>
+<p><strong>Theorem (strong normalization):</strong> if ⊢ e then e →* i.</p>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </article>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
+            and
+            <a href="http://fvisser.nl/clay/">Clay</a>
+            <br />
+            with
+            <a href="http://ethanschoonover.com/solarized">Solarized</a>
+            color scheme.
+        </footer>
+    </body>
+</html>
