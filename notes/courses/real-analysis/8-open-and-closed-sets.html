@@ -7,7 +7,7 @@
         <title>Real Analysis - Minh Do</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
-        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Lato|PT+Sans:400,400italic,700|Inconsolata" rel="stylesheet" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
         <script src="//minhdo.disqus.com/embed.js" async></script>
     </head>
@@ -31,7 +31,7 @@
             
 
             <h1 id="limit-points">Limit Points</h1>
-<p>Say <span class="math inline">\(p \in X\)</span> is a <em>limit point</em> of <span class="math inline">\(E \subset X\)</span> if every neighborhood of <span class="math inline">\(p\)</span> (i.e. <span class="math inline">\(N_r(p)\)</span> for all <span class="math inline">\(r\)</span>) contains a point <span class="math inline">\(q \neq p\)</span> such that <span class="math inline">\(q \in E\)</span>.</p>
+<p>Say <span class="math inline">\(p \in X\)</span> is a <em>limit point</em> of <span class="math inline">\(E \subset X\)</span> if every neighborhood of <span class="math inline">\(p\)</span> (i.e. <span class="math inline">\(N_r(p)\)</span> for all <span class="math inline">\(r\)</span>) contains a point <span class="math inline">\(q \neq p\)</span> such that <span class="math inline">\(q \in E\)</span>.</p>
 <p>So, a point <span class="math inline">\(p\)</span> is not a limit point of <span class="math inline">\(E\)</span> if there exists a neighborhood <span class="math inline">\(N\)</span> such that <span class="math inline">\(N\)</span> does not contain any other points of <span class="math inline">\(E\)</span>.</p>
 <p>For example,</p>
 <ol class="example" type="1">
@@ -78,7 +78,7 @@
 <h1 id="closing-a-non-closed-set">Closing a Non-Closed Set</h1>
 <p>The <em>closure</em> of <span class="math inline">\(E\)</span>, denoted <span class="math inline">\(\overline{E}\)</span>, is the union of <span class="math inline">\(E\)</span> and the set of its limit points, denoted <span class="math inline">\(E'\)</span>. In other words, <span class="math inline">\(\overline{E} = E \cup E'\)</span>.</p>
 <p><strong>Theorem.</strong> <span class="math inline">\(\overline{A}\)</span> is a closed set.</p>
-<p><em>Proof.</em> To prove <span class="math inline">\(\overline{A}\)</span> is closed, we need to prove all limit points <span class="math inline">\(p\)</span> of <span class="math inline">\(\overline{A}\)</span> is in <span class="math inline">\(\overline{A}\)</span>. In order to prove that, we show that for all limit points <span class="math inline">\(p\)</span> of <span class="math inline">\(\overline{A}\)</span>, <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(A\)</span>, i.e. <span class="math inline">\(p \in A' \subset \overline{A}\)</span>.</p>
+<p><em>Proof.</em> To prove <span class="math inline">\(\overline{A}\)</span> is closed, we need to prove all limit points <span class="math inline">\(p\)</span> of <span class="math inline">\(\overline{A}\)</span> is in <span class="math inline">\(\overline{A}\)</span>. In order to prove that, we show that for all limit points <span class="math inline">\(p\)</span> of <span class="math inline">\(\overline{A}\)</span>, <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(A\)</span>, i.e. <span class="math inline">\(p \in A' \subset \overline{A}\)</span>.</p>
 <p>For all <span class="math inline">\(r &gt; 0\)</span>, consider the neighborhood <span class="math inline">\(N\)</span> around <span class="math inline">\(p\)</span> with radius <span class="math inline">\(r\)</span>, i.e. consider <span class="math inline">\(N_r(p)\)</span>. We need to show that there exists a point <span class="math inline">\(q \in N \cap A\)</span>. Since <span class="math inline">\(p\)</span> is a limit point of <span class="math inline">\(\overline{A}\)</span>, there exists a point <span class="math inline">\(t \in N \cap \overline{A}\)</span>. Thus, <span class="math inline">\(t\)</span> is in <span class="math inline">\(A\)</span> or <span class="math inline">\(t\)</span> is a limit point of <span class="math inline">\(A\)</span>. When <span class="math inline">\(t \in A\)</span>, we have <span class="math inline">\(q = t \in A\)</span>. When <span class="math inline">\(t\)</span> is a limit point of <span class="math inline">\(A\)</span>, consider a neighborhood <span class="math inline">\(M\)</span> around <span class="math inline">\(t\)</span> such that <span class="math inline">\(M \subset N\)</span> (<span class="math inline">\(M\)</span> must exist because <span class="math inline">\(N\)</span> is an open set and <span class="math inline">\(t\)</span> is in <span class="math inline">\(N\)</span>, which makes <span class="math inline">\(t\)</span> an interior point of <span class="math inline">\(N\)</span>). Since <span class="math inline">\(t\)</span> is a limit point of <span class="math inline">\(A\)</span>, there exists <span class="math inline">\(q \in M \cap A\)</span>, which implies that <span class="math inline">\(q \in N \cap A\)</span>, as desired. QED.</p>
 <p><strong>Theorem.</strong> A set <span class="math inline">\(A\)</span> is closed if and only if <span class="math inline">\(A = \overline{A}\)</span>.</p>
 <p><em>Proof.</em> Let <span class="math inline">\(A'\)</span> be a set containing all limit points of <span class="math inline">\(A\)</span>.</p>
@@ -124,14 +124,15 @@ x \in LHS &amp; \Leftrightarrow x \notin \text{any } E_\alpha \\
 <li><span class="math inline">\(\mathbb{Q}\)</span> is dense in <span class="math inline">\(\mathbb{R}\)</span>.</li>
 <li>Can periodic functions be approximated by sums of sines and cosines (Fourier analysis)? Or, equivalently, are linear combinations of sines and cosines dense in a set of all periodic functions? More generally, is a certain subset of functions dense in a whole space of functions?</li>
 </ol>
-
-<div id="disqus_thread"></div>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
         </article>
 
         <footer>
+            
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            
+
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and

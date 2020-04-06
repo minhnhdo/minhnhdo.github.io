@@ -7,7 +7,7 @@
         <title>Real Analysis - Minh Do</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../../../css/site.css" type="text/css" />
-        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Lato|PT+Sans:400,400italic,700|Inconsolata" rel="stylesheet" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
         <script src="//minhdo.disqus.com/embed.js" async></script>
     </head>
@@ -35,7 +35,7 @@
 <h2 id="construction-of-mathbbr">Construction of <span class="math inline">\(\mathbb{R}\)</span></h2>
 <p>Dedekind: A <em>cut</em> <span class="math inline">\(\alpha\)</span> is a subset of <span class="math inline">\(\mathbb{Q}\)</span> satisfying</p>
 <ol type="1">
-<li>(nontriviality) i.e. <span class="math inline">\(\alpha \neq \emptyset, \mathbb{Q}\)</span>,</li>
+<li>(nontriviality) i.e. <span class="math inline">\(\alpha \neq \emptyset, \mathbb{Q}\)</span>,</li>
 <li>(closed downwards or closed to the left) if <span class="math inline">\(p \in \alpha\)</span>, <span class="math inline">\(q \in \mathbb{Q}\)</span>, and <span class="math inline">\(q &lt; p\)</span>, then <span class="math inline">\(q \in \alpha\)</span>, and</li>
 <li>(no largest member) if <span class="math inline">\(p \in \alpha\)</span> then <span class="math inline">\(p &lt; r\)</span> for some <span class="math inline">\(r \in \alpha\)</span>.</li>
 </ol>
@@ -95,18 +95,19 @@
 <p>More generally, <span class="math inline">\(a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n &lt; a\}\)</span>, i.e. roots exist.</p>
 <h3 id="consequences">Consequences</h3>
 <p><em>Archimedean property:</em> if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>.</p>
-<p><em>Proof (by contradiction).</em> Consider <span class="math inline">\(A = \{nx : n \in \mathbb{N}\}\)</span>. If <span class="math inline">\(A\)</span> is bounded by <span class="math inline">\(y\)</span> (i.e. <span class="math inline">\(nx &lt; y\)</span> for all <span class="math inline">\(n\)</span>) then <span class="math inline">\(A\)</span> has a least upper bound <span class="math inline">\(\alpha\)</span> (by the least upper bound property). Then <span class="math inline">\(\alpha - x\)</span> is not an upper bound for <span class="math inline">\(A\)</span>. Hence, <span class="math inline">\(\alpha - x &lt; mx\)</span> for some <span class="math inline">\(m \in \mathbb{N}\)</span>. Then <span class="math inline">\(\alpha &lt; (m + 1)x\)</span>. Thus <span class="math inline">\(\alpha\)</span> is not an upper bound for <span class="math inline">\(A\)</span>, a contradiction! Therefore, if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>. QED.</p>
+<p><em>Proof (by contradiction).</em> Consider <span class="math inline">\(A = \{nx : n \in \mathbb{N}\}\)</span>. If <span class="math inline">\(A\)</span> is bounded by <span class="math inline">\(y\)</span> (i.e. <span class="math inline">\(nx &lt; y\)</span> for all <span class="math inline">\(n\)</span>) then <span class="math inline">\(A\)</span> has a least upper bound <span class="math inline">\(\alpha\)</span> (by the least upper bound property). Then <span class="math inline">\(\alpha - x\)</span> is not an upper bound for <span class="math inline">\(A\)</span>. Hence, <span class="math inline">\(\alpha - x &lt; mx\)</span> for some <span class="math inline">\(m \in \mathbb{N}\)</span>. Then <span class="math inline">\(\alpha &lt; (m + 1)x\)</span>. Thus <span class="math inline">\(\alpha\)</span> is not an upper bound for <span class="math inline">\(A\)</span>, a contradiction! Therefore, if <span class="math inline">\(x, y \in \mathbb{R}\)</span> and <span class="math inline">\(x &gt; 0\)</span>, then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(nx &gt; y\)</span>. QED.</p>
 <p><em>Corollary.</em> If <span class="math inline">\(x &gt; 0\)</span> then there exists <span class="math inline">\(n \in \mathbb{N}\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; x\)</span>.</p>
 <p><em>Theorem</em> (<span class="math inline">\(\mathbb{Q}\)</span> is dense in <span class="math inline">\(\mathbb{R}\)</span>)<em>.</em> Between <span class="math inline">\(x, y \in \mathbb{R}\)</span>, and <span class="math inline">\(x &lt; y\)</span>, there is a <span class="math inline">\(q \in \mathbb{Q}\)</span> such that <span class="math inline">\(x &lt; q &lt; y\)</span>.</p>
 <p><em>Proof.</em> Choose <span class="math inline">\(n\)</span> such that <span class="math inline">\(\frac{1}{n} &lt; y - x\)</span> (by Archimedean property). Consider multiples of <span class="math inline">\(\frac{1}{n}\)</span>. These are unbounded (by the Archimedean property). Choose the first multiple such that <span class="math inline">\(\frac{m}{n} &gt; x\)</span>. If <span class="math inline">\(\frac{m}{n}\)</span> is not less than <span class="math inline">\(y\)</span> then <span class="math inline">\(\frac{m - 1}{n} &lt; x\)</span> and <span class="math inline">\(\frac{m}{n} &gt; y\)</span>, which implies <span class="math inline">\(\frac{1}{n} &gt; y - x\)</span>, a constradiction. So, <span class="math inline">\(\frac{m}{n} &lt; y\)</span>. QED.</p>
-
-<div id="disqus_thread"></div>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
         </article>
 
         <footer>
+            
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            
+
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and

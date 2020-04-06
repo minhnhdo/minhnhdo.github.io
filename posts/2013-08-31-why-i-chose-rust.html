@@ -7,7 +7,7 @@
         <title>Why I chose Rust - Minh Do</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/site.css" type="text/css" />
-        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Lato|PT+Sans:400,400italic,700|Inconsolata" rel="stylesheet" type="text/css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
         <script src="//minhdo.disqus.com/embed.js" async></script>
     </head>
@@ -34,59 +34,59 @@
 </div>
 
 
-<div class="tags">Tagged with <a href="../tags/rust.html">rust</a>, <a href="../tags/pattern-matching.html">pattern-matching</a>, <a href="../tags/algebraic-data-type.html">algebraic-data-type</a> </div>
+<div class="tags">Tagged with <a title="All pages tagged 'rust'." href="../tags/rust.html">rust</a>, <a title="All pages tagged 'pattern-matching'." href="../tags/pattern-matching.html">pattern-matching</a>, <a title="All pages tagged 'algebraic-data-type'." href="../tags/algebraic-data-type.html">algebraic-data-type</a> </div>
 
 
 <p>This post is about less-talked-about features of Rust, namely Algebraic Types and Pattern Matching, that I find very interesting and for which I have chosen Rust.</p>
 <p>Let’s say you have to build an arithmetic calculator for evaluating expessions like <code>2 + 2</code>. How would you do that? To simplify the problem a bit, let’s say the calculator only deals with integers and four operators, i.e. plus, minus, multiplication and division.</p>
 <p>In C, you might write something like this.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">struct</span> Exp {</a>
-<a class="sourceLine" id="cb1-2" title="2">    <span class="kw">enum</span> {</a>
-<a class="sourceLine" id="cb1-3" title="3">        Number,</a>
-<a class="sourceLine" id="cb1-4" title="4">        Plus,</a>
-<a class="sourceLine" id="cb1-5" title="5">        Minus,</a>
-<a class="sourceLine" id="cb1-6" title="6">        Mult,</a>
-<a class="sourceLine" id="cb1-7" title="7">        Div</a>
-<a class="sourceLine" id="cb1-8" title="8">    } type;</a>
-<a class="sourceLine" id="cb1-9" title="9"></a>
-<a class="sourceLine" id="cb1-10" title="10">    <span class="kw">union</span> {</a>
-<a class="sourceLine" id="cb1-11" title="11">        <span class="kw">struct</span> {</a>
-<a class="sourceLine" id="cb1-12" title="12">            <span class="kw">struct</span> Exp* a;</a>
-<a class="sourceLine" id="cb1-13" title="13">            <span class="kw">struct</span> Exp* b;</a>
-<a class="sourceLine" id="cb1-14" title="14">        } pair;</a>
-<a class="sourceLine" id="cb1-15" title="15">        <span class="dt">int</span> i;</a>
-<a class="sourceLine" id="cb1-16" title="16">    } val;</a>
-<a class="sourceLine" id="cb1-17" title="17">};</a>
-<a class="sourceLine" id="cb1-18" title="18"></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="dt">int</span> eval(<span class="kw">struct</span> Exp* exp) {</a>
-<a class="sourceLine" id="cb1-20" title="20">    <span class="cf">switch</span> (exp-&gt;type) {</a>
-<a class="sourceLine" id="cb1-21" title="21">        <span class="cf">case</span> Number: <span class="cf">return</span> exp-&gt;val.i;</a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="cf">case</span> Plus: <span class="cf">return</span> eval(exp-&gt;val.pair.a) + eval(exp-&gt;val.pair.b);</a>
-<a class="sourceLine" id="cb1-23" title="23">        <span class="cf">case</span> Minus: <span class="cf">return</span> eval(exp-&gt;val.pair.a) - eval(exp-&gt;val.pair.b);</a>
-<a class="sourceLine" id="cb1-24" title="24">        <span class="cf">case</span> Mult: <span class="cf">return</span> eval(exp-&gt;val.pair.a) * eval(exp-&gt;val.pair.b);</a>
-<a class="sourceLine" id="cb1-25" title="25">        <span class="cf">case</span> Div: <span class="cf">return</span> eval(exp-&gt;val.pair.a) / eval(exp-&gt;val.pair.b);</a>
-<a class="sourceLine" id="cb1-26" title="26">    }</a>
-<a class="sourceLine" id="cb1-27" title="27">}</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">struct</span> Exp {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">enum</span> {</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        Number,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        Plus,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        Minus,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        Mult,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        Div</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    } type;</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="kw">union</span> {</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="kw">struct</span> {</span>
+<span id="cb1-12"><a href="#cb1-12"></a>            <span class="kw">struct</span> Exp* a;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>            <span class="kw">struct</span> Exp* b;</span>
+<span id="cb1-14"><a href="#cb1-14"></a>        } pair;</span>
+<span id="cb1-15"><a href="#cb1-15"></a>        <span class="dt">int</span> i;</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    } val;</span>
+<span id="cb1-17"><a href="#cb1-17"></a>};</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="dt">int</span> eval(<span class="kw">struct</span> Exp* exp) {</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="cf">switch</span> (exp-&gt;type) {</span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="cf">case</span> Number: <span class="cf">return</span> exp-&gt;val.i;</span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="cf">case</span> Plus: <span class="cf">return</span> eval(exp-&gt;val.pair.a) + eval(exp-&gt;val.pair.b);</span>
+<span id="cb1-23"><a href="#cb1-23"></a>        <span class="cf">case</span> Minus: <span class="cf">return</span> eval(exp-&gt;val.pair.a) - eval(exp-&gt;val.pair.b);</span>
+<span id="cb1-24"><a href="#cb1-24"></a>        <span class="cf">case</span> Mult: <span class="cf">return</span> eval(exp-&gt;val.pair.a) * eval(exp-&gt;val.pair.b);</span>
+<span id="cb1-25"><a href="#cb1-25"></a>        <span class="cf">case</span> Div: <span class="cf">return</span> eval(exp-&gt;val.pair.a) / eval(exp-&gt;val.pair.b);</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    }</span>
+<span id="cb1-27"><a href="#cb1-27"></a>}</span></code></pre></div>
 <p>The complicated looking <code>struct</code> declaration is what’s called a tagged union, where the enum <code>type</code> is used to figure out that the union <code>val</code> is holding. This is the C version of one type of Algebraic Types, the <a href="http://en.wikipedia.org/wiki/Sum_type">sum type</a>. Another type of Algebraic Types is to use <code>struct</code> to hold multiple types together, which allows the structure to hold even more than each type alone; this one is called the <a href="Ahttp://en.wikipedia.org/wiki/Product_type">product type</a>.</p>
 <p>An intuitive way to think of the two types is that for sum type, the variable of that type can only be of one constituent type at a time, so the total range of values that type can hold is the sum of the ranges of the types. On the other hand, for the product type, for each field in the structure, it can hold any value of that type at any time, so the possible range of values of the structure is the product of each of its field’s range of value.</p>
 <p>In Rust, this is what I will write.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">enum</span> Exp <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-2" title="2">    Number(int),</a>
-<a class="sourceLine" id="cb2-3" title="3">    Plus(~Exp, ~Exp),</a>
-<a class="sourceLine" id="cb2-4" title="4">    Minus(~Exp, ~Exp),</a>
-<a class="sourceLine" id="cb2-5" title="5">    Mult(~Exp, ~Exp),</a>
-<a class="sourceLine" id="cb2-6" title="6">    Div(~Exp, ~Exp),</a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-8" title="8"></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="kw">fn</span> eval(exp: &amp;Exp) -&gt; int <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-10" title="10">    <span class="kw">match</span> *exp <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-11" title="11">        Number(i) =&gt; i,</a>
-<a class="sourceLine" id="cb2-12" title="12">        Plus(a, b) =&gt; eval(a) + eval(b),</a>
-<a class="sourceLine" id="cb2-13" title="13">        Minus(a, b) =&gt; eval(a) - eval(b),</a>
-<a class="sourceLine" id="cb2-14" title="14">        Mult(a, b) =&gt; eval(a) * eval(b),</a>
-<a class="sourceLine" id="cb2-15" title="15">        Div(a, b) =&gt; eval(a) / eval(b),</a>
-<a class="sourceLine" id="cb2-16" title="16">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="op">}</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">enum</span> Exp <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>    Number(int),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    Plus(~Exp, ~Exp),</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    Minus(~Exp, ~Exp),</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    Mult(~Exp, ~Exp),</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    Div(~Exp, ~Exp),</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">fn</span> eval(exp: &amp;Exp) -&gt; int <span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="kw">match</span> *exp <span class="op">{</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        Number(i) =&gt; i,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>        Plus(a, b) =&gt; eval(a) + eval(b),</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        Minus(a, b) =&gt; eval(a) - eval(b),</span>
+<span id="cb2-14"><a href="#cb2-14"></a>        Mult(a, b) =&gt; eval(a) * eval(b),</span>
+<span id="cb2-15"><a href="#cb2-15"></a>        Div(a, b) =&gt; eval(a) / eval(b),</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="op">}</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="op">}</span></span></code></pre></div>
 <p>The <code>eval</code> function expects an already parsed expression, so the above <code>2 + 2</code> when passed to <code>eval</code> should be in some form like <code>Plus(~Number(2), ~Number(2))</code>. The reason for putting a pointer to another expression inside <code>Plus</code>, <code>Minus</code>, <code>Mult</code> and <code>Div</code> is to allow expressions like <code>(2 + 2) * 3</code>, whose parsed form is <code>Mult(~Plus(~Number(2), ~Number(2)), ~Number(3))</code>.</p>
 <p>Here are some strange notations the above Rust code has.</p>
 <ul>
@@ -97,23 +97,24 @@
 <p>The first thing you might notice is the Rust version of the code is more concise than the C version. An <code>enum</code> in Rust is like a <code>struct</code>, <code>enum</code> and <code>union</code> in C combined, so you don’t have to think about as many features of the language at the same time, and writing out as much code to achieve the same result in Rust.</p>
 <p>Moreover, in the Rust version of the <code>eval</code> function, I am using Pattern Matching to deconstruct <code>exp</code> to its correct constituent fields, which is aptly named <code>match</code> expressions. After the opening curly bracket, each line terminated by a comma (<code>,</code>) is called a matching arm. Each of the <code>a</code> and <code>b</code> in each matching arm have scope only in that matching arm, so if I replace <code>Mult(a, b) =&gt; ...</code> by <code>Mult(x, y) =&gt; ...</code>, using <code>x</code> or <code>y</code> in other matching arms is an unresolved name error.</p>
 <p>Let’s take a look back at the C version. Here you have to decide which type of expression <code>exp</code> is holding by <code>switch</code>ing on <code>exp-&gt;type</code>. Afterwards, you still have to use the right field in the union for your code to be correct. The C compiler will do nothing whatsoever to stop you from writing something like this.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">switch</span> (exp-&gt;type) {</a>
-<a class="sourceLine" id="cb3-2" title="2">    <span class="co">// ...</span></a>
-<a class="sourceLine" id="cb3-3" title="3">    <span class="cf">case</span> Plus: eval(exp-&gt;val.pair.a) + exp-&gt;val.i;</a>
-<a class="sourceLine" id="cb3-4" title="4">    <span class="co">// ...</span></a>
-<a class="sourceLine" id="cb3-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">switch</span> (exp-&gt;type) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="co">// ...</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="cf">case</span> Plus: eval(exp-&gt;val.pair.a) + exp-&gt;val.i;</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="co">// ...</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>}</span></code></pre></div>
 <p>In this case, you’re screwed. This coding error will only be detected after some bug hunting at 4am during a crunch.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>I hope after reading this post, you will see the point of adding Pattern Matching and Algebraic Type to the feature list of Rust. They not only allow you to write more concise code but also prevent some errors encountered in languages without them. If you like what you see in Rust like I do, please check out its <a href="http://rust-lang.org">home page</a> for more documentation and tutorials. And if you really like Rust, please consider contributing to it. You can start by looking through the <a href="https://github.com/mozilla/rust/issues?labels=E-easy&amp;page=1&amp;state=open">easy bugs</a>, some of which are documenting the code, to familiarize yourself with Rust and then work your way up to harder ones. Happy Hacking!</p>
 
-<div id="disqus_thread"></div>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
         </article>
 
         <footer>
+            
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            
+
             Site proudly generated by
             <a href="http://jaspervdj.be/hakyll/">Hakyll</a>
             and
